@@ -17,10 +17,10 @@ class User(Base):
     admin: Mapped[int] = mapped_column(SMALLINT, nullable=False)
 
 class Cart(Base):
-    __tablename__: "cart"
-    user_id: Mapped[int] = mapped_column('id', INTEGER, ForeignKey(User.user_id), primary_key=True)
-    date: Mapped[datetime] = mapped_column(DATE, nullable=False)
-
+    #__tablename__: "cart"
+    #user_id: Mapped[int] = mapped_column('id', INTEGER, ForeignKey(User.user_id), primary_key=True)
+    #date: Mapped[datetime] = mapped_column(DATE, nullable=False)
+    pass
 
 Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine) # Cria todas as tabelas ligadas pela Base caso não existam
