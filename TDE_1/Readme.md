@@ -26,8 +26,9 @@ Por Exemplo:
         sale_products.py
     /services
         db.py
-        app.py
+    app.py
 O arquivo app.py será responsável por executar a aplicação e criar todas as tabelas do banco de dados.
+
 Envio:
 
 Compactar a pasta application e enviar na tarefa.
