@@ -1,96 +1,114 @@
 CREATE DATABASE glowtf;
-
 USE glowtf;
 
-CREATE TABLE IF NOT EXISTS user (
-    id PRIMARY KEY AUTO_INCREMENT,
-    id_steam CHAR(17) NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    cpf CHAR(11) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR(30) NOT NULL,
-    admin TINYINT NOT NULL,
+CREATE TABLE user (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+        name VARCHAR(100) NOT NULL,
+        gender ENUM('Male','Female','Other') NOT NULL,
+        state CHAR(2) NOT NULL,
+        cpf CHAR(11) NOT NULL,
+        email VARCHAR(50) NOT NULL,
+        password VARCHAR(30) NOT NULL,
+        `admin` BOOL NOT NULL,
+        id_steam CHAR(17) NOT NULL,
+        PRIMARY KEY (id),
+        UNIQUE (cpf),
+        UNIQUE (email)
 );
 
-CREATE TABLE IF NOT EXISTS cart (
-    id_user PRIMARY KEY,
-    date DATE NOT NULL
-    FOREIGN KEY (id_user) REFERENCES user (id),
+CREATE TABLE coupons (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+        expiration_date DATE NOT NULL,
+        discount INTEGER NOT NULL,
+        uses BIGINT NOT NULL,
+        start_date DATE NOT NULL,
+        code_name VARCHAR(20) NOT NULL,
+        PRIMARY KEY (id),
+        UNIQUE (code_name)
 );
 
-CREATE TABLE IF NOT EXISTS wishlist (
-    id_user PRIMARY KEY,
-    FOREIGN KEY (id_user) REFERENCES user (id),
+CREATE TABLE paint (
+        paint INTEGER NOT NULL AUTO_INCREMENT,
+        name VARCHAR(128) NOT NULL,
+        promo_image VARCHAR(256) NOT NULL,
+        PRIMARY KEY (paint)
 );
 
-CREATE TABLE IF NOT EXISTS coupons (
-    id PRIMARY KEY AUTO_INCREMENT,
-    expiration_date DATE NOT NULL,
-    discount DOUBLE NOT NULL,
-    uses BIGINT DEFAULT 1,
-    start_date DATE,
-    code_name VARCHAR(20) NOT NULL
+CREATE TABLE cart (
+        id_user INTEGER NOT NULL,
+        date DATETIME NOT NULL,
+        PRIMARY KEY (id_user),
+        FOREIGN KEY(id_user) REFERENCES user (id)
 );
 
-CREATE TABLE IF NOT EXISTS sale (
-    id PRIMARY KEY AUTO_INCREMENT,
-    date DATE NOT NULL,
-    id_user INTEGER NOT NULL,
-    id_coupon INTEGER,
-    FOREIGN KEY (id_user) REFERENCES user (id),
-    FOREIGN KEY (id_coupon) REFERENCES coupons (id)
+CREATE TABLE wishlist (
+        id_user INTEGER NOT NULL,
+        PRIMARY KEY (id_user),
+        FOREIGN KEY(id_user) REFERENCES user (id)
 );
 
-CREATE TABLE IF NOT EXISTS hat (
-    id PRIMARY KEY AUTO_INCREMENT,
-    inventory INTEGER NOT NULL UNIQUE,
-    price FLOAT NOT NULL,
-    promo_image VARCHAR(256) NOT NULL,
-    name VARCHAR(256) NOT NULL,
-    paint TINYINT,
-    description VARCHAR(1024) NOT NULL,
-    FOREIGN KEY (paint) REFERENCES paint (paint)
+CREATE TABLE sale (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+        date DATE NOT NULL,
+        id_user INTEGER NOT NULL,
+        id_coupon INTEGER NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(id_user) REFERENCES user (id),
+        FOREIGN KEY(id_coupon) REFERENCES coupons (id)
 );
 
-CREATE TABLE IF NOT EXISTS hat_class (
-    id_hat INTEGER PRIMARY KEY,
-    scout TINYINT,
-    soldier TINYINT,
-    pyro TINYINT,
-    demoman TINYINT,
-    heavy TINYINT,
-    engineer TINYINT,
-    medic TINYINT,
-    sniper TINYINT,
-    spy TINYINT,
-    FOREIGN KEY (id_hat) REFERENCES hat (id)
+CREATE TABLE hat (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+        inventory INTEGER NOT NULL,
+        price INTEGER NOT NULL,
+        promo_image VARCHAR(256) NOT NULL,
+        name VARCHAR(256) NOT NULL,
+        paint INTEGER NOT NULL,
+        description VARCHAR(1024) NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(paint) REFERENCES paint (paint)
 );
 
-CREATE TABLE IF NOT EXISTS paint (
-    paint TINYINT PRIMARY KEY,
-    name VARCHAR(128) NOT NULL,
-    promo_image VARCHAR(256) NOT NULL
+CREATE TABLE hat_class (
+        hat_id INTEGER NOT NULL,
+        scout INTEGER NOT NULL,
+        soldier INTEGER NOT NULL,
+        pyro INTEGER NOT NULL,
+        demoman INTEGER NOT NULL,
+        heavy INTEGER NOT NULL,
+        engineer INTEGER NOT NULL,
+        medic INTEGER NOT NULL,
+        sniper INTEGER NOT NULL,
+        spy INTEGER NOT NULL,
+        PRIMARY KEY (hat_id),
+        FOREIGN KEY(hat_id) REFERENCES hat (id)
 );
 
-CREATE TABLE IF NOT EXISTS cart_has_hat (
-    id_cart INTEGER PRIMARY KEY,
-    id_hat INTEGER,
-    FOREIGN KEY (id_cart) REFERENCES cart (id),
-    FOREIGN KEY (id_hat) REFERENCES hat (id)
+CREATE TABLE cart_has_hat (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+        id_cart INTEGER NOT NULL,
+        id_hat INTEGER NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(id_cart) REFERENCES cart (id_user),
+        FOREIGN KEY(id_hat) REFERENCES hat (id)
 );
 
-CREATE TABLE IF NOT EXISTS sale_has_hat (
-    id_sale INTEGER PRIMARY KEY,
-    id_hat INTEGER NOT NULL,
-    FOREIGN KEY (sale_id) REFERENCES sale (id),
-    FOREIGN KEY (hat_id) REFERENCES hat (id)
+CREATE TABLE sale_has_hat (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+        id_sale INTEGER NOT NULL,
+        id_hat INTEGER NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(id_sale) REFERENCES sale (id),
+        FOREIGN KEY(id_hat) REFERENCES hat (id)
 );
 
-CREATE TABLE IF NOT EXISTS wishlist_has_hat (
-    id_wishlist INTEGER PRIMARY KEY,
-    id_hat INTEGER UNIQUE,
-    id_product_game INTEGER,
-    id_product_steam_api INTEGER,
-    FOREIGN KEY (id_wishlist) REFERENCES wishlist (id),
-    FOREIGN KEY (id_hat) REFERENCES hat (id)
+CREATE TABLE wishlist_has_hat (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+        id_wishlist INTEGER NOT NULL,
+        id_hat INTEGER NOT NULL,
+        id_product_game INTEGER NOT NULL,
+        id_product_steam_api INTEGER NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(id_wishlist) REFERENCES wishlist (id_user),
+        FOREIGN KEY(id_hat) REFERENCES hat (id)
 );

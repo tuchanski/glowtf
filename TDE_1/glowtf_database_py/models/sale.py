@@ -1,11 +1,11 @@
 from sqlalchemy import DATE, INTEGER, ForeignKey
 from sqlalchemy.orm import  mapped_column, Mapped
 from datetime import datetime
-from base import Base
-from coupons import Coupons
-from user import User
+from services.base import Base
+from models.coupons import Coupons
+from models.user import User
 
-class Sale(Base): # OK
+class Sale(Base):
     __tablename__ = "sale"
     sale_id: Mapped[int] = mapped_column('id', INTEGER, primary_key=True, autoincrement=True)
     date: Mapped[datetime] = mapped_column('date', DATE, nullable=False)
