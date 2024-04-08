@@ -17,5 +17,4 @@ else:
     print(f"O banco de dados {DATABASE} já existe")
 
 engine = create_engine(url = url, echo = True) # echo = True para testar
-
 session = scoped_session(sessionmaker(bind = engine, autoflush = False))

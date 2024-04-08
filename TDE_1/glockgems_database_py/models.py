@@ -6,25 +6,16 @@ from connection import engine
 class Base(DeclarativeBase):
     pass
 
-class Coupons(Base):
+class Coupons(Base): # OK
     __tablename__ = "coupons"
     coupons_id: Mapped[int] = mapped_column('id', INTEGER, primary_key=True, autoincrement=True)
     expiration_date: Mapped[datetime] = mapped_column('expiration_date', DATE, nullable=False)
     discount: Mapped[float] = mapped_column('discount', DOUBLE, nullable=False)
     uses: Mapped[int] = mapped_column('uses', BIGINT, autoincrement=True)
-    start_date: Mapped[datetime] = mapped_column('start_date', DATE)
-    code_name: Mapped[str] = mapped_column('code_name', VARCHAR(45), nullable=False)
+    start_date: Mapped[datetime] = mapped_column('start_date', DATE, nullable=False)
+    code_name: Mapped[str] = mapped_column('code_name', VARCHAR(20), nullable=False)
 
-class Wishlist(Base):
-    __tablename__ = "wishlist"
-    wishlist_id: Mapped[int] = mapped_column('id', INTEGER, primary_key=True, autoincrement=True)
-
-class Cart(Base):
-    __tablename__ = "cart"
-    cart_id: Mapped[int] = mapped_column('id', INTEGER, primary_key=True, autoincrement=True)
-    date: Mapped[datetime] = mapped_column(DATE, nullable=False)
-
-class User(Base):
+class User(Base): # OK
     __tablename__ = "user"
     user_id: Mapped[int] = mapped_column('id', INTEGER, primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column('name', VARCHAR(100), nullable=False)
@@ -32,34 +23,40 @@ class User(Base):
     email: Mapped[str] = mapped_column('email', VARCHAR(50), nullable=False)
     password: Mapped[str] = mapped_column('password', VARCHAR(30), nullable=False)
     admin: Mapped[int] = mapped_column('admin', TINYINT, nullable=False)
-    cart_id: Mapped[int] = mapped_column('cart_id', INTEGER, ForeignKey(Cart.cart_id), nullable=False)
-    wishlist_id: Mapped[int] = mapped_column('wishlist_id', INTEGER, ForeignKey(Wishlist.wishlist_id), nullable=False)
+
+class Wishlist(Base): # OK
+    __tablename__ = "wishlist"
+    wishlist_id: Mapped[int] = mapped_column('id_user', INTEGER, ForeignKey(User.user_id), primary_key=True)
+
+class Cart(Base): # OK
+    __tablename__ = "cart"
+    cart_id: Mapped[int] = mapped_column('id', INTEGER, ForeignKey(User.user_id), primary_key=True)
+    date: Mapped[datetime] = mapped_column('date', DATE, nullable=False)
     
-class Sale(Base):
+class Sale(Base): # OK
     __tablename__ = "sale"
     sale_id: Mapped[int] = mapped_column('id', INTEGER, primary_key=True, autoincrement=True)
-    date: Mapped[DATE] = mapped_column('date', DATE, nullable=False)
-    user_id: Mapped[int] = mapped_column('user_id', INTEGER, ForeignKey(User.user_id), nullable=False)
-    coupons_id: Mapped[int] = mapped_column('coupons_id', INTEGER, ForeignKey(Coupons.coupons_id))
+    date: Mapped[datetime] = mapped_column('date', DATE, nullable=False)
+    user_id: Mapped[int] = mapped_column('id_user', INTEGER, ForeignKey(User.user_id), nullable=False)
+    coupons_id: Mapped[int] = mapped_column('id_coupon', INTEGER, ForeignKey(Coupons.coupons_id))
 
-class Paint(Base):
+class Paint(Base): # OK
     __tablename__ = "paint"
     paint_id: Mapped[int] = mapped_column('paint', TINYINT, primary_key=True)
     name: Mapped[str] = mapped_column('name', VARCHAR(128), nullable=False)
-    paintcol: Mapped[str] = mapped_column('paintcol', VARCHAR(45), nullable=False)
-    promo_image: Mapped[str] = mapped_column('promo_image', VARCHAR(256))
+    promo_image: Mapped[str] = mapped_column('promo_image', VARCHAR(256), nullable=False)
 
-class Hat(Base):
+class Hat(Base): # OK
     __tablename__ = "hat"
     hat_id: Mapped[int] = mapped_column('id', INTEGER, primary_key=True, autoincrement=True)
-    inventory: Mapped[int] = mapped_column('hat', INTEGER, nullable=False, unique=True)
+    inventory: Mapped[int] = mapped_column('inventory', INTEGER, nullable=False)
     price: Mapped[float] = mapped_column('price', FLOAT, nullable=False)
-    promo_image: Mapped[str] = mapped_column('promo_image', VARCHAR(256))
-    name: Mapped[str] = mapped_column('name', VARCHAR(256))
+    promo_image: Mapped[str] = mapped_column('promo_image', VARCHAR(256), nullable=False)
+    name: Mapped[str] = mapped_column('name', VARCHAR(256), nullable=False)
     paint: Mapped[int] = mapped_column('paint', TINYINT, ForeignKey(Paint.paint_id))
     description: Mapped[str] = mapped_column('description', VARCHAR(1024), nullable=False)
 
-class Hat_Class(Base): 
+class Hat_Class(Base):  # OK
     __tablename__= "hat_class"
     hat_id: Mapped[int] = mapped_column('hat_id', INTEGER, ForeignKey(Hat.hat_id), primary_key=True)
     scout: Mapped[int] = mapped_column('scout', TINYINT)
@@ -72,23 +69,22 @@ class Hat_Class(Base):
     sniper: Mapped[int] = mapped_column('sniper', TINYINT)
     spy: Mapped[int] = mapped_column('spy', TINYINT)
 
-class Cart_has_Hat(Base):
+class Cart_has_Hat(Base): # OK
     __tablename__ = "cart_has_hat"
-    cart_id: Mapped[int] = mapped_column('cart_id', INTEGER, ForeignKey(Cart.cart_id), unique=True, autoincrement=True)
-    hat_id: Mapped[int] = mapped_column('hat_id', INTEGER, ForeignKey(Hat.hat_id), unique=True)
+    cart_id: Mapped[int] = mapped_column('id_cart', INTEGER, ForeignKey(Cart.cart_id), autoincrement=True)
+    hat_id: Mapped[int] = mapped_column('id_hat', INTEGER, ForeignKey(Hat.hat_id))
 
-class Sale_Has_Hat(Base):
+class Sale_Has_Hat(Base): # OK
     __tablename__ = "sale_has_hat"
-    sale_id: Mapped[int] = mapped_column('sale_id', INTEGER, ForeignKey(Sale.sale_id), nullable=False, unique=True)
-    hat_id: Mapped[int] = mapped_column('hat_id', INTEGER, ForeignKey(Hat.hat_id), nullable=False, unique=True)
+    sale_id: Mapped[int] = mapped_column('id_sale', INTEGER, ForeignKey(Sale.sale_id), nullable=False)
+    hat_id: Mapped[int] = mapped_column('id_hat', INTEGER, ForeignKey(Hat.hat_id), nullable=False)
 
-class Wishlist_Has_Hat(Base): # COMPLETO, REVISADO
+class Wishlist_Has_Hat(Base): # OK
     __tablename__ = "wishlist_has_hat"
-    wishlist_id: Mapped[int] = mapped_column('wishlist_id', INTEGER, ForeignKey(Wishlist.wishlist_id), unique=True)
-    hat_id: Mapped[int] = mapped_column('hat_id', INTEGER, ForeignKey(Hat.hat_id), unique=True)
-    product_game_id: Mapped[int] = mapped_column('product_game_id', INTEGER)
-    product_steam_api_id: Mapped[int] = mapped_column('product_steam_api_id', INTEGER)
-
+    wishlist_id: Mapped[int] = mapped_column('id_wishlist', INTEGER, ForeignKey(Wishlist.wishlist_id), nullable=False)
+    hat_id: Mapped[int] = mapped_column('id_hat', INTEGER, ForeignKey(Hat.hat_id), nullable=False)
+    product_game_id: Mapped[int] = mapped_column('id_product_game', INTEGER, nullable=False)
+    product_steam_api_id: Mapped[int] = mapped_column('id_product_steam_api', INTEGER, nullable=False)
 
 Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine) # Cria todas as tabelas ligadas pela Base caso não existam
