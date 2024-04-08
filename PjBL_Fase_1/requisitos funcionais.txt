@@ -1,0 +1,22 @@
+Analise da dados
+
+idade média do usuario
+genêro do usuário
+local do usuário
+média de gasto por cliente
+frequência de compras de cliente
+classe com mais compras associadas
+média de dinheiro gasto por transação
+média de transações por dia
+média de transações por mês
+média de transações por trimestre
+tinta mais vendida
+tinta menos vendida
+chapéu mais vendido
+chapéu menos vendido
+cupom mais popular
+cupom menos popular
+dia do mês com maior número de vendas
+dia do mês com menor número de vendas
+porcentagem de carrinhos abandonados
+mês do ano com o maior número de vendas
