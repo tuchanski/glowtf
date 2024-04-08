@@ -7,7 +7,7 @@ USER = "root"
 PASSWD = quote("") # Senha do servidor MYSQL
 HOST = "localhost" # 127.0.0.1
 PORT = 3306 # Porta padrão mysql
-DATABASE = "glockgems"
+DATABASE = "glowtf"
 
 url = f'mysql+pymysql://{USER}:{PASSWD}@{HOST}:{PORT}/{DATABASE}'
 

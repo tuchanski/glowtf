@@ -88,3 +88,5 @@ class Wishlist_Has_Hat(Base): # OK
 
 Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine) # Cria todas as tabelas ligadas pela Base caso não existam
+
+# RIP GlockGems
