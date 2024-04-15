@@ -5,7 +5,7 @@ from services.base import Base
 import models
 
 USER = "root"
-PASSWD = "root"  # Senha do servidor MYSQL
+PASSWD = ""  # Senha do servidor MYSQL
 HOST = "localhost"  # 127.0.0.1
 PORT = 3306  # Porta padrão mysql
 DATABASE = "glowtf"
