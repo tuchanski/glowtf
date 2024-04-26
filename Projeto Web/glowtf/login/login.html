@@ -3,61 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glowtf | Cadastro</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Login de Usuário</title>
+    <link rel="stylesheet" href="./login.css">
 </head>
 <body>
     <div class="container">
-        <h2>Cadastro de Usuário</h2>
+        <h2>Entrar</h2>
         <form id="loginForm">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-            <label for="Sobrenome">Sobrenome:</label>
-            <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome" required>
-            <label for="email">E-mail:</label>
-            <input type="text" id="email" name="email" placeholder="Digite seu email" required>
+            <label for="nome">Usuário:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome de usuario" required>
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-            <label for="data_nascimento">Data de nascimento:</label><br>
-            <select name="dia">
-                 <script>
-                  for (var day = 1; day <= 31; day++) {
-                    document.write('<option value="' + day + '">' + day + '</option>');
-                  }
-                </script>
-              </select>
-            <select name="mes">
-                <option value="01">Janeiro</option>
-                <option value="02">Fevereiro</option>
-                <option value="03">Março</option>
-                <option value="04">Abril</option>
-                <option value="05">Maio</option>
-                <option value="06">Junho</option>
-                <option value="07">Julho</option>
-                <option value="08">Agosto</option>
-                <option value="09">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Dezembro</option>
-              </select>
-              <select id="ano" name="ano">
-                <script>
-                  var currentYear = new Date().getFullYear();
-                  var startYear = 1900;
-                  var selectYear = document.getElementsByName("ano")[0];
-              
-                  for (var year = currentYear; year >= startYear; year--) {
-                    var option = document.createElement("option");
-                    option.text = year;
-                    option.value = year;
-                    selectYear.add(option);
-                  }
-                </script>
-              </select>
-            <button type="button"  action="./index.html" onclick="cadastraUsuario()">Cadastrar</button>
+            <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button> <a href="./cadastrar.html"><button type="button">Cadastrar</button></a>              
         </form>
     </div>
-    <script src="./script.js"></script>
+    <script src="./login.js"></script>
 
 </body>
 

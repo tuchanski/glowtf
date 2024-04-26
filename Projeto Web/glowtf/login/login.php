@@ -15,20 +15,10 @@ if ($conn->connect_error) {
 
 // Obtém os dados do formulário
 $name = $_POST['nome'];
-$lastname = $_POST['sobrenome'];
 $pass = $_POST['senha'];
-$email = $_POST['email'];
-$birthday_day = $_POST['dia'];
-$birthday_month = $_POST['mes'];
-$birthday_year = $_POST['ano'];
 
 if ($name != True) {
-    echo "Por favor, insira seu nome.\n";
-    return;
-}
-
-if ($lastname != True) {
-    echo "Por favor, insira seu sobrenome.\n";
+    echo "Por favor, insira seu nome de usuário.\n";
     return;
 }
 
@@ -37,29 +27,17 @@ if ($pass != True) {
     return;
 }
 
-if ($email != True) {
-    echo "Por favor, insira seu email.\n";
-    return;
-}
-
-if (2024 - $birthday_year <= 18) {
-    echo "Usuário deve ter mais que 18 anos.\n";
-    return;
-}
-
-if (strlen($pass) <= 10) {
-    echo "Senha fraca, por favor insira 10 caracteres no mínimo.\n";
-    return;
-}
-
 // Insere os dados no banco de dados
-$sql = "INSERT INTO usuarios (nome, senha) VALUES ('$name', '$pass')";
+$sql = "SELECT COUNT(1) AS count FROM usuarios WHERE nome = '$name' and senha = '$pass'";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Dados inseridos com sucesso!\n";
+$res = $conn->query($sql);
+$row = $res->fetch_row();
+
+if ($row[0] > 0) {
+    echo "Usuário autenticado com sucesso.\n";
 
 } else {
-    echo "Erro ao inserir dados: " . $conn->error;
+    echo "Usuário não cadastrado.\n" . $conn->error;
     
 }
 
