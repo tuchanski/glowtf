@@ -29,7 +29,7 @@
 
 .card {
   width: 250px;
-  height: 413px;
+  height: 430px;
   padding: 40px;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
@@ -70,6 +70,12 @@
 
 .card-imagem-produto {
   width: 100%;
+}
+
+.preco-botao {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .carrinho-btn {
