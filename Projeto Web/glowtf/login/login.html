@@ -21,16 +21,18 @@
     </div>
   </nav>
   <div class="wrapper">
-  <div class="title">
-    <h1>Entrar</h1>
-  </div>
+    <h1 class="title">Entrar</h1>
     <div class="container">
-        <form id="loginForm">
+        <form id="loginForm" class="login-layout">
+          <div>
             <label for="nome">Usuário:</label>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome de usuario" required>
+          </div>
+          <div>
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-            <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button>
+          </div>
+          <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button>
         </form>
     </div>
   </div>
