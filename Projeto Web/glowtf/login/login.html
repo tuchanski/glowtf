@@ -7,16 +7,30 @@
     <link rel="stylesheet" href="./login.css">
 </head>
 <body>
+  <div class="navbar">
+    <div class="logo">GLOW.TF</div>
+    <div class="searchbar">
+      <input type="text" id="searchbar" placeholder="Digite o nome do item">
+    </div>
+    <div class="login">
+      <div>ENTRAR</div>
+      <div class="steam"><button type="button" class="login_steam">Entrar</button> </div>
+    </div>
+  </div>
+  <div class="content">
+  <div class="title">
+    <h1>Entrar</h1>
+  </div>
     <div class="container">
-        <h2>Entrar</h2>
         <form id="loginForm">
             <label for="nome">Usuário:</label>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome de usuario" required>
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-            <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button> <a href="./cadastrar.html"><button type="button">Cadastrar</button></a>              
+            <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button>              
         </form>
     </div>
+  </div>
     <script src="./login.js"></script>
 
 </body>
