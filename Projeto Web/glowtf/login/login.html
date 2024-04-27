@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login de Usuário</title>
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="../estilos/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav>
     <div class="logo">GLOW.<b>TF</b></div>
     <div class="searchbar">
-      <input type="text" id="searchbar" placeholder="Digite o nome do item">
+      <input type="text" id="searchbar" placeholder="O que você está buscando hoje?">
     </div>
     <div class="login">
       <div>ENTRAR</div>
       <div class="steam"><button type="button" class="login_steam">Entrar</button> </div>
     </div>
   </nav>
-  <div class="content">
+  <div class="wrapper">
   <div class="title">
     <h1>Entrar</h1>
   </div>
@@ -27,7 +30,7 @@
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome de usuario" required>
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-            <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button>              
+            <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button>
         </form>
     </div>
   </div>
