@@ -4,19 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login de Usuário</title>
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="../estilos/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+  <nav>
+    <div class="logo">
+      <div><img src="../dados/imagens/ícones/logo.png"></div>
+      <div>GLOW.<b>TF</b></div>
+    </div>
+    <div class="searchbar">
+      <input type="text" id="searchbar" placeholder="O que você está buscando hoje?">
+      <div>
+        <button type="button" class="search-btn">
+        <div><img src="../dados/imagens/ícones/lupa.png"></div>
+        <div>Buscar</div>
+      </div>
+      </button>
+      </div>
+    </div>
+    <div class="login">
+      <div class="entrar">
+        <div><img src="../dados/imagens/ícones/usuario.png"></div>
+        <div>Entrar</div>
+      </div>
+      <div class="steam">
+        <button type="button" class="login_steam">
+          <div><img src="../dados/imagens/ícones/Steam.png"></div>
+          <div>Entrar</div>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="wrapper">
+    <h1 class="title">Entrar</h1>
     <div class="container">
-        <h2>Entrar</h2>
-        <form id="loginForm">
+        <form id="loginForm" class="login-layout">
+          <div>
             <label for="nome">Usuário:</label>
             <input type="text" id="nome" name="nome" placeholder="Digite seu nome de usuario" required>
+          </div>
+          <div>
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-            <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button> <a href="./cadastrar.html"><button type="button">Cadastrar</button></a>              
+          </div>
+          <button type="button" action="./index.html" onclick="loginUsuario()">Entrar</button>
         </form>
     </div>
+  </div>
     <script src="./login.js"></script>
 
 </body>
