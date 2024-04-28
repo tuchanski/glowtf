@@ -78,7 +78,7 @@
 .fundo-adiciona-produto {
   width: 100%;
   height: auto;
-  padding: 150px;
+  padding: 10%;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
   color: #ffffff;
