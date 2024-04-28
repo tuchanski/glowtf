@@ -39,73 +39,97 @@
       <div class="fundo-adiciona-produto">
         <div class="dados-produto">
           <form id="loginForm" class="login-layout">
-            <div>
-              <label for="nome">Usuário:</label>
-              <input type="text" id="nome" name="nome" placeholder="Digite seu nome de usuario" required>
+            <div class="input-produto">
+              <div>
+                <label for="nome-produto">Nome:</label>
+              </div>
+              <div>
+                <input type="text" id="nome-produto" name="nome-produto" placeholder="Digite seu nome do produto" required>
+              </div>
             </div>
-            <div>
-              <label for="email">Email:</label>
-              <input type="text" id="email" name="email" placeholder="Digite seu email" required>
+            <div class="input-produto">
+              <div>
+                <label for="preco-produto">Preço:</label>
+              </div>
+              <div>
+                <input type="text" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto" required>
+              </div>
             </div>
-            <div>
-              <label for="CPF">CPF:</label>
-              <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required>
+            <div class="input-produto">
+              <div>
+                <label for="estoque-produto">Nome:</label>
+              </div>
+              <div>
+                <input type="text" id="estoque" name="estoque" placeholder="Insira o estoque do produto" required>
+              </div>
             </div>
-            <div>
-              <label for="genero">Gênero:</label><br>
-              <select name="genero">
-                <option value="" disabled selected>Selecione seu gênero</option>
-                <option value="Feminino">Feminino</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Outro">Outro</option>
-              </select>
+            <div  class="input-produto">
+              <div>
+                <label for="classe">Classe:</label><br>
+              </div>
+              <div>
+                <select name="Classe:">
+                  <option value="" disabled selected>Selecione a classe do chapéu</option>
+                  <option value="Scout">Scout</option>
+                  <option value="Soldier">Soldier</option>
+                  <option value="Pyro">Pyro</option>
+                  <option value="Demoman">Demoman</option>
+                  <option value="Heavy">Heavy</option>
+                  <option value="Engineer">Engineer</option>
+                  <option value="Medic">Medic</option>
+                  <option value="Sniper">Sniper</option>
+                  <option value="Spy">Spy</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <label for="estados">Estado onde mora:</label><br>
-              <select id="estados">
-                <option value="" disabled selected>Selecione um estado</option>
-                <option value="AC">AC</option>
-                <option value="AL">AL</option>
-                <option value="AP">AP</option>
-                <option value="AM">AM</option>
-                <option value="BA">BA</option>
-                <option value="CE">CE</option>
-                <option value="DF">DF</option>
-                <option value="ES">ES</option>
-                <option value="GO">GO</option>
-                <option value="MA">MA</option>
-                <option value="MT">MT</option>
-                <option value="MS">MS</option>
-                <option value="MG">MG</option>
-                <option value="PA">PA</option>
-                <option value="PB">PB</option>
-                <option value="PR">PR</option>
-                <option value="PE">PE</option>
-                <option value="PI">PI</option>
-                <option value="RJ">RJ</option>
-                <option value="RN">RN</option>
-                <option value="RS">RS</option>
-                <option value="RO">RO</option>
-                <option value="RR">RR</option>
-                <option value="SC">SC</option>
-                <option value="SP">SP</option>
-                <option value="SE">SE</option>
-                <option value="TO">TO</option>
-              </select>
+            <div  class="input-produto">
+              <div>
+                <label for="tinta">Tinta:</label><br>
+              </div>
+              <div>
+                <select name="Tinta:">
+                  <option value="" disabled selected>Selecione o nome da tinta</option>
+                  <option value="O Amargo Sabor de Derrota e Limão">O Amargo Sabor de Derrota e Limão</option>
+                  <option value="Uma Extraordinária Abundância de Matiz">Uma Extraordinária Abundância de Matiz</option>
+                  <option value="Um Distinto Toque de Cinza">Um Distinto Toque de Cinza</option>
+                  <option value="Distorção Violeta Perversa">Distorção Violeta Perversa</option>
+                  <option value="Peculiarmente Agradável ao Paladar">Peculiarmente Agradável ao Paladar</option>
+                  <option value="Ausência de Amarelo">Ausência de Amarelo</option>
+                  <option value="A Cor dos Sonhos">A Cor dos Sonhos</option>
+                  <option value="Apenas Distração">Apenas Distração</option>
+                  <option value="Escória dos Deuses">Escória dos Deuses</option>
+                  <option value="O Gentil Despertar da Primavera">O Gentil Despertar da Primavera</option>
+                  <option value="Laranja Bonita">Laranja Bonita</option>
+                  <option value="Cor Incomum">Cor Incomum</option>
+                  <option value="Notavelmente Distinto">Notavelmente Distinto</option>
+                  <option value="O Primeiro Sinal de Primavera">O Primeiro Sinal de Primavera</option>
+                  <option value="O Negro da Meia-Noite Após uma Janta Especial">O Negro da Meia-Noite Após uma Janta Especial</option>
+                  <option value="Um Delicado Balaço de Caramelo">Um Delicado Balaço de Caramelo</option>
+                  <option value="Comercializável Raro">Comercializável Raro</option>
+                  <option value="Grito de Guerra">Grito de Guerra</option>
+                  <option value="Um Distinto Toco de Água">Um Distinto Toco de Água</option>
+                  <option value="Vermelho 40">Vermelho 40</option>
+                  <option value="Rosto Pálido de Alguém">Rosto Pálido de Alguém</option>
+                  <option value="Pergaminho do Carteiro">Pergaminho do Carteiro</option>
+                  <option value="Espírito de Equipamento">Espírito de Equipamento</option>
+                  <option value="Forma da Cabeça de Cabelo">Forma da Cabeça de Cabelo</option>
+                  <option value="Aroma de Destino">Aroma de Destino</option>
+                  <option value="Noites de Fortaleza Negra">Noites de Fortaleza Negra</option>
+                  <option value="Reino Marinho do Mercenário">Reino Marinho do Mercenário</option>
+                  <option value="Tons de Equinócio">Tons de Equinócio</option>
+                  <option value="Esquadrão dos Estames Estilhaçados">Esquadrão dos Estames Estilhaçados</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <label for="senha">Senha:</label>
-              <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            <div class="input-produto">
+              <div>
+                <label for="wiki-produto">Wiki:</label>
+              </div>
+              <div>
+                <input type="text" id="wiki-produto" name="wiki-produto" placeholder="Insira o link da wiki do produto" required>
+              </div>
             </div>
-            <div>
-              <label for="confirma-senha">Confirme sua senha:</label>
-              <input type="password" id="confirma-senha" name="confirma-senha" placeholder="Confirme sua senha" required>
-            </div>
-            <div>
-              <label for="nome">Código de troca da Steam:</label>
-              <input type="text" id="nome" name="nome" placeholder="Digite seu código de troca da Steam" required>
-            </div>
-            <button type="button" action="./index.html" onclick="cadastraUsuario()">Cadastrar</button>
+            <button type="button" action="./index.html" onclick="cadastraProduto()">Adicionar produto</button>
           </form>
         </div>
         <div class="imagem-produto"><img class="card-imagem-produto" src="../../dados/imagens/imagens/adicionar_imagem.png"></div>
