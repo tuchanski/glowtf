@@ -94,8 +94,6 @@
 .imagem {
   width: 40%;
   height: 60%;
-  background-color: #4C4B58;
-  box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.25);
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -103,7 +101,7 @@
 }
 
 .imagem:hover {
-  background-color: rgb(112, 111, 130);
+  background-color: #4C4B58;
 }
 
 .imagem-produto {
@@ -120,4 +118,48 @@
 .linha-vertical {
   border-left: 1px solid  rgb(112, 111, 130);
   height: 100%;
+}
+
+
+.atualizar-btn {
+  width: 49%;
+  height: 45px;
+  padding: 3px;
+  padding-right: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #6495ED;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  align-items: center;
+}
+
+.atualizar-btn:hover {
+  background-color: #0287cf;
+}
+
+.deletar-btn {
+  width: 49%;
+  height: 45px;
+  padding: 3px;
+  border: none;
+  border-radius: 3px;
+  background-color: #F14668;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  align-items: center;
+}
+
+.deletar-btn:hover {
+  background-color: #cc2e4d;
+}
+
+.botoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
