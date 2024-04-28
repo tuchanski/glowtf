@@ -91,14 +91,14 @@
 
 .fundo-adiciona-produto {
   width: 100%;
-  padding: 150px;
+  padding: 10%;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
   color: #ffffff;
   box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.25);
   display: flex;
   justify-content: space-between;
-  gap:10%;
+  gap:13%;
 }
 
 .dados-produto {
@@ -125,6 +125,7 @@
 .card-titulo {
   font-size: 24px;
   font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .card-tinta {
