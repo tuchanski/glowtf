@@ -19,6 +19,9 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 33px;
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-bottom: 100px;
 }
 
 .card {
