@@ -116,3 +116,8 @@
   gap: 10px;
   margin-bottom: 15px;
 }
+
+.linha-vertical {
+  border-left: 1px solid #B4B4B4;
+  height: 100%;
+}
