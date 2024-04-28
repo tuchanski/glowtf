@@ -3,62 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glowtf | Cadastro</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Login de Usuário</title>
+    <link rel="stylesheet" href="../estilos/styles.css">
+    <link rel="stylesheet" href="./produto.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h2>Cadastro de Usuário</h2>
-        <form id="loginForm">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-            <label for="Sobrenome">Sobrenome:</label>
-            <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome" required>
-            <label for="email">E-mail:</label>
-            <input type="text" id="email" name="email" placeholder="Digite seu email" required>
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-            <label for="data_nascimento">Data de nascimento:</label><br>
-            <select name="dia">
-                 <script>
-                  for (var day = 1; day <= 31; day++) {
-                    document.write('<option value="' + day + '">' + day + '</option>');
-                  }
-                </script>
-              </select>
-            <select name="mes">
-                <option value="01">Janeiro</option>
-                <option value="02">Fevereiro</option>
-                <option value="03">Março</option>
-                <option value="04">Abril</option>
-                <option value="05">Maio</option>
-                <option value="06">Junho</option>
-                <option value="07">Julho</option>
-                <option value="08">Agosto</option>
-                <option value="09">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Dezembro</option>
-              </select>
-              <select id="ano" name="ano">
-                <script>
-                  var currentYear = new Date().getFullYear();
-                  var startYear = 1900;
-                  var selectYear = document.getElementsByName("ano")[0];
-              
-                  for (var year = currentYear; year >= startYear; year--) {
-                    var option = document.createElement("option");
-                    option.text = year;
-                    option.value = year;
-                    selectYear.add(option);
-                  }
-                </script>
-              </select>
-            <button type="button"  action="./index.html" onclick="cadastraUsuario()">Cadastrar</button>
-        </form>
+  <nav  class="nav-usuario-autenticado">
+    <div class="conjunto-nav">
+      <div class="logo">
+        <div><img src="../dados/imagens/ícones/logo.png"></div>
+        <div>GLOW.<b>TF</b></div>
+      </div>
+      <div class="searchbar">
+        <input type="text" id="searchbar" placeholder="O que você está buscando hoje?">
+        <div>
+          <button type="button" class="search-btn">
+          <div><img src="../dados/imagens/ícones/lupa.png"></div>
+          <div>Buscar</div>
+        </div>
+        </button>
+      </div>
+        <div class="usuario-autenticado">
+          <div class="icones">
+            <div><img src="../dados/imagens/ícones/lista_de_desejos.png"></div>
+            <div><img src="../dados/imagens/ícones/carrinho.png"></div>
+          </div>
+          <div class="usuario">
+            <div><img src="../dados/imagens/ícones/usuario.png"></div>
+            <div>Rommeo</div>
+          </div>
+          <div class="icones">
+            <div><img src="../dados/imagens/ícones/steam_verde.png"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="./script.js"></script>
+  </nav>
+  <div class="wrapper">
+    <h1 class="title">Detalhes do produto</h1>
+    <div class="corpo">
+      <div class="fundo-adiciona-produto">
+        <div class="dados-produto">
+          <div class="card-titulo">Máscara de proteção</div>
+            <div class="card-tinta">
+              <div class="cor-da-tinta"></div>
+              <div class="card-nome-tinta">O amargo sabor de derrota e limão</div>
+            </div>
+            <div class="descricao-produto">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad minim  veniam, quis nostrud exercitation ullamco...Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim  veniam, quis nostrud exercitation ullamco...
+            </div>
+          </div>
 
+          <div class="linha-vertical"></div>
+
+
+
+
+          <div class="card">
+            <div><img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/scout/mnc_mascot_hat_large.png"></div>
+            <div class="preco-botao">
+              <div class="card-preco">R$ 666,66</div>
+              <button class="carrinho-btn" type="button">
+                <div><img src="../dados/imagens/ícones/carrinho.png"></div>
+                <div>Adicionar ao carrinho</div>
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+    <script src="./login.js"></script>
 </body>
 
 </html>
