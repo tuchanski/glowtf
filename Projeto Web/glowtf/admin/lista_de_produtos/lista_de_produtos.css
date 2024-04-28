@@ -1,60 +1,196 @@
-body {
-    background: linear-gradient(#eeaeca, #94bbe9);
+/* Todo o projeto */
+/* Navbar usuário não cadastrado */
+.nav-admin {
+  width: 100%;
+  height: 60px;
+  background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.container {
- max-width: 400px;
- margin: 15% auto;
- padding: 50px;
- border: 1px solid #ccc;
- border-radius: 10px;
- background-color: #f9f9f9;
- font-family: Arial, Helvetica, sans-serif;
+.conjunto-nav {
+  width: 81%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-input{
- width: 100%;
- padding: 12px;
- margin-bottom: 20px;
- margin-top: 10px;
- border: 1px solid #ccc;
- border-radius: 5px;
- box-sizing: border-box;
- font-size: 17px;
+.searchbar {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
 }
 
-button {
- width: 49.4%;
- padding: 12px;
- margin-top: 30px;
- border: none;
- border-radius: 4px;
- background-color: #00a6ff;
- color: white;
- cursor: pointer;
- font-size: 17px;
+.search-btn {
+  width: 120px;
+  height: 45px;
+  padding: 3px;
+  border: none;
+  border-radius: 3px;
+  background-color: #535353;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-button:hover {
- background-color: #0287cf;
+.search-btn:hover {
+  background-color:#6e6e6e;
 }
 
-select {
-    width: 32.55%;
-    padding: 12px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 17px;
-    outline: none;
-  }
-  
-  select option {
-    font-size: 16px;
-  }
-  
-  select:hover {
-    border-color: #999;
-  }
+.logo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px
+}
+
+.login {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+}
+
+.entrar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.corpo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 33px;
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-bottom: 100px;
+}
+
+.card-admin {
+  width: 250px;
+  height: 430px;
+  padding: 40px;
+  border-radius: 3px;
+  background: radial-gradient(circle at 0%, #4C4B58, #323030);
+  color: #ffffff;
+  box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-admin:hover {
+  background: radial-gradient(circle at 0%, #55527c, #534444);
+}
+
+.card-titulo {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.card-tinta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cor-da-tinta {
+  background-color: #6BEB4B;
+  height: 25px;
+  width: 5px;
+}
+
+.card-nome-tinta {
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.card-preco {
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center
+}
+
+.card-imagem-produto {
+  width: 100%;
+}
+
+.preco-botao {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.editar-btn {
+  width: 49%;
+  height: 45px;
+  padding: 3px;
+  padding-right: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #FF9458;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.editar-btn:hover {
+  background-color: #ff7728;
+}
+
+.deletar-btn {
+  width: 49%;
+  height: 45px;
+  padding: 3px;
+  border: none;
+  border-radius: 3px;
+  background-color: #F14668;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.deletar-btn:hover {
+  background-color: #cc2e4d;
+}
+
+.botoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
