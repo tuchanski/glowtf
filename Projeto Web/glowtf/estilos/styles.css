@@ -92,12 +92,20 @@ nav {
   gap: 10px
 }
 
+.logo:hover {
+  color: #33E333;
+}
+
 /* Navbar usuário não cadastrado */
 .login {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 20px;
+}
+
+.entrar:hover {
+  color: #33E333;
 }
 
 /* Navbar usuário não cadastrado */
