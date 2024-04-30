@@ -170,24 +170,24 @@
   gap:10px;
 }
 
-.carrinho-btn {
-  width: 220px;
+.comprar-btn {
+  width: 100px;
   height: 45px;
   padding: 3px;
   border: none;
   border-radius: 3px;
-  background-color: #6495ED;
+  background-color: #33E333;
   color: white;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: bold;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.carrinho-btn:hover {
-  background-color: #0287cf;
+.comprar-btn:hover {
+  background-color: #10bf10;
 }
 
 .remover-carrinho-btn {
