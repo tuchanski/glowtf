@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login de Usuário</title>
-    <link rel="stylesheet" href="../estilos/styles.css">
-    <link rel="stylesheet" href="./carrinho.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login de Usuário</title>
+  <link rel="stylesheet" href="../estilos/styles.css">
+  <link rel="stylesheet" href="./carrinho.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav  class="nav-usuario-autenticado">
@@ -29,7 +29,7 @@
         <div class="usuario-autenticado">
           <div class="icones">
             <div><img src="../dados/imagens/ícones/lista_de_desejos.png"></div>
-            <div><img src="../dados/imagens/ícones/carrinho.png"></div>
+            <div>Comprar</div>
           </div>
           <div class="usuario">
             <div><img src="../dados/imagens/ícones/usuario.png"></div>
@@ -43,38 +43,179 @@
     </div>
   </nav>
   <div class="wrapper">
-    <h1 class="title">Detalhes do produto</h1>
+    <h1 class="title">Carrinho</h1>
     <div class="corpo">
-      <div class="fundo-adiciona-produto">
-        <div class="dados-produto">
-          <div class="card-titulo">Máscara de proteção</div>
-            <div class="card-tinta">
-              <div class="cor-da-tinta"></div>
-              <div class="card-nome-tinta">O amargo sabor de derrota e limão</div>
-            </div>
-            <div class="descricao-produto">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad minim  veniam, quis nostrud exercitation ullamco...Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim  veniam, quis nostrud exercitation ullamco...
-            </div>
-          </div>
-
-          <div class="linha-vertical"></div>
-
-
-
-
-          <div class="card">
-            <div><img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/scout/mnc_mascot_hat_large.png"></div>
-            <div class="preco-botao">
-              <div class="card-preco">R$ 666,66</div>
-              <button class="carrinho-btn" type="button">
-                <div><img src="../dados/imagens/ícones/carrinho.png"></div>
-                <div>Adicionar ao carrinho</div>
+      <div class="fundo-carrinho">
+        <table>
+          <tr>
+            <td class="imagens">
+                <img class="imagem" src="../dados/imagens/itens_do_jogo/medic/icepack_large.png">
+                <img class="splash" src="../dados/imagens/tintas/Uma_Extraordinária_Abundância_de_Matiz.png">
+            </td>
+            <td>
+              <div class="dados-produto">
+                <div class="titulo">Esfriador de cabeça</div>
+                  <div class="tinta">
+                    <div class="cor-da-tinta"></div>
+                    <div class="nome-tinta">Uma Extraordinária Abundância de Matiz</div>
+                  </div>
+              </div>
+            </td>
+            <td class="preco">
+                R$ 543,90
+            </td>
+            <td class="botoes">
+              <button class="comprar-btn" type="button">
+                Comprar
               </button>
-            </div>
-          </div>
+            </td>
+            <td>
+              <button class="remover-carrinho-btn" type="button">
+                <img src="../dados/imagens/ícones/lixeira.png">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="imagens">
+                <img class="imagem" src="../dados/imagens/itens_do_jogo/medic/medic_german_gonzila_large.png">
+                <img class="splash" src="../dados/imagens/tintas/Rosa_pra_Caramba.png">
+            </td>
+            <td>
+              <div class="dados-produto">
+                <div class="titulo">Chapéu Fofinho</div>
+                  <div class="tinta">
+                    <div class="cor-da-tinta"></div>
+                    <div class="nome-tinta">Rosa Pra Caramba</div>
+                  </div>
+              </div>
+            </td>
+            <td class="preco">
+                R$ 1024,90
+            </td>
+            <td class="botoes">
+              <button class="comprar-btn" type="button">
+                Comprar
+              </button>
+            </td>
+            <td>
+              <button class="remover-carrinho-btn" type="button">
+                <img src="../dados/imagens/ícones/lixeira.png">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="imagens">
+                <img class="imagem" src="../dados/imagens/itens_do_jogo/medic/bowtie_large.png">
+                <img class="splash" src="../dados/imagens/tintas/Tintura_Peculiarmente_Amarronzada.png">
+            </td>
+            <td>
+              <div class="dados-produto">
+                <div class="titulo">Lacinho Suspeito</div>
+                  <div class="tinta">
+                    <div class="cor-da-tinta"></div>
+                    <div class="nome-tinta">Tintura Peculiarmente Amarronzada</div>
+                  </div>
+              </div>
+            </td>
+            <td class="preco">
+                R$ 672,98
+            </td>
+            <td class="botoes">
+              <button class="comprar-btn" type="button">
+                Comprar
+              </button>
+            </td>
+            <td>
+              <button class="remover-carrinho-btn" type="button">
+                <img src="../dados/imagens/ícones/lixeira.png">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="imagens">
+                <img class="imagem" src="../dados/imagens/itens_do_jogo/engineer/engineer_buckaroos_hat_large.png">
+                <img class="splash" src="../dados/imagens/tintas/Uma_Extraordinária_Abundância_de_Matiz.png">
+            </td>
+            <td>
+              <div class="dados-produto">
+                <div class="titulo">Chapéu Estiloso</div>
+                  <div class="tinta">
+                    <div class="cor-da-tinta"></div>
+                    <div class="nome-tinta">Uma Extraordinária Abundância de Matiz</div>
+                  </div>
+              </div>
+            </td>
+            <td class="preco">
+                R$ 7,90
+            </td>
+            <td class="botoes">
+              <button class="comprar-btn" type="button">
+                Comprar
+              </button>
+            </td>
+            <td>
+              <button class="remover-carrinho-btn" type="button">
+                <img src="../dados/imagens/ícones/lixeira.png">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="imagens">
+                <img class="imagem" src="../dados/imagens/itens_do_jogo/engineer/engineer_pocketcat_large.png">
+                <img class="splash" src="../dados/imagens/tintas/Uma_Distinta_Falta_de_Coloração.png">
+            </td>
+            <td>
+              <div class="dados-produto">
+                <div class="titulo">Gatinho Fofo</div>
+                  <div class="tinta">
+                    <div class="cor-da-tinta"></div>
+                    <div class="nome-tinta">Uma Distinta Falta de Coloração</div>
+                  </div>
+              </div>
+            </td>
+            <td class="preco">
+                R$ 678,90
+            </td>
+            <td class="botoes">
+              <button class="comprar-btn" type="button">
+                Comprar
+              </button>
+            </td>
+            <td>
+              <button class="remover-carrinho-btn" type="button">
+                <img src="../dados/imagens/ícones/lixeira.png">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="imagens">
+                <img class="imagem" src="../dados/imagens/itens_do_jogo/medic/berliners_bucket_helm_large.png">
+                <img class="splash" src="../dados/imagens/tintas/Um_Profundo_Compromisso_com_Roxo.png">
+            </td>
+            <td>
+              <div class="dados-produto">
+                <div class="titulo">Capacete Maneiro</div>
+                  <div class="tinta">
+                    <div class="cor-da-tinta"></div>
+                    <div class="nome-tinta">Um Profundo Compromisso com Roxo</div>
+                  </div>
+              </div>
+            </td>
+            <td class="preco">
+                R$ 564,32
+            </td>
+            <td class="botoes">
+              <button class="comprar-btn" type="button">
+                Comprar
+              </button>
+            </td>
+            <td>
+              <button class="remover-carrinho-btn" type="button">
+                <img src="../dados/imagens/ícones/lixeira.png">
+              </button>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

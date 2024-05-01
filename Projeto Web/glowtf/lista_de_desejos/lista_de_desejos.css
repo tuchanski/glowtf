@@ -83,16 +83,15 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 33px;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 27%;
+  padding-right: 27%;
   margin-bottom: 100px;
 }
 
 .fundo-carrinho {
   width: 100%;
   height: 50%;
-  padding: 5%;
+  padding: 10%;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
   color: #ffffff;
@@ -103,31 +102,52 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 5%;
 }
 
-.wrapper-carrinho-linha {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.imagens {
+  width: 20%;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
-.linha-horizontal {
-  border-bottom: 1px solid  rgb(112, 111, 130);
+.imagens:hover {
+  border-radius: 3px;
+  background-color: rgb(112, 111, 130);
+}
+
+.imagem {
+  width: 60%;
+  height: auto;
+  filter: drop-shadow(0 0 0.75rem rgba(149, 149, 149, 0.75));
+}
+
+.splash {
+  width: 20%;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+}
+
+.dados-produto {
   width: 100%;
+  flex-direction: column;
+  display: flex;
 }
 
-.card-titulo {
-  font-size: 20px;
+.titulo {
+  display: flex;
+  font-size: 16px;
   font-weight: 200;
   margin-bottom: 10px;
 }
 
-.card-tinta {
+.tinta {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 30px;
 }
 
 .cor-da-tinta {
@@ -136,42 +156,26 @@
   width: 5px;
 }
 
-.card-nome-tinta {
-  font-size: 16px;
+.nome-tinta {
+  font-size: 14px;
   font-weight: 200;
 }
 
-.card-preco {
-  font-size: 24px;
+.preco {
+  font-size: 20px;
   font-weight: 200;
-}
-
-.card-imagem-produto {
-  width: 30%;
-  height: auto;
-}
-
-.imagem-nome-produto {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.preco-botao {
-  display: flex;
-  align-items: center;
-  gap: 50px;
 }
 
 .botoes {
-  display: flex;
-  align-items: center;
-  gap:10px;
+  width: 6%;
+}
+
+td {
+  border-bottom: 1px solid  rgb(112, 111, 130);
 }
 
 .carrinho-btn {
-  width: 220px;
+  width: 45px;
   height: 45px;
   padding: 3px;
   border: none;
@@ -191,7 +195,7 @@
 }
 
 .remover-carrinho-btn {
-  width: 50px;
+  width: 45px;
   height: 45px;
   padding: 3px;
   border: none;

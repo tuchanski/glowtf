@@ -69,8 +69,21 @@
   text-align: center
 }
 
+.imagens {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 .card-imagem-produto {
-  width: 100%;
+  width:100%;
+}
+
+.card-splash {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  filter: drop-shadow(0 0 0.75rem rgba(255, 255, 255, 0.5));
 }
 
 .preco-botao {
