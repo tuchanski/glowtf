@@ -106,17 +106,27 @@
 }
 
 .imagens {
-  width: 50%;
+  width: 20%;
   position: relative;
   top: 0;
   left: 0;
 }
 
-.card-splash {
+.imagens:hover {
+  border-radius: 3px;
+  background-color: rgb(112, 111, 130);
+}
+
+.imagem {
+  width: 60%;
+  height: auto;
+}
+
+.splash {
   width: 20%;
   position: absolute;
-  bottom: 10%;
-  left: 40%;
+  bottom: 20%;
+  left: 100px;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }
 
@@ -132,14 +142,14 @@
   display: flex;
 }
 
-.card-titulo {
+.titulo {
   display: flex;
   font-size: 16px;
   font-weight: 200;
   margin-bottom: 10px;
 }
 
-.card-tinta {
+.tinta {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -151,39 +161,14 @@
   width: 5px;
 }
 
-.card-nome-tinta {
+.nome-tinta {
   font-size: 14px;
   font-weight: 200;
 }
 
-.card-preco {
+.preco {
   font-size: 20px;
   font-weight: 200;
-}
-
-.card-imagem-produto {
-  width: 50%;
-  height: auto;
-}
-
-.imagem-nome-produto {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.preco-botao {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  justify-content: space-between;
-}
-
-.botoes {
-  display: flex;
-  align-items: center;
-  gap:10px;
 }
 
 .carrinho-btn {
