@@ -10,6 +10,14 @@ body {
   margin: 0;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 /* Todo o projeto */
 /* Navbar usuário não cadastrado */
 nav {
@@ -92,6 +100,12 @@ nav {
   gap: 10px
 }
 
+.logo:hover {
+  color:  #33E333;
+  cursor: pointer;
+  text-shadow: #33E333 1px 0 10px;
+}
+
 /* Navbar usuário não cadastrado */
 .login {
   display: flex;
@@ -100,15 +114,47 @@ nav {
   gap: 20px;
 }
 
+.login:hover {
+  color:  #33E333;
+  cursor: pointer;
+  text-shadow: #33E333 1px 0 10px;
+}
+
 /* Navbar usuário não cadastrado */
-.entrar {
+.icones {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 30px
+}
+
+/* Navbar usuário autenticado */
+.usuario-autenticado {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 30px
+}
+
+/* Navbar usuário autenticado */
+.usuario {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 10px
 }
 
+.usuario:hover {
+  color:  #33E333;
+  cursor: pointer;
+  text-shadow: #33E333 1px 0 10px;
+}
 
+#span-nav:hover {
+  color:  #33E333;
+  cursor: pointer; 
+  text-shadow: #33E333 1px 0 10px;
+}
 
 /* Todo o projeto */
 .wrapper {
