@@ -120,6 +120,7 @@
 .imagem {
   width: 60%;
   height: auto;
+  filter: drop-shadow(0 0 0.75rem rgba(149, 149, 149, 0.75));
 }
 
 .splash {
@@ -127,7 +128,7 @@
   position: absolute;
   bottom: 20%;
   left: 50%;
-  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.75));
 }
 
 .dados-produto {
