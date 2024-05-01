@@ -83,15 +83,15 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 27%;
+  padding-right: 27%;
   margin-bottom: 100px;
 }
 
 .fundo-carrinho {
   width: 100%;
   height: 50%;
-  padding: 5%;
+  padding: 10%;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
   color: #ffffff;
@@ -102,24 +102,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 5%;
 }
 
 .imagens {
-  width: 100%;
+  width: 50%;
   position: relative;
   top: 0;
   left: 0;
 }
 
-.card-imagem-produto {
-  width: 100%;
-}
-
 .card-splash {
-  width: 10%;
+  width: 20%;
   position: absolute;
   bottom: 10%;
-  left: 25%;
+  left: 40%;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }
 
@@ -137,7 +134,7 @@
 
 .card-titulo {
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 200;
   margin-bottom: 10px;
 }
@@ -155,17 +152,17 @@
 }
 
 .card-nome-tinta {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 200;
 }
 
 .card-preco {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 200;
 }
 
 .card-imagem-produto {
-  width: 30%;
+  width: 50%;
   height: auto;
 }
 
@@ -176,9 +173,11 @@
 }
 
 .preco-botao {
+  width: 50%;
   display: flex;
   align-items: center;
   gap: 50px;
+  justify-content: space-between;
 }
 
 .botoes {
@@ -188,7 +187,7 @@
 }
 
 .carrinho-btn {
-  width: 220px;
+  width: 45px;
   height: 45px;
   padding: 3px;
   border: none;
@@ -208,7 +207,7 @@
 }
 
 .remover-carrinho-btn {
-  width: 50px;
+  width: 45px;
   height: 45px;
   padding: 3px;
   border: none;
