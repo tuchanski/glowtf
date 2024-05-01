@@ -103,6 +103,7 @@ nav {
 .logo:hover {
   color:  #33E333;
   cursor: pointer;
+  text-shadow: #33E333 1px 0 10px;
 }
 
 /* Navbar usuário não cadastrado */
@@ -116,6 +117,7 @@ nav {
 .login:hover {
   color:  #33E333;
   cursor: pointer;
+  text-shadow: #33E333 1px 0 10px;
 }
 
 /* Navbar usuário não cadastrado */
@@ -145,11 +147,13 @@ nav {
 .usuario:hover {
   color:  #33E333;
   cursor: pointer;
+  text-shadow: #33E333 1px 0 10px;
 }
 
 #span-nav:hover {
   color:  #33E333;
   cursor: pointer; 
+  text-shadow: #33E333 1px 0 10px;
 }
 
 /* Todo o projeto */
