@@ -101,14 +101,12 @@ nav {
 }
 
 /* Navbar usuário não cadastrado */
-.entrar {
+.icones {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 10px
 }
-
-
 
 /* Todo o projeto */
 .wrapper {
