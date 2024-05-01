@@ -126,14 +126,8 @@
   width: 20%;
   position: absolute;
   bottom: 20%;
-  left: 100px;
+  left: 50%;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
-}
-
-.linha-horizontal {
-  border-bottom: 1px solid  rgb(112, 111, 130);
-  width: 100%;
-  margin-top: 10px;
 }
 
 .dados-produto {
@@ -169,6 +163,14 @@
 .preco {
   font-size: 20px;
   font-weight: 200;
+}
+
+.botoes {
+  width: 6%;
+}
+
+td {
+  border-bottom: 1px solid  rgb(112, 111, 130);
 }
 
 .carrinho-btn {
