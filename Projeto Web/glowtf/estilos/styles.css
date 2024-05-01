@@ -105,6 +105,22 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 30px
+}
+
+/* Navbar usuário autenticado */
+.usuario-autenticado {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 30px
+}
+
+/* Navbar usuário autenticado */
+.usuario {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   gap: 10px
 }
 
