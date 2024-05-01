@@ -3,8 +3,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 33px;
-  padding-left: 22%;
-  padding-right: 22%;
+  padding-left: 20%;
+  padding-right: 20%;
   margin-bottom: 100px;
 }
 
@@ -26,7 +26,7 @@
 
 .imagem {
   width: 40%;
-  height: 60%;
+  height: 45%;
   background-color: #4C4B58;
   box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.25);
   border-radius: 10px;
