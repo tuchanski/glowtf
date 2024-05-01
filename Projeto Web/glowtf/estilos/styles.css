@@ -100,12 +100,22 @@ nav {
   gap: 10px
 }
 
+.logo:hover {
+  color:  #33E333;
+  cursor: pointer;
+}
+
 /* Navbar usuário não cadastrado */
 .login {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 20px;
+}
+
+.login:hover {
+  color:  #33E333;
+  cursor: pointer;
 }
 
 /* Navbar usuário não cadastrado */
@@ -130,6 +140,16 @@ nav {
   justify-content: space-evenly;
   align-items: center;
   gap: 10px
+}
+
+.usuario:hover {
+  color:  #33E333;
+  cursor: pointer;
+}
+
+#span-nav:hover {
+  color:  #33E333;
+  cursor: pointer; 
 }
 
 /* Todo o projeto */
