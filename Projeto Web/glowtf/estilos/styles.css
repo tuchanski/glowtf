@@ -10,6 +10,7 @@ body {
   margin: 0;
 }
 
+/* ícones do google */
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -27,7 +28,7 @@ nav {
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-evenly; 
   align-items: center;
 }
 
