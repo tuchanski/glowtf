@@ -10,7 +10,7 @@
 
 .card-admin {
   width: 200px;
-  height: 360px;
+  height: 370px;
   padding: 30px;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
@@ -46,6 +46,7 @@
 .card-titulo {
   font-size: 15px;
   font-weight: 700;
+  height: 30px;
 }
 
 .card-tinta {
