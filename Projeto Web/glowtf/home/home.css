@@ -27,9 +27,9 @@
 }
 
 .card {
-  width: 250px;
-  height: 430px;
-  padding: 40px;
+  width: 200px;
+  height: 370px;
+  padding: 30px;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
   color: #ffffff;
@@ -41,6 +41,7 @@
 
 .card:hover {
   background: radial-gradient(circle at 0%, #55527c, #534444);
+  cursor: pointer;
 }
 
 .card-titulo {
@@ -66,7 +67,7 @@
 }
 
 .card-preco {
-  font-size: 25px;
+  font-size: 15px;
   font-weight: 700;
   text-align: center
 }
@@ -91,7 +92,7 @@
 .preco-botao {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
 .carrinho-btn {
