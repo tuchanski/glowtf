@@ -41,9 +41,10 @@ ul li ul.dropdown li {
 }
 
 ul li ul.dropdown {
+  /* margin-top: 19px; */
   width: 100%;
   display:none;
-  background-color: #282828;
+  background-color: #515050;
   position: absolute;
   z-index: 999;
 }
