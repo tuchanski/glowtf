@@ -41,7 +41,6 @@
 
 .card:hover {
   background: radial-gradient(circle at 0%, #55527c, #534444);
-  cursor: pointer;
 }
 
 .card-titulo {
@@ -77,6 +76,10 @@
   position: relative;
   top: 0;
   left: 0;
+}
+
+.imagens:hover {
+  cursor: pointer;
 }
 
 .card-imagem-produto {
