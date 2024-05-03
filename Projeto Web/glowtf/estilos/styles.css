@@ -25,7 +25,7 @@ ul {
   align-items: center;
 }
 
-ul:hover {
+li:hover {
   color:  #33E333;
   cursor: pointer;
   text-shadow: #33E333 1px 0 10px;
@@ -177,11 +177,11 @@ nav {
   text-shadow: #33E333 1px 0 10px;
 }
 
-#span-nav:hover {
+/* #span-nav:hover {
   color:  #33E333;
   cursor: pointer; 
   text-shadow: #33E333 1px 0 10px;
-}
+} */
 
 /* Todo o projeto */
 .wrapper {
