@@ -37,6 +37,7 @@
 
 .imagem:hover {
   background-color: rgb(112, 111, 130);
+  cursor: pointer;
 }
 
 .imagem-produto {
