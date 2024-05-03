@@ -13,18 +13,16 @@
 </head>
 <body>
   <nav>
-    <div class="conjunto-nav">
-      <ul class="logo">
-        <li>
-          <a href="../../home/home.html">
-            <span class="material-symbols-outlined">
-              stylus_laser_pointer
-            </span>
-            GLOW.<b>TF</b>
-          </a>
-        </li>
-      </ul>
-      <div class="searchbar">
+    <ul class="conjunto-nav">
+      <li class="logo">
+        <a href="../../home/home.html">
+          <span class="material-symbols-outlined">
+            stylus_laser_pointer
+          </span>
+          GLOW.<b>TF</b>
+        </a>
+      </li>
+      <li class="searchbar">
         <input type="text" id="searchbar" placeholder="O que você está buscando hoje?">
         <button type="button" class="search-btn">
           <span class="material-symbols-outlined">
@@ -32,19 +30,15 @@
           </span>
           Buscar
         </button>
-      </div>
-        <ul>
-          <li>
-            <a  class="usuario">
-              <span class="material-symbols-outlined">
-                person
-              </span>
-              Rommeo | Admin
-            </a>
-          </li>
+      </li>
+      <li>
+        <a class="usuario" href="#"><span class="material-symbols-outlined">person</span>Rommeo | Admin</a>
+        <ul class="dropdown">
+          <li class="dropdown"><a href="../lista_de_produtos/lista_de_produtos.html">Lista de produtos</a></li><br>
+          <li class="dropdown"><a >Sair</a></li>
         </ul>
-      </div>
-    </div>
+      </li>
+    </ul>
   </nav>
   <div class="wrapper">
     <h1 class="title">Lista de produtos</h1>
