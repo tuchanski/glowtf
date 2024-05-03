@@ -13,32 +13,32 @@
 </head>
 <body>
   <nav>
-    <div class="conjunto-nav">
-      <div class="logo">
-        <div>
+    <ul class="conjunto-nav">
+      <li class="logo">
+        <a href="../../home/home.html">
           <span class="material-symbols-outlined">
             stylus_laser_pointer
           </span>
-        </div>
-        GLOW.<b>TF</b>
-      </div>
-      <div class="searchbar">
+          GLOW.<b>TF</b>
+        </a>
+      </li>
+      <li class="searchbar">
         <input type="text" id="searchbar" placeholder="O que você está buscando hoje?">
-        <div>
-          <button type="button" class="search-btn">
-          <div><img src="../../dados/imagens/ícones/lupa.png"></div>
-          <div>Buscar</div>
-        </div>
-        </button>
-      </div>
-        <div class="usuario">
+        <button type="button" class="search-btn">
           <span class="material-symbols-outlined">
-            person
+            search
           </span>
-          Rommeo | Admin
-        </div>
-      </div>
-    </div>
+          Buscar
+        </button>
+      </li>
+      <li>
+        <a class="usuario" href="#"><span class="material-symbols-outlined">person</span>Rommeo | Admin</a>
+        <ul class="dropdown">
+          <li class="dropdown"><a href="../lista_de_produtos/lista_de_produtos.html">Lista de produtos</a></li><br>
+          <li class="dropdown"><a >Sair</a></li>
+        </ul>
+      </li>
+    </ul>
   </nav>
   <div class="wrapper">
     <h1 class="title">Adicionar produto</h1>
@@ -64,7 +64,7 @@
             </div>
             <div class="input-produto">
               <div>
-                <label for="estoque-produto">Nome:</label>
+                <label for="estoque-produto">Estoque:</label>
               </div>
               <div>
                 <input type="text" id="estoque" name="estoque" placeholder="Insira o estoque do produto" required>

@@ -10,6 +10,46 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  color:  #33E333;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+li:hover {
+  color:  #33E333;
+  cursor: pointer;
+  text-shadow: #33E333 1px 0 10px;
+}
+
+ul li {
+  display: inline-block;
+  position: relative;
+}
+
+ul li ul.dropdown {
+  width: 100%;
+  display:none;
+  background-color: #000000;
+  position: absolute;
+}
+
+ul li:hover ul.dropdown {
+  display:flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: baseline;
+}
+
 /* ícones do google */
 .material-symbols-outlined {
   font-variation-settings:
@@ -37,13 +77,13 @@ nav {
 .conjunto-nav {
   width: 81%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
 /* Navbar usuário não cadastrado */
 .login_steam {
-  width: 120px;
+  width: 110px;
   height: 45px;
   padding: 3px;
   border: none;
@@ -65,7 +105,7 @@ nav {
 
 /* Navbar*/
 .searchbar {
-  width: 25%;
+  width: 40%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -74,7 +114,7 @@ nav {
 
 /* Navbar*/
 .search-btn {
-  width: 120px;
+  width: 55px;
   height: 45px;
   padding: 3px;
   border: none;
@@ -82,8 +122,8 @@ nav {
   background-color: #535353;
   color: white;
   cursor: pointer;
-  font-size: 17px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -91,20 +131,6 @@ nav {
 
 .search-btn:hover {
   background-color:#6e6e6e;
-}
-
-/* Navbar usuário não cadastrado */
-.logo {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 10px
-}
-
-.logo:hover {
-  color:  #33E333;
-  cursor: pointer;
-  text-shadow: #33E333 1px 0 10px;
 }
 
 /* Navbar usuário não cadastrado */
@@ -151,11 +177,11 @@ nav {
   text-shadow: #33E333 1px 0 10px;
 }
 
-#span-nav:hover {
+/* #span-nav:hover {
   color:  #33E333;
   cursor: pointer; 
   text-shadow: #33E333 1px 0 10px;
-}
+} */
 
 /* Todo o projeto */
 .wrapper {
