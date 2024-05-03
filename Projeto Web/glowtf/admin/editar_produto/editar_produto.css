@@ -29,15 +29,15 @@
   top: 0;
   left: 0;
   width: 40%;
-  height: 60%;
-  border-radius: 10px;
+  height: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .imagens:hover {
-  background-color: #4C4B58;
+  filter: drop-shadow(0 0 0.75rem rgba(255, 255, 255, 0.5));
+  cursor: pointer;
 }
 
 .splash {
