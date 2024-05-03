@@ -10,6 +10,48 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  color:  #33E333;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+ul:hover {
+  color:  #33E333;
+  cursor: pointer;
+  text-shadow: #33E333 1px 0 10px;
+}
+
+ul li {
+  display: inline-block;
+  position: relative;
+}
+
+ul li ul.dropdown li {
+  display:block;
+}
+
+ul li ul.dropdown {
+  width: 100%;
+  display:none;
+  background-color: #282828;
+  position: absolute;
+  z-index: 999;
+}
+
+ul li:hover ul.dropdown {
+  display: block;
+}
+
 /* ícones do google */
 .material-symbols-outlined {
   font-variation-settings:
@@ -74,16 +116,16 @@ nav {
 
 /* Navbar*/
 .search-btn {
-  width: 120px;
+  width: 150px;
   height: 45px;
-  padding: 3px;
+  padding: 5px;
   border: none;
   border-radius: 3px;
   background-color: #535353;
   color: white;
   cursor: pointer;
-  font-size: 17px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -91,20 +133,6 @@ nav {
 
 .search-btn:hover {
   background-color:#6e6e6e;
-}
-
-/* Navbar usuário não cadastrado */
-.logo {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 10px
-}
-
-.logo:hover {
-  color:  #33E333;
-  cursor: pointer;
-  text-shadow: #33E333 1px 0 10px;
 }
 
 /* Navbar usuário não cadastrado */
