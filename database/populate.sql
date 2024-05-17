@@ -49,15 +49,15 @@ INSERT INTO hat_class (hat_id, scout, soldier, pyro, demoman, heavy, engineer, m
 (7, 0, 0, 0, 0, 0, 0, 1, 0, 0), -- Baker Boy (Medic)
 (8, 0, 0, 0, 0, 0, 0, 0, 0, 1); -- Modest Pile of Hat (Spy)
 
-INSERT INTO hat (inventory, price, promo_image, name, paint, hat_class, description) VALUES 
-(50, 100, 'dados/imagens/itens_do_jogo/soldier/soldier_helmet_large.png', 'Chapéu Fedora', null, 1, 'Um elegante chapéu fedora.'),
-(40, 120, 'dados/imagens/itens_do_jogo/heavy/heavy_helmet_large.png', 'Capacete Mercenário', null, 2, 'Um capacete resistente usado pelos mercenários.'),
-(30, 80, 'dados/imagens/itens_do_jogo/pyro/pyro_hat_large.png', 'Boné Brigadeiro', null, 3, 'Um boné usado pelos oficiais de brigada.'),
-(20, 150, 'dados/imagens/itens_do_jogo/sniper/sniper_hat_large.png', 'Cartola Aristocrata', null, 4, 'Uma cartola usada pelos aristocratas.'),
-(25, 90, 'dados/imagens/itens_do_jogo/scout/scout_hat_large.png', 'Boina Béret', null, 5, 'Uma boina estilosa para os soldados.'),
-(60, 70, 'dados/imagens/itens_do_jogo/engineer/engineer_hat_large.png', 'Chapéu de Palha', null, 6, 'Um chapéu de palha perfeito para o verão.'),
-(45, 110, 'dados/imagens/itens_do_jogo/spy/spy_hat_large.png', 'Elmet Costureiro', null, 7, 'Um capacete usado por costureiros de elite.'),
-(35, 130, 'dados/imagens/itens_do_jogo/demo/demo_helmet_large.png', 'Capacete Medieval', null, 8, 'Um capacete usado por cavaleiros medievais.');
+INSERT INTO hat (inventory, price, promo_image, name, paint, description) VALUES 
+(50, 100, 'dados/imagens/itens_do_jogo/soldier/soldier_helmet_large.png', 'Chapéu Fedora', null, 'Um elegante chapéu fedora.'),
+(40, 120, 'dados/imagens/itens_do_jogo/heavy/heavy_helmet_large.png', 'Capacete Mercenário', null, 'Um capacete resistente usado pelos mercenários.'),
+(30, 80, 'dados/imagens/itens_do_jogo/pyro/pyro_hat_large.png', 'Boné Brigadeiro', null, 'Um boné usado pelos oficiais de brigada.'),
+(20, 150, 'dados/imagens/itens_do_jogo/sniper/sniper_hat_large.png', 'Cartola Aristocrata', null, 'Uma cartola usada pelos aristocratas.'),
+(25, 90, 'dados/imagens/itens_do_jogo/scout/scout_hat_large.png', 'Boina Béret', null, 'Uma boina estilosa para os soldados.'),
+(60, 70, 'dados/imagens/itens_do_jogo/engineer/engineer_hat_large.png', 'Chapéu de Palha', null, 'Um chapéu de palha perfeito para o verão.'),
+(45, 110, 'dados/imagens/itens_do_jogo/spy/spy_hat_large.png', 'Elmet Costureiro', null, 'Um capacete usado por costureiros de elite.'),
+(35, 130, 'dados/imagens/itens_do_jogo/demo/demo_helmet_large.png', 'Capacete Medieval', null, 'Um capacete usado por cavaleiros medievais.');
 
 
 

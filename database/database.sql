@@ -30,11 +30,9 @@ CREATE TABLE hat (
     promo_image VARCHAR(256) NOT NULL,
     name VARCHAR(256) NOT NULL,
     paint INTEGER,
-    hat_class INTEGER NOT NULL,
     description VARCHAR(1024) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (paint) REFERENCES paint (paint),
-    FOREIGN KEY (hat_class) REFERENCES hat_class (hat_id)
+    FOREIGN KEY (paint) REFERENCES paint (paint)
 );
 
 CREATE TABLE user (
