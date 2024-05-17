@@ -1,5 +1,5 @@
 CREATE DATABASE glowtfdb;
-USE glowtf;
+USE glowtfdb;
 
 CREATE TABLE user (
         id INTEGER NOT NULL AUTO_INCREMENT,
@@ -65,7 +65,7 @@ CREATE TABLE hat (
         price INTEGER NOT NULL,
         promo_image VARCHAR(256) NOT NULL,
         name VARCHAR(256) NOT NULL,
-        paint INTEGER NOT NULL,
+        paint INTEGER,
         description VARCHAR(1024) NOT NULL,
         PRIMARY KEY (id),
         FOREIGN KEY(paint) REFERENCES paint (paint)
