@@ -24,20 +24,20 @@ $description = $_POST['descricao'];
 $hatClass = $_POST['classe'];
 
 // Verifica se os inputs NOT NULL foram inseridos pelo usuário
-if ($productName != True) {
-    echo "Por favor, insira o nome do produto.\n";
-    return;
-}
+// if ($productName != True) {
+//     echo "Por favor, insira o nome do produto.\n";
+//     return;
+// }
 
-if ($productPrice != True) {
-    echo "Por favor, insira o preço do produto.\n";
-    return;
-}
+// if ($productPrice != True) {
+//     echo "Por favor, insira o preço do produto.\n";
+//     return;
+// }
  
-if ($inventory != True) {
-    echo "Por favor, insira o estoque do produto.\n";
-    return;
-}
+// if ($inventory != True) {
+//     echo "Por favor, insira o estoque do produto.\n";
+//     return;
+// }
 
 // Insere os dados no banco de dados
 $sql = "INSERT INTO hat (inventory, price, promo_image, name, paint, description) VALUES ('$inventory', '$productPrice', 'dados/imagens/itens_do_jogo/soldier/soldier_helmet_large.png', '$productName', $paint, '$description')";
