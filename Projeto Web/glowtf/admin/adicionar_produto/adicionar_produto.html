@@ -31,7 +31,6 @@
           <span class="material-symbols-outlined">
             search
           </span>
-          Buscar
         </button>
       </li>
       <li>
@@ -77,6 +76,23 @@
             </div>
             <div class="input-produto">
               <div>
+                <label for="descricao">Descrição:</label>
+              </div>
+              <div>
+                <input type="text" id="descricao" name="descricao" placeholder="Insira a descrição do produto" required>
+              </div>
+            </div>
+            <div class="input-produto">
+              <div>
+                <label for="wiki-produto">Wiki:</label>
+              </div>
+              <div>
+                <input type="text" id="wiki-produto" name="wiki-produto" placeholder="Insira o link da wiki do produto"
+                  required>
+              </div>
+            </div>
+            <div class="input-produto">
+              <div>
                 <label for="tinta">Tinta:</label><br>
               </div>
               <div>
@@ -118,16 +134,8 @@
             </div>
             <div class="input-produto">
               <div>
-                <label for="wiki-produto">Wiki:</label>
-              </div>
-              <div>
-                <input type="text" id="wiki-produto" name="wiki-produto" placeholder="Insira o link da wiki do produto"
-                  required>
-              </div>
-            </div>
-            <div class="input-produto">
-              <div>
-                <label for="classe">Selecione a classe do chapéu (Ctrl + click para selecionar múltiplas):</label><br>
+                <label for="classe">Selecione a classe do chapéu:<br>
+                Ctrl + click para selecionar múltiplas</label><br>
               </div>
               <div>
                 <select name="classe" multiple>
