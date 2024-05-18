@@ -9,6 +9,7 @@ function cadastraProduto() {
     document.getElementById('preco-produto').value != '' &&
     document.getElementById('estoque').value != '' &&
     document.getElementById('descricao').value != '' &&
+    document.getElementById('wiki-produto').value != '' &&
     document.getElementById('classe').value != '') {
 
         fetch('adicionar_produto.php', {
@@ -25,10 +26,11 @@ function cadastraProduto() {
             console.error('Erro', error);
             alert('Ocorreu um erro ao enviar os dados do formulário.');
         });
-        
+
     alert("Dados inseridos com sucesso!");
 
 } else {
+    
     alert("Por favor preencha todos os campos!");
 };
     // window.location.href = "../lista_de_produtos/lista_de_produtos.html";
