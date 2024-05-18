@@ -31,6 +31,7 @@ CREATE TABLE hat (
     name VARCHAR(256) NOT NULL,
     paint INTEGER,
     description VARCHAR(1024) NOT NULL,
+    wiki VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (paint) REFERENCES paint (paint)
 );
@@ -38,7 +39,7 @@ CREATE TABLE hat (
 CREATE TABLE user (
     id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
-    gender ENUM('Male','Female','Other') NOT NULL,
+    gender ENUM('Masculino','Feminino','Outro') NOT NULL,
     state CHAR(2) NOT NULL,
     cpf CHAR(11) NOT NULL,
     email VARCHAR(50) NOT NULL,

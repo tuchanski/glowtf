@@ -49,15 +49,16 @@ INSERT INTO hat_class (hat_id, scout, soldier, pyro, demoman, heavy, engineer, m
 (7, 0, 0, 0, 0, 0, 0, 1, 0, 0), -- Baker Boy (Medic)
 (8, 0, 0, 0, 0, 0, 0, 0, 0, 1); -- Modest Pile of Hat (Spy)
 
-INSERT INTO hat (inventory, price, promo_image, name, paint, description) VALUES 
-(50, 100, 'dados/imagens/itens_do_jogo/soldier/soldier_helmet_large.png', 'Chapéu Fedora', null, 'Um elegante chapéu fedora.'),
-(40, 120, 'dados/imagens/itens_do_jogo/heavy/heavy_helmet_large.png', 'Capacete Mercenário', null, 'Um capacete resistente usado pelos mercenários.'),
-(30, 80, 'dados/imagens/itens_do_jogo/pyro/pyro_hat_large.png', 'Boné Brigadeiro', null, 'Um boné usado pelos oficiais de brigada.'),
-(20, 150, 'dados/imagens/itens_do_jogo/sniper/sniper_hat_large.png', 'Cartola Aristocrata', null, 'Uma cartola usada pelos aristocratas.'),
-(25, 90, 'dados/imagens/itens_do_jogo/scout/scout_hat_large.png', 'Boina Béret', null, 'Uma boina estilosa para os soldados.'),
-(60, 70, 'dados/imagens/itens_do_jogo/engineer/engineer_hat_large.png', 'Chapéu de Palha', null, 'Um chapéu de palha perfeito para o verão.'),
-(45, 110, 'dados/imagens/itens_do_jogo/spy/spy_hat_large.png', 'Elmet Costureiro', null, 'Um capacete usado por costureiros de elite.'),
-(35, 130, 'dados/imagens/itens_do_jogo/demo/demo_helmet_large.png', 'Capacete Medieval', null, 'Um capacete usado por cavaleiros medievais.');
+INSERT INTO hat (inventory, price, promo_image, name, paint, description, wiki) VALUES 
+(50, 100, 'soldier_helmet_large.png', 'Chapéu Fedora', null, 'Um elegante chapéu fedora.', 'https://wiki.teamfortress.com/wiki/Fedora'),
+(40, 120, 'heavy_helmet_large.png', 'Capacete Mercenário', null, 'Um capacete resistente usado pelos mercenários.', 'https://wiki.teamfortress.com/wiki/Mercenary_Helmet'),
+(30, 80, 'pyro_hat_large.png', 'Boné Brigadeiro', null, 'Um boné usado pelos oficiais de brigada.', 'https://wiki.teamfortress.com/wiki/Brigade_Helm'),
+(20, 150, 'sniper_hat_large.png', 'Cartola Aristocrata', null, 'Uma cartola usada pelos aristocratas.', 'https://wiki.teamfortress.com/wiki/Aristocrat%27s_Hat'),
+(25, 90, 'scout_hat_large.png', 'Boina Béret', null, 'Uma boina estilosa para os soldados.', 'https://wiki.teamfortress.com/wiki/Beret'),
+(60, 70, 'engineer_hat_large.png', 'Chapéu de Palha', null, 'Um chapéu de palha perfeito para o verão.', 'https://wiki.teamfortress.com/wiki/Straw_Hat'),
+(45, 110, 'spy_hat_large.png', 'Elmet Costureiro', null, 'Um capacete usado por costureiros de elite.', 'https://wiki.teamfortress.com/wiki/Costume_helmet'),
+(35, 130, 'demo_helmet_large.png', 'Capacete Medieval', null, 'Um capacete usado por cavaleiros medievais.', 'https://wiki.teamfortress.com/wiki/Medieval_Helmet');
+
 
 
 
