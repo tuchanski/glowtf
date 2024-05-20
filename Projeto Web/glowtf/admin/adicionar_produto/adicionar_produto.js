@@ -1,3 +1,10 @@
+const imagemParaUpload = document.querySelector('.js-upload');
+
+imagemParaUpload.addEventListener('click', () => {
+    document.querySelector('.js-upload input').click();
+    console.log("ok");
+})
+
 function cadastraProduto() {
     const nomeProduto = document.getElementById('nome-produto').value;
     const precoProduto = document.getElementById('preco-produto').value;
@@ -14,8 +21,11 @@ function cadastraProduto() {
     console.log(descricaoProduto);
     console.log(wikiProduto);
     // console.log(imagemProduto);
-    // console.log(tintaProduto);
-    // console.log(classeProduto);
+    console.log(tintaProduto);
+    console.log(classeProduto);
+}
+
+
 
 //     const formulario = document.getElementById('loginForm');
 //     const formData = new FormData(formulario);
@@ -48,5 +58,5 @@ function cadastraProduto() {
 //     alert("Por favor preencha todos os campos!");
 // };
     // window.location.href = "../lista_de_produtos/lista_de_produtos.html";
-}
+
 

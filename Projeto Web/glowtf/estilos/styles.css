@@ -277,6 +277,6 @@ select:hover {
   color: #767676;
 }
 
-/* input[type="file"] {
+input[type="file"] {
   display: none;
-} */
+}

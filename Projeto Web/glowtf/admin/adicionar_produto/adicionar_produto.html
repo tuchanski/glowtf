@@ -62,7 +62,7 @@
                 <label for="preco-produto">Preço:</label>
               </div>
               <div>
-                <input type="text" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto"
+                <input type="number" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto"
                   required>
               </div>
             </div>
@@ -71,7 +71,7 @@
                 <label for="estoque-produto">Estoque:</label>
               </div>
               <div>
-                <input type="text" id="estoque" name="estoque" placeholder="Insira o estoque do produto" required>
+                <input type="number" id="estoque" name="estoque" placeholder="Insira o estoque do produto" required>
               </div>
             </div>
             <div class="input-produto">
@@ -96,38 +96,38 @@
                 <label for="tinta">Tinta:</label><br>
               </div>
               <div>
-                <select name="tinta:" id="tinta">
+                <select name="tinta" id="tinta">
                   <option value="" disabled selected>Selecione o nome da tinta</option>
-                  <option value="Nenhuma">Nenhuma</option>
-                  <option value="O Amargo Sabor de Derrota e Limão">O Amargo Sabor de Derrota e Limão</option>
-                  <option value="Uma Extraordinária Abundância de Matiz">Uma Extraordinária Abundância de Matiz</option>
-                  <option value="Um Distinto Toque de Cinza">Um Distinto Toque de Cinza</option>
-                  <option value="Distorção Violeta Perversa">Distorção Violeta Perversa</option>
-                  <option value="Peculiarmente Agradável ao Paladar">Peculiarmente Agradável ao Paladar</option>
-                  <option value="Ausência de Amarelo">Ausência de Amarelo</option>
-                  <option value="A Cor dos Sonhos">A Cor dos Sonhos</option>
-                  <option value="Apenas Distração">Apenas Distração</option>
-                  <option value="Escória dos Deuses">Escória dos Deuses</option>
-                  <option value="O Gentil Despertar da Primavera">O Gentil Despertar da Primavera</option>
-                  <option value="Laranja Bonita">Laranja Bonita</option>
-                  <option value="Cor Incomum">Cor Incomum</option>
-                  <option value="Notavelmente Distinto">Notavelmente Distinto</option>
-                  <option value="O Primeiro Sinal de Primavera">O Primeiro Sinal de Primavera</option>
-                  <option value="O Negro da Meia-Noite Após uma Janta Especial">O Negro da Meia-Noite Após uma Janta Especial</option>
-                  <option value="Um Delicado Balaço de Caramelo">Um Delicado Balaço de Caramelo</option>
-                  <option value="Comercializável Raro">Comercializável Raro</option>
-                  <option value="Grito de Guerra">Grito de Guerra</option>
-                  <option value="Um Distinto Toco de Água">Um Distinto Toco de Água</option>
-                  <option value="Vermelho 40">Vermelho 40</option>
-                  <option value="Rosto Pálido de Alguém">Rosto Pálido de Alguém</option>
-                  <option value="Pergaminho do Carteiro">Pergaminho do Carteiro</option>
-                  <option value="Espírito de Equipamento">Espírito de Equipamento</option>
-                  <option value="Forma da Cabeça de Cabelo">Forma da Cabeça de Cabelo</option>
-                  <option value="Aroma de Destino">Aroma de Destino</option>
-                  <option value="Noites de Fortaleza Negra">Noites de Fortaleza Negra</option>
-                  <option value="Reino Marinho do Mercenário">Reino Marinho do Mercenário</option>
-                  <option value="Tons de Equinócio">Tons de Equinócio</option>
-                  <option value="Esquadrão dos Estames Estilhaçados">Esquadrão dos Estames Estilhaçados</option>
+                  <option value="0">Nenhuma</option>
+                  <option value="1">O Amargo Sabor de Derrota e Limão</option>
+                  <option value="2">Uma Extraordinária Abundância de Matiz</option>
+                  <option value="3">Um Distinto Toque de Cinza</option>
+                  <option value="4">Distorção Violeta Perversa</option>
+                  <option value="5">Peculiarmente Agradável ao Paladar</option>
+                  <option value="6">Ausência de Amarelo</option>
+                  <option value="7">A Cor dos Sonhos</option>
+                  <option value="8">Apenas Distração</option>
+                  <option value="9">Escória dos Deuses</option>
+                  <option value="10">O Gentil Despertar da Primavera</option>
+                  <option value="11">Laranja Bonita</option>
+                  <option value="12">Cor Incomum</option>
+                  <option value="13">Notavelmente Distinto</option>
+                  <option value="14">O Primeiro Sinal de Primavera</option>
+                  <option value="15">O Negro da Meia-Noite Após uma Janta Especial</option>
+                  <option value="16">Um Delicado Balaço de Caramelo</option>
+                  <option value="17">Comercializável Raro</option>
+                  <option value="18">Grito de Guerra</option>
+                  <option value="19">Um Distinto Toco de Água</option>
+                  <option value="20">Vermelho 40</option>
+                  <option value="21">Rosto Pálido de Alguém</option>
+                  <option value="22">Pergaminho do Carteiro</option>
+                  <option value="23">Espírito de Equipamento</option>
+                  <option value="24">Forma da Cabeça de Cabelo</option>
+                  <option value="25">Aroma de Destino</option>
+                  <option value="26">Noites de Fortaleza Negra</option>
+                  <option value="27">Reino Marinho do Mercenário</option>
+                  <option value="28">Tons de Equinócio</option>
+                  <option value="29">Esquadrão dos Estames Estilhaçados</option>
                 </select>
               </div>
             </div>
@@ -137,23 +137,23 @@
                   Ctrl + click para selecionar múltiplas</label><br>
               </div>
               <div>
-                <select name="classe" multiple id="classe">
-                  <option value="scout">Scout</option>
-                  <option value="scout">Soldier</option>
-                  <option value="pyro">Pyro</option>
-                  <option value="demoman">Demoman</option>
-                  <option value="heavy">Heavy</option>
-                  <option value="engineer">Engineer</option>
-                  <option value="medic">Medic</option>
-                  <option value="sniper">Sniper</option>
-                  <option value="spy">Spy</option>
+                <select name="classe" id="classe" multiple>
+                  <option value="Scout">Scout</option>
+                  <option value="Soldier">Soldier</option>
+                  <option value="Pyro">Pyro</option>
+                  <option value="Demoman">Demoman</option>
+                  <option value="Heavy">Heavy</option>
+                  <option value="Engineer">Engineer</option>
+                  <option value="Medic">Medic</option>
+                  <option value="Sniper">Sniper</option>
+                  <option value="Spy">Spy</option>
                 </select>
               </div>
             </div>
             <button type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar produto</button>
         </div>
         <div class="linha-vertical"></div>
-        <div class="imagem">
+        <div class="imagem js-upload">
           <div>
             <input type="file" name="upload-imagem-produto">
             <img class="card-imagem-produto" src="../../dados/imagens/imagens/adicionar_imagem.png">

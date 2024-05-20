@@ -45,6 +45,16 @@ INSERT INTO hat_class (hat_id, scout, soldier, pyro, demoman, heavy, engineer, m
 (7, 0, 0, 0, 0, 0, 0, 1, 0, 0), -- Baker Boy (Medic)
 (8, 0, 0, 0, 0, 0, 0, 0, 0, 1); -- Modest Pile of Hat (Spy)
 
+-- INSERT INTO hat_class (class_name) VALUES 
+-- ('Soldier'),
+-- ('Heavy'),
+-- ('Pyro'),
+-- ('Sniper'),
+-- ('Scout'),
+-- ('Engineer'),
+-- ('Medic'),
+-- ('Spy');
+
 INSERT INTO hat (inventory, price, promo_image, name, paint, description, wiki) VALUES 
 (50, 100, 'soldier_helmet_large.png', 'Chapéu Fedora', null, 'Um elegante chapéu fedora.', 'https://wiki.teamfortress.com/wiki/Fedora'),
 (40, 120, 'heavy_helmet_large.png', 'Capacete Mercenário', null, 'Um capacete resistente usado pelos mercenários.', 'https://wiki.teamfortress.com/wiki/Mercenary_Helmet'),
