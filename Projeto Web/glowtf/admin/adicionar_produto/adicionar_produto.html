@@ -96,7 +96,7 @@
                 <label for="tinta">Tinta:</label><br>
               </div>
               <div>
-                <select name="tinta:">
+                <select name="tinta:" id="tinta">
                   <option value="" disabled selected>Selecione o nome da tinta</option>
                   <option value="Nenhuma">Nenhuma</option>
                   <option value="O Amargo Sabor de Derrota e Limão">O Amargo Sabor de Derrota e Limão</option>
@@ -113,8 +113,7 @@
                   <option value="Cor Incomum">Cor Incomum</option>
                   <option value="Notavelmente Distinto">Notavelmente Distinto</option>
                   <option value="O Primeiro Sinal de Primavera">O Primeiro Sinal de Primavera</option>
-                  <option value="O Negro da Meia-Noite Após uma Janta Especial">O Negro da Meia-Noite Após uma Janta
-                    Especial</option>
+                  <option value="O Negro da Meia-Noite Após uma Janta Especial">O Negro da Meia-Noite Após uma Janta Especial</option>
                   <option value="Um Delicado Balaço de Caramelo">Um Delicado Balaço de Caramelo</option>
                   <option value="Comercializável Raro">Comercializável Raro</option>
                   <option value="Grito de Guerra">Grito de Guerra</option>
@@ -135,31 +134,32 @@
             <div class="input-produto">
               <div>
                 <label for="classe">Selecione a classe do chapéu:<br>
-                Ctrl + click para selecionar múltiplas</label><br>
+                  Ctrl + click para selecionar múltiplas</label><br>
               </div>
               <div>
-                <select name="classe" multiple>
-                  <option value="Scout">Scout</option>
-                  <option value="Soldier">Soldier</option>
-                  <option value="Pyro">Pyro</option>
-                  <option value="Demoman">Demoman</option>
-                  <option value="Heavy">Heavy</option>
-                  <option value="Engineer">Engineer</option>
-                  <option value="Medic">Medic</option>
-                  <option value="Sniper">Sniper</option>
-                  <option value="Spy">Spy</option>
+                <select name="classe" multiple id="classe">
+                  <option value="scout">Scout</option>
+                  <option value="scout">Soldier</option>
+                  <option value="pyro">Pyro</option>
+                  <option value="demoman">Demoman</option>
+                  <option value="heavy">Heavy</option>
+                  <option value="engineer">Engineer</option>
+                  <option value="medic">Medic</option>
+                  <option value="sniper">Sniper</option>
+                  <option value="spy">Spy</option>
                 </select>
               </div>
             </div>
             <button type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar produto</button>
-          </form>
         </div>
         <div class="linha-vertical"></div>
         <div class="imagem">
           <div>
+            <input type="file" name="upload-imagem-produto">
             <img class="card-imagem-produto" src="../../dados/imagens/imagens/adicionar_imagem.png">
           </div>
         </div>
+      </form>
       </div>
     </div>
   </div>
