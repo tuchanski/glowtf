@@ -23,6 +23,12 @@ CREATE TABLE hat_class (
     PRIMARY KEY (hat_id)
 );
 
+-- CREATE TABLE hat_class (
+--     class_id INTEGER NOT NULL AUTO_INCREMENT,
+--     class_name VARCHAR(20) NOT NULL,
+--     PRIMARY KEY (class_id)
+-- );
+
 CREATE TABLE hat (
     id INTEGER NOT NULL AUTO_INCREMENT,
     inventory INTEGER NOT NULL,
