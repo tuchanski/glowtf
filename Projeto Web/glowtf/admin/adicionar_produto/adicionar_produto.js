@@ -1,9 +1,25 @@
-const imagemParaUpload = document.querySelector('.js-upload');
-
-imagemParaUpload.addEventListener('click', () => {
-    document.querySelector('.js-upload input').click();
-    console.log("ok");
-})
+document.addEventListener('DOMContentLoaded', (event) => {
+    const uploadInput = document.querySelector('.upload-input');
+  
+    if (uploadInput) {
+      uploadInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const imgElement = document.querySelector('.card-imagem-produto');
+            if (imgElement) {
+              imgElement.src = e.target.result;
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    } else {
+      console.error('Elemento .upload-input não encontrado');
+    }
+  });
+  
 
 function cadastraProduto() {
     const nomeProduto = document.getElementById('nome-produto').value;
@@ -24,8 +40,6 @@ function cadastraProduto() {
     console.log(tintaProduto);
     console.log(classeProduto);
 }
-
-
 
 //     const formulario = document.getElementById('loginForm');
 //     const formData = new FormData(formulario);
