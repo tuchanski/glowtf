@@ -55,3 +55,11 @@
   border-left: 1px solid  rgb(112, 111, 130);
   height: 100%;
 }
+/* 
+input[type="file"] {
+  display: none;
+} */
+
+img .card-imagem-produto {
+  max-width: 100px;
+}
