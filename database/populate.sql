@@ -1,8 +1,8 @@
 INSERT INTO user (name, gender, state, cpf, email, password, admin, id_steam) VALUES
-('Alice Smith', 'Female', 'RS', '12345678901', 'alice@example.com', 'password123', FALSE, '12345678901234567'),
-('Bob Johnson', 'Male', 'PR', '23456789012', 'bob@example.com', 'password456', FALSE, '23456789012345678'),
-('Charlie Brown', 'Male', 'SC', '34567890123', 'charlie@example.com', 'password789', FALSE, '34567890123456789'),
-('Admin User', 'Female', 'SP', '45678901234', 'admin@example.com', 'adminpass', TRUE, '45678901234567890');
+('Alice Smith', 'Feminino', 'RS', '12345678901', 'alice@example.com', 'password123', FALSE, '12345678901234567'),
+('Bob Johnson', 'Masculino', 'PR', '23456789012', 'bob@example.com', 'password456', FALSE, '23456789012345678'),
+('Charlie Brown', 'Masculino', 'SC', '34567890123', 'charlie@example.com', 'password789', FALSE, '34567890123456789'),
+('Admin User', 'Feminino', 'SP', '45678901234', 'admin@example.com', 'adminpass', TRUE, '45678901234567890');
 
 INSERT INTO paint (name, promo_image, hex_color) VALUES
 ('O Amargo Sabor de Derrota e Limão', 'O_Amargo_Sabor_de_Derrota_e_Limão.png', 'A8A9AA'),
@@ -35,26 +35,6 @@ INSERT INTO paint (name, promo_image, hex_color) VALUES
 ('Tons de Equinócio', 'Tons_de_Equinócio.png', '007FFF'),
 ('Esquadrão dos Estames Estilhaçados', 'Esquadrão_dos_Estames_Estilhaçados.png', 'DA70D6');
 
-INSERT INTO hat_class (hat_id, scout, soldier, pyro, demoman, heavy, engineer, medic, sniper, spy) VALUES
-(1, 0, 1, 0, 0, 0, 0, 0, 0, 0), -- Fedora (Soldier)
-(2, 0, 0, 0, 0, 1, 0, 0, 0, 0), -- Mercenary's Helmet (Heavy)
-(3, 0, 0, 1, 0, 0, 0, 0, 0, 0), -- Brigade Helm (Pyro)
-(4, 0, 0, 0, 0, 0, 0, 0, 1, 0), -- Aristocrat's Hat (Sniper)
-(5, 1, 0, 0, 0, 0, 0, 0, 0, 0), -- Batter's Helmet (Scout)
-(6, 0, 0, 0, 0, 0, 1, 0, 0, 0), -- Engineer's Cap (Engineer)
-(7, 0, 0, 0, 0, 0, 0, 1, 0, 0), -- Baker Boy (Medic)
-(8, 0, 0, 0, 0, 0, 0, 0, 0, 1); -- Modest Pile of Hat (Spy)
-
--- INSERT INTO hat_class (class_name) VALUES 
--- ('Soldier'),
--- ('Heavy'),
--- ('Pyro'),
--- ('Sniper'),
--- ('Scout'),
--- ('Engineer'),
--- ('Medic'),
--- ('Spy');
-
 INSERT INTO hat (inventory, price, promo_image, name, paint, description, wiki) VALUES 
 (50, 100, 'soldier_helmet_large.png', 'Chapéu Fedora', null, 'Um elegante chapéu fedora.', 'https://wiki.teamfortress.com/wiki/Fedora'),
 (40, 120, 'heavy_helmet_large.png', 'Capacete Mercenário', null, 'Um capacete resistente usado pelos mercenários.', 'https://wiki.teamfortress.com/wiki/Mercenary_Helmet'),
@@ -69,3 +49,40 @@ INSERT INTO coupons (expiration_date, discount, uses, start_date, code_name) VAL
 ('2024-06-30', 20, 100, '2024-05-17', 'PAOTASTICO2024'),
 ('2024-07-31', 15, 200, '2024-05-17', 'VERDEAMARGO');
 
+
+INSERT INTO class (class_name) VALUES 
+('Scout'),
+('Soldier'),
+('Pyro'),
+('Demoman'),
+('Heavy'),
+('Engineer'),
+('Medic'),
+('Sniper'),
+('Spy');
+
+INSERT INTO hat_has_class (hat_id, class_id) VALUES
+(1, 2), -- Fedora (Soldier)
+(1, 5), -- Fedora (Heavy)
+(2, 5), -- Mercenary's Helmet (Heavy)
+(2, 4), -- Mercenary's Helmet (Demoman)
+(3, 3), -- Brigade Helm (Pyro)
+(3, 4), -- Brigade Helm (Demoman)
+(4, 8), -- Aristocrat's Hat (Sniper)
+(4, 9), -- Aristocrat's Hat (Spy)
+(5, 1), -- Batter's Helmet (Scout)
+(5, 3), -- Batter's Helmet (Pyro)
+(6, 6), -- Engineer's Cap (Engineer)
+(6, 7), -- Engineer's Cap (Medic)
+(7, 7), -- Baker Boy (Medic)
+(7, 8), -- Baker Boy (Sniper)
+(8, 9), -- Modest Pile of Hat (Spy)
+(8, 2), -- Modest Pile of Hat (Soldier)
+(1, 6), -- Fedora (Engineer)
+(2, 7), -- Mercenary's Helmet (Medic)
+(3, 2), -- Brigade Helm (Soldier)
+(4, 6), -- Aristocrat's Hat (Engineer)
+(5, 8), -- Batter's Helmet (Sniper)
+(6, 9), -- Engineer's Cap (Spy)
+(7, 1), -- Baker Boy (Scout)
+(8, 4); -- Modest Pile of Hat (Demoman)
