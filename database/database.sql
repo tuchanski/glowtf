@@ -9,25 +9,18 @@ CREATE TABLE paint (
     PRIMARY KEY (paint)
 );
 
-CREATE TABLE hat_class (
-    hat_id INTEGER NOT NULL AUTO_INCREMENT,
-    scout INTEGER NOT NULL,
-    soldier INTEGER NOT NULL,
-    pyro INTEGER NOT NULL,
-    demoman INTEGER NOT NULL,
-    heavy INTEGER NOT NULL,
-    engineer INTEGER NOT NULL,
-    medic INTEGER NOT NULL,
-    sniper INTEGER NOT NULL,
-    spy INTEGER NOT NULL,
-    PRIMARY KEY (hat_id)
+CREATE TABLE class(
+	class_id INTEGER NOT NULL,
+    hat_id INTEGER NOT NULL,
+    PRIMARY KEY(class_id)
 );
 
--- CREATE TABLE hat_class (
---     class_id INTEGER NOT NULL AUTO_INCREMENT,
---     class_name VARCHAR(20) NOT NULL,
---     PRIMARY KEY (class_id)
--- );
+CREATE TABLE hat_class (
+	hat_id INTEGER NOT NULL,
+    class_id INTEGER NOT NULL,
+    PRIMARY KEY (class_id),
+    FOREIGN KEY (class_id) REFERENCES class (class_id)
+);
 
 CREATE TABLE hat (
     id INTEGER NOT NULL AUTO_INCREMENT,
