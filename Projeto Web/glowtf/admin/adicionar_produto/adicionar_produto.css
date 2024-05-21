@@ -9,7 +9,8 @@
 }
 
 .fundo-adiciona-produto {
-  width: 80%;
+  width: 50%;
+  max-width: 500px;
   height: auto;
   padding: 10%;
   border-radius: 3px;
@@ -21,7 +22,7 @@
 }
 
 .dados-produto {
-  width: 40%;
+  width: 100%;
 }
 
 .imagem {
@@ -55,11 +56,13 @@
   border-left: 1px solid  rgb(112, 111, 130);
   height: 100%;
 }
-/* 
+
 input[type="file"] {
-  display: none;
-} */
+  /* display: none; */
+  background-color: white;
+  margin-bottom: 50px;
+}
 
 img .card-imagem-produto {
-  max-width: 100px;
+  max-width: 300px;
 }

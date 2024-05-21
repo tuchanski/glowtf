@@ -146,15 +146,12 @@
                 </select>
               </div>
             </div>
-            <button type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar produto</button>
+            <div class="input-produto">
+              <label for="imagem">Selecione a imagem do chapéu:</label>
+              <input type="file" name="upload-input" class="upload-input" id="upload-input">
+            </div>
           </form>
-        </div>
-        <div class="linha-vertical"></div>
-        <div class="imagem" id="imagem">
-          <div>
-            <input type="file" name="upload-input" class="upload-input" id="upload-input">
-            <img class="card-imagem-produto" src="../../dados/imagens/imagens/adicionar_imagem.png">
-          </div>
+          <button type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar produto</button>
         </div>
       </div>
     </div>
