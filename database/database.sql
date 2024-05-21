@@ -10,15 +10,14 @@ CREATE TABLE paint (
 );
 
 CREATE TABLE class(
-	class_id INTEGER NOT NULL,
-    hat_id INTEGER NOT NULL,
+	class_id INTEGER NOT NULL AUTO_INCREMENT,
+    class_name VARCHAR(50),
     PRIMARY KEY(class_id)
 );
 
-CREATE TABLE hat_class (
+CREATE TABLE hat_has_class (
 	hat_id INTEGER NOT NULL,
     class_id INTEGER NOT NULL,
-    PRIMARY KEY (class_id),
     FOREIGN KEY (class_id) REFERENCES class (class_id)
 );
 
