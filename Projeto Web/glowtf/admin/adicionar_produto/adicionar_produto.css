@@ -9,7 +9,8 @@
 }
 
 .fundo-adiciona-produto {
-  width: 80%;
+  width: 50%;
+  max-width: 500px;
   height: auto;
   padding: 10%;
   border-radius: 3px;
@@ -21,7 +22,7 @@
 }
 
 .dados-produto {
-  width: 40%;
+  width: 100%;
 }
 
 .imagem {
@@ -51,15 +52,52 @@
   margin-bottom: 15px;
 }
 
+.input-imagem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
 .linha-vertical {
   border-left: 1px solid  rgb(112, 111, 130);
   height: 100%;
 }
-/* 
-input[type="file"] {
-  display: none;
-} */
 
-img .card-imagem-produto {
-  max-width: 100px;
+input[type="file"] {
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.imagens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-bottom: 50px;
+}
+
+.imagens:hover {
+  cursor: pointer;
+}
+
+.card-splash {
+  position: absolute;
+  right: 40px;
+  bottom: 10px;
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+}
+
+.card-imagem-produto {
+  width: 90%;
+  max-width: 300px;
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+}
+
+.imagem-botao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -1,23 +1,43 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const uploadInput = document.querySelector('.upload-input');
+document.addEventListener('DOMContentLoaded', function() {
+    const inputUploadImagem = document.getElementById('upload-imagem');
+    const divImagens = document.querySelector('.imagens');
+    const imgProduto = document.querySelector('.card-imagem-produto');
+    const selectTinta = document.getElementById('tinta');
+    const imgSplash = document.querySelector('.card-splash');
   
-    if (uploadInput) {
-      uploadInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            const imgElement = document.querySelector('.card-imagem-produto');
-            if (imgElement) {
-              imgElement.src = e.target.result;
-            }
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-    } else {
-      console.error('Elemento .upload-input não encontrado');
-    }
+    // Inicialmente esconder a div "imagens"
+    divImagens.style.display = 'none';
+    imgSplash.style.display = 'none';
+  
+    inputUploadImagem.addEventListener('change', function() {
+      // Se um arquivo foi selecionado, mostrar a div "imagens"
+      if (inputUploadImagem.files.length > 0) {
+        divImagens.style.display = 'block';
+        const arquivo = inputUploadImagem.files[0];
+        const nomeArquivo = arquivo.name;
+        console.log(`Arquivo selecionado: ${nomeArquivo}`);
+        
+        const leitor = new FileReader();
+        leitor.onload = function(e) {
+          imgProduto.src = e.target.result;
+        };
+        leitor.readAsDataURL(arquivo);
+      } else {
+        // Se nenhum arquivo foi selecionado, esconder a div "imagens"
+        divImagens.style.display = 'none';
+      }
+    });
+  
+    selectTinta.addEventListener('change', function() {
+      const tintaSelecionada = selectTinta.value;
+      if (tintaSelecionada !== "Nenhuma" && tintaSelecionada !== "") {
+        imgSplash.src = `../../dados/imagens/tintas/${tintaSelecionada.replace(/ /g, '_')}.png`;
+        imgSplash.style.display = 'block';
+        console.log(imgSplash.src);
+      } else {
+        imgSplash.style.display = 'none';
+      }
+    });
   });
   
 
@@ -29,48 +49,17 @@ function cadastraProduto() {
     const wikiProduto = document.getElementById('wiki-produto').value;
     const tintaProduto = document.getElementById('tinta').value;
     const classeProduto = document.getElementById('classe').value;
-    // const imagemProduto = document.getElementById('upload-imagem-produto').value;
+    const inputUploadImagem = document.getElementById('upload-imagem');
+    const nomeImagem = inputUploadImagem.files[0].name;
 
     console.log(nomeProduto);
     console.log(precoProduto);
     console.log(estoqueProduto);
     console.log(descricaoProduto);
     console.log(wikiProduto);
-    // console.log(imagemProduto);
     console.log(tintaProduto);
     console.log(classeProduto);
+    console.log(nomeImagem);
+
 }
-
-//     const formulario = document.getElementById('loginForm');
-//     const formData = new FormData(formulario);
-
-//     if (nomeProduto &&
-//         precoProduto &&
-//         estoqueProduto &&
-//         descricaoProduto &&
-//         wikiProduto &&
-//         imagemProduto) {
-
-//         fetch('adicionar_produto.php', {
-//             method: 'POST',
-//             body: formData
-//         })
-//             .then(response => response.text())
-//             .then(data => {
-//             console.log(data); // Mostra a resposta do servidor no console
-//             alert(data); // Mostra uma mensagem com a resposta do servidor
-//         })
-//             .catch(error => {
-//             console.error('Erro', error);
-//             alert('Ocorreu um erro ao enviar os dados do formulário.');
-//         });
-
-//     alert("Dados inseridos com sucesso!");
-
-// } else {
-
-//     alert("Por favor preencha todos os campos!");
-// };
-    // window.location.href = "../lista_de_produtos/lista_de_produtos.html";
-
 
