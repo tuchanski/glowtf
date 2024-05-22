@@ -52,17 +52,52 @@
   margin-bottom: 15px;
 }
 
+.input-imagem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
 .linha-vertical {
   border-left: 1px solid  rgb(112, 111, 130);
   height: 100%;
 }
 
 input[type="file"] {
-  /* display: none; */
   background-color: white;
+  margin-bottom: 10px;
+}
+
+.imagens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
   margin-bottom: 50px;
 }
 
-img .card-imagem-produto {
+.imagens:hover {
+  cursor: pointer;
+}
+
+.card-splash {
+  position: absolute;
+  right: 40px;
+  bottom: 10px;
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+}
+
+.card-imagem-produto {
+  width: 90%;
   max-width: 300px;
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
+}
+
+.imagem-botao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
