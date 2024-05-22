@@ -1,24 +1,24 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const uploadInput = document.querySelector('.upload-input');
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     const uploadInput = document.querySelector('.upload-input');
   
-    if (uploadInput) {
-      uploadInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            const imgElement = document.querySelector('.card-imagem-produto');
-            if (imgElement) {
-              imgElement.src = e.target.result;
-            }
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-    } else {
-      console.error('Elemento .upload-input não encontrado');
-    }
-  });
+//     if (uploadInput) {
+//       uploadInput.addEventListener('change', (event) => {
+//         const file = event.target.files[0];
+//         if (file) {
+//           const reader = new FileReader();
+//           reader.onload = (e) => {
+//             const imgElement = document.querySelector('.card-imagem-produto');
+//             if (imgElement) {
+//               imgElement.src = e.target.result;
+//             }
+//           };
+//           reader.readAsDataURL(file);
+//         }
+//       });
+//     } else {
+//       console.error('Elemento .upload-input não encontrado');
+//     }
+//   });
   
 
 function cadastraProduto() {
@@ -29,16 +29,32 @@ function cadastraProduto() {
     const wikiProduto = document.getElementById('wiki-produto').value;
     const tintaProduto = document.getElementById('tinta').value;
     const classeProduto = document.getElementById('classe').value;
-    // const imagemProduto = document.getElementById('upload-imagem-produto').value;
-
+    const imagemProduto = document.getElementById('upload-imagem');
+  
+    if (imagemProduto.files.length > 0) {
+      const nomeImagem = imagemProduto.files[0].name;
+      console.log(nomeImagem);
+    } else {
+      nomeImagemDisplay.textContent = 'Nenhum arquivo selecionado.';
+    }
+  
     console.log(nomeProduto);
     console.log(precoProduto);
     console.log(estoqueProduto);
     console.log(descricaoProduto);
     console.log(wikiProduto);
-    // console.log(imagemProduto);
+    console.log(imagemProduto);
     console.log(tintaProduto);
     console.log(classeProduto);
+
+    if (imagemProduto) {
+        console.log(imagemProduto.files);
+    }
+
+    if (imagemProduto.files.length === 0) {
+        console.log("vazio");
+    }
+
 }
 
 //     const formulario = document.getElementById('loginForm');
