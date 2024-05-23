@@ -37,13 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-const selectElement = document.getElementById('classe');
-
-selectElement.addEventListener('change', function() {
-    const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
-    
-    console.log('Opções selecionadas:', selectedOptions);
-});
 
 function cadastraProduto() {
     const nomeProduto = document.getElementById('nome-produto').value;
@@ -52,9 +45,17 @@ function cadastraProduto() {
     const descricaoProduto = document.getElementById('descricao').value;
     const wikiProduto = document.getElementById('wiki-produto').value;
     const tintaProduto = document.getElementById('tinta').value;
-    const classeProduto = document.getElementById('classe').value;
     const inputUploadImagem = document.getElementById('upload-imagem');
-    const nomeImagem = inputUploadImagem.files[0].name;
+    // const nomeImagem = inputUploadImagem.files[0].name;
+    const classeProduto = document.getElementById('classe');
+    
+    //função com erro se adiciona somente uma classe
+    classeProduto.addEventListener('change', function() {
+      const classesSelecionadas = Array.from(this.classesSelecionadas).map(option => option.value);
+    
+      console.log('Opções selecionadas:', classesSelecionadas);
+
+    });
 
     console.log(nomeProduto);
     console.log(precoProduto);
@@ -62,8 +63,18 @@ function cadastraProduto() {
     console.log(descricaoProduto);
     console.log(wikiProduto);
     console.log(tintaProduto);
-    console.log(classeProduto);
-    console.log(nomeImagem);
+    // console.log(nomeImagem);
+
+    if (!nomeProduto && 
+        !precoProduto && 
+        !estoqueProduto && 
+        !descricaoProduto && 
+        !wikiProduto && 
+        classeProduto.value === "" &&
+        inputUploadImagem.files.length === 0
+      ) {
+      alert("Preencha todos os campos!");
+    }
 
 }
 
