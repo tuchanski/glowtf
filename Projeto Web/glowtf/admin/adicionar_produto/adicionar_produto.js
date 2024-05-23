@@ -5,12 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectTinta = document.getElementById('tinta');
     const imgSplash = document.querySelector('.card-splash');
   
-    // Inicialmente esconder a div "imagens"
     divImagens.style.display = 'none';
     imgSplash.style.display = 'none';
   
     inputUploadImagem.addEventListener('change', function() {
-      // Se um arquivo foi selecionado, mostrar a div "imagens"
       if (inputUploadImagem.files.length > 0) {
         divImagens.style.display = 'block';
         const arquivo = inputUploadImagem.files[0];
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         leitor.readAsDataURL(arquivo);
       } else {
-        // Se nenhum arquivo foi selecionado, esconder a div "imagens"
         divImagens.style.display = 'none';
       }
     });
@@ -40,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+const selectElement = document.getElementById('classe');
+
+selectElement.addEventListener('change', function() {
+    const selectedOptions = Array.from(this.selectedOptions).map(option => option.value);
+    
+    console.log('Opções selecionadas:', selectedOptions);
+});
 
 function cadastraProduto() {
     const nomeProduto = document.getElementById('nome-produto').value;

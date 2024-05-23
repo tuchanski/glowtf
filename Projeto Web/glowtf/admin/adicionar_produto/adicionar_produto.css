@@ -91,7 +91,7 @@ input[type="file"] {
 }
 
 .card-imagem-produto {
-  width: 90%;
+  width: 100%;
   max-width: 300px;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }

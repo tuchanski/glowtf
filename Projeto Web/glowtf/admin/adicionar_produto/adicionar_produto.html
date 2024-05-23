@@ -64,6 +64,10 @@
                 <input type="text" id="wiki-produto" name="wiki-produto" placeholder="Insira o link da wiki do produto" required>
               </div>
             </div>
+            <div class="input-imagem">
+              <label for="imagem">Selecione a imagem do chapéu:</label>
+              <input type="file" name="upload-imagem" class="upload-imagem" id="upload-imagem">
+            </div>
             <div class="input-produto">
               <div>
                 <label for="tinta">Tinta:</label><br>
@@ -116,14 +120,10 @@
                 </select>
               </div>
             </div>
-            <div class="input-imagem">
-              <label for="imagem">Selecione a imagem do chapéu:</label>
-              <input type="file" name="upload-imagem" class="upload-imagem" id="upload-imagem">
-            </div>
             <div class="imagem-botao">
               <div class="imagens">
-                <img class="card-imagem-produto" src="../../dados/imagens/itens_do_jogo/spy/spy_private_eye_large.png">
-                <img class="card-splash" src="../../dados/imagens/tintas/O_Amargo_Sabor_de_Derrota_e_Limão.png">
+                <img class="card-imagem-produto">
+                <img class="card-splash">
               </div>
               </form>
               <button class="button btn-input" type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar produto</button>
