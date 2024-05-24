@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   divImagens.style.display = 'none';
   imgSplash.style.display = 'none';
 
+  // Esconde ou mostra a imagem do produto conforme input ter ou não imagem
   inputUploadImagem.addEventListener('change', function () {
     if (inputUploadImagem.files.length > 0) {
       divImagens.style.display = 'block';
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // Esconde ou mostra o splash da tinta conforme o valor do input
   selectTinta.addEventListener('change', function () {
     const tintaSelecionada = selectTinta.value;
     if (tintaSelecionada !== "Nenhuma" && tintaSelecionada !== "") {
@@ -37,9 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-function validarTecla(event) {
+function validarTeclaEstoque(event) {
   const tecla = event.key;
-  // Permitir teclas de controle (Backspace, Delete, Setas, etc.)
   if (
     tecla === 'Backspace' || tecla === 'Delete' || tecla === 'ArrowLeft' || tecla === 'ArrowRight' ||
     tecla === 'Tab' || tecla === 'Enter'
@@ -52,40 +53,9 @@ function validarTecla(event) {
   }
 }
 
-function validarTecla(event) {
-  const tecla = event.key;
-  const regexNumeros = /^[0-9]$/;
-
-  // Permitir teclas de controle (Backspace, Delete, Setas, etc.)
-  if (
-    tecla === 'Backspace' || tecla === 'Delete' || tecla === 'ArrowLeft' || tecla === 'ArrowRight' ||
-    tecla === 'Tab' || tecla === 'Enter'
-  ) {
-    return;
-  }
-
-  // Impedir qualquer tecla que não seja um número
-  if (!regexNumeros.test(tecla)) {
-    event.preventDefault();
-  }
-}
-
 function validarNumero(input) {
   // Remove todos os caracteres não numéricos
   input.value = input.value.replace(/\D/g, '');
-}
-
-function validarFormulario() {
-  const input = document.getElementById('estoque');
-  const valor = input.value;
-
-  // Validação final no envio do formulário
-  if (!/^\d+$/.test(valor)) {
-    alert('Por favor, insira apenas números.');
-    return false;
-  }
-
-  return true;
 }
 
 document.getElementById('estoque').addEventListener('keydown', validarTecla);
@@ -111,23 +81,18 @@ function cadastraProduto() {
 
   });
 
-  // console.log(nomeProduto);
-  // console.log(precoProduto);
-  // console.log(estoqueProduto);
-  // console.log(descricaoProduto);
-  // console.log(wikiProduto);
-  // console.log(tintaProduto);
-  // console.log(nomeImagem);
-
   if (!nomeProduto &&
-    !precoProduto &&
-    !estoqueProduto &&
-    !descricaoProduto &&
-    !wikiProduto &&
-    classeProduto.value === "" &&
-    inputUploadImagem.files.length === 0
-  ) {
+      !precoProduto &&
+      !estoqueProduto &&
+      !descricaoProduto &&
+      !wikiProduto &&
+      classeProduto.value === "" &&
+      inputUploadImagem.files.length === 0
+     ) {
     alert("Preencha todos os campos!");
+
+  } else if (!/^\d+$/.test(estoqueProduto)) {
+    alert('Insira apenas números inteiros no estoque do produto.');
 
   } else if (nomeProduto.length < 3) {
     alert("O nome precisa ter no mínimo três caracteres.")
