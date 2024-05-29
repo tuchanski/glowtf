@@ -97,6 +97,7 @@ CREATE TABLE sale_has_hat (
     id INTEGER NOT NULL AUTO_INCREMENT,
     id_sale INTEGER NOT NULL,
     id_hat INTEGER NOT NULL,
+    price INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_sale) REFERENCES sale (id),
     FOREIGN KEY (id_hat) REFERENCES hat (id)
