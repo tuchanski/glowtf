@@ -32,15 +32,15 @@ INSERT INTO paint (name, promo_image, hex_color) VALUES
 ('Violeta do Nobre Chapeleiro', 'Violeta_do_Nobre_Chapeleiro.png', '4A3445'),
 ('Vossa Velha Cor Rústica', 'Vossa_Velha_Cor_Rustica.png', '756853');
 
-INSERT INTO hat (inventory, price, promo_image, name, paint, description, wiki) VALUES 
-(50, 100, 'soldier_helmet_large.png', 'Chapéu Fedora', NULL, 'Um elegante chapéu fedora.', 'https://wiki.teamfortress.com/wiki/Fedora'),
-(40, 120, 'heavy_helmet_large.png', 'Capacete Mercenário', NULL, 'Um capacete resistente usado pelos mercenários.', 'https://wiki.teamfortress.com/wiki/Mercenary_Helmet'),
-(30, 80, 'pyro_hat_large.png', 'Boné Brigadeiro', NULL, 'Um boné usado pelos oficiais de brigada.', 'https://wiki.teamfortress.com/wiki/Brigade_Helm'),
-(20, 150, 'sniper_hat_large.png', 'Cartola Aristocrata', NULL, 'Uma cartola usada pelos aristocratas.', 'https://wiki.teamfortress.com/wiki/Aristocrat%27s_Hat'),
-(25, 90, 'scout_hat_large.png', 'Boina Béret', NULL, 'Uma boina estilosa para os soldados.', 'https://wiki.teamfortress.com/wiki/Beret'),
-(60, 70, 'engineer_hat_large.png', 'Chapéu de Palha', NULL, 'Um chapéu de palha perfeito para o verão.', 'https://wiki.teamfortress.com/wiki/Straw_Hat'),
-(45, 110, 'spy_hat_large.png', 'Elmet Costureiro', NULL, 'Um capacete usado por costureiros de elite.', 'https://wiki.teamfortress.com/wiki/Costume_helmet'),
-(35, 130, 'demo_helmet_large.png', 'Capacete Medieval', NULL, 'Um capacete usado por cavaleiros medievais.', 'https://wiki.teamfortress.com/wiki/Medieval_Helmet');
+INSERT INTO hat (inventory, price, promo_image, name, paint_id, description, wiki) VALUES 
+(50, 100, 'soldier_helmet_large.png', 'Chapéu Fedora', 1, 'Um elegante chapéu fedora.', 'https://wiki.teamfortress.com/wiki/Fedora'),
+(40, 120, 'heavy_helmet_large.png', 'Capacete Mercenário', 2, 'Um capacete resistente usado pelos mercenários.', 'https://wiki.teamfortress.com/wiki/Mercenary_Helmet'),
+(30, 80, 'pyro_hat_large.png', 'Boné Brigadeiro', 3, 'Um boné usado pelos oficiais de brigada.', 'https://wiki.teamfortress.com/wiki/Brigade_Helm'),
+(20, 150, 'sniper_hat_large.png', 'Cartola Aristocrata', 4, 'Uma cartola usada pelos aristocratas.', 'https://wiki.teamfortress.com/wiki/Aristocrat%27s_Hat'),
+(25, 90, 'scout_hat_large.png', 'Boina Béret', 5, 'Uma boina estilosa para os soldados.', 'https://wiki.teamfortress.com/wiki/Beret'),
+(60, 70, 'engineer_hat_large.png', 'Chapéu de Palha', 6, 'Um chapéu de palha perfeito para o verão.', 'https://wiki.teamfortress.com/wiki/Straw_Hat'),
+(45, 110, 'spy_hat_large.png', 'Elmet Costureiro', 7, 'Um capacete usado por costureiros de elite.', 'https://wiki.teamfortress.com/wiki/Costume_helmet'),
+(35, 130, 'demo_helmet_large.png', 'Capacete Medieval', 8, 'Um capacete usado por cavaleiros medievais.', 'https://wiki.teamfortress.com/wiki/Medieval_Helmet');
 
 INSERT INTO coupons (expiration_date, discount, uses, start_date, code_name) VALUES
 ('2024-06-30', 20, 100, '2024-05-17', 'PAOTASTICO2024'),
@@ -63,22 +63,22 @@ INSERT INTO class (class_name) VALUES
 ('Spy');
 
 INSERT INTO hat_has_class (hat_id, class_id) VALUES
-(1, 2), -- Fedora (Soldier)
-(1, 5), -- Fedora (Heavy)
-(2, 5), -- Mercenary's Helmet (Heavy)
-(2, 4), -- Mercenary's Helmet (Demoman)
-(3, 3), -- Brigade Helm (Pyro)
-(3, 4), -- Brigade Helm (Demoman)
-(4, 8), -- Aristocrat's Hat (Sniper)
-(4, 9), -- Aristocrat's Hat (Spy)
-(5, 1), -- Beret (Scout)
-(5, 3), -- Beret (Pyro)
-(6, 6), -- Straw Hat (Engineer)
-(6, 7), -- Straw Hat (Medic)
-(7, 7), -- Costume Helmet (Medic)
-(7, 8), -- Costume Helmet (Sniper)
-(8, 9), -- Medieval Helmet (Spy)
-(8, 2); -- Medieval Helmet (Soldier)
+(1, 2),
+(1, 5),
+(2, 5),
+(2, 4),
+(3, 3),
+(3, 4),
+(4, 8),
+(4, 9),
+(5, 1),
+(5, 3),
+(6, 6),
+(6, 7),
+(7, 7),
+(7, 8),
+(8, 9),
+(8, 2);
 
 INSERT INTO cart (id_user, date) VALUES
 (1, '2024-05-01 10:00:00'),
@@ -294,13 +294,13 @@ INSERT INTO sale_has_hat (id_sale, id_hat, price) VALUES
 (92, 8, 800);
 
 
-INSERT INTO wishlist_has_hat (id_wishlist, id_hat, id_product_game, id_product_steam_api) VALUES
-(1, 1, 101, 1001),
-(2, 2, 102, 1002),
-(3, 3, 103, 1003),
-(4, 4, 104, 1004),
-(5, 5, 105, 1005),
-(6, 6, 106, 1006);
+INSERT INTO wishlist_has_hat (id_wishlist, id_hat) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6);
 
 UPDATE user SET name = 'Charlie Brown Jr.' WHERE id = 3;
 
@@ -310,7 +310,7 @@ UPDATE coupons SET discount = 25 WHERE id = 1;
 
 UPDATE class SET class_name = 'Sniper Elite' WHERE class_id = 9;
 
-UPDATE paint SET hex_color = 'FF0000' WHERE paint = 3;
+UPDATE paint SET hex_color = 'FF0000' WHERE paint_id = 3;
 
 DELETE FROM cart_has_hat WHERE id = 4;
 

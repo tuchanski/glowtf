@@ -41,19 +41,19 @@ SELECT YEAR(date) AS year,
 FROM sale 
 GROUP BY year, quarter;
 
--- 9) Tinta mais vendida ************
+-- 9) Tinta mais vendida
 SELECT p.name AS paint_name, COUNT(sh.id) AS total_sales 
 FROM paint p 
-JOIN hat h ON p.paint = h.paint 
+JOIN hat h ON p.paint_id = h.paint_id 
 JOIN sale_has_hat sh ON h.id = sh.id_hat 
 GROUP BY paint_name 
 ORDER BY total_sales DESC 
 LIMIT 1;
 
--- 10) Tinta menos vendida ********
+-- 10) Tinta menos vendida
 SELECT p.name AS paint_name, COUNT(*) AS total_sales 
 FROM paint p 
-JOIN hat h ON p.paint = h.paint 
+JOIN hat h ON p.paint_id = h.paint_id 
 JOIN sale_has_hat sh ON h.id = sh.id_hat 
 GROUP BY paint_name 
 ORDER BY total_sales ASC 
