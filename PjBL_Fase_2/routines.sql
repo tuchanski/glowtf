@@ -20,7 +20,7 @@ BEGIN
 END //
 
 
-#Mostra todas as vendes o periodo escolhido
+#Mostra todas as vendas o periodo escolhido
 CREATE PROCEDURE sales_report_by_period(IN start_date DATE, IN end_date DATE)
 BEGIN
     SELECT s.id AS sale_id, s.date AS sale_date, u.name AS user_name, s.price AS total_price, c.code_name AS coupon_code
@@ -32,6 +32,7 @@ BEGIN
 END //
 
 #Functions
+#Pega média de gastos de usuário
 CREATE FUNCTION average_spending_by_user(user_id INT) RETURNS DECIMAL(10, 2)
 READS SQL DATA
 BEGIN
@@ -41,23 +42,29 @@ BEGIN
     FROM sale
     WHERE id_user = user_id;
 
-    RETURN avg_spending;
+    RETURN COALESCE(avg_spending, 0);
 END //
 
 
-CREATE FUNCTION count_hats_by_color(color_name VARCHAR(255)) RETURNS INT
+#SELECT average_spending_by_user(0)//
+
+#Contagem de chapéus com determinada cor
+DROP FUNCTION count_hats_by_color//
+CREATE FUNCTION count_hats_by_color(paint_id INT) RETURNS INT
 READS SQL DATA
 BEGIN
     DECLARE hat_count INT;
 
     SELECT COUNT(*) INTO hat_count
     FROM hat h
-    JOIN sale_has_hat sh ON h.id = sh.id_hat
-    WHERE h.paint = (SELECT paint FROM paint WHERE name = color_name);
+    WHERE h.paint_id = paint_id;
 
-    RETURN hat_count;
+    RETURN COALESCE(hat_count, 0);
 END //
 
+#SELECT count_hats_by_color(1);
+
+#Pega o nome do usuário pelo Id
 CREATE FUNCTION get_user_name(user_id INT) RETURNS VARCHAR(255)
 READS SQL DATA
 BEGIN
@@ -66,9 +73,10 @@ BEGIN
     SELECT name INTO user_name
     FROM user
     WHERE id = user_id;
-
     RETURN user_name;
 END //
+
+#SELECT get_user_name(1)//
 
 #Triggers
 CREATE TRIGGER after_sale_insert
