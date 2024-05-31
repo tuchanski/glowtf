@@ -35,9 +35,7 @@ FROM sale
 GROUP BY year, month;
 
 -- 8) Número de vendas agrupadas por quadrimestre e ano
-SELECT YEAR(date) AS year, 
-       QUARTER(date) AS quarter, 
-       COUNT(*) AS transaction_count 
+SELECT YEAR(date) AS year, QUARTER(date) AS quarter, COUNT(*) AS transaction_count 
 FROM sale 
 GROUP BY year, quarter;
 
@@ -113,30 +111,17 @@ ORDER BY total_sales DESC
 LIMIT 1;
 
 -- 18) Mês (geral) com maior número de vendas -- Nova
-SELECT 
-    YEAR(date) AS year,
-    MONTH(date) AS month,
-    COUNT(*) AS total_sales
-FROM 
-    sale
-GROUP BY 
-    year, month
-ORDER BY 
-    total_sales DESC
+SELECT YEAR(date) AS year, MONTH(date) AS month, COUNT(*) AS total_sales
+FROM sale
+GROUP BY year, month
+ORDER BY total_sales DESC
 LIMIT 1;
 
 -- 19) Dia (geral) com maior número de vendas. -- Nova
-SELECT 
-    DATE(date) AS day,
-    YEAR(date) AS year,
-    MONTH(date) AS month,
-    COUNT(*) AS total_sales
-FROM 
-    sale
-GROUP BY 
-    day
-ORDER BY 
-    total_sales DESC
+SELECT DATE(date) AS day, YEAR(date) AS year, MONTH(date) AS month, COUNT(*) AS total_sales
+FROM sale
+GROUP BY day
+ORDER BY total_sales DESC
 LIMIT 1;
 
 -- 20) Número de transações por usuário -- Nova
@@ -146,16 +131,30 @@ LEFT JOIN sale s ON u.id = s.id_user
 GROUP BY u.id;
 
 # Views
-CREATE VIEW user_total_info AS
-SELECT id, name, gender, state, email, `admin` AS is_admin
-FROM user;
+-- Mostra a quantidade e valor total de compras por usuário
+CREATE OR REPLACE VIEW user_purchase_summary AS
+SELECT u.id AS user_id, u.name AS user_name, ROUND(SUM(s.price) / 100, 2) AS total_purchase_value_in_reais, COUNT(s.id) AS total_purchases
+FROM user u
+LEFT JOIN sale s ON u.id = s.id_user
+GROUP BY u.id, u.name;
 
-CREATE VIEW transaction_info AS
-SELECT s.id AS transaction_id, u.name AS user_name, s.date AS transaction_date, s.price AS transaction_price, c.code_name AS coupon_code
-FROM sale s
-JOIN user u ON s.id_user = u.id
-LEFT JOIN coupons c ON s.id_coupon = c.id;
+-- Mostra a quantidade de vendas utilizando cada cupom.
+CREATE OR REPLACE VIEW coupon_sales_summary AS
+SELECT c.id AS coupon_id, c.code_name AS coupon_code, COUNT(s.id) AS total_sales
+FROM coupons c
+LEFT JOIN sale s ON c.id = s.id_coupon
+GROUP BY c.id, c.code_name;
 
+-- Mostra o número de vendas de chapéus, mostrando de forma descendente, e o valor total recebido por estes itens
+CREATE OR REPLACE VIEW hat_sales_summary AS
+SELECT h.id AS hat_id, h.name AS hat_name, COUNT(sh.id) AS total_sales, ROUND(SUM(sh.price) / 100, 2) AS total_revenue_in_reais
+FROM hat h
+JOIN sale_has_hat sh ON h.id = sh.id_hat
+GROUP BY h.id, h.name
+ORDER BY total_sales DESC;
+
+-- Mostra os cupons, suas datas de início e fim, e quantidade de usos
 CREATE VIEW coupon_info AS
 SELECT id, expiration_date, discount, uses, start_date, code_name
 FROM coupons;
+
