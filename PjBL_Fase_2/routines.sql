@@ -2,6 +2,8 @@ DELIMITER //
 
 
 #Procedures
+
+#Soma a porcentagem proprio do preço do chapéu a ele mesmo
 CREATE PROCEDURE update_hat_price(IN hat_id INT, IN percentage_increase DECIMAL(5, 2))
 BEGIN
     UPDATE hat
@@ -9,22 +11,25 @@ BEGIN
     WHERE id = hat_id;
 END //
 
-CREATE PROCEDURE user_sales_report(IN user_id INT)
+
+#Adiciona classe para chapéu
+CREATE PROCEDURE add_class_to_hat(IN hat_id INT, IN class_id INT)
 BEGIN
-    SELECT s.id AS transaction_id, s.date AS transaction_date, s.price AS transaction_price, c.code_name AS coupon_code
+	INSERT INTO hat_has_class (hat_id, class_id)
+    values(hat_id, class_id);
+END //
+
+
+#Mostra todas as vendes o periodo escolhido
+CREATE PROCEDURE sales_report_by_period(IN start_date DATE, IN end_date DATE)
+BEGIN
+    SELECT s.id AS sale_id, s.date AS sale_date, u.name AS user_name, s.price AS total_price, c.code_name AS coupon_code
     FROM sale s
+    LEFT JOIN user u ON s.id_user = u.id
     LEFT JOIN coupons c ON s.id_coupon = c.id
-    WHERE s.id_user = user_id;
+    WHERE s.date BETWEEN start_date AND end_date
+    ORDER BY s.date;
 END //
-
-CREATE PROCEDURE recalculate_sales_by_state()
-BEGIN
-    SELECT u.state, SUM(s.price) AS total_sales
-    FROM sale s
-    JOIN user u ON s.id_user = u.id
-    GROUP BY u.state;
-END //
-
 
 #Functions
 CREATE FUNCTION average_spending_by_user(user_id INT) RETURNS DECIMAL(10, 2)
