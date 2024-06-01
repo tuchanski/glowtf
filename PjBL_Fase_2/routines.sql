@@ -1,6 +1,4 @@
-DELIMITER //
-
-
+DELIMITER $$
 #Procedures
 
 #Soma a porcentagem proprio do preço do chapéu a ele mesmo
@@ -9,18 +7,16 @@ BEGIN
     UPDATE hat
     SET price = price + (price * (percentage_increase / 100))
     WHERE id = hat_id;
-END //
-#CALL update_hat_price(1, 10.000)//
-
+END $$
+#CALL update_hat_price(1, 10.000)$$
 
 #Adiciona classe para chapéu
 CREATE PROCEDURE add_class_to_hat(IN hat_id INT, IN class_id INT)
 BEGIN
 	INSERT INTO hat_has_class (hat_id, class_id)
     values(hat_id, class_id);
-END //
-#CALL add_class_to_hat(1,1)//
-
+END $$
+#CALL add_class_to_hat(1,1)$$
 
 #Mostra todas as vendas o periodo escolhido
 CREATE PROCEDURE sales_report_by_period(IN start_date DATE, IN end_date DATE)
@@ -31,9 +27,8 @@ BEGIN
     LEFT JOIN coupons c ON s.id_coupon = c.id
     WHERE s.date BETWEEN start_date AND end_date
     ORDER BY s.date;
-END //
-#CALL sales_report_by_period("2024-05-02" ,NOW(0))//
-
+END $$
+#CALL sales_report_by_period("2024-05-02" ,NOW(0))$$
 
 #Functions
 #Pega média de gastos de usuário
@@ -47,13 +42,12 @@ BEGIN
     WHERE id_user = user_id;
 
     RETURN COALESCE(avg_spending, 0);
-END //
+END $$
 
-
-#SELECT average_spending_by_user(0)//
+#SELECT average_spending_by_user(0)$$
 
 #Contagem de chapéus com determinada cor
-DROP FUNCTION count_hats_by_color//
+DROP FUNCTION count_hats_by_color$$
 CREATE FUNCTION count_hats_by_color(paint_id INT) RETURNS INT
 READS SQL DATA
 BEGIN
@@ -64,7 +58,7 @@ BEGIN
     WHERE h.paint_id = paint_id;
 
     RETURN COALESCE(hat_count, 0);
-END //
+END $$
 #SELECT count_hats_by_color(1);
 
 #Pega o nome do usuário pelo Id
@@ -77,41 +71,54 @@ BEGIN
     FROM user
     WHERE id = user_id;
     RETURN user_name;
-END //
-#SELECT get_user_name(1)//
+END $$
+#SELECT get_user_name(1)$$
 
 #Triggers
+
+#Da um aviso caso o inventário seja setado para um valor negativo
 CREATE TRIGGER before_hat_update
 BEFORE UPDATE ON hat
 FOR EACH ROW
 BEGIN
-    -- Trigger action, for example, preventing inventory from going below zero
     IF NEW.inventory < 0 THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Inventory cannot be negative';
     END IF;
 END
-//
+$$
 
-
-drop trigger update_after_insert_sale_has_hat //
-
+#Atualiza o estoque do chapéu após uma venda nova 
 CREATE TRIGGER update_after_insert_sale_has_hat 
 AFTER INSERT ON sale_has_hat 
 FOR EACH ROW 
 BEGIN 
     DECLARE hat_id_to_update INT; 
     DECLARE quantity_sold INT; 
-    
-    -- Seleciona o chapéu vendido e a quantidade vendida na nova inserção 
     SET hat_id_to_update = NEW.id_hat; 
-    SET quantity_sold = 1; -- Assumindo que cada linha de sale_has_hat representa a venda de um único chapéu
+    SET quantity_sold = 1;
     
-    -- Atualiza o inventário do chapéu vendido 
     IF quantity_sold > 0 THEN 
         UPDATE hat 
         SET inventory = inventory - quantity_sold 
         WHERE id = hat_id_to_update; 
     END IF; 
-END//
+END$$
+
+#Altera o preço final da venda quando o item individual tem o preço alterado
+CREATE TRIGGER update_sale_price_after_update_sale_has_hat
+AFTER UPDATE ON sale_has_hat
+FOR EACH ROW
+BEGIN
+    DECLARE total_price DECIMAL(10,2);
+
+    SELECT SUM(price) INTO total_price
+    FROM sale_has_hat
+    WHERE id_sale = NEW.id_sale;
+
+    UPDATE sale
+    SET price = total_price
+    WHERE id = NEW.id_sale;
+END$$
+
 DELIMITER ;

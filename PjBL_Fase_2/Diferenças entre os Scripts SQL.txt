@@ -1,0 +1,35 @@
+1. Tabela paint:
+- Mudança: De paint TINYINT PRIMARY KEY para paint INTEGER AUTO_INCREMENT com uma coluna adicional hex_color.
+- Razão: Optamos por alterar o tipo para INTEGER AUTO_INCREMENT para padronizar as chaves primárias, permitindo a expansão futura. A adição de hex_color proporciona mais informações sobre a cor.
+
+2. Tabela user:
+- Mudança: De admin TINYINT para admin BOOL, e ajuste dos valores do campo gender.
+- Razão: Optamos por usar BOOL por ser mais semântico para valores booleanos. Os ajustes em gender refletem uma mudança de idioma para garantir consistência linguística e/ou atender a uma nova especificação de requisitos.
+
+3. Tabela hat_class para hat_has_class:
+- Mudança: Alteração na estrutura de colunas de classes específicas para um relacionamento de chave estrangeira.
+- Razão: Esta mudança normaliza a tabela, removendo colunas redundantes e facilitando a adição de novas classes no futuro.
+
+4. Tabela hat:
+- Mudança: Coluna paint de TINYINT para INTEGER e adição de wiki.
+- Razão: Optamos por manter a consistência com a tabela paint alterada, além da adição de wiki para fornecer uma URL de referência adicional.
+
+5. Tabela sale:
+- Mudança: Adição da coluna price.
+- Razão: Optamos pela adição da coluna para incluir informações sobre o preço total da venda para relatórios financeiros.
+
+6. Tabela sale_has_hat:
+- Mudança: Adição da coluna price.
+- Razão: Optamos por adicionar a coluna pois fornece o preço individual do item na venda de maneira com que seja útil para rastreamento de descontos ou promoções específicas.
+
+7. Tabela coupons:
+- Mudança: De discount DOUBLE para discount INTEGER e remoção do valor padrão de uses.
+- Razão: Optamos por usar INTEGER para discount por ser mais apropriado para representar porcentagens ou valores fixos, além de evitar perda de precisão. A remoção do valor padrão de uses permite flexibilidade nas definições.
+
+8. Tabela cart:
+- Mudança: Alteração de date de DATE para DATETIME.
+- Razão: Através do DATETIME, conseguimos capturar a hora exata da criação do carrinho é importante para análises detalhadas de comportamento do usuário e auditorias.
+
+9. Tabela wishlist_has_hat:
+- Mudança: Especificação de NOT NULL para colunas id_product_game e id_product_steam_api.
+- Razão: Optamos por essa abordagem para garantir que essas colunas sempre tenham valores, garantindo a integridade dos dados e evitando registros incompletos.
