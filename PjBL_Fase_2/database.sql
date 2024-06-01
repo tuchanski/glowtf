@@ -2,11 +2,11 @@ CREATE DATABASE IF NOT EXISTS glowtfdb;
 USE glowtfdb;
 
 CREATE TABLE paint (
-    paint INTEGER NOT NULL AUTO_INCREMENT,
+    paint_id INTEGER NOT NULL AUTO_INCREMENT,
     name VARCHAR(128) NOT NULL,
     promo_image VARCHAR(256) NOT NULL,
     hex_color VARCHAR(6),
-    PRIMARY KEY (paint)
+    PRIMARY KEY (paint_id)
 );
 
 CREATE TABLE class(
@@ -27,11 +27,11 @@ CREATE TABLE hat (
     price INTEGER NOT NULL,
     promo_image VARCHAR(256) NOT NULL,
     name VARCHAR(256) NOT NULL,
-    paint INTEGER,
+    paint_id INTEGER,
     description VARCHAR(1024) NOT NULL,
     wiki VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (paint) REFERENCES paint (paint)
+    FOREIGN KEY (paint_id) REFERENCES paint (paint_id)
 );
 
 CREATE TABLE user (
@@ -77,7 +77,7 @@ CREATE TABLE sale (
     id INTEGER NOT NULL AUTO_INCREMENT,
     date DATE NOT NULL,
     id_user INTEGER NOT NULL,
-    id_coupon INTEGER NOT NULL,
+    id_coupon INTEGER,
     price INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES user (id),
@@ -107,9 +107,8 @@ CREATE TABLE wishlist_has_hat (
     id INTEGER NOT NULL AUTO_INCREMENT,
     id_wishlist INTEGER NOT NULL,
     id_hat INTEGER NOT NULL,
-    id_product_game INTEGER NOT NULL,
-    id_product_steam_api INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_wishlist) REFERENCES wishlist (id_user),
     FOREIGN KEY (id_hat) REFERENCES hat (id)
 );
+

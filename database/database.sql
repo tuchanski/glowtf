@@ -77,7 +77,7 @@ CREATE TABLE sale (
     id INTEGER NOT NULL AUTO_INCREMENT,
     date DATE NOT NULL,
     id_user INTEGER NOT NULL,
-    id_coupon INTEGER NOT NULL,
+    id_coupon INTEGER,
     price INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES user (id),
