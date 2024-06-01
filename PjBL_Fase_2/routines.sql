@@ -10,6 +10,7 @@ BEGIN
     SET price = price + (price * (percentage_increase / 100))
     WHERE id = hat_id;
 END //
+#CALL update_hat_price(1, 10.000)//
 
 
 #Adiciona classe para chapéu
@@ -18,6 +19,7 @@ BEGIN
 	INSERT INTO hat_has_class (hat_id, class_id)
     values(hat_id, class_id);
 END //
+#CALL add_class_to_hat(1,1)//
 
 
 #Mostra todas as vendas o periodo escolhido
@@ -30,6 +32,8 @@ BEGIN
     WHERE s.date BETWEEN start_date AND end_date
     ORDER BY s.date;
 END //
+#CALL sales_report_by_period("2024-05-02" ,NOW(0))//
+
 
 #Functions
 #Pega média de gastos de usuário
@@ -61,7 +65,6 @@ BEGIN
 
     RETURN COALESCE(hat_count, 0);
 END //
-
 #SELECT count_hats_by_color(1);
 
 #Pega o nome do usuário pelo Id
@@ -75,32 +78,40 @@ BEGIN
     WHERE id = user_id;
     RETURN user_name;
 END //
-
 #SELECT get_user_name(1)//
 
 #Triggers
-CREATE TRIGGER after_sale_insert
-AFTER INSERT ON sale
+CREATE TRIGGER before_hat_update
+BEFORE UPDATE ON hat
 FOR EACH ROW
 BEGIN
-    UPDATE user
-    SET transaction_count = (SELECT COUNT(*) FROM sale WHERE id_user = NEW.id_user)
-    WHERE id = NEW.id_user;
-END //
-
-CREATE TRIGGER before_hat_price_update BEFORE UPDATE ON hat FOR EACH ROW
-BEGIN
-    IF OLD.price <> NEW.price THEN
-        INSERT INTO hat_price_change_log (hat_id, old_price, new_price, change_date)
-        VALUES (OLD.id, OLD.price, NEW.price, NOW());
+    -- Trigger action, for example, preventing inventory from going below zero
+    IF NEW.inventory < 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Inventory cannot be negative';
     END IF;
-END //
+END
+//
 
-CREATE TRIGGER after_hat_delete
-AFTER DELETE ON hat
-FOR EACH ROW
-BEGIN
-    DELETE FROM hat_has_class WHERE hat_id = OLD.id;
-END //
 
+drop trigger update_after_insert_sale_has_hat //
+
+CREATE TRIGGER update_after_insert_sale_has_hat 
+AFTER INSERT ON sale_has_hat 
+FOR EACH ROW 
+BEGIN 
+    DECLARE hat_id_to_update INT; 
+    DECLARE quantity_sold INT; 
+    
+    -- Seleciona o chapéu vendido e a quantidade vendida na nova inserção 
+    SET hat_id_to_update = NEW.id_hat; 
+    SET quantity_sold = 1; -- Assumindo que cada linha de sale_has_hat representa a venda de um único chapéu
+    
+    -- Atualiza o inventário do chapéu vendido 
+    IF quantity_sold > 0 THEN 
+        UPDATE hat 
+        SET inventory = inventory - quantity_sold 
+        WHERE id = hat_id_to_update; 
+    END IF; 
+END//
 DELIMITER ;
