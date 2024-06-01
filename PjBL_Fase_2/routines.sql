@@ -76,18 +76,6 @@ END $$
 
 #Triggers
 
-#Da um aviso caso o inventário seja setado para um valor negativo
-CREATE TRIGGER before_hat_update
-BEFORE UPDATE ON hat
-FOR EACH ROW
-BEGIN
-    IF NEW.inventory < 0 THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Inventory cannot be negative';
-    END IF;
-END
-$$
-
 #Atualiza o estoque do chapéu após uma venda nova 
 CREATE TRIGGER update_after_insert_sale_has_hat 
 AFTER INSERT ON sale_has_hat 
@@ -120,5 +108,15 @@ BEGIN
     SET price = total_price
     WHERE id = NEW.id_sale;
 END$$
+
+#Da um aviso quando um usuário vai ser deletado.
+CREATE TRIGGER before_delete_user
+BEFORE DELETE ON user
+FOR EACH ROW
+BEGIN
+    -- Emitir uma mensagem de aviso
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'Aviso: Você está prestes a excluir um usuário.';
+END $$
 
 DELIMITER ;
