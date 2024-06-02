@@ -1,8 +1,6 @@
 from sqlalchemy import INTEGER, ForeignKey
 from sqlalchemy.orm import mapped_column, Mapped
 from services.base import Base
-from models.sale import Sale
-from models.hat import Hat
 from models.hat_class import Hat_Class
 
 # Adicionado PK em hat_has_classes -> Não gera sem.

@@ -6,7 +6,7 @@ from database import DatabaseManager
 from models import *
 
 USER = "root"
-PASSWD = ""  # Altere para sua senha do MySQL
+PASSWD = "020204"  # Altere para sua senha do MySQL
 HOST = "localhost" 
 PORT = 3306  
 DATABASE = "glowtfdb"
