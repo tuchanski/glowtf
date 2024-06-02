@@ -6,7 +6,7 @@ from database import DatabaseManager
 from models import *
 
 USER = "root"
-PASSWD = "020204"  # Altere para sua senha do MySQL
+PASSWD = ""  # Altere para sua senha do MySQL
 HOST = "localhost" 
 PORT = 3306  
 DATABASE = "glowtfdb"
@@ -34,9 +34,9 @@ try:
     print("O desconto do cupom de ID = 1 foi alterado para 25%!")
 
     # 4)
-    session.query(Hat_Class).filter_by(class_id=9).update({"class_name": "Sniper Elite"})
+    session.query(Hat_Class).filter_by(class_id=1).update({"class_name": "Sniper Elite"})
     session.commit()
-    print("O nome da classe de id = 9 foi atualizado com sucesso!")
+    print("O nome da classe de id = 1 foi atualizado com sucesso!")
 
     # 5)
     session.query(Paint).filter_by(paint_id=3).update({"hex_color": "FF0000"})
