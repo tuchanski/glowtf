@@ -28,4 +28,17 @@ class User(Base):
     @classmethod
     def count_users_by_state(cls, session):
         return session.query(cls.state, func.count(cls.user_id).label('total_users')).group_by(cls.state).all()
+    
+    @classmethod
+    def get_transaction_count_per_user(cls, session):
+        from models import Sale
+        result = session.query(
+            cls.name.label('user_name'),
+            func.count(Sale.sale_id).label('transaction_count')
+        ).outerjoin(
+            Sale, User.user_id == Sale.user_id
+        ).group_by(
+            User.user_id
+        ).all()
+        return result
         

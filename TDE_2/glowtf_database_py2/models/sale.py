@@ -45,5 +45,50 @@ class Sale(Base):
                   .group_by(extract('year', cls.date), func.quarter(cls.date))
                   .all())
         return result
+    
+    @classmethod
+    def get_day_with_most_sales(cls, session):
+        result = session.query(
+            func.day(cls.date).label('day_of_month'),
+            func.count(cls.sale_id).label('transaction_count')
+        ).group_by(func.day(cls.date)
+        ).order_by(func.count(cls.sale_id).desc()
+        ).limit(1).first()
+        return result
+    
+    @classmethod
+    def get_day_with_least_sales(cls, session):
+        result = session.query(
+            func.day(cls.date).label('day_of_month'),
+            func.count(cls.sale_id).label('transaction_count')
+        ).group_by(func.day(cls.date)
+        ).order_by(func.count(cls.sale_id).asc()
+        ).limit(1).first()
+        return result
+    
+    @classmethod
+    def get_year_with_most_sales(cls, session):
+        result = session.query(
+            func.extract('year', cls.date).label('year'),
+            func.count(cls.sale_id).label('total_sales')
+        ).group_by(func.extract('year', cls.date)
+        ).order_by(func.count(cls.sale_id).desc()
+        ).limit(1).first()
+        return result
+    
+    @classmethod
+    def get_month_with_highest_sales(cls, session):
+        result = session.query(
+            func.extract('year', cls.date).label('year'),
+            func.extract('month', cls.date).label('month'),
+            func.count(cls.sale_id).label('total_sales')
+        ).group_by(
+            func.extract('year', cls.date),
+            func.extract('month', cls.date)
+        ).order_by(
+            func.count(cls.sale_id).desc()
+        ).limit(1).first()
+        return result
+    
 
     
