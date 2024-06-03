@@ -133,7 +133,11 @@ try:
           print(f"Ano: {result_eighteenth_query.year}, Mês: {result_eighteenth_query.month}, Total de vendas: {result_eighteenth_query.total_sales}")
      print("*" * 40)
 
-     # 19 pendente, erros!!
+     print( "#19 -> Dia com mais vendas")
+     result_nineteenth_query = Sale.get_day_with_highest_sales(session)
+     if result_nineteenth_query:
+          print(f"Dia: {result_nineteenth_query.day}, Mês: {result_nineteenth_query.month}, Ano: {result_nineteenth_query.year}, Total de vendas: {result_nineteenth_query.total_sales}")
+     print("*" * 40)
 
      print( "#20 -> Número de transações por usuário")
      result_twentieth_query = User.get_transaction_count_per_user(session)

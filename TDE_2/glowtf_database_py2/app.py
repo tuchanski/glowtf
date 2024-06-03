@@ -47,7 +47,8 @@ coupon_data = [
     Coupons(expiration_date=datetime(2024, 9, 30), discount=25, uses=50, start_date=datetime(2024, 5, 17), code_name='FALLSALE2024'),
     Coupons(expiration_date=datetime(2024, 10, 31), discount=30, uses=75, start_date=datetime(2024, 5, 17), code_name='HALLOWEEN2024'),
     Coupons(expiration_date=datetime(2024, 12, 31), discount=50, uses=25, start_date=datetime(2024, 5, 17), code_name='YEAREND2024'),
-    Coupons(expiration_date=datetime(2024, 12, 31), discount=50, uses=100, start_date=datetime(2024, 2, 2), code_name='FREEFIRE1000')
+    Coupons(expiration_date=datetime(2024, 12, 31), discount=50, uses=100, start_date=datetime(2024, 2, 2), code_name='FREEFIRE1000'),
+    Coupons(expiration_date=datetime(2024, 12, 12), discount=90, uses=1, start_date=datetime(2024, 12, 12), code_name='THATSPOGG')
 ]
 
 class_data = [

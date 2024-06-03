@@ -90,5 +90,21 @@ class Sale(Base):
         ).limit(1).first()
         return result
     
+    @classmethod
+    def get_day_with_highest_sales(cls, session):
+        result = session.query(
+            func.extract('year', cls.date).label('year'),
+            func.extract('month', cls.date).label('month'),
+            func.extract('day', cls.date).label('day'),
+            func.count(cls.sale_id).label('total_sales')
+        ).group_by(
+            func.extract('year', cls.date),
+            func.extract('month', cls.date),
+            func.extract('day', cls.date)
+        ).order_by(
+            func.count(cls.sale_id).desc()
+        ).limit(1).first()
+        return result
+        
 
     
