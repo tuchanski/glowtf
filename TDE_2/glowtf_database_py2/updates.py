@@ -1,17 +1,12 @@
-# Rode esse arquivo após app.py
+# Atenção -> Executar após a criação do banco com app.py
 
+from services.database import DatabaseManager
 from sqlalchemy import create_engine, update
 from sqlalchemy.orm import sessionmaker
-from database import DatabaseManager
+from config import config
 from models import *
 
-USER = "root"
-PASSWD = ""  # Altere para sua senha do MySQL
-HOST = "localhost" 
-PORT = 3306  
-DATABASE = "glowtfdb"
-
-db_manager = DatabaseManager(USER, PASSWD, HOST, PORT, DATABASE)
+db_manager = DatabaseManager(config.USER, config.PASSWD, config.HOST, config.PORT, config.DATABASE)
 engine = create_engine(db_manager.url)
 
 # Cria a sessão
@@ -45,3 +40,6 @@ try:
 
 except Exception as e:
     print("Ocorreu um erro durante a atualização:", str(e))
+
+finally:
+    session.close()

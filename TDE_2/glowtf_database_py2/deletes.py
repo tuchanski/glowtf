@@ -1,27 +1,19 @@
-# Rode esse arquivo após app.py
+# Atenção -> Executar após a criação do banco com app.py
 
-from sqlalchemy import create_engine, update
+from services.database import DatabaseManager
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database import DatabaseManager
 from models import *
+from config import config
 
-USER = "root"
-PASSWD = ""  # Altere para sua senha do MySQL
-HOST = "localhost" 
-PORT = 3306  
-DATABASE = "glowtfdb"
-
-db_manager = DatabaseManager(USER, PASSWD, HOST, PORT, DATABASE)
+db_manager = DatabaseManager(config.USER, config.PASSWD, config.HOST, config.PORT, config.DATABASE)
 engine = create_engine(db_manager.url)
 
 # Cria a sessão
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# Terminar Deletes
-
 try:
-
     # 1)
     session.query(Cart_has_Hat).filter_by(cart_has_hat_id=4).delete()
     session.commit()
@@ -49,3 +41,6 @@ try:
     
 except Exception as e:
     print("Ocorreu um erro durante a atualização:", str(e))
+
+finally:
+    session.close()

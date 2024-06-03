@@ -1,24 +1,8 @@
-# Cria o banco de dados e popula.
-
-from datetime import date
+from services.database import DatabaseManager
 from sqlalchemy.orm import sessionmaker
-from database import DatabaseManager
 from datetime import datetime
-
+from config import config
 from models import *
-
-USER = "root"
-PASSWD = ""  # Altere para sua senha do MySQL
-HOST = "localhost" 
-PORT = 3306  
-DATABASE = "glowtfdb"
-
-db_manager = DatabaseManager(USER, PASSWD, HOST, PORT, DATABASE)
-db_manager.setup_database() # Dropa e Cria DB
-
-# Criando sessão
-Session = sessionmaker(bind=db_manager.engine)
-session = Session()
 
 # Dados a serem inseridos 
 paint_data = [
@@ -147,40 +131,54 @@ wishlist_has_hat_data = [
     Wishlist_Has_Hat(wishlist_id=6, hat_id=6)
 ]
 
+# Gerenciador do banco
+db_manager = DatabaseManager(config.USER, config.PASSWD, config.HOST, config.PORT, config.DATABASE)
+db_manager.setup_database() # Dropa e Cria DB
+
+# Criando sessão
+Session = sessionmaker(bind=db_manager.engine)
+session = Session()
+
 # Inserindo dados
-session.add_all(user_data)
-session.commit()
+try:
+    session.add_all(user_data)
+    session.commit()
 
-session.add_all(paint_data)
-session.commit()
+    session.add_all(paint_data)
+    session.commit()
 
-session.add_all(hats_data)
-session.commit()
+    session.add_all(hats_data)
+    session.commit()
 
-session.add_all(coupon_data)
-session.commit()
+    session.add_all(coupon_data)
+    session.commit()
 
-session.add_all(class_data)
-session.commit()
+    session.add_all(class_data)
+    session.commit()
 
-session.add_all(hat_has_class_data)
-session.commit()
+    session.add_all(hat_has_class_data)
+    session.commit()
 
-session.add_all(cart_data)
-session.commit()
+    session.add_all(cart_data)
+    session.commit()
 
-session.add_all(wishlist_data)
-session.commit()
+    session.add_all(wishlist_data)
+    session.commit()
 
-session.add_all(sale_data)
-session.commit()
+    session.add_all(sale_data)
+    session.commit()
 
-session.add_all(cart_has_hat_data)
-session.commit()
+    session.add_all(cart_has_hat_data)
+    session.commit()
 
-session.add_all(sale_has_hat_data)
-session.commit()
+    session.add_all(sale_has_hat_data)
+    session.commit()
 
-session.add_all(wishlist_has_hat_data)
-session.commit()
+    session.add_all(wishlist_has_hat_data)
+    session.commit()
 
+except Exception as e:
+     print("Ocorreu um erro durante a inserção de dados:", str(e))
+
+finally:
+    session.close()
