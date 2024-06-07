@@ -2,8 +2,9 @@
 // Configurações do banco de dados
 $host = "localhost:3307";
 $usuario = "root";
-$senha = "";
-$banco = "bd_ex_cliente_servidor";
+//$senha = "";
+$senha = "root";
+$banco = "glowtfdb";
 
 // Conexão com o banco de dados
 $conn = new mysqli($host, $usuario, $senha, $banco);
