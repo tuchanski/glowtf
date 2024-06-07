@@ -22,10 +22,10 @@ function PullItems(query) {
         <a href="../produto/produto.html" class="imagens">
           <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${
             data.promo_image
-          }.png">
+          }">
           <img class="card-splash" src="../dados/imagens/tintas/${
             data.promo_image
-          }.png">
+          }">
         </a>
         <div class="preco-botao">
           <div class="card-preco">R$ ${data.price / 100}</div>
