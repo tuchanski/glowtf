@@ -1,4 +1,3 @@
-DROP DATABASE IF EXISTS glowtfdb;
 CREATE DATABASE IF NOT EXISTS glowtfdb;
 USE glowtfdb;
 
