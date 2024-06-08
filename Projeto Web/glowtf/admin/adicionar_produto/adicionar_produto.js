@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-function validarTeclaEstoque(event) {
+function validarTecla(event) {
   const tecla = event.key;
   if (
     tecla === 'Backspace' || tecla === 'Delete' || tecla === 'ArrowLeft' || tecla === 'ArrowRight' ||
@@ -53,13 +53,7 @@ function validarTeclaEstoque(event) {
   }
 }
 
-function validarNumero(input) {
-  // Remove todos os caracteres não numéricos
-  input.value = input.value.replace(/\D/g, '');
-}
-
 document.getElementById('estoque').addEventListener('keydown', validarTecla);
-document.getElementById('estoque').addEventListener('input', validarNumero);
 
 function cadastraProduto() {
   const nomeProduto = document.getElementById('nome-produto').value;
@@ -98,13 +92,13 @@ function cadastraProduto() {
     alert("O nome precisa ter no mínimo três caracteres.")
 
   } else if (descricaoProduto.length < 20) {
-    alert("O nome precisa ter no mínimo 20 caracteres.")
+    alert("A descrição precisa ter no mínimo 20 caracteres.")
 
   } else if (!regex.test(wikiProduto)) {
     alert("O link precisa ser da wiki do produto.");
 
   } else {
-    alert("Produto cadastrado com sucesso!")
+    alert("ok")
   }
 
 }
