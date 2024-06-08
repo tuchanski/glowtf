@@ -14,17 +14,17 @@ function PullItems(query) {
       data.forEach((data) => {
         const card = `
     <div class="card">
-        <div class="card-titulo">${data.name}</div>
+        <div class="card-titulo">${data.hat_nam}</div>
         <div class="card-tinta">
           <div class="cor-da-tinta"></div>
           <div class="card-nome-tinta">${data.paint_name}</div>
         </div>
         <a href="../produto/produto.html" class="imagens">
           <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${
-            data.promo_image
+            data.hat_promo_image
           }">
           <img class="card-splash" src="../dados/imagens/tintas/${
-            data.promo_image
+            data.paint_promo_image
           }">
         </a>
         <div class="preco-botao">
