@@ -31,8 +31,8 @@ COMMIT;
 
 -- Iniciar uma transação para adicionar itens ao carrinho de um usuário
 START TRANSACTION;
-INSERT INTO glowtfdb.cart (id_user, date) VALUES (1, NOW());
-INSERT INTO glowtfdb.cart_has_hat (id_cart, id_hat) VALUES (1, 1);
+INSERT INTO glowtfdb.cart (id_user, date) VALUES (7, NOW());
+INSERT INTO glowtfdb.cart_has_hat (id_cart, id_hat) VALUES (7, 1);
 COMMIT;
 
 -- Iniciar uma transação para registrar uma venda
@@ -43,6 +43,6 @@ COMMIT;
 
 -- Iniciar uma transação para adicionar um item à wishlist de um usuário
 START TRANSACTION;
-INSERT INTO glowtfdb.wishlist (id_user) VALUES (1);
-INSERT INTO glowtfdb.wishlist_has_hat (id_wishlist, id_hat) VALUES (1, 1);
+INSERT INTO glowtfdb.wishlist (id_user) VALUES (7);
+INSERT INTO glowtfdb.wishlist_has_hat (id_wishlist, id_hat) VALUES (7, 1);
 COMMIT;
