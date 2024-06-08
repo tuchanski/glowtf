@@ -28,7 +28,7 @@
 
 .card {
   width: 200px;
-  height: 370px;
+  height: 390px;
   padding: 30px;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
@@ -52,13 +52,14 @@
 .card-tinta {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .cor-da-tinta {
   background-color: #6BEB4B;
   height: 25px;
-  width: 5px;
+  width: 3px;
+  filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }
 
 .card-nome-tinta {
@@ -73,6 +74,7 @@
 }
 
 .imagens {
+  margin-top: 20px;
   position: relative;
   top: 0;
   left: 0;
@@ -88,8 +90,9 @@
 
 .card-splash {
   position: absolute;
+  width: 25%;
   right: 0;
-  bottom: 0;
+  top: 0;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }
 
