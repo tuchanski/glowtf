@@ -198,7 +198,6 @@ INSERT INTO cart_has_hat (id_cart, id_hat) VALUES
 (5, 5),
 (6, 6);
 
-
 INSERT INTO sale_has_hat (id_sale, id_hat, price) VALUES
 (1, 1, 100),
 (2, 2, 120),
@@ -293,31 +292,36 @@ INSERT INTO sale_has_hat (id_sale, id_hat, price) VALUES
 (91, 7, 200),
 (92, 8, 800);
 
-
 INSERT INTO wishlist_has_hat (id_wishlist, id_hat) VALUES
-(1, 1),
+(2, 1),
+(3, 2),
+(4, 3),
+(5, 1),
+(6, 2);
+
+INSERT INTO cart_has_hat (id_cart, id_hat) VALUES
 (2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6);
+(3, 3), 
+(4, 1), 
+(5, 2), 
+(6, 3); 
 
-UPDATE user SET name = 'Charlie Brown Jr.' WHERE id = 3;
+-- UPDATE user SET name = 'Charlie Brown Jr.' WHERE id = 3;
 
-UPDATE hat SET price = 130 WHERE id = 2;
+-- UPDATE hat SET price = 130 WHERE id = 2;
 
-UPDATE coupons SET discount = 25 WHERE id = 1;
+-- UPDATE coupons SET discount = 25 WHERE id = 1;
 
-UPDATE class SET class_name = 'Sniper Elite' WHERE class_id = 9;
+-- UPDATE class SET class_name = 'Sniper Elite' WHERE class_id = 9;
 
-UPDATE paint SET hex_color = 'FF0000' WHERE paint_id = 3;
+-- UPDATE paint SET hex_color = 'FF0000' WHERE paint_id = 3;
 
-DELETE FROM cart_has_hat WHERE id = 4;
+-- DELETE FROM cart_has_hat WHERE id = 4;
 
-DELETE FROM sale_has_hat WHERE id = 4;
+-- DELETE FROM sale_has_hat WHERE id = 4;
 
-DELETE FROM coupons WHERE id = 7;
+-- DELETE FROM coupons WHERE id = 7;
 
-DELETE FROM hat_has_class WHERE class_id = 7;
+-- DELETE FROM hat_has_class WHERE class_id = 7;
 
-DELETE FROM wishlist_has_hat WHERE id = 4;
+-- DELETE FROM wishlist_has_hat WHERE id = 4;
