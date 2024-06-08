@@ -33,14 +33,14 @@ INSERT INTO paint (name, promo_image, hex_color) VALUES
 ('Vossa Velha Cor Rústica', 'Vossa_Velha_Cor_Rustica.png', '756853');
 
 INSERT INTO hat (inventory, price, promo_image, name, paint_id, description, wiki) VALUES 
-(50, 100, 'soldier_helmet_large.png', 'Chapéu Fedora', 1, 'Um elegante chapéu fedora.', 'https://wiki.teamfortress.com/wiki/Fedora'),
-(40, 120, 'heavy_helmet_large.png', 'Capacete Mercenário', 2, 'Um capacete resistente usado pelos mercenários.', 'https://wiki.teamfortress.com/wiki/Mercenary_Helmet'),
-(30, 80, 'pyro_hat_large.png', 'Boné Brigadeiro', 3, 'Um boné usado pelos oficiais de brigada.', 'https://wiki.teamfortress.com/wiki/Brigade_Helm'),
-(20, 150, 'sniper_hat_large.png', 'Cartola Aristocrata', 4, 'Uma cartola usada pelos aristocratas.', 'https://wiki.teamfortress.com/wiki/Aristocrat%27s_Hat'),
-(25, 90, 'scout_hat_large.png', 'Boina Béret', 5, 'Uma boina estilosa para os soldados.', 'https://wiki.teamfortress.com/wiki/Beret'),
-(60, 70, 'engineer_hat_large.png', 'Chapéu de Palha', 6, 'Um chapéu de palha perfeito para o verão.', 'https://wiki.teamfortress.com/wiki/Straw_Hat'),
-(45, 110, 'spy_hat_large.png', 'Elmet Costureiro', 7, 'Um capacete usado por costureiros de elite.', 'https://wiki.teamfortress.com/wiki/Costume_helmet'),
-(35, 130, 'demo_helmet_large.png', 'Capacete Medieval', 8, 'Um capacete usado por cavaleiros medievais.', 'https://wiki.teamfortress.com/wiki/Medieval_Helmet');
+(50, 100, 'bio_sniper_boater_large.png', 'Chapéu Fedora', 1, 'Um elegante chapéu fedora.', 'https://wiki.teamfortress.com/wiki/Fedora'),
+(40, 120, 'cop_helmet_large.png', 'Capacete Mercenário', 2, 'Um capacete resistente usado pelos mercenários.', 'https://wiki.teamfortress.com/wiki/Mercenary_Helmet'),
+(30, 80, 'demo_fiesta_sombrero_large.png', 'Boné Brigadeiro', 3, 'Um boné usado pelos oficiais de brigada.', 'https://wiki.teamfortress.com/wiki/Brigade_Helm'),
+(20, 150, 'fwk_spy_inspector_large.png', 'Cartola Aristocrata', 4, 'Uma cartola usada pelos aristocratas.', 'https://wiki.teamfortress.com/wiki/Aristocrat%27s_Hat'),
+(25, 90, 'fwk_spy_disguisedhat_large.png', 'Boina Béret', 5, 'Uma boina estilosa para os soldados.', 'https://wiki.teamfortress.com/wiki/Beret'),
+(60, 70, 'heavy_stocking_cap_large.png', 'Chapéu de Palha', 6, 'Um chapéu de palha perfeito para o verão.', 'https://wiki.teamfortress.com/wiki/Straw_Hat'),
+(45, 110, 'mannanas_cap_large.png', 'Elmet Costureiro', 7, 'Um capacete usado por costureiros de elite.', 'https://wiki.teamfortress.com/wiki/Costume_helmet'),
+(35, 130, 'medic_german_gonzila_large.png', 'Capacete Medieval', 8, 'Um capacete usado por cavaleiros medievais.', 'https://wiki.teamfortress.com/wiki/Medieval_Helmet');
 
 INSERT INTO coupons (expiration_date, discount, uses, start_date, code_name) VALUES
 ('2024-06-30', 20, 100, '2024-05-17', 'PAOTASTICO2024'),
