@@ -14,9 +14,9 @@ function PullItems(query) {
       data.forEach((data) => {
         const card = `
     <div class="card">
-        <div class="card-titulo">${data.hat_nam}</div>
+        <div class="card-titulo">${data.hat_name}</div>
         <div class="card-tinta">
-          <div class="cor-da-tinta"></div>
+        <div class="cor-da-tinta" style="background-color: #${data.hex_color};"></div>
           <div class="card-nome-tinta">${data.paint_name}</div>
         </div>
         <a href="../produto/produto.html" class="imagens">
@@ -28,7 +28,7 @@ function PullItems(query) {
           }">
         </a>
         <div class="preco-botao">
-          <div class="card-preco">R$ ${data.price / 100}</div>
+          <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
           <button class="carrinho-btn" type="button">
             <span class="material-symbols-outlined">
               add_shopping_cart
@@ -36,7 +36,7 @@ function PullItems(query) {
             <div>adicionar ao carrinho</div>
           </button>
         </div>
-		</div>`;
+    </div>`;
         listaProdutos.insertAdjacentHTML("beforeend", card);
         count += 1;
       });
