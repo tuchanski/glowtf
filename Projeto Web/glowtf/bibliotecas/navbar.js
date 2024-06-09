@@ -49,7 +49,12 @@ function criarLogin() {
       .then(response => response.json())
       .then(data =>{
         console.log(data);
-        result = `<h1>Logged as ${data[0].name}</h1>`
+        if(data[0].admin == 0){
+          result = `<h1>${data[0].name}</h1>`
+        }
+        else{
+          result = `<h1>${data[0].name}|Admin</h1>`
+        }
         classeLogin.insertAdjacentHTML("beforeend", result);
       })
       .catch(error =>{
