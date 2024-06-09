@@ -1,6 +1,14 @@
 const mostraProduto = document.getElementsByClassName('corpo')[0];
 
-function favoritos(element) {
+function pegarQueryParam(param) {
+  let urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+let hatId = pegarQueryParam('hat_id');
+console.log(hatId);
+
+function favorita(element) {
   if (element.style.color === 'white') {
     element.style.color = '#282828';
   } else {
@@ -8,8 +16,8 @@ function favoritos(element) {
   }
 }
 
-function PullItems(query) {
-  fetch("produto.php")
+function produto() {
+  fetch(`produto.php?hat_id=${hatId}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro na conexão");
@@ -20,7 +28,7 @@ function PullItems(query) {
       console.log(data[0]);
       const produto = `
       <div class="fundo-adiciona-produto">
-      <span class="material-symbols-outlined estrela" onclick= favoritos(this)">star</span>
+      <span class="material-symbols-outlined estrela" onclick= favorita(this)">star</span>
         <div class="dados-produto">
           <div class="titulo">${data[0].hat_name}</div>
             <div class="tinta">
@@ -51,5 +59,5 @@ function PullItems(query) {
     // .catch((error) => console.error("Error:", error));
 }
 
-document.addEventListener("DOMContentLoaded", () => PullItems(""));
+document.addEventListener("DOMContentLoaded", () => produto(""));
 
