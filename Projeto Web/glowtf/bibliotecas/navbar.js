@@ -83,26 +83,13 @@ function criarLogin() {
           result = `
       <div class="usuario-autenticado">
         <li>
-          <a href="../lista_de_desejos/lista_de_desejos.html">
-            <span class="material-symbols-outlined" id="span-nav">
-              bookmark
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="../carrinho/carrinho.html">
-            <span class="material-symbols-outlined" id="span-nav">
-              shopping_cart
-            </span>
-          </a>
-        </li>
-        <li>
-          <a class="usuario" href="#"><span class="material-symbols-outlined">person</span>${data[0].name} | Admin</a>
-          <ul class="dropdown">
-            <li class="dropdown"><a href="../perfil_usuario/perfil_usuario.html">Perfil</a></li><br>
-            <li class="dropdown"><a >Sair</a></li>
-          </ul>
-        </li>
+        <a class="usuario" href="#"><span class="material-symbols-outlined">person</span>${data[0].name} | Admin</a>
+        <ul class="dropdown">
+          <li class="dropdown"><a href="../lista_de_produtos/lista_de_produtos.html">Lista de produtos</a></li><br>
+          <li class="dropdown"><a href="../lista_de_produtos/lista_de_produtos.html">Adicionar produto</a></li><br>
+          <li class="dropdown"><a>Sair</a></li>
+        </ul>
+      </li>
         <li>
           <img src="../dados/imagens/ícones/steam_verde.png">
         </li>
