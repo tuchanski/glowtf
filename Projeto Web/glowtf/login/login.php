@@ -1,69 +1,35 @@
 <?php
-// Configurações do banco de dados
+// Database configuration
 $host = "localhost:3307";
-$usuario = "root"; 
-$senha = "";
-$banco = "bd_ex_cliente_servidor";
+$user = "root"; 
+$password = "";
+$dbname = "glowtfdb";
 
-// Conexão com o banco de dados
-$conn = new mysqli($host, $usuario, $senha, $banco);
+// Create connection
+$conn = new mysqli($host, $user, $password, $dbname);
 
-// Verifica a conexão
+// Check connection
 if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
+    // Return error as JSON
+    echo json_encode(["error" => "Connection failed: " . $conn->connect_error]);
+    exit;
 }
 
-// Obtém os dados do formulário
+// Get POST data
 $name = $_POST['nome'];
-$lastname = $_POST['sobrenome'];
 $pass = $_POST['senha'];
-$email = $_POST['email'];
-$birthday_day = $_POST['dia'];
-$birthday_month = $_POST['mes'];
-$birthday_year = $_POST['ano'];
 
-if ($name != True) {
-    echo "Por favor, insira seu nome.\n";
-    return;
-}
+// Prepare and execute SQL query with prepared statement
+$stmt = $conn->prepare("SELECT * FROM user WHERE (name = ? OR email = ?) AND password = ?");
+$stmt->bind_param("sss", $name, $name, $pass);
+$stmt->execute();
+$result = $stmt->get_result();
 
-if ($lastname != True) {
-    echo "Por favor, insira seu sobrenome.\n";
-    return;
-}
+// Fetch results and encode as JSON
+$data = $result->fetch_all(MYSQLI_ASSOC);
+echo json_encode($data);
 
-if ($pass != True) {
-    echo "Por favor, insira sua senha.\n";
-    return;
-}
-
-if ($email != True) {
-    echo "Por favor, insira seu email.\n";
-    return;
-}
-
-if (2024 - $birthday_year <= 18) {
-    echo "Usuário deve ter mais que 18 anos.\n";
-    return;
-}
-
-if (strlen($pass) <= 10) {
-    echo "Senha fraca, por favor insira 10 caracteres no mínimo.\n";
-    return;
-}
-
-// Insere os dados no banco de dados
-$sql = "INSERT INTO usuarios (nome, senha) VALUES ('$name', '$pass')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Dados inseridos com sucesso!\n";
-
-} else {
-    echo "Erro ao inserir dados: " . $conn->error;
-    
-}
-
-// Fecha a conexão
+// Close statement and connection
+$stmt->close();
 $conn->close();
 ?>
- 
