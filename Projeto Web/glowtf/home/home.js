@@ -1,14 +1,30 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
+const classeLogin = document.getElementsByClassName('login')[0];
+
+function criarLogin() {
+  const unlogged = `<a class="usuario" href="../login/login.html"><span class="material-symbols-outlined">person</span>Entrar</a>
+        <button type="button" class="login_steam">
+          <img src="../dados/imagens/ícones/Steam.png">
+          Entrar
+        </button>`
+
+  const logged = `<a class="usuario" href="../login/login.html"><span class="material-symbols-outlined">person</span>Entrar</a>
+        <button type="button" class="login_steam">
+          <img src="../dados/imagens/ícones/Steam.png">
+          Entrar
+        </button>`
+  classeLogin.insertAdjacentHTML("beforeend", unlogged);
+}
 
 function corEstrela(element) {
   if (element.style.color === 'white') {
-      element.style.color = '#282828';
+    element.style.color = '#282828';
   } else {
-      element.style.color = 'white';
+    element.style.color = 'white';
   }
 }
 
-function PullItems(query) {
+function carregarProdutos(query) {
   fetch("home.php")
     .then((response) => {
       if (!response.ok) {
@@ -29,12 +45,10 @@ function PullItems(query) {
             <div class="card-nome-tinta">${data.paint_name}</div>
           </div>
           <a href="../produto/produto.html?hat_id=${data.hat_id}" class="imagens">
-            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${
-              data.hat_promo_image
-            }">
-            <img class="card-splash" src="../dados/imagens/tintas/${
-              data.paint_promo_image
-            }">
+            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image
+          }">
+            <img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image
+          }">
           </a>
           <div class="preco-botao">
             <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
@@ -53,4 +67,5 @@ function PullItems(query) {
     .catch((error) => console.error("Error:", error));
 }
 
-document.addEventListener("DOMContentLoaded", () => PullItems(""));
+document.addEventListener("DOMContentLoaded", () => criarLogin());
+document.addEventListener("DOMContentLoaded", () => carregarProdutos(""));
