@@ -1,5 +1,4 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
-const urlParams = new URLSearchParams(window.location.search);
 
 function comprar(){
   console.log("Compra Invalida");
