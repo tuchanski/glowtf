@@ -25,13 +25,7 @@ function createNavbar(target_id){
         </button> -->
       </li>
     </ul>
-  </nav>
-  <div class="banner">
-    <div>
-      <h1 class="titulo-home">
-        Adquira as melhores skins de TF2!</h1>
-    </div>
-  </div>`
+  </nav>`
   document.getElementById(target_id).insertAdjacentHTML("beforeend", html);
   criarLogin();
 }
