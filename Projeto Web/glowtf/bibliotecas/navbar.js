@@ -49,7 +49,53 @@ function criarLogin() {
       .then(response => response.json())
       .then(data =>{
         console.log(data);
-        result = `<h1>Logged as ${data[0].name}</h1>`
+        if(data[0].admin == 0){
+          result = `
+      <div class="usuario-autenticado">
+        <li>
+          <a href="../lista_de_desejos/lista_de_desejos.html">
+            <span class="material-symbols-outlined" id="span-nav">
+              bookmark
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="../carrinho/carrinho.html">
+            <span class="material-symbols-outlined" id="span-nav">
+              shopping_cart
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="usuario" href="#"><span class="material-symbols-outlined">person</span>${data[0].name}</a>
+          <ul class="dropdown">
+            <li class="dropdown"><a href="../perfil_usuario/perfil_usuario.html">Perfil</a></li><br>
+            <li class="dropdown"><a >Sair</a></li>
+          </ul>
+        </li>
+        <li>
+          <img src="../dados/imagens/ícones/steam_verde.png">
+        </li>
+      </div>
+    </ul>`
+        }
+        else{
+          result = `
+      <div class="usuario-autenticado">
+        <li>
+        <a class="usuario" href="#"><span class="material-symbols-outlined">person</span>${data[0].name} | Admin</a>
+        <ul class="dropdown">
+          <li class="dropdown"><a href="../lista_de_produtos/lista_de_produtos.html">Lista de produtos</a></li><br>
+          <li class="dropdown"><a href="../lista_de_produtos/lista_de_produtos.html">Adicionar produto</a></li><br>
+          <li class="dropdown"><a>Sair</a></li>
+        </ul>
+      </li>
+        <li>
+          <img src="../dados/imagens/ícones/steam_verde.png">
+        </li>
+      </div>
+    </ul>`
+        }
         classeLogin.insertAdjacentHTML("beforeend", result);
       })
       .catch(error =>{
