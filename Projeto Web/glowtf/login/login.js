@@ -31,6 +31,9 @@ function loginUsuario() {
       if(data.length == 0){
         alert("Login Inexistente, Por favor confira se o seu Login/Senha estão corretos.")
       }
+      else{
+        window.location.href = '../home/home.html?login='+ data[0].id;
+      }
     })
     .catch(error => {
       console.log(data);
