@@ -7,6 +7,8 @@ $banco = "glowtfdb";
 
 $conn = new mysqli($host, $usuario, $senha, $banco, $port);
 
+$hat_id = isset($_GET['hat_id']) ? intval($_GET['hat_id']) : 0;
+
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 } else {

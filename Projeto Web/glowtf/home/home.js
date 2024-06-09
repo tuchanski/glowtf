@@ -46,11 +46,10 @@ function PullItems(query) {
             </button>
           </div>
         </div>`;
-
         listaProdutos.insertAdjacentHTML("beforeend", card);
         count += 1;
       });
-     })
+    })
     .catch((error) => console.error("Error:", error));
 }
 
