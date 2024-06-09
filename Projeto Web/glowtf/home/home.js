@@ -1,8 +1,17 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
 const classeLogin = document.getElementsByClassName('login')[0];
 
+const urlParams = new URLSearchParams(window.location.search);
+
+function comprar(){
+  console.log("Compra Invalida");
+  if(!urlParams.has('user')){
+    window.location.href = '../login/login.html';
+    alert("Você precisa estar logado para realizar compras.");
+  }
+}
+
 function criarLogin() {
-  const urlParams = new URLSearchParams(window.location.search);
   let isLogged = urlParams.has('user');
   let result = `ERRROR`;
   if(isLogged){
@@ -72,7 +81,7 @@ function carregarProdutos(query) {
           </a>
           <div class="preco-botao">
             <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
-            <button class="carrinho-btn" type="button">
+            <button class="carrinho-btn" type="button" onclick="comprar()">
               <span class="material-symbols-outlined">
                 add_shopping_cart
               </span>
