@@ -22,6 +22,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
 }
 
 .input-usuario {
@@ -30,4 +31,8 @@ form {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 15px;
+}
+
+.btn-login {
+  width: 200px;
 }
