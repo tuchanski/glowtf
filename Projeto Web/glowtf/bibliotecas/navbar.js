@@ -1,3 +1,5 @@
+const urlParams = new URLSearchParams(window.location.search);
+
 function createNavbar(target_id){
     const html = `<nav>
     <ul class="conjunto-nav">
