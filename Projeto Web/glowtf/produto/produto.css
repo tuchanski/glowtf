@@ -90,6 +90,7 @@
 }
 
 .fundo-adiciona-produto {
+  position: relative;
   width: 100%;
   padding: 10%;
   border-radius: 3px;
@@ -120,6 +121,22 @@
 .linha-vertical {
   border-left: 1px solid  rgb(112, 111, 130);
   height: 100%;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.estrela {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  color:#282828;
+  cursor: pointer;
 }
 
 .titulo {
@@ -156,6 +173,7 @@
   position: relative;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 
 .imagem-produto {
