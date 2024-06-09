@@ -1,14 +1,59 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
+const classeLogin = document.getElementsByClassName('login')[0];
 
-function corEstrela(element) {
-  if (element.style.color === 'white') {
-      element.style.color = '#282828';
-  } else {
-      element.style.color = 'white';
+const urlParams = new URLSearchParams(window.location.search);
+
+function comprar(){
+  console.log("Compra Invalida");
+  if(!urlParams.has('user')){
+    window.location.href = '../login/login.html';
+    alert("Você precisa estar logado para realizar compras.");
   }
 }
 
-function PullItems(query) {
+function criarLogin() {
+  let isLogged = urlParams.has('user');
+  let result = `ERRROR`;
+  if(isLogged){
+    let username = '';
+    fetch('get_user_data.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        'id': urlParams.get('user')
+      })
+    })
+    .then(response => response.json())
+    .then(data =>{
+      console.log(data);
+      result = `<h1>Logged as ${data[0].name}</h1>`
+      classeLogin.insertAdjacentHTML("beforeend", result);
+    })
+    .catch(error =>{
+      console.error(error);
+    })
+  }
+  else{
+    result = `<a class="usuario" href="../login/login.html"><span class="material-symbols-outlined">person</span>Entrar</a>
+        <button type="button" class="login_steam">
+          <img src="../dados/imagens/ícones/Steam.png">
+          Entrar
+        </button>`
+        classeLogin.insertAdjacentHTML("beforeend", result);
+  }
+}
+
+function corEstrela(element) {
+  if (element.style.color === 'white') {
+    element.style.color = '#282828';
+  } else {
+    element.style.color = 'white';
+  }
+}
+
+function carregarProdutos(query) {
   fetch("home.php")
     .then((response) => {
       if (!response.ok) {
@@ -29,16 +74,14 @@ function PullItems(query) {
             <div class="card-nome-tinta">${data.paint_name}</div>
           </div>
           <a href="../produto/produto.html?hat_id=${data.hat_id}" class="imagens">
-            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${
-              data.hat_promo_image
-            }">
-            <img class="card-splash" src="../dados/imagens/tintas/${
-              data.paint_promo_image
-            }">
+            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image
+          }">
+            <img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image
+          }">
           </a>
           <div class="preco-botao">
             <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
-            <button class="carrinho-btn" type="button">
+            <button class="carrinho-btn" type="button" onclick="comprar()">
               <span class="material-symbols-outlined">
                 add_shopping_cart
               </span>
@@ -53,4 +96,5 @@ function PullItems(query) {
     .catch((error) => console.error("Error:", error));
 }
 
-document.addEventListener("DOMContentLoaded", () => PullItems(""));
+document.addEventListener("DOMContentLoaded", () => criarLogin());
+document.addEventListener("DOMContentLoaded", () => carregarProdutos(""));
