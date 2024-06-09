@@ -22,13 +22,13 @@ function PullItems(query) {
       data.forEach((data) => {
         const card = `
         <div class="card">
-        <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
+          <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
           <div class="card-titulo">${data.hat_name}</div>
           <div class="card-tinta">
           <div class="cor-da-tinta" style="background-color: #${data.hex_color};"></div>
             <div class="card-nome-tinta">${data.paint_name}</div>
           </div>
-          <a href="../produto/produto.html" class="imagens">
+          <a href="../produto/produto.html?hat_id=${data.hat_id}" class="imagens">
             <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${
               data.hat_promo_image
             }">
@@ -45,11 +45,11 @@ function PullItems(query) {
               <div>adicionar ao carrinho</div>
             </button>
           </div>
-      </div>`;
+        </div>`;
         listaProdutos.insertAdjacentHTML("beforeend", card);
         count += 1;
       });
-     })
+    })
     .catch((error) => console.error("Error:", error));
 }
 
