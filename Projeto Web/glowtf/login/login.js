@@ -32,7 +32,7 @@ function loginUsuario() {
         alert("Login Inexistente, Por favor confira se o seu Login/Senha estão corretos.")
       }
       else{
-        window.location.href = '../home/home.html?login='+ data[0].id;
+        window.location.href = '../home/home.html?user='+ data[0].id;
       }
     })
     .catch(error => {
