@@ -1,6 +1,4 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
-const classeLogin = document.getElementsByClassName('login')[0];
-
 const urlParams = new URLSearchParams(window.location.search);
 
 function comprar(){
@@ -8,40 +6,6 @@ function comprar(){
   if(!urlParams.has('user')){
     window.location.href = '../login/login.html';
     alert("Você precisa estar logado para realizar compras.");
-  }
-}
-
-function criarLogin() {
-  let isLogged = urlParams.has('user');
-  let result = `ERRROR`;
-  if(isLogged){
-    let username = '';
-    fetch('get_user_data.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: new URLSearchParams({
-        'id': urlParams.get('user')
-      })
-    })
-    .then(response => response.json())
-    .then(data =>{
-      console.log(data);
-      result = `<h1>Logged as ${data[0].name}</h1>`
-      classeLogin.insertAdjacentHTML("beforeend", result);
-    })
-    .catch(error =>{
-      console.error(error);
-    })
-  }
-  else{
-    result = `<a class="usuario" href="../login/login.html"><span class="material-symbols-outlined">person</span>Entrar</a>
-        <button type="button" class="login_steam">
-          <img src="../dados/imagens/ícones/Steam.png">
-          Entrar
-        </button>`
-        classeLogin.insertAdjacentHTML("beforeend", result);
   }
 }
 
@@ -96,5 +60,4 @@ function carregarProdutos(query) {
     .catch((error) => console.error("Error:", error));
 }
 
-document.addEventListener("DOMContentLoaded", () => criarLogin());
 document.addEventListener("DOMContentLoaded", () => carregarProdutos(""));
