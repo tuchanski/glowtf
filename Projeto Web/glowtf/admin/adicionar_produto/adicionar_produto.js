@@ -85,25 +85,38 @@ function cadastraProduto() {
   // Seleciona o formulário
   const formulario = document.getElementById('loginForm');
   // Obtém os dados do formulário
-  const formData = new
-  FormData(formulario);
 
-  // Envia os dados usando a API Fetch
-  fetch('adicionar_produto_conec_bd.php', {
+  fetch('.php', {
     method: 'POST',
-    body: formData
-  })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data); // Mostra a resposta do servidor no console
-        alert(data); // Mostra uma mensagem com a resposta do servidor
-        // window.location.href = "./index.html"; 
-  })
-  .catch(error => {
-      console.error('Erro:', error);
-      alert('Ocorreu um erro ao enviar o formulário.');
-  });
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+      'nome-produto': nomeProduto,
+      'preco-produto': precoProduto,
+      'estoque': estoqueProduto,
+      'descricao': descricaoProduto,
+      'wiki-produto': wikiProduto,
+      'classe': inventory,
+      'tinta': tintaProduto,
+      'upload-imagem': nomeArquivo
 
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // Process your data here
+      if(data.length == 0){
+        alert("Login Inexistente, Por favor confira se o seu Login/Senha estão corretos.")
+      }
+      else{
+        window.location.href = '../home/home.html?user='+ data[0].id;
+      }
+    })
+    .catch(error => {
+      console.log(data);
+      console.error('Error:', error);
+    });
 }
 
 
