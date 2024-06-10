@@ -1,3 +1,5 @@
+USE glowtfdb;
+
 -- control.sql
 -- Arquivo contendo as instruções de segurança e controle de acesso
 
@@ -16,16 +18,30 @@ CREATE ROLE IF NOT EXISTS 'bot_da_steam';
 CREATE ROLE IF NOT EXISTS 'cliente';
 
 -- Atribuir permissões aos papéis
-GRANT * ON *.* TO 'administrador' WITH GRANT OPTION;
-GRANT SELECT, INSERT, UPDATE ON glowtfdb.hat, glowtfdb.user TO 'estagiario';
-GRANT INSERT, ON glowtfdb.sale TO 'bot_da_steam';
-GRANT SELECT, UPDATE, ON glowtfdb.hat TO 'bot_da_steam';
+
+-- Administrador: todas as permissões no banco de dados.
+GRANT ALL PRIVILEGES ON *.* TO 'administrador' WITH GRANT OPTION;
+
+-- Estagiário: Modificar e inserir dados em tabelas sem deletar dados.
+GRANT SELECT, INSERT, UPDATE ON glowtfdb.hat TO 'estagiario';
+GRANT SELECT, INSERT, UPDATE ON glowtfdb.user TO 'estagiario';
+
+-- Bot: Checar e atualizar estoques de chapéus, assim como criar sales novas.
+GRANT INSERT ON glowtfdb.sale TO 'bot_da_steam';
+GRANT SELECT, UPDATE ON glowtfdb.hat TO 'bot_da_steam';
+
+-- Cliente: Ler dados dos produtos e de si mesmo, assim como criar um usuário novo ao se cadastrar, além de visualizar tabelas hat, hat_has_class, sale, paint e hat.
 GRANT SELECT, INSERT, UPDATE ON glowtfdb.user TO 'cliente';
-GRANT SELECT ON glowtfdb.hat, glowtfdb.hat_has_class, glowtfdb.sale, glowtfdb.paint, glowtfdb.hat_class TO 'cliente';
+GRANT SELECT ON glowtfdb.hat TO 'cliente';
+GRANT SELECT ON glowtfdb.hat_has_class TO 'cliente';
+GRANT SELECT ON glowtfdb.sale TO 'cliente';
+GRANT SELECT ON glowtfdb.paint TO 'cliente';
+GRANT SELECT ON glowtfdb.hat TO 'cliente';
 
 -- Atribui os papéis aos usuários
 GRANT 'administrador' TO 'ana'@'localhost';
-GRANT 'cliente' TO 'giovanni'@'localhost';
 GRANT 'estagiario' TO 'guilherme'@'localhost';
 GRANT 'bot_da_steam' TO 'bot_tf'@'localhost';
-
+GRANT 'cliente' TO 'giovanni'@'localhost';
+GRANT 'cliente' TO 'gustavo'@'localhost';
+GRANT 'cliente' TO 'antonio'@'localhost';

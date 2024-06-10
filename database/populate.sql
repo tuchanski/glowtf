@@ -7,7 +7,8 @@ INSERT INTO user (name, gender, state, cpf, email, password, admin, id_steam) VA
 ('Charlie Brown', 'Masculino', 'SC', '34567890123', 'charlie@example.com', 'password789', FALSE, '34567890123456789'),
 ('Markus Persson', 'Masculino', 'PB', '84678602234', 'mojang@example.com', 'minepass', FALSE, '85345601734362860'),
 ('Antonio Galarda', 'Masculino', 'SC', '88856684013', 'galarda@example.com', 'password873', FALSE, '55622902232562495'),
-('Fornite da Silva', 'Masculino', 'PB', '83853644012', 'epicgamer@example.com', 'epicgames123', FALSE, '55629332233562433');
+('Fornite da Silva', 'Masculino', 'PB', '83853644012', 'epicgamer@example.com', 'epicgames123', FALSE, '55629332233562433'),
+('Joao Afonso', 'Masculino', 'PR', '33333333333', 'joaoafonso@example.com', 'coxadoido', FALSE, '12345678901999999');
 
 INSERT INTO paint (name, promo_image, hex_color) VALUES
 ('O Amargo Sabor de Derrota e Limão', 'O_Amargo_Sabor_de_Derrota_e_Limao.png', '2EB52E'),
