@@ -29,15 +29,14 @@ $productImage = isset($_FILES['upload-imagem']) ? $_FILES['upload-imagem'] : nul
 // Expressão regular para validar o link da wiki
 $wikiRegex = "/^https:\/\/wiki\.teamfortress\.com\/.*$/";
 
-echo $productName;
-echo $productPrice;
-echo $inventory;
-echo $description;
-echo $productWiki;
-echo $hatClass;
-echo $paint;
-echo $productImage;
-
+// echo $productName;
+// echo $productPrice;
+// echo $inventory;
+// echo $description;
+// echo $productWiki;
+// echo $hatClass;
+// echo $paint;
+// echo $productImage;
 
 // // Verificações de validação
 // if (empty($productName) || 

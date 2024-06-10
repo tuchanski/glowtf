@@ -71,16 +71,16 @@ function cadastraProduto() {
     console.log('Opções selecionadas:', classesSelecionadas);
   });
 
-  // console.log(nomeProduto);
-  // console.log(precoProduto);
-  // console.log(estoqueProduto);
-  // console.log(descricaoProduto);
-  // console.log(wikiProduto);
-  // console.log(tintaProduto);
+  console.log(nomeProduto);
+  console.log(precoProduto);
+  console.log(estoqueProduto);
+  console.log(descricaoProduto);
+  console.log(wikiProduto);
+  console.log(tintaProduto);
 
-  // const arquivo = inputUploadImagem.files[0];
-  // const nomeArquivo = arquivo.name;
-  // console.log(nomeArquivo);
+  const arquivo = inputUploadImagem.files[0];
+  const nomeArquivo = arquivo.name;
+  console.log(nomeArquivo);
   
   // Seleciona o formulário
   const formulario = document.getElementById('loginForm');
