@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 // Incluir o arquivo de conexão
 include 'adicionar_produto.php';
 
@@ -166,4 +166,4 @@ $result = $conn->query($sql);
   <script src="./adicionar_produto.js"></script>
 </body>
 
-</html> -->
+</html>

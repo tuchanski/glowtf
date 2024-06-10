@@ -66,39 +66,47 @@ function cadastraProduto() {
   const regex = /wiki.teamfortress.com/;
   // const nomeImagem = inputUploadImagem.files[0].name;
   const classeProduto = document.getElementById('classe');
-
-  //função com erro se adiciona somente uma classe
   classeProduto.addEventListener('change', function () {
-    const classesSelecionadas = Array.from(this.classesSelecionadas).map(option => option.value);
-
+    const classesSelecionadas = Array.from(this.selectedOptions).map(option => option.value);
     console.log('Opções selecionadas:', classesSelecionadas);
-
   });
 
-  if (!nomeProduto &&
-      !precoProduto &&
-      !estoqueProduto &&
-      !descricaoProduto &&
-      !wikiProduto &&
-      classeProduto.value === "" &&
-      inputUploadImagem.files.length === 0
-     ) {
-    alert("Preencha todos os campos!");
 
-  } else if (!/^\d+$/.test(estoqueProduto)) {
-    alert('Insira apenas números inteiros no estoque do produto.');
+  console.log(nomeProduto);
+  console.log(precoProduto);
+  console.log(estoqueProduto);
+  console.log(descricaoProduto);
+  console.log(wikiProduto);
+  console.log(tintaProduto);
+  console.log(inputUploadImagem.files[0]);
+  
+    // Seleciona o formulário
+    const formulario = document.getElementById('loginForm');
+    // Obtém os dados do formulário
+    const formData = new
+    FormData(formulario);
 
-  } else if (nomeProduto.length < 3) {
-    alert("O nome precisa ter no mínimo três caracteres.")
-
-  } else if (descricaoProduto.length < 20) {
-    alert("A descrição precisa ter no mínimo 20 caracteres.")
-
-  } else if (!regex.test(wikiProduto)) {
-    alert("O link precisa ser da wiki do produto.");
-
-  } else {
-    alert("ok")
-  }
+    // Envia os dados usando a API Fetch
+    fetch('adicionar_produto_conec_bd.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Mostra a resposta do servidor no console
+            alert(data); // Mostra uma mensagem com a resposta do servidor
+            window.location.href = "./index.html"; 
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Ocorreu um erro ao enviar o formulário.');
+    });
 
 }
+
+
+
+  
+
+
+

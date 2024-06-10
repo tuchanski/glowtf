@@ -12,27 +12,59 @@ $conn = new mysqli($host, $usuario, $senha, $banco);
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
+function isInteger($input) {
+    return ctype_digit(strval($input));
+}
 
-// Obtém os dados do formulário
-$productName = $_POST['nome-produto'];
-$productPrice = $_POST['preco-produto'];
-$inventory = $_POST['estoque'];
-$paint = $_POST['tinta'];
-$productImage = $_POST['imagem'];
-$productWiki = $_POST['wiki-produto'];
-$description = $_POST['descricao'];
-$hatClass = $_POST['classe'];
+// Recebendo dados do formulário
+$productName = isset($_POST['productName']) ? $_POST['productName'] : '';
+$productPrice = isset($_POST['productPrice']) ? $_POST['productPrice'] : '';
+$inventory = isset($_POST['inventory']) ? $_POST['inventory'] : '';
+$description = isset($_POST['description']) ? $_POST['description'] : '';
+$productWiki = isset($_POST['productWiki']) ? $_POST['productWiki'] : '';
+$hatClass = isset($_POST['hatClass']) ? $_POST['hatClass'] : '';
+$productImage = isset($_FILES['productImage']) ? $_FILES['productImage'] : null;
+
+// Expressão regular para validar o link da wiki
+$wikiRegex = "/^https:\/\/wiki\.teamfortress\.com\/.*$/";
+
+// Verificações de validação
+if (empty($productName) || 
+    empty($productPrice) || 
+    empty($inventory) || 
+    empty($description) || 
+    empty($productWiki) || 
+    empty($hatClass) || 
+    $productImage['error'] == UPLOAD_ERR_NO_FILE) {
+
+    echo "Preencha todos os campos!";
+} elseif (!isInteger($inventory)) {
+    echo "Insira apenas números inteiros no estoque do produto.";
+} elseif (strlen($productName) < 3) {
+    echo "O nome precisa ter no mínimo três caracteres.";
+} elseif (strlen($description) < 20) {
+    echo "A descrição precisa ter no mínimo 20 caracteres.";
+} elseif (!preg_match($wikiRegex, $productWiki)) {
+    echo "O link precisa ser da wiki do produto.";
+} else {
+    // Aqui você pode adicionar o código para processar o upload do arquivo e salvar os dados no banco de dados
+
+    // Exemplo de como mover o arquivo para o diretório desejado
+    $uploadDirectory = '../uploads/';
+    $uploadFile = $uploadDirectory . basename($productImage['name']);
+
+    if (move_uploaded_file($productImage['tmp_name'], $uploadFile)) {
+        echo "ok";
+    } else {
+        echo "Falha no upload da imagem.";
+    }
+}
+
+
 
 // Insere os dados no banco de dados
 $sql = "INSERT INTO hat (inventory, price, promo_image, name, paint, description) VALUES ('$inventory', '$productPrice', '$productImage', '$productName', $paint, '$description')";
 
-echo $productName;
-echo $productPrice;
-echo $inventory;
-echo $paint;
-echo $productWiki;
-echo $description;
-echo $hatClass;
 
 if ($conn->query($sql) === TRUE) {
     echo "Produto inserido com sucesso!\n";
