@@ -71,36 +71,38 @@ function cadastraProduto() {
     console.log('Opções selecionadas:', classesSelecionadas);
   });
 
+  // console.log(nomeProduto);
+  // console.log(precoProduto);
+  // console.log(estoqueProduto);
+  // console.log(descricaoProduto);
+  // console.log(wikiProduto);
+  // console.log(tintaProduto);
 
-  console.log(nomeProduto);
-  console.log(precoProduto);
-  console.log(estoqueProduto);
-  console.log(descricaoProduto);
-  console.log(wikiProduto);
-  console.log(tintaProduto);
-  console.log(inputUploadImagem.files[0]);
+  // const arquivo = inputUploadImagem.files[0];
+  // const nomeArquivo = arquivo.name;
+  // console.log(nomeArquivo);
   
-    // Seleciona o formulário
-    const formulario = document.getElementById('loginForm');
-    // Obtém os dados do formulário
-    const formData = new
-    FormData(formulario);
+  // Seleciona o formulário
+  const formulario = document.getElementById('loginForm');
+  // Obtém os dados do formulário
+  const formData = new
+  FormData(formulario);
 
-    // Envia os dados usando a API Fetch
-    fetch('adicionar_produto_conec_bd.php', {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data); // Mostra a resposta do servidor no console
-            alert(data); // Mostra uma mensagem com a resposta do servidor
-            window.location.href = "./index.html"; 
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        alert('Ocorreu um erro ao enviar o formulário.');
-    });
+  // Envia os dados usando a API Fetch
+  fetch('adicionar_produto_conec_bd.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data); // Mostra a resposta do servidor no console
+        alert(data); // Mostra uma mensagem com a resposta do servidor
+        // window.location.href = "./index.html"; 
+  })
+  .catch(error => {
+      console.error('Erro:', error);
+      alert('Ocorreu um erro ao enviar o formulário.');
+  });
 
 }
 
