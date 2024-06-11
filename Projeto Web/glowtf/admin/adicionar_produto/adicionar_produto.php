@@ -1,5 +1,4 @@
 <?php
-// Configurações do banco de dados
 $host = "localhost:3307";
 $usuario = "root"; 
 $senha = "";
@@ -22,6 +21,7 @@ $productWiki = isset($_POST['wiki-produto']) ? $_POST['wiki-produto'] : '';
 $hatClass = isset($_POST['classe']) ? $_POST['classe'] : '';
 $paint = isset($_POST['tinta']) ? $_POST['tinta'] : '';
 $productImage = isset($_FILES['upload-imagem']) ? $_FILES['upload-imagem'] : null;
+$imageName = $productImage['name'];
 $wikiRegex = "/^https:\/\/wiki\.teamfortress\.com\/.*$/";
 
 echo $productName;
@@ -31,7 +31,7 @@ echo $description;
 echo $productWiki;
 echo $hatClass;
 echo $paint;
-// echo $productImage;
+echo $productImage['name'];
 
 if (empty($productName) || 
     empty($productPrice) || 
@@ -50,28 +50,24 @@ if (empty($productName) ||
 } elseif (!preg_match($wikiRegex, $productWiki)) {
     echo "O link precisa ser da wiki do produto.";
 } else {
+    $pastaUpload = '../../dados/imagens/itens_do_jogo/';
+    $uploadArquivo = $pastaUpload . basename($productImage['name']);
 
-    $sql = "INSERT INTO hat (inventory, price, promo_image, name, paint_id, description) VALUES ('$inventory', '$productPrice', 'teste.png', '$productName', '1', '$description')";
+    if (move_uploaded_file($productImage['tmp_name'], $uploadArquivo)) {
+        $sql = "INSERT INTO hat (inventory, price, promo_image, name, paint_id, description) VALUES ('$inventory', '$productPrice', '$imageName', '$productName', '1', '$description')";
 
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Produto inserido com sucesso!\n";
+        if ($conn->query($sql) === TRUE) {
+            echo "Produto inserido com sucesso!\n";
+        } else {
+            echo "Erro ao inserir novo produto." . $conn->error;
+            
+        }
     } else {
-        echo "Erro ao inserir novo produto." . $conn->error;
-        
+        echo "Falha no upload da imagem.";
     }
 
-    // Aqui você pode adicionar o código para processar o upload do arquivo e salvar os dados no banco de dados
 
-    // Exemplo de como mover o arquivo para o diretório desejado
-    // $uploadDirectory = '../uploads/';
-    // $uploadFile = $uploadDirectory . basename($productImage['name']);
 
-    // if (move_uploaded_file($productImage['tmp_name'], $uploadFile)) {
-    //     echo "ok";
-    // } else {
-    //     echo "Falha no upload da imagem.";
-    // }
 }
 
 
