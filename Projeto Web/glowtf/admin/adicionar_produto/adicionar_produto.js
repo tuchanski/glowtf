@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (inputUploadImagem.files.length > 0) {
       divImagens.style.display = 'block';
       const arquivo = inputUploadImagem.files[0];
-      const nomeArquivo = arquivo.name;
+      const nomeImagemProduto = arquivo.name;
       const leitor = new FileReader();
       leitor.onload = function (e) {
         imgProduto.src = e.target.result;
@@ -54,70 +54,86 @@ function validarTecla(event) {
 
 document.getElementById('estoque').addEventListener('keydown', validarTecla);
 
-function cadastraProduto() {
-  const nomeProduto = document.getElementById('nome-produto').value;
-  const precoProduto = document.getElementById('preco-produto').value;
-  const estoqueProduto = document.getElementById('estoque').value;
-  const descricaoProduto = document.getElementById('descricao').value;
-  const wikiProduto = document.getElementById('wiki-produto').value;
-  const tintaProduto = document.getElementById('tinta').value;
-  const inputUploadImagem = document.getElementById('upload-imagem');
-  const regex = /wiki.teamfortress.com/;
-  // const nomeImagem = inputUploadImagem.files[0].name;
-  const classeProduto = document.getElementById('classe');
-  classeProduto.addEventListener('change', function () {
-    const classesSelecionadas = Array.from(this.selectedOptions).map(option => option.value);
-    console.log('Opções selecionadas:', classesSelecionadas);
-  });
+// function cadastraProduto() {
+//   const nomeProduto = document.getElementById('nome-produto').value;
+//   const precoProduto = document.getElementById('preco-produto').value;
+//   const estoqueProduto = document.getElementById('estoque').value;
+//   const descricaoProduto = document.getElementById('descricao').value;
+//   const wikiProduto = document.getElementById('wiki-produto').value;
+//   const tintaProduto = document.getElementById('tinta').value;
+//   const inputUploadImagem = document.getElementById('upload-imagem');
+//   const regex = /wiki.teamfortress.com/;
+//   // const nomeImagem = inputUploadImagem.files[0].name;
+//   const classeProduto = document.getElementById('classe');
+//   classeProduto.addEventListener('change', function () {
+//     const classesSelecionadas = Array.from(this.selectedOptions).map(option => option.value);
+//     console.log('Opções selecionadas:', classesSelecionadas);
+//   });
 
-  console.log(nomeProduto);
-  console.log(precoProduto);
-  console.log(estoqueProduto);
-  console.log(descricaoProduto);
-  console.log(wikiProduto);
-  console.log(tintaProduto);
-
-  const arquivo = inputUploadImagem.files[0];
-  const nomeArquivo = arquivo.name;
-  console.log(nomeArquivo);
+//   console.log(nomeProduto);
+//   console.log(precoProduto);
+//   console.log(estoqueProduto);
+//   console.log(descricaoProduto);
+//   console.log(wikiProduto);
+//   console.log(tintaProduto);
+//   const arquivo = inputUploadImagem.files[0];
+//   const nomeImagemProduto = arquivo.name;
+//   console.log(nomeImagemProduto);
   
+//   const formulario = document.getElementById('formProduto');
+
+//   fetch('adicionar_produto.php', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     body: new formData({
+//       'nome-produto': nomeProduto,
+//       'preco-produto': precoProduto,
+//       'estoque': estoqueProduto,
+//       'descricao': descricaoProduto,
+//       'wiki-produto': wikiProduto,
+//       'classe': classeProduto,
+//       'tinta': tintaProduto,
+//       'upload-imagem': nomeImagemProduto
+//     })
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data);
+
+      
+//     })
+//     .catch(error => {
+//       console.log(data);
+//       console.error('Error:', error);
+//   });
+// }
+
+
+
+  
+function cadastraProduto() {
+
   const formulario = document.getElementById('formProduto');
 
+  const formData = new FormData(formulario);
+
   fetch('adicionar_produto.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: new URLSearchParams({
-      'nome-produto': nomeProduto,
-      'preco-produto': precoProduto,
-      'estoque': estoqueProduto,
-      'descricao': descricaoProduto,
-      'wiki-produto': wikiProduto,
-      'classe': estoque,
-      'tinta': tintaProduto,
-      'upload-imagem': nomeArquivo
-    })
+      method: 'POST',
+      body: formData
   })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      if(data.length == 0){
-        alert("Login Inexistente, Por favor confira se o seu Login/Senha estão corretos.")
-      }
-      else{
-        // window.location.href = '../home/home.html?user='+ data[0].id;
-      }
-    })
-    .catch(error => {
-      console.log(data);
-      console.error('Error:', error);
+      .then(response => response.text())
+      .then(data => {
+          console.log(data); 
+  })
+
+  .catch(error => {
+      console.error('Erro:', error);
+      alert('Ocorreu um erro ao enviar o formulário.');
   });
+
+  // window.location.href = "./atualiza_cadastro.html";
 }
-
-
-
-  
-
 
 

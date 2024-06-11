@@ -5,10 +5,8 @@ $usuario = "root";
 $senha = "";
 $banco = "glowtfdb";
 
-// Conexão com o banco de dados
 $conn = new mysqli($host, $usuario, $senha, $banco);
 
-// Verifica a conexão
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
@@ -16,7 +14,6 @@ function isInteger($input) {
     return ctype_digit(strval($input));
 }
 
-// Recebendo dados do formulário
 $productName = isset($_POST['nome-produto']) ? $_POST['nome-produto'] : '';
 $productPrice = isset($_POST['preco-produto']) ? $_POST['preco-produto'] : '';
 $inventory = isset($_POST['estoque:']) ? $_POST['estoque:'] : '';
@@ -29,13 +26,13 @@ $productImage = isset($_FILES['upload-imagem']) ? $_FILES['upload-imagem'] : nul
 // Expressão regular para validar o link da wiki
 $wikiRegex = "/^https:\/\/wiki\.teamfortress\.com\/.*$/";
 
-// echo $productName;
-// echo $productPrice;
-// echo $inventory;
-// echo $description;
-// echo $productWiki;
-// echo $hatClass;
-// echo $paint;
+echo $productName;
+echo $productPrice;
+echo $inventory;
+echo $description;
+echo $productWiki;
+echo $hatClass;
+echo $paint;
 // echo $productImage;
 
 // // Verificações de validação
