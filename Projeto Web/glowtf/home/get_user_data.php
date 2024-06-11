@@ -1,12 +1,13 @@
 <?php
 // Database configuration
-$host = "localhost:3307";
+$host = "localhost";
+$port = "3307"; // Port should be separated from the host
 $user = "root"; 
 $password = "";
 $dbname = "glowtfdb";
 
 // Create connection
-$conn = new mysqli($host, $user, $password, $dbname);
+$conn = new mysqli($host, $user, $password, $dbname, $port);
 
 // Check connection
 if ($conn->connect_error) {
@@ -16,12 +17,17 @@ if ($conn->connect_error) {
 }
 
 // Get POST data
-$name = $_POST['nome'];
-$pass = $_POST['senha'];
+$id = $_POST['id'];
 
 // Prepare and execute SQL query with prepared statement
-$stmt = $conn->prepare("SELECT * FROM user WHERE (name = ? OR email = ?) AND password = ?");
-$stmt->bind_param("sss", $name, $name, $pass);
+$stmt = $conn->prepare("SELECT * FROM user WHERE id = ?");
+if (!$stmt) {
+    // Return error as JSON
+    echo json_encode(["error" => "Prepare statement failed: " . $conn->error]);
+    exit;
+}
+
+$stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
 

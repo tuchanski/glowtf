@@ -12,33 +12,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-  <nav>
-    <ul class="conjunto-nav">
-      <li class="logo">
-        <a href="../home/home.html">
-          <span class="material-symbols-outlined">
-            stylus_laser_pointer
-          </span>
-          GLOW.<b>TF</b>
-        </a>
-      </li>
-      <li class="searchbar">
-        <input type="text" id="searchbar" placeholder="O que você está buscando hoje?">
-        <button type="button" class="search-btn">
-          <span class="material-symbols-outlined">
-            search
-          </span>
-        </button>
-      </li>
-      <li class="login">
-        <a class="usuario" href="../login/login.html"><span class="material-symbols-outlined">person</span>Entrar</a>
-        <button type="button" class="login_steam">
-          <img src="../dados/imagens/ícones/Steam.png">
-          Entrar
-        </button>
-      </li>
-    </ul>
-  </nav>
+  <script src="../bibliotecas/navbar.js"></script>
+  <div id="create-navbar"></div>
   <div class="wrapper">
     <h1 class="title">Entrar</h1>
     <div class="corpo">
@@ -46,7 +21,7 @@
         <form id="loginForm" class="login-layout">
             <div class="input-usuario">
               <div>
-                <label for="nome">Nome:</label>
+                <label for="nome">Nome ou Email:</label>
               </div>
               <div>
                 <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
@@ -60,8 +35,9 @@
                 <input type="password" id="senha" name="senha" placeholder="Insira sua senha" required>
               </div>
             </div>
-            <button type="button" onclick="loginUsuario()">Entrar</button>
+            <button class="btn-login" type="button" onclick="loginUsuario()">Entrar</button>
             <a href="../cadastro/cadastro.html">Não possui cadastro?</a>
+            <script src="./login.js"></script>
         </form>
       </div>
     </div>

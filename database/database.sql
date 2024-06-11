@@ -45,6 +45,7 @@ CREATE TABLE user (
     password VARCHAR(30) NOT NULL,
     `admin` BOOL NOT NULL,
     id_steam CHAR(17) NOT NULL,
+    steam_avatar VARCHAR(256) NOT NULL,
     PRIMARY KEY (id),
     UNIQUE (cpf),
     UNIQUE (email)
