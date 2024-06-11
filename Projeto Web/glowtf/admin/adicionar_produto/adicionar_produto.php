@@ -24,42 +24,6 @@ $productImage = isset($_FILES['upload-imagem']) ? $_FILES['upload-imagem'] : nul
 $imageName = $productImage['name'];
 $wikiRegex = "/^https:\/\/wiki\.teamfortress\.com\/.*$/";
 
-// echo $productName;
-// echo $productPrice;
-// echo $inventory;
-// echo $description;
-// echo $productWiki;
-// echo $hatClass;
-// echo $paint;
-// echo $productImage['name'];
-
-
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-} else {
-    $paint = "SELECT * from paint";
-    echo $paint['name'];
-
-    $paint_result = $conn->query($paint);
-   
-    if ($paint_result->num_rows > 0) {
-        $rows = array();
-        while($row = $paint_result->fetch_assoc()) {
-            $rows[] = $row;
-        }
-        header('Content-Type: application/json');
-        echo json_encode($rows);
-    } else {
-        echo json_encode([]);
-    }
-}
-
-
-
-
-
-
-
 if (empty($productName) || 
     empty($productPrice) || 
     empty($inventory) || 
@@ -81,7 +45,7 @@ if (empty($productName) ||
     $uploadArquivo = $pastaUpload . basename($productImage['name']);
 
     if (move_uploaded_file($productImage['tmp_name'], $uploadArquivo)) {
-        $sql = "INSERT INTO hat (inventory, price, promo_image, name, paint_id, description) VALUES ('$inventory', '$productPrice', '$imageName', '$productName', '1', '$description')";
+        $sql = "INSERT INTO hat (inventory, price, promo_image, name, paint_id, description) VALUES ('$inventory', '$productPrice', '$imageName', '$productName', '$paint', '$description')";
 
         if ($conn->query($sql) === TRUE) {
             echo "Produto inserido com sucesso!\n";
@@ -95,11 +59,6 @@ if (empty($productName) ||
 
 }
  
-
-
-
-
-
 $conn->close();
 ?>
  

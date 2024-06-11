@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.getElementById('estoque').addEventListener('keydown', validarTecla);
   carregaTintas();
+  carregaClasses()
 });
 
 function validarTecla(event) {
@@ -86,10 +87,30 @@ function carregaTintas() {
     })
     .then((data) => {
       console.log(data);
-      listaTintas.insertAdjacentHTML("beforeend", "<option></option>");
+      listaTintas.insertAdjacentHTML("beforeend", "<option value=\"\">Nenhuma</option>");
       data.forEach((data) => {
         const paintHtml = `<option value='${data.paint_id}'>${data.name}</option>`
         listaTintas.insertAdjacentHTML("beforeend", paintHtml);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+function carregaClasses() {
+  const listaClasses = document.getElementsByClassName("classe")[0];
+    
+  fetch("classes.php")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro na conexão");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      data.forEach((data) => {
+        const classHtml = `<option value='${data.class_id}'>${data.class_name}</option>`
+        listaClasses.insertAdjacentHTML("beforeend", classHtml);
       });
     })
     .catch((error) => console.error("Error:", error));
