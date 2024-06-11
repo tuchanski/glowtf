@@ -115,9 +115,12 @@ function criarLogin() {
   }
 
 
-document.addEventListener("DOMContentLoaded", () => createNavbar(""));
+document.addEventListener("DOMContentLoaded", () => createNavbar("create-navbar"));
 
-
+//Desloga do Website
+function deslogar(){
+  window.location.replace(fixPastaAdmin("../bibliotecas/deslogar.html",  "../../bibliotecas/deslogar.html"))
+}
 
 
 //Utilidades Navbar
