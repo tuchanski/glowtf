@@ -8,15 +8,7 @@ function comprar(){
   }
 }
 
-function corEstrela(element) {
-  if (element.style.color === 'white') {
-    element.style.color = '#282828';
-  } else {
-    element.style.color = 'white';
-  }
-}
-
-function carregarProdutos(query) {
+function carregaProdutos() {
   const listaProdutos = document.getElementsByClassName("itens")[0];
   fetch("carrinho.php")
     .then((response) => {
@@ -47,18 +39,20 @@ function carregarProdutos(query) {
           <td class="preco-carrinho">
               R$ ${(data.price / 100).toFixed(2).replace('.', ',')}
           </td>
-          <td class="btn-comprar-carrinho">
-            <button class="comprar-btn" type="button">
-              Comprar
-            </button>
-          </td>
-          <td class="btn-deletar-carrinho">
-            <button class="remover-carrinho-btn" type="button">
-              <span class="material-symbols-outlined">
-                delete
-              </span>
-            </button>
-          </td>
+          <div class="botoes-carrinho">
+            <td class="btn-comprar-carrinho">
+              <button class="comprar-btn" type="button">
+                Comprar
+              </button>
+            </td>
+            <td class="btn-deletar-carrinho">
+              <button class="remover-carrinho-btn" type="button">
+                <span class="material-symbols-outlined">
+                  delete
+                </span>
+              </button>
+            </td>
+          </div>
         </tr>
         `
         listaProdutos.insertAdjacentHTML("beforeend", item);
@@ -68,7 +62,7 @@ function carregarProdutos(query) {
     .catch((error) => console.error("Error:", error));
 }
 
-document.addEventListener("DOMContentLoaded", () => carregarProdutos(""));
+document.addEventListener("DOMContentLoaded", () => carregaProdutos(""));
 
 
 
