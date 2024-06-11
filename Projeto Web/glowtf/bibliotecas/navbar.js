@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 
+//Cria o HTML para a navbar unificada.
 function createNavbar(target_id){
     const html = `<nav>
     <ul class="conjunto-nav">
@@ -32,6 +33,7 @@ function createNavbar(target_id){
   criarLogin();
 }
 
+//Cria botões de navegação na direita.
 function criarLogin() {
     const classeLogin = document.getElementsByClassName('login')[0];
     let isLogged = urlParams.has('user');
