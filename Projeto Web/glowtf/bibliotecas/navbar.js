@@ -32,21 +32,13 @@ function createNavbar(target_id){
   criarLogin();
 }
 
-function getAbsolutePath(relativePath) {
-  // Get the base path without the filename
-  var basePath = window.location.href.replace(window.location.pathname, "");
-  // Remove trailing slashes from the base path
-  basePath = basePath.replace(/\/$/, "");
-  var absPath = basePath + '/' + relativePath;
-  return absPath;
-}
 function criarLogin() {
     const classeLogin = document.getElementsByClassName('login')[0];
     let isLogged = urlParams.has('user');
     let result = `ERROR`;
     if(isLogged){
-      
-      fetch(getAbsolutePath('/bibliotecas/get_user_data.php'), {
+      fetchPath = window.location.pathname.split('/').length < 6? '../bibliotecas/get_user_data.php' : '../../bibliotecas/get_user_data.php' 
+      fetch(fetchPath, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
