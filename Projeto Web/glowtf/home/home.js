@@ -28,7 +28,9 @@ function carregarProdutos(query) {
       console.log(data);
       var count = 0;
       data.forEach((data) => {
-        const card = `
+        let card = `<h1>ERRO FATAL</h1>`;
+        if(data.hex_color != undefined){
+        card = `
         <div class="card">
           <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
           <div class="card-titulo">${data.hat_name}</div>
@@ -51,7 +53,27 @@ function carregarProdutos(query) {
               <div>adicionar ao carrinho</div>
             </button>
           </div>
+        </div>`;}
+        else {
+          card = `
+        <div class="card">
+          <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
+          <div class="card-titulo">${data.hat_name}</div>
+          <a href="../produto/produto.html?hat_id=${data.hat_id}" class="imagens">
+            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image
+          }">
+          </a>
+          <div class="preco-botao">
+            <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
+            <button class="carrinho-btn" type="button" onclick="comprar()">
+              <span class="material-symbols-outlined">
+                add_shopping_cart
+              </span>
+              <div>adicionar ao carrinho</div>
+            </button>
+          </div>
         </div>`;
+        }
         listaProdutos.insertAdjacentHTML("beforeend", card);
         count += 1;
       });
