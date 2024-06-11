@@ -81,6 +81,7 @@ CREATE TABLE sale (
     id_user INTEGER NOT NULL,
     id_coupon INTEGER,
     price INTEGER NOT NULL,
+    payment_method VARCHAR(1) NOT NULL, #p - pix; d - débito; c - crédito; b - boleto; 
     PRIMARY KEY (id),
     FOREIGN KEY (id_user) REFERENCES user (id),
     FOREIGN KEY (id_coupon) REFERENCES coupons (id)
