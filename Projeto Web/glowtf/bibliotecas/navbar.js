@@ -38,9 +38,8 @@ function criarLogin() {
     const classeLogin = document.getElementsByClassName('login')[0];
     let isLogged = urlParams.has('user');
     let result = `ERROR`;
-    if(isLogged){
-      fetchPath = window.location.pathname.split('/').length < 7? '../bibliotecas/get_user_data.php' : '../../bibliotecas/get_user_data.php' 
-      fetch(fetchPath, {
+    if(isLogged){ 
+      fetch(FixPastaAdmin('../bibliotecas/get_user_data.php', '../../bibliotecas/get_user_data.php'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -115,4 +114,18 @@ function criarLogin() {
     }
   }
 
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => createNavbar("create-navbar"));
+
+
+
+
+//Utilidades Navbar
+
+//Retorna o diretorio correto para arquivos que executem este script em Root ou uma Subpasta
+function FixPastaAdmin(root, subpasta){
+  return window.location.pathname.split('/').length < 7? root : subpasta
+}
