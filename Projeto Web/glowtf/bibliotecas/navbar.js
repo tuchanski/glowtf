@@ -4,7 +4,7 @@ function createNavbar(target_id){
     const html = `<nav>
     <ul class="conjunto-nav">
       <li class="logo">
-        <a href="../home/home.html">
+        <a href="javascript:void(0)" onclick="MoverPagina('../home/home.html')">
           <span class="material-symbols-outlined">
             stylus_laser_pointer
           </span>
@@ -20,7 +20,7 @@ function createNavbar(target_id){
         </button>
       </li>
       <li class="login">
-        <!-- <a class="usuario" href="../login/login.html"><span class="material-symbols-outlined">person</span>Entrar</a>
+        <!-- <a class="usuario" href="javascript:void(0)" onclick="MoverPagina('../login/login.html')"><span class="material-symbols-outlined">person</span>Entrar</a>
         <button type="button" class="login_steam">
           <img src="../dados/imagens/ícones/Steam.png">
           Entrar
@@ -31,6 +31,7 @@ function createNavbar(target_id){
   document.getElementById(target_id).insertAdjacentHTML("beforeend", html);
   criarLogin();
 }
+
 function criarLogin() {
     const classeLogin = document.getElementsByClassName('login')[0];
     let isLogged = urlParams.has('user');
@@ -53,24 +54,24 @@ function criarLogin() {
           result = `
       <div class="usuario-autenticado">
         <li>
-          <a href="../lista_de_desejos/lista_de_desejos.html">
+          <a onclick="MoverPagina('../lista_de_desejos/lista_de_desejos.html')">
             <span class="material-symbols-outlined" id="span-nav">
               bookmark
             </span>
           </a>
         </li>
         <li>
-          <a href="../carrinho/carrinho.html">
+          <a onclick="MoverPagina('../carrinho/carrinho.html')">
             <span class="material-symbols-outlined" id="span-nav">
               shopping_cart
             </span>
           </a>
         </li>
         <li>
-          <a class="usuario" href="#"><span class="material-symbols-outlined">person</span>${data[0].name}</a>
+          <a class="usuario"><span class="material-symbols-outlined">person</span>${data[0].name}</a>
           <ul class="dropdown">
-            <li class="dropdown"><a href="../perfil_usuario/perfil_usuario.html">Perfil</a></li><br>
-            <li class="dropdown"><a >Sair</a></li>
+            <li class="dropdown"><a onclick="MoverPagina('../perfil_usuario/perfil_usuario.html')">Perfil</a></li><br>
+            <li class="dropdown"><a>Sair</a></li>
           </ul>
         </li>
         <li>
@@ -83,10 +84,10 @@ function criarLogin() {
           result = `
       <div class="usuario-autenticado">
         <li>
-        <a class="usuario" href="#"><span class="material-symbols-outlined">person</span>${data[0].name} | Admin</a>
+        <a class="usuario" ><span class="material-symbols-outlined">person</span>${data[0].name} | Admin</a>
         <ul class="dropdown">
-          <li class="dropdown"><a href="../lista_de_produtos/lista_de_produtos.html">Lista de produtos</a></li><br>
-          <li class="dropdown"><a href="../lista_de_produtos/lista_de_produtos.html">Adicionar produto</a></li><br>
+          <li class="dropdown"><a  onclick="MoverPagina('../admin/lista_de_produtos/lista_de_produtos.html')">Lista de produtos</a></li><br>
+          <li class="dropdown"><a  onclick="MoverPagina('../admin/lista_de_produtos/lista_de_produtos.html')">Adicionar produto</a></li><br>
           <li class="dropdown"><a>Sair</a></li>
         </ul>
       </li>
@@ -103,7 +104,7 @@ function criarLogin() {
       })
     }
     else{
-      result = `<a class="usuario" href="../login/login.html"><span class="material-symbols-outlined">person</span>Entrar</a>
+      result = `<a class="usuario" href="javascript:void(0)" onclick="MoverPagina('../login/login.html')"><span class="material-symbols-outlined">person</span>Entrar</a>
           <button type="button" class="login_steam">
             <img src="../dados/imagens/ícones/Steam.png">
             Entrar
