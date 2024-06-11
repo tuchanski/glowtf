@@ -1,4 +1,4 @@
-
+//Move para a página destino sem perder os parametros
 function MoverPagina(destino) {
     const currentParams = window.location.search;
     
