@@ -39,7 +39,7 @@ function criarLogin() {
     let isLogged = urlParams.has('user');
     let result = `ERROR`;
     if(isLogged){ 
-      fetch(FixPastaAdmin('../bibliotecas/get_user_data.php', '../../bibliotecas/get_user_data.php'), {
+      fetch(fixPastaAdmin('../bibliotecas/get_user_data.php', '../../bibliotecas/get_user_data.php'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -126,6 +126,6 @@ document.addEventListener("DOMContentLoaded", () => createNavbar("create-navbar"
 //Utilidades Navbar
 
 //Retorna o diretorio correto para arquivos que executem este script em Root ou uma Subpasta
-function FixPastaAdmin(root, subpasta){
+function fixPastaAdmin(root, subpasta){
   return window.location.pathname.split('/').length < 7? root : subpasta
 }
