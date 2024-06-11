@@ -4,7 +4,7 @@ function createNavbar(target_id){
     const html = `<nav>
     <ul class="conjunto-nav">
       <li class="logo">
-        <a href="javascript:void(0)" onclick="MoverPagina('../home/home.html')">
+        <a onclick="MoverPagina('../home/home.html')">
           <span class="material-symbols-outlined">
             stylus_laser_pointer
           </span>
@@ -32,13 +32,21 @@ function createNavbar(target_id){
   criarLogin();
 }
 
+function getAbsolutePath(relativePath) {
+  // Get the base path without the filename
+  var basePath = window.location.href.replace(window.location.pathname, "");
+  // Remove trailing slashes from the base path
+  basePath = basePath.replace(/\/$/, "");
+  var absPath = basePath + '/' + relativePath;
+  return absPath;
+}
 function criarLogin() {
     const classeLogin = document.getElementsByClassName('login')[0];
     let isLogged = urlParams.has('user');
-    let result = `ERRROR`;
+    let result = `ERROR`;
     if(isLogged){
-      let username = '';
-      fetch('../bibliotecas/get_user_data.php', {
+      
+      fetch(getAbsolutePath('/bibliotecas/get_user_data.php'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
