@@ -1,10 +1,11 @@
 const urlParams = new URLSearchParams(window.location.search);
 
+//Cria o HTML para a navbar unificada.
 function createNavbar(target_id){
     const html = `<nav>
     <ul class="conjunto-nav">
       <li class="logo">
-        <a href="javascript:void(0)" onclick="MoverPagina('../home/home.html')">
+        <a onclick="MoverPagina('../home/home.html')">
           <span class="material-symbols-outlined">
             stylus_laser_pointer
           </span>
@@ -32,13 +33,14 @@ function createNavbar(target_id){
   criarLogin();
 }
 
+//Cria botões de navegação na direita.
 function criarLogin() {
     const classeLogin = document.getElementsByClassName('login')[0];
     let isLogged = urlParams.has('user');
-    let result = `ERRROR`;
+    let result = `ERROR`;
     if(isLogged){
-      let username = '';
-      fetch('../bibliotecas/get_user_data.php', {
+      fetchPath = window.location.pathname.split('/').length < 7? '../bibliotecas/get_user_data.php' : '../../bibliotecas/get_user_data.php' 
+      fetch(fetchPath, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
