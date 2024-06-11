@@ -20,7 +20,8 @@ function carregaProdutos() {
     .then((data) => {
       console.log(data);
       data.forEach((data) => {
-        const item = `<tr>
+        const item = `
+        <tr class="linha-tabela">
           <td class="imagens-carrinho">
           <a href="../produto/produto.html?hat_id=${data.hat_id}" class="imagens">
             <img class="imagem-produto-carrinho" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
@@ -37,24 +38,20 @@ function carregaProdutos() {
             </div>
           </td>
           <td class="preco-carrinho">
-              R$ ${(data.price / 100).toFixed(2).replace('.', ',')}
+            R$ ${(data.price / 100).toFixed(2).replace('.', ',')}
+          <td class="btn-carrinho">
+            <button class="comprar-btn" type="button">
+              Comprar
+            </button>
           </td>
-          <div class="botoes-carrinho">
-            <td class="btn-comprar-carrinho">
-              <button class="comprar-btn" type="button">
-                Comprar
-              </button>
-            </td>
-            <td class="btn-deletar-carrinho">
-              <button class="remover-carrinho-btn" type="button">
-                <span class="material-symbols-outlined">
-                  delete
-                </span>
-              </button>
-            </td>
-          </div>
-        </tr>
-        `
+          <td class="btn-carrinho">
+            <button class="remover-carrinho-btn" type="button">
+              <span class="material-symbols-outlined">
+                delete
+              </span>
+            </button>
+          </td>
+        </tr>`
         listaProdutos.insertAdjacentHTML("beforeend", item);
         
       });
