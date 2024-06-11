@@ -37,7 +37,7 @@ function criarLogin() {
     let isLogged = urlParams.has('user');
     let result = `ERROR`;
     if(isLogged){
-      fetchPath = window.location.pathname.split('/').length < 6? '../bibliotecas/get_user_data.php' : '../../bibliotecas/get_user_data.php' 
+      fetchPath = window.location.pathname.split('/').length < 7? '../bibliotecas/get_user_data.php' : '../../bibliotecas/get_user_data.php' 
       fetch(fetchPath, {
         method: 'POST',
         headers: {
