@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (inputUploadImagem.files.length > 0) {
       divImagens.style.display = 'block';
       const arquivo = inputUploadImagem.files[0];
-      const nomeImagemProduto = arquivo.name;
       const leitor = new FileReader();
       leitor.onload = function (e) {
         imgProduto.src = e.target.result;
@@ -36,6 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
       imgSplash.style.display = 'none';
     }
   });
+
+  document.getElementById('estoque').addEventListener('keydown', validarTecla);
+  carregaTintas();
 });
 
 function validarTecla(event) {
@@ -52,29 +54,47 @@ function validarTecla(event) {
   }
 }
 
-document.getElementById('estoque').addEventListener('keydown', validarTecla);
-
 function cadastraProduto() {
-
   const formulario = document.getElementById('formProduto');
-
   const formData = new FormData(formulario);
 
   fetch('adicionar_produto.php', {
-      method: 'POST',
-      body: formData
+    method: 'POST',
+    body: formData
   })
-      .then(response => response.text())
-      .then(data => {
-          console.log(data); 
+  .then(response => response.text())
+  .then(data => {
+      console.log(data);
+      // alert('Produto adicionado com sucesso!');
+      // MoverPagina('../lista_de_produtos.html');
   })
-
   .catch(error => {
       console.error('Erro:', error);
       alert('Ocorreu um erro ao enviar o formulário.');
   });
-
-  window.location.href = "../lista_de_produtos.html";
 }
+
+function carregaTintas() {
+  const listaTintas = document.getElementsByClassName("tinta")[0];
+    
+  fetch("tintas.php")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro na conexão");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      listaTintas.insertAdjacentHTML("beforeend", "<option></option>");
+      data.forEach((data) => {
+        const paintHtml = `<option value='${data.paint_id}'>${data.name}</option>`
+        listaTintas.insertAdjacentHTML("beforeend", paintHtml);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+
 
 
