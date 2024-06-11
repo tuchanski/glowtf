@@ -6,6 +6,9 @@ function comprar(){
     window.location.href = '../login/login.html';
     alert("Você precisa estar logado para realizar compras.");
   }
+  else {
+    window.location.href = '../pagamento/pagamento.html';
+  }
 }
 
 function carregaProdutos() {
@@ -40,7 +43,7 @@ function carregaProdutos() {
           <td class="preco-carrinho">
             R$ ${(data.price / 100).toFixed(2).replace('.', ',')}
           <td class="btn-carrinho">
-            <button class="comprar-btn" type="button">
+            <button class="comprar-btn" type="button"  onclick="comprar()">
               Comprar
             </button>
           </td>

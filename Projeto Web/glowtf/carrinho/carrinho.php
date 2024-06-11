@@ -1,15 +1,12 @@
 <?php
-// Configurações do banco de dados
 $host = "localhost";
-$port = "3307"; // Port should be separated from the host
+$port = "3307";
 $usuario = "root";
-$senha = ""; // Use the appropriate password here
+$senha = "";
 $banco = "glowtfdb";
 
-// Conexão com o banco de dados
 $conn = new mysqli($host, $usuario, $senha, $banco, $port);
 
-// Verifica a conexão
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 } else {
@@ -32,7 +29,27 @@ if ($conn->connect_error) {
             WHERE
                 hat.inventory > 0;";
 
-    $result = $conn->query($sql);
+    // $sql = "SELECT
+    //             h.name AS nome_produto,
+    //             c.id_user,
+    //             chh.id_hat,
+    //             h.price,
+    //             h.promo_image,
+    //             IF(h.name = 'hat', 'Yes', 'No') AS cart_has_hat
+    //         FROM
+    //             cart c
+    //         JOIN
+    //             cart_has_hat chh ON c.id_user = chh.id_cart
+    //         JOIN
+    //             hat h ON chh.id_hat = h.id
+    //         WHERE
+    //             c.id_user = 2
+    //         GROUP BY
+    //             h.name, c.id_user, chh.id_hat, h.price, h.promo_image
+    //         ORDER BY
+    //             h.name;";
+
+    $result= $conn->query($sql);
    
     if ($result->num_rows > 0) {
         $rows = array();
@@ -46,6 +63,5 @@ if ($conn->connect_error) {
     }
 }
 
-// Fecha a conexão
 $conn->close();
 ?>
