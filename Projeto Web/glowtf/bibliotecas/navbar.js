@@ -38,7 +38,7 @@ function criarLogin() {
     let result = `ERRROR`;
     if(isLogged){
       let username = '';
-      fetch('get_user_data.php', {
+      fetch('../bibliotecas/get_user_data.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
