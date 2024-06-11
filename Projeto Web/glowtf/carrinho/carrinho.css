@@ -9,7 +9,6 @@
 
 .fundo-carrinho {
   width: 100%;
-  height: 50%;
   padding: 10%;
   border-radius: 3px;
   background: radial-gradient(circle at 0%, #4C4B58, #323030);
@@ -17,76 +16,64 @@
   box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.25);
 }
 
-.produto {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5%;
-}
-
-.imagens {
-  width: 20%;
+.imagens-carrinho {
   position: relative;
-  top: 0;
-  left: 0;
 }
 
-.imagens:hover {
+.imagens-carrinho:hover {
   filter: drop-shadow(0 0 0.75rem rgba(0, 255, 0, 0.5));
   cursor: pointer;
 }
 
-.imagem {
-  width: 60%;
-  height: auto;
+.imagem-produto-carrinho {
+  width: 130px;
   filter: drop-shadow(0 0 0.75rem rgba(149, 149, 149, 0.75));
 }
 
-.splash {
-  width: 20%;
+.splash-carrinho {
+  width: 30px;
   position: absolute;
-  bottom: 20%;
-  left: 50%;
+  top: 10px;
+  right: 30px;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }
 
-.dados-produto {
-  width: 100%;
+.dados-produto-carrinho {
   flex-direction: column;
   display: flex;
 }
 
-.titulo {
+.titulo-carrinho {
   display: flex;
   font-size: 16px;
   font-weight: 200;
   margin-bottom: 10px;
 }
 
-.tinta {
+.tinta-carrinho {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.cor-da-tinta {
+.cor-da-tinta-carrinho {
   background-color: #6BEB4B;
   height: 25px;
   width: 5px;
 }
 
-.nome-tinta {
+.nome-tinta-carrinho {
   font-size: 14px;
   font-weight: 200;
 }
 
-.preco {
-  font-size: 20px;
-  font-weight: 200;
+.itens {
+  width: 100%;
 }
 
-.botoes {
-  width: 11%;
+.preco-carrinho {
+  font-size: 20px;
+  font-weight: 200;
 }
 
 td {
@@ -99,11 +86,11 @@ td {
   padding: 3px;
   border: none;
   border-radius: 3px;
-  background-color: #33E333;
+  background-color: #33E333;;
   color: white;
   cursor: pointer;
-  font-size: 17px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 700;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -114,7 +101,7 @@ td {
 }
 
 .remover-carrinho-btn {
-  width: 45px;
+  width: 100px;
   height: 45px;
   padding: 3px;
   border: none;
