@@ -24,76 +24,72 @@
   gap: 5%;
 }
 
-.imagens {
+.imagens-carrinho {
   width: 20%;
   position: relative;
   top: 0;
   left: 0;
 }
 
-.imagens:hover {
+.imagens-carrinho:hover {
   filter: drop-shadow(0 0 0.75rem rgba(0, 255, 0, 0.5));
   cursor: pointer;
 }
 
-.imagem {
-  width: 60%;
+.imagem-produto-carrinho {
+  width: 20px;
   height: auto;
   filter: drop-shadow(0 0 0.75rem rgba(149, 149, 149, 0.75));
 }
 
-.splash {
-  width: 20%;
+.splash-produto-carrinho {
+  width: 10%;
   position: absolute;
   bottom: 20%;
   left: 50%;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }
 
-.dados-produto {
+.dados-produto-carrinho {
   width: 100%;
   flex-direction: column;
   display: flex;
 }
 
-.titulo {
+.titulo-carrinho {
   display: flex;
   font-size: 16px;
   font-weight: 200;
   margin-bottom: 10px;
 }
 
-.tinta {
+.tinta-carrinho {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.cor-da-tinta {
+.cor-da-tinta-carrinho {
   background-color: #6BEB4B;
   height: 25px;
   width: 5px;
 }
 
-.nome-tinta {
+.nome-tinta-carrinho {
   font-size: 14px;
   font-weight: 200;
 }
 
-.preco {
+.preco-carrinho {
   font-size: 20px;
   font-weight: 200;
-}
-
-.botoes {
-  width: 11%;
 }
 
 td {
   border-bottom: 1px solid  rgb(112, 111, 130);
 }
 
-.comprar-btn {
+.comprar-btn-carrinho {
   width: 100px;
   height: 45px;
   padding: 3px;
