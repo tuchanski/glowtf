@@ -83,15 +83,15 @@ input[type="file"] {
   cursor: pointer;
 }
 
-.card-splash {
+.splash {
   position: absolute;
   right: 40px;
   bottom: 10px;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }
 
-.card-imagem-produto {
-  width: 90%;
+.imagem-produto {
+  width: 100%;
   max-width: 300px;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }

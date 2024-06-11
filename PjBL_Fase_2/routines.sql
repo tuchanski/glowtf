@@ -1,7 +1,7 @@
 DELIMITER $$
-#Procedures
+--Procedures
 
-#Soma a porcentagem proprio do preço do chapéu a ele mesmo
+--Soma a porcentagem proprio do preço do chapéu a ele mesmo
 CREATE PROCEDURE update_hat_price(IN hat_id INT, IN percentage_increase DECIMAL(5, 2))
 BEGIN
     UPDATE hat
@@ -10,7 +10,7 @@ BEGIN
 END $$
 #CALL update_hat_price(1, 10.000)$$
 
-#Adiciona classe para chapéu
+--Adiciona classe para chapéu
 CREATE PROCEDURE add_class_to_hat(IN hat_id INT, IN class_id INT)
 BEGIN
 	INSERT INTO hat_has_class (hat_id, class_id)
@@ -18,7 +18,7 @@ BEGIN
 END $$
 #CALL add_class_to_hat(1,1)$$
 
-#Mostra todas as vendas o periodo escolhido
+--Mostra todas as vendas o periodo escolhido
 CREATE PROCEDURE sales_report_by_period(IN start_date DATE, IN end_date DATE)
 BEGIN
     SELECT s.id AS sale_id, s.date AS sale_date, u.name AS user_name, s.price AS total_price, c.code_name AS coupon_code
@@ -30,8 +30,8 @@ BEGIN
 END $$
 #CALL sales_report_by_period("2024-05-02" ,NOW(0))$$
 
-#Functions
-#Pega média de gastos de usuário
+--Functions
+--Pega média de gastos de usuário
 CREATE FUNCTION average_spending_by_user(user_id INT) RETURNS DECIMAL(10, 2)
 READS SQL DATA
 BEGIN
@@ -46,7 +46,7 @@ END $$
 
 #SELECT average_spending_by_user(0)$$
 
-#Contagem de chapéus com determinada cor
+--Contagem de chapéus com determinada tinta
 DROP FUNCTION count_hats_by_color$$
 CREATE FUNCTION count_hats_by_color(paint_id INT) RETURNS INT
 READS SQL DATA
@@ -61,7 +61,7 @@ BEGIN
 END $$
 #SELECT count_hats_by_color(1);
 
-#Pega o nome do usuário pelo Id
+--Pega o nome do usuário pelo Id
 CREATE FUNCTION get_user_name(user_id INT) RETURNS VARCHAR(255)
 READS SQL DATA
 BEGIN
@@ -76,7 +76,7 @@ END $$
 
 #Triggers
 
-#Atualiza o estoque do chapéu após uma venda nova 
+--Atualiza o estoque do chapéu após uma venda nova 
 CREATE TRIGGER update_after_insert_sale_has_hat 
 AFTER INSERT ON sale_has_hat 
 FOR EACH ROW 
@@ -93,7 +93,7 @@ BEGIN
     END IF; 
 END$$
 
-#Altera o preço final da venda quando o item individual tem o preço alterado
+--Altera o preço final da venda quando o item individual tem o preço alterado
 CREATE TRIGGER update_sale_price_after_update_sale_has_hat
 AFTER UPDATE ON sale_has_hat
 FOR EACH ROW
@@ -109,7 +109,7 @@ BEGIN
     WHERE id = NEW.id_sale;
 END$$
 
-#Da um aviso quando um usuário vai ser deletado.
+--Da um aviso quando um usuário vai ser deletado.
 CREATE TRIGGER before_delete_user
 BEFORE DELETE ON user
 FOR EACH ROW

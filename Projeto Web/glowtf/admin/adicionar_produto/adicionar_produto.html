@@ -15,7 +15,6 @@
 </head>
 
 <body>
-  <script src="../bibliotecas/utilidades.js"></script>
   <script src="../../bibliotecas/navbar.js"></script>
   <div id="create-navbar"></div>
   <div class="wrapper">
@@ -23,13 +22,14 @@
     <div class="corpo">
       <div class="fundo-adiciona-produto">
         <div class="dados-produto">
-          <form id="loginForm" class="login-layout">
+          <form id="formProduto" class="login-layout">
             <div class="input-produto">
               <div>
                 <label for="nome-produto">Nome:</label>
               </div>
               <div>
-                <input type="text" id="nome-produto" name="nome-produto" placeholder="Digite seu nome do produto" required>
+                <input type="text" id="nome-produto" name="nome-produto" placeholder="Digite seu nome do produto"
+                  required>
               </div>
             </div>
             <div class="input-produto">
@@ -37,7 +37,8 @@
                 <label for="preco-produto">Preço:</label>
               </div>
               <div>
-                <input type="number" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto" required>
+                <input type="number" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto"
+                  required>
               </div>
             </div>
             <div class="input-produto">
@@ -45,7 +46,7 @@
                 <label for="estoque-produto">Estoque:</label>
               </div>
               <div>
-                <input type="number" id="estoque" name="estoque" placeholder="Insira o estoque do produto" required>
+                <input type="text" id="estoque" name="estoque" placeholder="Insira o estoque do produto" required>
               </div>
             </div>
             <div class="input-produto">
@@ -61,40 +62,20 @@
                 <label for="wiki-produto">Wiki:</label>
               </div>
               <div>
-                <input type="text" id="wiki-produto" name="wiki-produto" placeholder="Insira o link da wiki do produto" required>
+                <input type="text" id="wiki-produto" name="wiki-produto" placeholder="Insira o link da wiki do produto"
+                  required>
               </div>
+            </div>
+            <div class="input-imagem">
+              <label for="imagem">Selecione a imagem do chapéu:</label>
+              <input type="file" name="upload-imagem" class="upload-imagem" id="upload-imagem">
             </div>
             <div class="input-produto">
               <div>
                 <label for="tinta">Tinta:</label><br>
               </div>
               <div>
-                <select name="tinta" id="tinta">
-                  <option value="" disabled selected>Selecione o nome da tinta</option>
-                  <option value="Nenhuma">Nenhuma</option>
-                  <option value="O Amargo Sabor de Derrota e Limao">O Amargo Sabor de Derrota e Limão</option>
-                  <option value="Uma Extraordinaria Abundancia de Matiz">Uma Extraordinária Abundância de Matiz</option>
-                  <option value="A Cor das Calcas de Negocios de um Cavalheiro">A Cor das Calças de Negócios de um Cavalheiro</option>
-                  <option value="Cinza Bigode Envelhecido">Cinza Bigode Envelhecido</option>
-                  <option value="Cor 216 190 216">Cor 216 190 216</option>
-                  <option value="Depois das Oito">Depois das Oito</option>
-                  <option value="Ganancia do Zepheniah">Ganância do Zepheniah</option>
-                  <option value="Indiscutivelmente Verde">Indiscutivelmente Verde</option>
-                  <option value="Injustica Salmao Escuro">Injustiça Salmão Escuro</option>
-                  <option value="Laranja Mann Co.">Laranja Mann Co.</option>
-                  <option value="Marrom Radigan Conagher">Marrom Radigan Conagher</option>
-                  <option value="Menta de Macho">Menta de Macho</option>
-                  <option value="Muskelmannbraun">Muskelmannbraun</option>
-                  <option value="Oliva Monotono">Oliva Monótono</option>
-                  <option value="Ouro Australio">Ouro Austrálio</option>
-                  <option value="Rosa pra Caramba">Rosa pra Caramba</option>
-                  <option value="Tintura Peculiarmente Amarronzada">Tintura Peculiarmente Amarronzada</option>
-                  <option value="Um Profundo Compromisso com Roxo">Um Profundo Compromisso com Roxo</option>
-                  <option value="Um Distinto Toco de Agua">Um Distinto Toco de Água</option>
-                  <option value="Uma Cor Similar a Ardosia">Uma Cor Similar à Ardósia</option>
-                  <option value="Uma Distinta Falta de Coloracao">Uma Distinta Falta de Coloração</option>
-                  <option value="Violeta do Nobre Chapeleiro">Violeta do Nobre Chapeleiro</option>
-                  <option value="Vossa Velha Cor Rustica">Vossa Velha Cor Rústica</option>    
+                <select class ="tinta" name="tinta" id="tinta">
                 </select>
               </div>
             </div>
@@ -103,37 +84,24 @@
                 <label for="classe">Selecione a classe do chapéu (Ctrl + click para selecionar múltiplas): </label><br>
               </div>
               <div>
-                <select name="classe" multiple id="classe">
-                  <option value="scout">Scout</option>
-                  <option value="soldier">Soldier</option>
-                  <option value="pyro">Pyro</option>
-                  <option value="demoman">Demoman</option>
-                  <option value="heavy">Heavy</option>
-                  <option value="engineer">Engineer</option>
-                  <option value="medic">Medic</option>
-                  <option value="sniper">Sniper</option>
-                  <option value="spy">Spy</option>
+                <select class="classe" name="classe" multiple id="classe">
                 </select>
               </div>
             </div>
-            <div class="input-imagem">
-              <label for="imagem">Selecione a imagem do chapéu:</label>
-              <input type="file" name="upload-imagem" class="upload-imagem" id="upload-imagem">
-            </div>
             <div class="imagem-botao">
               <div class="imagens">
-                <img class="card-imagem-produto" src="../../dados/imagens/itens_do_jogo/spy/spy_private_eye_large.png">
-                <img class="card-splash" src="../../dados/imagens/tintas/O_Amargo_Sabor_de_Derrota_e_Limão.png">
+                <img class="imagem-produto">
+                <img class="splash">
               </div>
-              </form>
-              <button class="button btn-input" type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar produto</button>
-            </div>
+          </form>
+          <button class="button btn-input" type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar
+            produto</button>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <script src="./adicionar_produto.js">  </script>
 </body>
 
 </html>
-  
