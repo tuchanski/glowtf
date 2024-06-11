@@ -54,65 +54,6 @@ function validarTecla(event) {
 
 document.getElementById('estoque').addEventListener('keydown', validarTecla);
 
-// function cadastraProduto() {
-//   const nomeProduto = document.getElementById('nome-produto').value;
-//   const precoProduto = document.getElementById('preco-produto').value;
-//   const estoqueProduto = document.getElementById('estoque').value;
-//   const descricaoProduto = document.getElementById('descricao').value;
-//   const wikiProduto = document.getElementById('wiki-produto').value;
-//   const tintaProduto = document.getElementById('tinta').value;
-//   const inputUploadImagem = document.getElementById('upload-imagem');
-//   const regex = /wiki.teamfortress.com/;
-//   // const nomeImagem = inputUploadImagem.files[0].name;
-//   const classeProduto = document.getElementById('classe');
-//   classeProduto.addEventListener('change', function () {
-//     const classesSelecionadas = Array.from(this.selectedOptions).map(option => option.value);
-//     console.log('Opções selecionadas:', classesSelecionadas);
-//   });
-
-//   console.log(nomeProduto);
-//   console.log(precoProduto);
-//   console.log(estoqueProduto);
-//   console.log(descricaoProduto);
-//   console.log(wikiProduto);
-//   console.log(tintaProduto);
-//   const arquivo = inputUploadImagem.files[0];
-//   const nomeImagemProduto = arquivo.name;
-//   console.log(nomeImagemProduto);
-  
-//   const formulario = document.getElementById('formProduto');
-
-//   fetch('adicionar_produto.php', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/x-www-form-urlencoded'
-//     },
-//     body: new formData({
-//       'nome-produto': nomeProduto,
-//       'preco-produto': precoProduto,
-//       'estoque': estoqueProduto,
-//       'descricao': descricaoProduto,
-//       'wiki-produto': wikiProduto,
-//       'classe': classeProduto,
-//       'tinta': tintaProduto,
-//       'upload-imagem': nomeImagemProduto
-//     })
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-//       console.log(data);
-
-      
-//     })
-//     .catch(error => {
-//       console.log(data);
-//       console.error('Error:', error);
-//   });
-// }
-
-
-
-  
 function cadastraProduto() {
 
   const formulario = document.getElementById('formProduto');
