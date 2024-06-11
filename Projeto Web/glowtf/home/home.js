@@ -9,10 +9,12 @@ function comprar(){
 }
 
 function corEstrela(element) {
-  if (element.style.color === 'white') {
-    element.style.color = '#282828';
-  } else {
-    element.style.color = 'white';
+  if (urlParams.has("user")) {
+    if (element.style.color === 'white') {
+      element.style.color = '#282828';
+    } else {
+      element.style.color = 'white';
+    }
   }
 }
 
