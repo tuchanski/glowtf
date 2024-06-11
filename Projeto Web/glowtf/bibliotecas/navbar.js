@@ -115,10 +115,7 @@ function criarLogin() {
   }
 
 
-
-
-
-document.addEventListener("DOMContentLoaded", () => createNavbar("create-navbar"));
+document.addEventListener("DOMContentLoaded", () => createNavbar(""));
 
 
 
