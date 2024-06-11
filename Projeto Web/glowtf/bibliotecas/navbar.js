@@ -38,9 +38,8 @@ function criarLogin() {
     const classeLogin = document.getElementsByClassName('login')[0];
     let isLogged = urlParams.has('user');
     let result = `ERROR`;
-    if(isLogged){
-      fetchPath = window.location.pathname.split('/').length < 7? '../bibliotecas/get_user_data.php' : '../../bibliotecas/get_user_data.php' 
-      fetch(fetchPath, {
+    if(isLogged){ 
+      fetch(fixPastaAdmin('../bibliotecas/get_user_data.php', '../../bibliotecas/get_user_data.php'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
@@ -73,7 +72,7 @@ function criarLogin() {
           <a class="usuario"><span class="material-symbols-outlined">person</span>${data[0].name}</a>
           <ul class="dropdown">
             <li class="dropdown"><a onclick="MoverPagina('../perfil_usuario/perfil_usuario.html')">Perfil</a></li><br>
-            <li class="dropdown"><a>Sair</a></li>
+            <li class="dropdown"><a onclick="deslogar()">Sair</a></li>
           </ul>
         </li>
         <li>
@@ -90,7 +89,7 @@ function criarLogin() {
         <ul class="dropdown">
           <li class="dropdown"><a  onclick="MoverPagina('../admin/lista_de_produtos/lista_de_produtos.html')">Lista de produtos</a></li><br>
           <li class="dropdown"><a  onclick="MoverPagina('../admin/lista_de_produtos/lista_de_produtos.html')">Adicionar produto</a></li><br>
-          <li class="dropdown"><a>Sair</a></li>
+          <li class="dropdown"><a onclick="deslogar()">Sair</a></li>
         </ul>
       </li>
         <li>
@@ -115,4 +114,18 @@ function criarLogin() {
     }
   }
 
+
 document.addEventListener("DOMContentLoaded", () => createNavbar("create-navbar"));
+
+//Desloga do Website
+function deslogar(){
+  window.location.replace(fixPastaAdmin("../bibliotecas/deslogar.html",  "../../bibliotecas/deslogar.html"))
+}
+
+
+//Utilidades Navbar
+
+//Retorna o diretorio correto para arquivos que executem este script em Root ou uma Subpasta
+function fixPastaAdmin(root, subpasta){
+  return window.location.pathname.split('/').length < 7? root : subpasta
+}
