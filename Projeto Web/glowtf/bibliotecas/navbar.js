@@ -72,7 +72,7 @@ function criarLogin() {
           <a class="usuario"><span class="material-symbols-outlined">person</span>${data[0].name}</a>
           <ul class="dropdown">
             <li class="dropdown"><a onclick="MoverPagina('../perfil_usuario/perfil_usuario.html')">Perfil</a></li><br>
-            <li class="dropdown"><a>Sair</a></li>
+            <li class="dropdown"><a onclick="deslogar()">Sair</a></li>
           </ul>
         </li>
         <li>
@@ -89,7 +89,7 @@ function criarLogin() {
         <ul class="dropdown">
           <li class="dropdown"><a  onclick="MoverPagina('../admin/lista_de_produtos/lista_de_produtos.html')">Lista de produtos</a></li><br>
           <li class="dropdown"><a  onclick="MoverPagina('../admin/lista_de_produtos/lista_de_produtos.html')">Adicionar produto</a></li><br>
-          <li class="dropdown"><a>Sair</a></li>
+          <li class="dropdown"><a onclick="deslogar()">Sair</a></li>
         </ul>
       </li>
         <li>
