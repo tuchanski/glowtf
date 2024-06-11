@@ -35,7 +35,7 @@ function carregaProdutos() {
             <div class="dados-produto-carrinho">
             <div class="titulo-carrinho">${data.hat_name}</div>
                 <div class="tinta-carrinho">
-                <div class="cor-da-tinta-carrinho" style="background-color: #${data.hex_color};"></div>
+                <div class="cor-da-tinta-carrinho" style="background-color: #${data.paint_hex_color};"></div>
                   <div class="nome-tinta-carrinho">${data.paint_name}</div>
                 </div>
             </div>
