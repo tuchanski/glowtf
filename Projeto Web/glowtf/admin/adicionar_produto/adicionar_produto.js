@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   const inputUploadImagem = document.getElementById('upload-imagem');
   const divImagens = document.querySelector('.imagens');
-  const imgProduto = document.querySelector('.card-imagem-produto');
+  const imgProduto = document.querySelector('.imagem-produto');
   const selectTinta = document.getElementById('tinta');
-  const imgSplash = document.querySelector('.card-splash');
+  const imgSplash = document.querySelector('.splash');
 
+  // Imagem do produto e splash são inicialmente escondidas
   divImagens.style.display = 'none';
   imgSplash.style.display = 'none';
 
@@ -14,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
       divImagens.style.display = 'block';
       const arquivo = inputUploadImagem.files[0];
       const nomeArquivo = arquivo.name;
-      console.log(`Arquivo selecionado: ${nomeArquivo}`);
-
       const leitor = new FileReader();
       leitor.onload = function (e) {
         imgProduto.src = e.target.result;
@@ -82,11 +81,9 @@ function cadastraProduto() {
   const nomeArquivo = arquivo.name;
   console.log(nomeArquivo);
   
-  // Seleciona o formulário
-  const formulario = document.getElementById('loginForm');
-  // Obtém os dados do formulário
+  const formulario = document.getElementById('formProduto');
 
-  fetch('.php', {
+  fetch('adicionar_produto.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -97,26 +94,25 @@ function cadastraProduto() {
       'estoque': estoqueProduto,
       'descricao': descricaoProduto,
       'wiki-produto': wikiProduto,
-      'classe': inventory,
+      'classe': estoque,
       'tinta': tintaProduto,
       'upload-imagem': nomeArquivo
-
     })
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data); // Process your data here
+      console.log(data);
       if(data.length == 0){
         alert("Login Inexistente, Por favor confira se o seu Login/Senha estão corretos.")
       }
       else{
-        window.location.href = '../home/home.html?user='+ data[0].id;
+        // window.location.href = '../home/home.html?user='+ data[0].id;
       }
     })
     .catch(error => {
       console.log(data);
       console.error('Error:', error);
-    });
+  });
 }
 
 

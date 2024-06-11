@@ -15,7 +15,6 @@
 </head>
 
 <body>
-  <script src="../bibliotecas/utilidades.js"></script>
   <script src="../../bibliotecas/navbar.js"></script>
   <div id="create-navbar"></div>
   <div class="wrapper">
@@ -23,13 +22,14 @@
     <div class="corpo">
       <div class="fundo-adiciona-produto">
         <div class="dados-produto">
-          <form id="loginForm" class="login-layout">
+          <form id="formProduto" class="login-layout">
             <div class="input-produto">
               <div>
                 <label for="nome-produto">Nome:</label>
               </div>
               <div>
-                <input type="text" id="nome-produto" name="nome-produto" placeholder="Digite seu nome do produto" required>
+                <input type="text" id="nome-produto" name="nome-produto" placeholder="Digite seu nome do produto"
+                  required>
               </div>
             </div>
             <div class="input-produto">
@@ -37,7 +37,8 @@
                 <label for="preco-produto">Preço:</label>
               </div>
               <div>
-                <input type="number" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto" required>
+                <input type="number" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto"
+                  required>
               </div>
             </div>
             <div class="input-produto">
@@ -61,7 +62,8 @@
                 <label for="wiki-produto">Wiki:</label>
               </div>
               <div>
-                <input type="text" id="wiki-produto" name="wiki-produto" placeholder="Insira o link da wiki do produto" required>
+                <input type="text" id="wiki-produto" name="wiki-produto" placeholder="Insira o link da wiki do produto"
+                  required>
               </div>
             </div>
             <div class="input-imagem">
@@ -78,7 +80,8 @@
                   <option value="Nenhuma">Nenhuma</option>
                   <option value="O Amargo Sabor de Derrota e Limao">O Amargo Sabor de Derrota e Limão</option>
                   <option value="Uma Extraordinaria Abundancia de Matiz">Uma Extraordinária Abundância de Matiz</option>
-                  <option value="A Cor das Calcas de Negocios de um Cavalheiro">A Cor das Calças de Negócios de um Cavalheiro</option>
+                  <option value="A Cor das Calcas de Negocios de um Cavalheiro">A Cor das Calças de Negócios de um
+                    Cavalheiro</option>
                   <option value="Cinza Bigode Envelhecido">Cinza Bigode Envelhecido</option>
                   <option value="Cor 216 190 216">Cor 216 190 216</option>
                   <option value="Depois das Oito">Depois das Oito</option>
@@ -98,7 +101,7 @@
                   <option value="Uma Cor Similar a Ardosia">Uma Cor Similar à Ardósia</option>
                   <option value="Uma Distinta Falta de Coloracao">Uma Distinta Falta de Coloração</option>
                   <option value="Violeta do Nobre Chapeleiro">Violeta do Nobre Chapeleiro</option>
-                  <option value="Vossa Velha Cor Rustica">Vossa Velha Cor Rústica</option>    
+                  <option value="Vossa Velha Cor Rustica">Vossa Velha Cor Rústica</option>
                 </select>
               </div>
             </div>
@@ -122,15 +125,16 @@
             </div>
             <div class="imagem-botao">
               <div class="imagens">
-                <img class="card-imagem-produto">
-                <img class="card-splash">
+                <img class="imagem-produto">
+                <img class="splash">
               </div>
-              </form>
-              <button class="button btn-input" type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar produto</button>
-            </div>
+          </form>
+          <button class="button btn-input" type="button" action="./index.html" onclick="cadastraProduto()">Cadastrar
+            produto</button>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <script src="./adicionar_produto.js">  </script>
 </body>
