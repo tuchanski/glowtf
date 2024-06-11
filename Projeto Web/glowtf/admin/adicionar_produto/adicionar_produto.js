@@ -74,7 +74,7 @@ function cadastraProduto() {
       alert('Ocorreu um erro ao enviar o formulário.');
   });
 
-  // window.location.href = "./atualiza_cadastro.html";
+  window.location.href = "../lista_de_produtos.html";
 }
 
 
