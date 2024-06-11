@@ -16,6 +16,10 @@ function corEstrela(element) {
       element.style.color = 'white';
     }
   }
+  else{
+    window.location.href = '../login/login.html';
+    alert("Você precisa estar logado para ter uma lista de desejos.");
+  }
 }
 
 function carregarProdutos(query) {
