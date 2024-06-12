@@ -1,13 +1,13 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
 
-function comprar() {
+function comprar(cart_has_hat_id) {
   console.log("Compra Invalida");
   let urlParams = new URLSearchParams(window.location.search);
   if (!urlParams.has('user')) {
     alert("Você precisa estar logado para realizar compras.");
     window.location.href = '../login/login.html';
   } else {
-    window.location.href = '../pagamento/pagamento.html';
+    MoverPagina('../pagamento/pagamento.html', 'cart_has_hat_id', cart_has_hat_id)
   }
 }
 
@@ -53,7 +53,7 @@ function carregaProdutos() {
             R$ ${(item.price / 100).toFixed(2).replace('.', ',')}
           </td>
           <td class="btn-carrinho">
-            <button class="comprar-btn" type="button" onclick="comprar()">
+            <button class="comprar-btn" type="button" onclick="comprar(${item.cart_has_hat_id})">
               Comprar
             </button>
           </td>
@@ -96,8 +96,6 @@ function identificaUsuario() {
       console.error('Erro:', error);
     });
 }
-
-
 
 function deletaProduto(cart_has_hat_id) {
   let url = 'deleta_item_carrinho.php';
