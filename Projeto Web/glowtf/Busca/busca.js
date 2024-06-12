@@ -38,6 +38,9 @@ function busca() {
   })
   .then(response => response.json())
   .then(data => {
+    // Limpar o conteúdo da div .corpo e do h1 .title
+    listaProdutos.innerHTML = '';
+    titulo.textContent = '';
 
     let resultado = `Foram encontrados ${data.length} resultados da sua busca por: ${inputBusca}`;
     titulo.insertAdjacentHTML("beforeend", resultado);
@@ -65,9 +68,7 @@ function busca() {
             </button>
           </div>
         </div>`;
-
       } else {
-
         card = `
         <div class="card">
           <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>

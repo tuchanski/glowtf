@@ -28,7 +28,7 @@ if ($conn->connect_error) {
             LEFT JOIN
                 paint ON hat.paint_id = paint.paint_id
             WHERE
-                hat.inventory > 0 AND hat.name LIKE BINARY '%$search%';";
+                hat.inventory > 0 AND hat.name LIKE '%$search%';";
 
     $result = $conn->query($sql);
    
