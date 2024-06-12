@@ -1,6 +1,10 @@
 <?php
 $host = "localhost";
+<<<<<<< HEAD
 $port = "3307";
+=======
+$port = "3310";
+>>>>>>> 25d9a7e03eba9da92a2f11d2aa02165a197f21c5
 $usuario = "root";
 $senha = "";
 $banco = "glowtfdb";
@@ -29,7 +33,10 @@ if ($conn->connect_error) {
     //         WHERE
     //             hat.inventory > 0;";
 
+<<<<<<< HEAD
     $user = $_POST["id"];
+=======
+>>>>>>> 25d9a7e03eba9da92a2f11d2aa02165a197f21c5
     
     $sql = "SELECT sale.id as sale_id, sale.date as sale_date, sale.id_user, sale.id_coupon, sale.price as sale_price,
     sale_has_hat.id as sale_has_hat_id, sale_has_hat.id_hat, sale_has_hat.price as hat_price,
@@ -39,7 +46,11 @@ if ($conn->connect_error) {
     LEFT JOIN sale_has_hat ON sale_has_hat.id_sale = sale.id
     LEFT JOIN hat ON hat.id = sale_has_hat.id_hat
     LEFT JOIN paint ON paint.paint_id = hat.paint_id
+<<<<<<< HEAD
     WHERE sale.id_user = $user";
+=======
+    WHERE sale.id_user = 2";
+>>>>>>> 25d9a7e03eba9da92a2f11d2aa02165a197f21c5
 
     $result= $conn->query($sql);
    

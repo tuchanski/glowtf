@@ -1,4 +1,5 @@
 function carregaProdutos() {
+<<<<<<< HEAD
   let urlParams2 = new URLSearchParams(window.location.search);
   const listaProdutos = document.getElementsByClassName("itens")[0];
   fetch("perfil_usuario.php", {
@@ -10,6 +11,10 @@ function carregaProdutos() {
         'id': urlParams2.get('user')
     })
 })
+=======
+  const listaProdutos = document.getElementsByClassName("itens")[0];
+  fetch("perfil_usuario.php")
+>>>>>>> 25d9a7e03eba9da92a2f11d2aa02165a197f21c5
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro na conexão");
@@ -62,8 +67,13 @@ function identificaUsuario() {
     })
     .then(response => response.json()) // Converter a resposta para JSON
     .then(data => {
+<<<<<<< HEAD
       console.log(data)
         document.getElementsByClassName("title")[0].innerText = "Seja bem-vindo, " + data[0].name;
+=======
+        console.log(data)
+        document.getElementsByClassName("title")[0].innerText = "Seja bem-vindo, " + data.name;
+>>>>>>> 25d9a7e03eba9da92a2f11d2aa02165a197f21c5
     })
     .catch(error => {
         console.error('Erro:', error);
