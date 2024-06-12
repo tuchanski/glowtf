@@ -8,23 +8,16 @@ $banco = "glowtfdb";
 $conn = new mysqli($host, $usuario, $senha, $banco, $port);
 
 if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
+    die("Erro na conexão com o banco de dados: " . $conn->connect_error);
+}
+
+$hatToBeDeleted = $_POST['cart_has_hat_id']; 
+
+$sql = "DELETE FROM cart_has_hat WHERE id = $hatToBeDeleted";
+if ($conn->query($sql) === TRUE) {
+    echo "Registro deletado com sucesso.";
 } else {
-
-    $hatToBeDeleted = $_POST["id_hat"];
-    $sql = "DELETE FROM glowtfdb.cart_has_hat WHERE id_hat = $hatToBeDeleted";
-
-    $result= $conn->query($sql);
-    if ($result->num_rows > 0) {
-        $rows = array();
-        while($row = $result->fetch_assoc()) {
-            $rows[] = $row;
-        }
-        header('Content-Type: application/json');
-        echo json_encode($rows);
-    } else {
-        echo json_encode([]);
-    }
+    echo "Erro ao deletar registro: " . $conn->error;
 }
 
 $conn->close();

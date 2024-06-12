@@ -58,7 +58,7 @@ function carregaProdutos() {
             </button>
           </td>
           <td class="btn-carrinho">
-            <button class="remover-carrinho-btn" type="button" onclick="deletaProduto(${item.hat_id})">
+            <button class="remover-carrinho-btn" type="button" onclick="deletaProduto(${item.cart_has_hat_id})">
               <span class="material-symbols-outlined">
                 delete
               </span>
@@ -97,9 +97,36 @@ function identificaUsuario() {
     });
 }
 
-function deletaProduto(id_hat){
-  console.log(id_hat)
+
+
+function deletaProduto(cart_has_hat_id) {
+  let url = 'deleta_item_carrinho.php';
+  
+  let options = {
+      method: 'POST', 
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded' 
+      },
+      body: 'cart_has_hat_id=' + encodeURIComponent(cart_has_hat_id) 
+  };
+
+  fetch(url, options)
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Erro ao deletar produto');
+      }
+      return response.text();
+  })
+  .then(data => {
+      console.log(data); 
+      
+      alert('Produto deletado com sucesso.');
+
+      window.location.reload();
+  })
+  .catch(error => {
+      console.error('Erro:', error);
+      alert('Erro ao deletar produto.');
+  });
 }
-
-
 
