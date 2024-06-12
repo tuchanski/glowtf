@@ -14,10 +14,13 @@ if ($conn->connect_error) {
 if (isset($_GET['id_user'])) {
     $user_id = $_GET['id_user'];
 
-    $sql = "SELECT sale.*, sale_has_hat.* 
-            FROM sale 
-            INNER JOIN sale_has_hat ON sale_has_hat.id_sale = sale.id 
-            WHERE sale.id_user = ?";
+    $sql = "SELECT sale.id as sale_id, sale.date, sale.id_user, sale.id_coupon, sale.price as sale_price,
+                   sale_has_hat.id as sale_has_hat_id, sale_has_hat.id_hat, sale_has_hat.price as hat_price,
+                   hat.name as hat_name, hat.description as hat_description
+                FROM sale 
+                INNER JOIN sale_has_hat ON sale_has_hat.id_sale = sale.id
+                INNER JOIN hat ON hat.id = sale_has_hat.id_hat
+                WHERE sale.id_user = ?";
     
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $user_id);
