@@ -1,11 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 
 
-function isCurrentPageAdmin(){
-  
-}
-
-
 //Cria o HTML para a navbar unificada.
 function createNavbar(target_id){
     const html = `<nav>
@@ -57,10 +52,8 @@ function criarLogin() {
       .then(response => response.json())
       .then(data =>{
         console.log(data);
-        let funcListaProduto = "MoverPagina('../admin/lista_de_produtos/lista_de_produtos.html\')";
-        let funcAdicionarProduto = "MoverPagina('../admin/adicionar_produto/adicionar_produto.html\')";
-        
-        
+        let pathLista = !isAdminPage()? '../lista_de_produtos/lista_de_produtos.html' : '../admin/lista_de_produtos/lista_de_produtos.html';
+        let pathAdicionar = !isAdminPage()? '../adicionar_produto/adicionar_produto.html' : '../admin/adicionar_produto/adicionar_produto.html';
         if(data[0].admin == 0){
 
           result = `
@@ -98,8 +91,8 @@ function criarLogin() {
         <li>
         <a class="usuario" ><span class="material-symbols-outlined">person</span>${data[0].name} | Admin</a>
         <ul class="dropdown">
-          <li class="dropdown"><a  onclick="${funcListaProduto}">Lista de produtos</a></li><br>
-          <li class="dropdown"><a  onclick="${funcAdicionarProduto}">Adicionar produto</a></li><br>
+          <li class="dropdown"><a  onclick="MoverPagina(\'${pathLista}\')">Lista de produtos</a></li><br>
+          <li class="dropdown"><a  onclick="MoverPagina(\'${pathAdicionar}\')">Adicionar produto</a></li><br>
           <li class="dropdown"><a onclick="deslogar()">Sair</a></li>
         </ul>
       </li>
@@ -136,7 +129,13 @@ function deslogar(){
 
 //Utilidades Navbar
 
+
+//Retorna true se a página atual está dentro da pasta admin
+function isAdminPage(){
+  return window.location.pathname.split('/').length < 7;
+}
+
 //Retorna o diretorio correto para arquivos que executem este script em Root ou uma Subpasta
 function fixPastaAdmin(root, subpasta){
-  return window.location.pathname.split('/').length < 7? root : subpasta
+  return isAdminPage? root : subpasta
 }
