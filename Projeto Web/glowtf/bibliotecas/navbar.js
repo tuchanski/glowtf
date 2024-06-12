@@ -13,8 +13,8 @@ function createNavbar(target_id){
         </a>
       </li>
       <li class="searchbar">
-        <input type="text" id="searchbar" placeholder="O que você está buscando hoje?">
-        <button type="button" class="search-btn">
+        <input class="searchbar" type="text" id="searchbar" placeholder="O que você está buscando hoje?">
+        <button type="button" class="search-btn" onclick="busca()">
           <span class="material-symbols-outlined">
             search
           </span>
