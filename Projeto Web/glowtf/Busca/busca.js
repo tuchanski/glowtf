@@ -1,7 +1,8 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
+const titulo = document.getElementsByClassName('title')[0];
 
 function comprar(){
-  console.log("Compra Invalida");
+  console.log("Compra inválida");
   if(!urlParams.has('user')){
     window.location.href = '../login/login.html';
     alert("Você precisa estar logado para realizar compras.");
@@ -37,6 +38,10 @@ function busca() {
   })
   .then(response => response.json())
   .then(data => {
+
+    let resultado = `Foram encontrados ${data.length} resultados da sua busca por: ${inputBusca}`;
+    titulo.insertAdjacentHTML("beforeend", resultado);
+
     data.forEach((item) => {
       let card = `<h1>ERRO FATAL</h1>`;
       if(item.hex_color !== undefined){
@@ -60,7 +65,9 @@ function busca() {
             </button>
           </div>
         </div>`;
+
       } else {
+
         card = `
         <div class="card">
           <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
