@@ -17,7 +17,7 @@ function criarProdutos() {
                 <div class="preco-botao">
                     <div class="card-preco">R$${(data.price / 100).toFixed(2).replace('.', ',')}</div>
                     <div class="botoes">
-                        <button class="editar-btn" type="button">
+                        <button class="editar-btn" type="button" onclick="MoverPagina('../editar_produto/editar_produto.html')">
                             <span class="material-symbols-outlined">edit</span>
                             Editar
                         </button>
