@@ -189,7 +189,8 @@ INSERT INTO sale (date, id_user, id_coupon, price, payment_method) VALUES
 ('2023-01-05', 4, 1, 300, 'b'),
 ('2022-07-12', 5, 4, 700, 'd'),
 ('2022-10-30', 4, 5, 200, 'b'),
-('2023-04-20', 3, 2, 400, 'c')
+('2023-04-20', 3, 2, 400, 'c'),
+('2022-08-25', 5, 3, 200, 'p');
 
 INSERT INTO cart_has_hat (id_cart, id_hat) VALUES
 (1, 1),
