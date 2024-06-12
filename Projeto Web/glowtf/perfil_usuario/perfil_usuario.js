@@ -29,7 +29,7 @@ function carregaProdutos() {
               <div class="dados-produto">
                 <div class="titulo">${data.hat_name}</div>
                   <div class="tinta">
-                    <div class="cor-da-tinta"></div>
+                    <div class="cor-da-tinta" style="background-color: #${data.hex_color};"></div>
                     <div class="nome-tinta">${data.paint_name}</div>
                   </div>
               </div>
