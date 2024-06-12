@@ -1,6 +1,15 @@
 function carregaProdutos() {
+  let urlParams2 = new URLSearchParams(window.location.search);
   const listaProdutos = document.getElementsByClassName("itens")[0];
-  fetch("perfil_usuario.php")
+  fetch("perfil_usuario.php", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams({
+        'id': urlParams2.get('user')
+    })
+})
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro na conexão");
@@ -53,8 +62,8 @@ function identificaUsuario() {
     })
     .then(response => response.json()) // Converter a resposta para JSON
     .then(data => {
-        console.log(data)
-        document.getElementsByClassName("title")[0].innerText = "Seja bem-vindo, " + data.name;
+      console.log(data)
+        document.getElementsByClassName("title")[0].innerText = "Seja bem-vindo, " + data[0].name;
     })
     .catch(error => {
         console.error('Erro:', error);
