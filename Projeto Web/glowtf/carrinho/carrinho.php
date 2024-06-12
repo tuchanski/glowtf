@@ -10,25 +10,8 @@ $conn = new mysqli($host, $usuario, $senha, $banco, $port);
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 } else {
-    // $sql = "SELECT
-    //             hat.id AS hat_id,
-    //             hat.name AS hat_name,
-    //             hat.inventory,
-    //             hat.price,
-    //             hat.promo_image AS hat_promo_image,
-    //             hat.description,
-    //             hat.wiki,
-    //             paint.paint_id,
-    //             paint.name AS paint_name,
-    //             paint.promo_image AS paint_promo_image,
-    //             paint.hex_color
-    //         FROM
-    //             hat
-    //         LEFT JOIN
-    //             paint ON hat.paint_id = paint.paint_id
-    //         WHERE
-    //             hat.inventory > 0;";
-
+    
+    $user = $_POST["id"];
     $sql = "SELECT
                 chh.id AS cart_has_hat_id,
                 chh.id_cart AS user_id,
@@ -46,7 +29,7 @@ if ($conn->connect_error) {
             LEFT JOIN
                 paint p ON h.paint_id = p.paint_id
             WHERE
-                chh.id_cart = 4;";
+                chh.id_cart = $user";
 
     $result= $conn->query($sql);
    
