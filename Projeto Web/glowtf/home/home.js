@@ -44,11 +44,10 @@ function carregarProdutos(query) {
           <div class="cor-da-tinta" style="background-color: #${data.hex_color};"></div>
             <div class="card-nome-tinta">${data.paint_name}</div>
           </div>
-          <a href="../produto/produto.html?hat_id=${data.hat_id}" class="imagens">
-            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image
-          }">
-            <img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image
-          }">
+          <a onclick='MoverPagina("../produto/produto.html", "hat_id", "${data.hat_id}")' class="imagens">
+            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
+            <img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image}">
+          </a>
           </a>
           <div class="preco-botao">
             <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
@@ -65,7 +64,7 @@ function carregarProdutos(query) {
         <div class="card">
           <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
           <div class="card-titulo">${data.hat_name}</div>
-          <a href="../produto/produto.html?hat_id=${data.hat_id}" class="imagens">
+          <a onclick="MoverPagina("../produto/produto.html", "hat_id", "${data.hat_id}")" class="imagens">
             <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image
           }">
           </a>
