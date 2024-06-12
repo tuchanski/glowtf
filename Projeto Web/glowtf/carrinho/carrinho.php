@@ -29,6 +29,7 @@ if ($conn->connect_error) {
     //         WHERE
     //             hat.inventory > 0;";
 
+    $user = $_POST["id"];
     $sql = "SELECT
                 chh.id AS cart_has_hat_id,
                 chh.id_cart AS user_id,
@@ -46,7 +47,7 @@ if ($conn->connect_error) {
             LEFT JOIN
                 paint p ON h.paint_id = p.paint_id
             WHERE
-                chh.id_cart = 4;";
+                chh.id_cart = $user";
 
     $result= $conn->query($sql);
    

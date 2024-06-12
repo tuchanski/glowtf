@@ -12,8 +12,17 @@ function comprar(){
 }
 
 function carregaProdutos() {
+  let urlParams2 = new URLSearchParams(window.location.search);
   const listaProdutos = document.getElementsByClassName("itens")[0];
-  fetch("carrinho.php")
+  fetch("carrinho.php", {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+          'id': urlParams2.get('user')
+      })
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro na conexão");
@@ -64,6 +73,24 @@ function carregaProdutos() {
 
 document.addEventListener("DOMContentLoaded", () => carregaProdutos(""));
 
-
-
-
+function identificaUsuario() {
+  let urlParams2 = new URLSearchParams(window.location.search);
+  fetch('../bibliotecas/get_user_data.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+          'id': urlParams2.get('user')
+      })
+  })
+  .then(response => response.json()) // Converter a resposta para JSON
+  .then(data => {
+    console.log(data)
+      document.getElementsByClassName("title")[0].innerText = "Seu carrinho, " + data[0].name;
+  })
+  .catch(error => {
+      console.error('Erro:', error);
+  });
+}
+document.addEventListener("DOMContentLoaded", () => identificaUsuario());
