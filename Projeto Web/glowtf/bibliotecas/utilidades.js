@@ -1,14 +1,15 @@
-//Move para a página destino sem perder os parametros
-function MoverPagina(destino) {
-    const currentParams = window.location.search;
+// Move para a página destino sem perder os parâmetros
+function MoverPagina(destino, extraParam = "", extraParamValue = "") {
+    let tempurl = new URLSearchParams(window.location.search);
     
-    if (destino.startsWith('/')) {
-        destino = destino.substring(1);
+    if (extraParam !== "") {
+        tempurl.set(extraParam, extraParamValue);
     }
-    
+
     const currentPath = window.location.pathname;
     const newPath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1) + destino;
-    const newUrl = window.location.origin + newPath + currentParams;
-    
+
+    const newUrl = window.location.origin + newPath + '?' + tempurl.toString();
+
     window.location.href = newUrl;
 }
