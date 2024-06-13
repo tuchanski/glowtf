@@ -7,7 +7,7 @@ function criarProdutos() {
             <div class="card-admin">
                 <div class="card-titulo">${data.hat_name}</div>
                 <div class="card-tinta">
-                    <div class="cor-da-tinta"></div>
+                    <div class="cor-da-tinta" style="background-color: #${data.hex_color};"></div>
                     <div class="card-nome-tinta">${data.paint_name}</div>
                 </div>
                 <div class="imagens">
