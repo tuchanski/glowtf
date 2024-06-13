@@ -32,8 +32,8 @@
 }
 
 .imagens:hover {
-  border-radius: 3px;
-  background-color: rgb(112, 111, 130);
+  filter: drop-shadow(0 0 0.75rem rgba(0, 255, 0, 0.5));
+  cursor: pointer;
 }
 
 .imagem {
