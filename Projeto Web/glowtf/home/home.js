@@ -64,7 +64,7 @@ function carregarProdutos(query) {
           </a>
           <div class="preco-botao">
             <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
-            <button class="carrinho-btn" type="button" onclick="comprar()">
+            <button class="carrinho-btn" type="button" onclick="adicionaProduto(${data.hat_id}, '${urlParams.get("user")}')">
               <span class="material-symbols-outlined">
                 add_shopping_cart
               </span>
@@ -83,7 +83,7 @@ function carregarProdutos(query) {
 document.addEventListener("DOMContentLoaded", () => carregarProdutos(""));
 
 function adicionaProduto(hatId, userId) {
-  console.log("Compra Invalida");
+
 
   let urlParams = new URLSearchParams(window.location.search);
   if (!urlParams.has('user')) {
