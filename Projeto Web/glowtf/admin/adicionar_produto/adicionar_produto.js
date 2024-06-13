@@ -28,9 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
   selectTinta.addEventListener('change', function () {
     const tintaSelecionada = selectTinta.value;
     if (tintaSelecionada !== "Nenhuma" && tintaSelecionada !== "") {
-      imgSplash.src = `../../dados/imagens/tintas/${tintaSelecionada.replace(/ /g, '_')}.png`;
+      imgSplash.src = `../../dados/imagens/tintas/${tintaSelecionada}.png`;
       imgSplash.style.display = 'block';
       console.log(imgSplash.src);
+      console.log(tintaSelecionada)
     } else {
       imgSplash.style.display = 'none';
     }
