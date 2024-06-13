@@ -55,7 +55,7 @@ function carregarProdutos(query) {
               <span class="material-symbols-outlined">
                 add_shopping_cart
               </span>
-              <div>adicionar ao carrinho</div>
+              <div>Adicionar ao carrinho</div>
             </button>
           </div>
         </div>`;}
@@ -74,7 +74,7 @@ function carregarProdutos(query) {
               <span class="material-symbols-outlined">
                 add_shopping_cart
               </span>
-              <div>adicionar ao carrinho</div>
+              <div>Adicionar ao carrinho</div>
             </button>
           </div>
         </div>`;
