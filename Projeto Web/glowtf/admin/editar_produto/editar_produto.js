@@ -56,47 +56,6 @@ function cadastraProduto() {
     });
 }
 
-
-function carregaClasses() {
-  const listaClasses = document.getElementsByClassName("classe")[0];
-
-  fetch("classes.php")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Erro na conexão");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      data.forEach((data) => {
-        const classHtml = `<option value='${data.class_id}'>${data.class_name}</option>`
-        listaClasses.insertAdjacentHTML("beforeend", classHtml);
-      });
-    })
-    .catch((error) => console.error("Error:", error));
-}
-
-function carregaTintas() {
-  const listaTintas = document.getElementsByClassName("tinta")[0];
-
-  fetch("tintas.php")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Erro na conexão");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      listaTintas.insertAdjacentHTML("beforeend", "<option value=\"\">Nenhuma</option>");
-      data.forEach((data) => {
-        const paintHtml = `<option value='${data.paint_id}'>${data.name}</option>`
-        listaTintas.insertAdjacentHTML("beforeend", paintHtml);
-      });
-    })
-    .catch((error) => console.error("Error:", error));
-}
-
 const mostraProduto = document.getElementsByClassName("fundo-adiciona-produto")[0];
 
 function carregaProduto() {
@@ -116,12 +75,22 @@ function carregaProduto() {
       return response.json();
     })
 
-  Promise.all([produtoPromise, tintasPromise])
-    .then(([produto, tintas]) => {
-    console.log("dados: ", produto);
+    const classesPromise = fetch("classes.php")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro na conexão");
+      }
+      return response.json();
+    })
+
+  Promise.all([produtoPromise, tintasPromise, classesPromise])
+    .then(([produto, tintas, classes]) => {
 
     let tintasOptions = "<option value=\"\">Nenhuma</option>\n"
     tintasOptions += tintas.map((tinta) => `<option value='${tinta.paint_id}'>${tinta.name}</option>`).join("\n")
+
+    const classesOptions = classes.map((classe) => `<option value='${classe.class_id}'>${classe.class_name}</option>`).join("\n")
+
     const produtoHtml = `
     <div class="dados-produto">
       <form id="formProduto" class="login-layout">
@@ -185,6 +154,7 @@ function carregaProduto() {
           </div>
           <div>
             <select class="classe" name="classe" multiple id="classe">
+            ${classesOptions}
             </select>
           </div>
         </div>
