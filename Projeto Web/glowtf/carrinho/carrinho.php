@@ -18,6 +18,7 @@ if ($conn->connect_error) {
                 chh.id_hat,
                 h.name AS hat_name,
                 h.price,
+                h.id as hat_id,
                 h.promo_image AS hat_promo_image,
                 p.name AS paint_name,
                 p.promo_image AS paint_promo_image,
