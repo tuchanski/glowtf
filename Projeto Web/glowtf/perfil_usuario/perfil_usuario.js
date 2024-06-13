@@ -9,7 +9,7 @@ function carregaProdutos() {
     body: new URLSearchParams({
         'id': urlParams2.get('user')
     })
-})
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro na conexão");
@@ -19,11 +19,21 @@ function carregaProdutos() {
     .then((data) => {
       console.log(data);
       data.forEach((data) => {
+        
+        let saleDate = new Date(data.sale_date);
+        let formattedDate = saleDate.toLocaleDateString('pt-BR', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+        });
+
         const item = `
         <tr>
             <td class="imagens">
-                <img class="imagem" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
-                <img class="splash" src="../dados/imagens/tintas/${data.paint_promo_image}">
+                <a href="../produto/produto.html?hat_id=${data.hat_id}" class="img">
+                  <img class="imagem" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
+                  <img class="splash" src="../dados/imagens/tintas/${data.paint_promo_image}">
+                </a>
             </td>
             <td>
               <div class="dados-produto">
@@ -35,10 +45,10 @@ function carregaProdutos() {
               </div>
             </td>
             <td class="preco">
-              ${data.sale_date}
-          </td>
+              ${formattedDate}
+            </td>
             <td class="preco">
-            R$ ${data.sale_price}
+              R$ ${(data.sale_price / 100).toFixed(2).replace('.', ',')}
             </td>
           </tr>
         `
@@ -63,7 +73,7 @@ function identificaUsuario() {
     .then(response => response.json()) // Converter a resposta para JSON
     .then(data => {
       console.log(data)
-        document.getElementsByClassName("title")[0].innerText = "Seja bem-vindo, " + data[0].name;
+        document.getElementsByClassName("title")[0].innerText = "Suas compras passadas, " + data[0].name;
     })
     .catch(error => {
         console.error('Erro:', error);
