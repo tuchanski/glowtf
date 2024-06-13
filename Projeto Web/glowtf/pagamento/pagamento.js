@@ -59,7 +59,7 @@ function produto() {
                 </div>
               </div>
               <input type="hidden" name="hat_name" value="${data[0].hat_name}">
-              <input type="hidden" name="hat_price" value="${(data[0].hat_price / 100).toFixed(2)}">
+              <input type="hidden" name="hat_price" value="${(parseInt(data[0].hat_price))}">
               <input type="hidden" name="user_id" value="${userId}">
               <button id="pagar-btn" class="pagar-btn" type="submit" name="submit">
                 <div>Pagar</div>
