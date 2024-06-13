@@ -1,6 +1,5 @@
 const urlParams = new URLSearchParams(window.location.search);
 
-
 //Cria o HTML para a navbar unificada.
 function createNavbar(target_id){
     const html = `<nav>
@@ -91,8 +90,8 @@ function criarLogin() {
         <li>
         <a class="usuario" ><span class="material-symbols-outlined">person</span>${data[0].name} | Admin</a>
         <ul class="dropdown">
-          <li class="dropdown"><a  onclick="MoverPagina(\'${pathLista}\')">Lista de produtos</a></li><br>
-          <li class="dropdown"><a  onclick="MoverPagina(\'${pathAdicionar}\')">Adicionar produto</a></li><br>
+          <li class="dropdown"><a onclick="MoverPagina(\'${pathLista}\')">Lista de produtos</a></li><br>
+          <li class="dropdown"><a onclick="MoverPagina(\'${pathAdicionar}\')">Adicionar produto</a></li><br>
           <li class="dropdown"><a onclick="deslogar()">Sair</a></li>
         </ul>
       </li>
