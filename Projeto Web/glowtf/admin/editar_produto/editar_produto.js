@@ -36,6 +36,8 @@ function atualizaProduto() {
     .then(response => response.text())
     .then(data => {
       console.log(data);
+      alert('Produto adicionado com sucesso!');
+      MoverPagina('../lista_de_produtos/lista_de_produtos.html');
     })
     .catch(error => {
       console.error('Erro:', error);

@@ -24,6 +24,24 @@ $productImage = isset($_FILES['upload-imagem']) ? $_FILES['upload-imagem'] : nul
 $imageName = $productImage['name'];
 $wikiRegex = "/^https:\/\/wiki\.teamfortress\.com\/.*$/";
 
+function convertsStringParaInt($string) {
+    // Substituir vírgulas por pontos para garantir a formatação correta
+    $numero = str_replace(',', '.', $string);
+    
+    // Converter a string para float
+    $valorFloat = (float) $numero;
+    
+    // Multiplicar o valor float por 100
+    $multiplicaValor = $valorFloat * 100;
+    
+    // Converter o valor multiplicado para integer
+    $valorInt = (int) $multiplicaValor;
+    
+    return $valorInt;
+}
+
+$productPrice = convertsStringParaInt($productPrice);
+
 if (empty($productName) || 
     empty($productPrice) || 
     empty($inventory) || 

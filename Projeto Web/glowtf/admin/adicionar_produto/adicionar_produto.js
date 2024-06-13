@@ -66,8 +66,8 @@ function cadastraProduto() {
   .then(response => response.text())
   .then(data => {
       console.log(data);
-      // alert('Produto adicionado com sucesso!');
-      // MoverPagina('../lista_de_produtos.html');
+      alert('Produto adicionado com sucesso!');
+      MoverPagina('../lista_de_produtos.html');
   })
   .catch(error => {
       console.error('Erro:', error);
