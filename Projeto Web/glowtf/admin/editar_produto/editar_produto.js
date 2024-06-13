@@ -1,100 +1,101 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//   const inputUploadImagem = document.getElementById('upload-imagem');
-//   const divImagens = document.querySelector('.imagens');
-//   const imgProduto = document.querySelector('.imagem-produto');
-//   const selectTinta = document.getElementById('tinta');
-//   const imgSplash = document.querySelector('.splash');
+document.addEventListener('DOMContentLoaded', function () {
+  const inputUploadImagem = document.getElementById('upload-imagem');
+  const divImagens = document.querySelector('.imagens');
+  const imgProduto = document.querySelector('.imagem-produto');
+  const selectTinta = document.getElementById('tinta');
+  const imgSplash = document.querySelector('.splash');
 
-//   // Imagem do produto e splash são inicialmente escondidas
-//   divImagens.style.display = 'none';
-//   imgSplash.style.display = 'none';
+  // Esconde ou mostra o splash da tinta conforme o valor do input
+  selectTinta.addEventListener('change', function () {
+    const tintaSelecionada = selectTinta.value;
+    if (tintaSelecionada !== "Nenhuma" && tintaSelecionada !== "") {
+      imgSplash.src = `../../dados/imagens/tintas/${tintaSelecionada.replace(/ /g, '_')}.png`;
+      imgSplash.style.display = 'block';
+      console.log(imgSplash.src);
+    } else {
+      imgSplash.style.display = 'none';
+    }
+  });
 
-//   // Esconde ou mostra a imagem do produto conforme input ter ou não imagem
-//   inputUploadImagem.addEventListener('change', function () {
-//     if (inputUploadImagem.files.length > 0) {
-//       divImagens.style.display = 'block';
-//       const arquivo = inputUploadImagem.files[0];
-//       const leitor = new FileReader();
-//       leitor.onload = function (e) {
-//         imgProduto.src = e.target.result;
-//       };
-//       leitor.readAsDataURL(arquivo);
-//     } else {
-//       divImagens.style.display = 'none';
-//     }
-//   });
+  document.getElementById('estoque').addEventListener('keydown', validarTecla);
+  carregaTintas();
+  carregaClasses()
+});
 
-//   // Esconde ou mostra o splash da tinta conforme o valor do input
-//   selectTinta.addEventListener('change', function () {
-//     const tintaSelecionada = selectTinta.value;
-//     if (tintaSelecionada !== "Nenhuma" && tintaSelecionada !== "") {
-//       imgSplash.src = `../../dados/imagens/tintas/${tintaSelecionada.replace(/ /g, '_')}.png`;
-//       imgSplash.style.display = 'block';
-//       console.log(imgSplash.src);
-//     } else {
-//       imgSplash.style.display = 'none';
-//     }
-//   });
+function validarTecla(event) {
+  const tecla = event.key;
+  if (
+    tecla === 'Backspace' || tecla === 'Delete' || tecla === 'ArrowLeft' || tecla === 'ArrowRight' ||
+    tecla === 'Tab' || tecla === 'Enter'
+  ) {
+    return;
+  }
+  // Impedir qualquer tecla que não seja um número
+  if (!/^[0-9]$/.test(tecla)) {
+    event.preventDefault();
+  }
+}
 
-//   document.getElementById('estoque').addEventListener('keydown', validarTecla);
-//   carregaTintas();
-//   carregaClasses()
-// });
+function cadastraProduto() {
+  const formulario = document.getElementById('formProduto');
+  const formData = new FormData(formulario);
 
-// function validarTecla(event) {
-//   const tecla = event.key;
-//   if (
-//     tecla === 'Backspace' || tecla === 'Delete' || tecla === 'ArrowLeft' || tecla === 'ArrowRight' ||
-//     tecla === 'Tab' || tecla === 'Enter'
-//   ) {
-//     return;
-//   }
-//   // Impedir qualquer tecla que não seja um número
-//   if (!/^[0-9]$/.test(tecla)) {
-//     event.preventDefault();
-//   }
-// }
+  fetch('../adicionar_produto/adicionar_produto.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => {
+      console.log(data);
+      // alert('Produto adicionado com sucesso!');
+      // MoverPagina('../lista_de_produtos.html');
+  })
+  .catch(error => {
+      console.error('Erro:', error);
+      alert('Ocorreu um erro ao enviar o formulário.');
+  });
+}
 
-// function cadastraProduto() {
-//   const formulario = document.getElementById('formProduto');
-//   const formData = new FormData(formulario);
 
-//   fetch('adicionar_produto.php', {
-//     method: 'POST',
-//     body: formData
-//   })
-//   .then(response => response.text())
-//   .then(data => {
-//       console.log(data);
-//       // alert('Produto adicionado com sucesso!');
-//       // MoverPagina('../lista_de_produtos.html');
-//   })
-//   .catch(error => {
-//       console.error('Erro:', error);
-//       alert('Ocorreu um erro ao enviar o formulário.');
-//   });
-// }
-
-// function carregaTintas() {
-//   const listaTintas = document.getElementsByClassName("tinta")[0];
+function carregaClasses() {
+  const listaClasses = document.getElementsByClassName("classe")[0];
     
-//   fetch("tintas.php")
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error("Erro na conexão");
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       console.log(data);
-//       listaTintas.insertAdjacentHTML("beforeend", "<option value=\"\">Nenhuma</option>");
-//       data.forEach((data) => {
-//         const paintHtml = `<option value='${data.paint_id}'>${data.name}</option>`
-//         listaTintas.insertAdjacentHTML("beforeend", paintHtml);
-//       });
-//     })
-//     .catch((error) => console.error("Error:", error));
-// }
+  fetch("classes.php")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro na conexão");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      data.forEach((data) => {
+        const classHtml = `<option value='${data.class_id}'>${data.class_name}</option>`
+        listaClasses.insertAdjacentHTML("beforeend", classHtml);
+      });
+    })
+  .catch((error) => console.error("Error:", error));
+}
+
+function carregaTintas() {
+  const listaTintas = document.getElementsByClassName("tinta")[0];
+    
+  fetch("tintas.php")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro na conexão");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      listaTintas.insertAdjacentHTML("beforeend", "<option value=\"\">Nenhuma</option>");
+      data.forEach((data) => {
+        const paintHtml = `<option value='${data.paint_id}'>${data.name}</option>`
+        listaTintas.insertAdjacentHTML("beforeend", paintHtml);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+}
 
 const mostraProduto = document.getElementsByClassName("fundo-adiciona-produto")[0];
 
@@ -125,7 +126,7 @@ function carregaProduto() {
               <label for="preco-produto">Preço:</label>
             </div>
             <div>
-              <input type="number" value="${data.price}" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto" required>
+              <input type="number" value="${(data.price/100).toFixed(2)}" id="preco-produto" name="preco-produto" placeholder="Digite o preço do produto" required>
             </div>
           </div>
           <div class="input-produto">
@@ -176,8 +177,10 @@ function carregaProduto() {
           </div>
           <div class="imagem-botao">
             <div class="imagens">
-              <img class="imagem-produto">
-              <img class="splash">
+              <img class="imagem-produto" src="../../dados/imagens/itens_do_jogo/${data.hat_promo_image
+              }">
+                <img class="splash" src="../../dados/imagens/tintas/${data.paint_promo_image
+              }">
             </div>
           </div>
         </form>
