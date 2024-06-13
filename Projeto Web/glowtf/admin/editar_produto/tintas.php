@@ -26,6 +26,7 @@ if ($conn->connect_error) {
             $rows[] = $row;
         }
         header('Content-Type: application/json');
+        sleep(3);
         echo json_encode($rows);
     } else {
         echo json_encode([]);
