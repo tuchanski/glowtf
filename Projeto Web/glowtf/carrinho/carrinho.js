@@ -35,7 +35,7 @@ function carregaProdutos() {
         const produto = `
         <tr class="linha-tabela">
           <td class="imagens-carrinho">
-            <a href="../produto/produto.html?hat_id=${item.hat_id}" class="imagens">
+            <a href="../produto/produto.html?hat_id=${item.hat_id}&user=${urlParams2.get("user")}" class="imagens">
               <img class="imagem-produto-carrinho" src="../dados/imagens/itens_do_jogo/${item.hat_promo_image}">
               <img class="splash-carrinho" src="../dados/imagens/tintas/${item.paint_promo_image}">
             </a>
