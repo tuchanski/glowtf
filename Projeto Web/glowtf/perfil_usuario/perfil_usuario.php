@@ -22,8 +22,8 @@ if ($conn->connect_error) {
     LEFT JOIN sale_has_hat ON sale_has_hat.id_sale = sale.id
     LEFT JOIN hat ON hat.id = sale_has_hat.id_hat
     LEFT JOIN paint ON paint.paint_id = hat.paint_id
-    WHERE sale.id_user = $user";
-
+    WHERE sale.id_user = $user
+    ORDER BY sale.date DESC;";
 
     $result= $conn->query($sql);
    
