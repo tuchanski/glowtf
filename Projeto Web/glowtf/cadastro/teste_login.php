@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('America/Sao_Paulo');
 
 if (isset($_POST['submit']) && !empty($_POST['nome']) && !empty($_POST['email']) && !empty($_POST['cpf']) && !empty($_POST['genero']) && !empty($_POST['estado']) && !empty($_POST['senha']) && !empty($_POST['steam']) && !empty($_POST['confirma-senha'])) {
     include_once('config.php');
