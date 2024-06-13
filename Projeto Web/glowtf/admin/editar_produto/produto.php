@@ -29,13 +29,16 @@ if ($conn->connect_error) {
                 paint.paint_id,
                 paint.name AS paint_name,
                 paint.promo_image AS paint_promo_image,
-                paint.hex_color
+                paint.hex_color,
+                hat_has_class.class_id
             FROM
                 hat
             LEFT JOIN
                 paint ON hat.paint_id = paint.paint_id
+            JOIN hat_has_class ON  hat.id = hat_has_class.hat_id
             WHERE
-                hat.id = 2";
+                hat.id = 2
+            LIMIT 1";
 
     $result = $conn->query($sql);
 

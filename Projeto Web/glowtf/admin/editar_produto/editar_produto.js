@@ -143,7 +143,7 @@ function carregaProduto() {
             <label for="tinta">Tinta:</label><br>
           </div>
           <div>
-            <select class="tinta" name="tinta" id="tinta">
+            <select value="${produto.paint_id}" class="tinta" name="tinta" id="tinta">
             ${tintasOptions}
             </select>
           </div>
@@ -153,7 +153,7 @@ function carregaProduto() {
             <label for="classe">Selecione a classe do chapéu (Ctrl + click para selecionar múltiplas): </label><br>
           </div>
           <div>
-            <select class="classe" name="classe" multiple id="classe">
+            <select value="${produto.class_id}" class="classe" name="classe" multiple id="classe">
             ${classesOptions}
             </select>
           </div>
