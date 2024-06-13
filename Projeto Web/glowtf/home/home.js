@@ -1,18 +1,21 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
 
-
-function corEstrela(element) {
+function toggleWishlist(element, current){
   if (urlParams.has("user")) {
-    if (element.style.color === 'white') {
+    if (current) { //True - In Wishlist
       element.style.color = '#282828';
     } else {
       element.style.color = 'white';
     }
+    element.onclick = function() {
+      toggleWishlist(element, !current);
+    };
   }
   else {
     window.location.href = '../login/login.html';
     alert("Você precisa estar logado para ter uma lista de desejos.");
   }
+
 }
 
 function carregarProdutos(query) {
@@ -40,7 +43,7 @@ function carregarProdutos(query) {
 
         let card = `
           <div class="card">
-            <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
+            <span class="material-symbols-outlined estrela" onclick="toggleWishlist(this)">star</span>
             <div class="card-titulo">${data.hat_name}</div>
             <div class="card-tinta">
               ${colorHex}
