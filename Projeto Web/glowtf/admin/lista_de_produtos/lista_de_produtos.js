@@ -21,7 +21,7 @@ function criarProdutos() {
                             <span class="material-symbols-outlined">edit</span>
                             Editar
                         </button>
-                        <button class="deletar-btn" type="button">
+                        <button class="deletar-btn" type="button" onclick="deletaProduto(${data.hat_id})">
                             <span class="material-symbols-outlined">delete</span>
                             Deletar
                         </button>
@@ -35,3 +35,36 @@ function criarProdutos() {
 }
 
 document.addEventListener("DOMContentLoaded", () => criarProdutos());
+
+function deletaProduto(hat_id) {
+    let url = 'deleta_produto.php';
+    
+    let options = {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded' 
+        },
+        body: 'hat_id=' + encodeURIComponent(hat_id) 
+    };
+  
+    fetch(url, options)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao deletar produto');
+        }
+        return response.text();
+    })
+    .then(data => {
+        console.log(data); 
+        
+        alert('Produto deletado com sucesso.');
+  
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao deletar produto.');
+    });
+  }
+  
+  
