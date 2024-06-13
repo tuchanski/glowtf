@@ -15,7 +15,7 @@ function createNavbar(target_id){
       </li>
       <li class="searchbar">
         <input class="searchbar" type="text" id="searchbar" placeholder="O que você está buscando hoje?">
-        <button type="button" class="search-btn" onclick="busca()">
+        <button type="button" class="search-btn" onclick="buscaNavBar()">
           <span class="material-symbols-outlined">
             search
           </span>
@@ -51,7 +51,7 @@ function criarLogin() {
       })
       .then(response => response.json())
       .then(data =>{
-        console.log(data);
+        //console.log(data);
         let pathLista = !isAdminPage()? '../lista_de_produtos/lista_de_produtos.html' : '../admin/lista_de_produtos/lista_de_produtos.html';
         let pathAdicionar = !isAdminPage()? '../adicionar_produto/adicionar_produto.html' : '../admin/adicionar_produto/adicionar_produto.html';
         if(data[0].admin == 0){
@@ -138,4 +138,10 @@ function isAdminPage(){
 //Retorna o diretorio correto para arquivos que executem este script em Root ou uma Subpasta
 function fixPastaAdmin(root, subpasta){
   return isAdminPage()? root : subpasta
+}
+
+
+function buscaNavBar(){
+  let search = document.getElementById('searchbar').value;
+  MoverPagina(fixPastaAdmin("../busca/busca.html",  "../../busca/busca.html"), 'search', search);
 }
