@@ -1,15 +1,5 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
 
-function comprar() {
-  console.log("Compra Invalida");
-  let urlParams = new URLSearchParams(window.location.search);
-  if (!urlParams.has('user')) {
-    alert("Você precisa estar logado para realizar compras.");
-    window.location.href = '../login/login.html';
-  } else {
-    MoverPagina('../carrinho/carrinho.html')
-  }
-}
 
 function corEstrela(element) {
   if (urlParams.has("user")) {
@@ -92,34 +82,40 @@ function carregarProdutos(query) {
 
 document.addEventListener("DOMContentLoaded", () => carregarProdutos(""));
 
-
 function adicionaProduto(hatId, userId) {
-  let url = '../carrinho/adiciona_item_carrinho.php';
+  console.log("Compra Invalida");
 
-  let params = 'hat_id=' + encodeURIComponent(hatId) + '&id=' + encodeURIComponent(userId);
+  let urlParams = new URLSearchParams(window.location.search);
+  if (!urlParams.has('user')) {
+    alert("Você precisa estar logado para realizar compras.");
+    window.location.href = '../login/login.html';
+  } else {
+    let url = '../carrinho/adiciona_item_carrinho.php';
+    let params = 'hat_id=' + encodeURIComponent(hatId) + '&id=' + encodeURIComponent(userId);
 
-  let options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: params
-  };
+    let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params
+    };
 
-  fetch(url, options)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Erro ao adicionar produto');
-    }
-    return response.text();
-  })
-  .then(data => {
-    console.log(data); 
-    alert('Produto adicionado ao carrinho com sucesso.');
-    MoverPagina('../carrinho/carrinho.html')
-  })
-  .catch(error => {
-    console.error('Erro:', error);
-    alert('Erro ao adicionar produto.');
-  });
+    fetch(url, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao adicionar produto');
+        }
+        return response.text();
+      })
+      .then(data => {
+        console.log(data); 
+        alert('Produto adicionado ao carrinho com sucesso.');
+        MoverPagina('../carrinho/carrinho.html');
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao adicionar produto.');
+      });
+  }
 }
