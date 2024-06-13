@@ -29,50 +29,39 @@ function carregarProdutos(query) {
       var count = 0;
       data.forEach((data) => {
         let card = `<h1>ERRO FATAL</h1>`;
-        if(data.hex_color != undefined){
-        card = `
-        <div class="card">
-          <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
-          <div class="card-titulo">${data.hat_name}</div>
-          <div class="card-tinta">
-          <div class="cor-da-tinta" style="background-color: #${data.hex_color};"></div>
-            <div class="card-nome-tinta">${data.paint_name}</div>
-          </div>
-          <a onclick='MoverPagina("../produto/produto.html", "hat_id", "${data.hat_id}")' class="imagens">
-            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
-            <img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image}">
-          </a>
-          </a>
-          <div class="preco-botao">
-            <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
-            <button class="carrinho-btn" type="button" onclick="adicionaProduto(${data.hat_id}, '${urlParams.get("user")}')">
-              <span class="material-symbols-outlined">
-                add_shopping_cart
-              </span>
-              <div>Adicionar ao carrinho</div>
-            </button>
-          </div>
-        </div>`;}
-        else {
-          card = `
-        <div class="card">
-          <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
-          <div class="card-titulo">${data.hat_name}</div>
-          <a onclick="MoverPagina("../produto/produto.html", "hat_id", "${data.hat_id}")" class="imagens">
-            <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image
-          }">
-          </a>
-          <div class="preco-botao">
-            <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
-            <button class="carrinho-btn" type="button" onclick="adicionaProduto(${data.hat_id}, '${urlParams.get("user")}')">
-              <span class="material-symbols-outlined">
-                add_shopping_cart
-              </span>
-              <div>Adicionar ao carrinho</div>
-            </button>
-          </div>
-        </div>`;
-        }
+
+        let colorHex = "";
+let colorSplash = "";
+
+if (data.hex_color != undefined) {
+  colorHex = `
+    <div class="cor-da-tinta" style="background-color:${data.hex_color}"></div>
+    <div class="card-nome-tinta">${data.paint_name}</div>
+  `;
+  colorSplash = `<img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image}" />`;
+}
+
+card = `
+<div class="card">
+  <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
+  <div class="card-titulo">${data.hat_name}</div>
+  <div class="card-tinta">
+    ${colorHex}
+    <a onclick='MoverPagina("../produto/produto.html", "hat_id", "${data.hat_id}")' class="imagens">
+      <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}" />
+      ${colorSplash}
+    </a>
+  </div>
+  <div class="preco-botao">
+    <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
+    <button class="carrinho-btn" type="button" onclick="adicionaProduto(${data.hat_id}, '${urlParams.get("user")}')">
+      <span class="material-symbols-outlined">add_shopping_cart</span>
+      <div>Adicionar ao carrinho</div>
+    </button>
+  </div>
+</div>
+`;
+
         listaProdutos.insertAdjacentHTML("beforeend", card);
         count += 1;
       });
