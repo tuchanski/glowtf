@@ -24,8 +24,8 @@ function corEstrela(element) {
 }
 
 function busca() {
-  let inputBusca = document.getElementById('searchbar').value;
-  console.log(inputBusca);
+  let inputBusca = urlParams.get('search');
+  document.getElementById('searchbar').value = inputBusca;
 
   fetch('busca.php', {
     method: 'POST',
@@ -92,3 +92,6 @@ function busca() {
     console.error('Erro:', error);
   });
 }
+
+
+document.addEventListener("DOMContentLoaded", () => busca());
