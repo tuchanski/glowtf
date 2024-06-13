@@ -1,12 +1,5 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
 
-function comprar(){
-  console.log("Compra Invalida");
-  if(!urlParams.has('user')){
-    window.location.href = '../login/login.html';
-    alert("Você precisa estar logado para realizar compras.");
-  }
-}
 
 function corEstrela(element) {
   if (urlParams.has("user")) {
@@ -23,6 +16,7 @@ function corEstrela(element) {
 }
 
 function carregarProdutos(query) {
+  let urlParams = new URLSearchParams(window.location.search);
   fetch("home.php")
     .then((response) => {
       if (!response.ok) {
@@ -51,11 +45,11 @@ function carregarProdutos(query) {
           </a>
           <div class="preco-botao">
             <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
-            <button class="carrinho-btn" type="button" onclick="comprar()">
+            <button class="carrinho-btn" type="button" onclick="adicionaProduto(${data.hat_id}, '${urlParams.get("user")}')">
               <span class="material-symbols-outlined">
                 add_shopping_cart
               </span>
-              <div>adicionar ao carrinho</div>
+              <div>Adicionar ao carrinho</div>
             </button>
           </div>
         </div>`;}
@@ -74,7 +68,7 @@ function carregarProdutos(query) {
               <span class="material-symbols-outlined">
                 add_shopping_cart
               </span>
-              <div>adicionar ao carrinho</div>
+              <div>Adicionar ao carrinho</div>
             </button>
           </div>
         </div>`;
@@ -87,3 +81,41 @@ function carregarProdutos(query) {
 }
 
 document.addEventListener("DOMContentLoaded", () => carregarProdutos(""));
+
+function adicionaProduto(hatId, userId) {
+  console.log("Compra Invalida");
+
+  let urlParams = new URLSearchParams(window.location.search);
+  if (!urlParams.has('user')) {
+    alert("Você precisa estar logado para realizar compras.");
+    window.location.href = '../login/login.html';
+  } else {
+    let url = '../carrinho/adiciona_item_carrinho.php';
+    let params = 'hat_id=' + encodeURIComponent(hatId) + '&id=' + encodeURIComponent(userId);
+
+    let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: params
+    };
+
+    fetch(url, options)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao adicionar produto');
+        }
+        return response.text();
+      })
+      .then(data => {
+        console.log(data); 
+        alert('Produto adicionado ao carrinho com sucesso.');
+        MoverPagina('../carrinho/carrinho.html');
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao adicionar produto.');
+      });
+  }
+}
