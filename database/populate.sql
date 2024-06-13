@@ -20,7 +20,7 @@ INSERT INTO paint (name, promo_image, hex_color) VALUES
 ('Ganância do Zepheniah', 'Ganancia_do_Zepheniah.png', '3A4534'),
 ('Indiscutivelmente Verde', 'Indiscutivelmente_Verde.png', '6A943E'),
 ('Injustiça Salmão Escuro', 'Injustica_Salmao_Escuro.png', 'DF9176'),
-('Laranja Mann Co.', 'Laranja_Mann_Co.png', 'A65F30'),
+('Laranja Mann Co.', 'Laranja_Mann_Co.png', 'A65F30'),--
 ('Marrom Radigan Conagher', 'Marrom_Radigan_Conagher.png', '5F4735'),
 ('Menta de Macho', 'Menta_de_Macho.png', 'AFCEA8'),
 ('Muskelmannbraun', 'Muskelmannbraun.png', '906A3D'),
