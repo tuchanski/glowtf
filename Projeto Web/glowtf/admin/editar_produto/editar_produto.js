@@ -2,6 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
   carregaProduto();
 });
 
+function pegarQueryParam(param) {
+  let urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+let hatId = pegarQueryParam('hat_id');
+console.log(hatId);
+
+
 function validarTecla(event) {
   const tecla = event.key;
   if (
@@ -16,7 +25,7 @@ function validarTecla(event) {
   }
 }
 
-function cadastraProduto() {
+function atualizaProduto() {
   const formulario = document.getElementById('formProduto');
   const formData = new FormData(formulario);
 
@@ -37,7 +46,7 @@ function cadastraProduto() {
 const mostraProduto = document.getElementsByClassName("fundo-adiciona-produto")[0];
 
 function carregaProduto() {
-  const produtoPromise = fetch("produto.php")
+  const produtoPromise = fetch(`produto.php?hat_id=${hatId}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Erro na conexão");
@@ -147,7 +156,7 @@ function carregaProduto() {
             </div>
           </div>
         </form>
-        <button class="button btn-input" type="button" onclick="cadastraProduto()">Cadastrar produto</button>
+        <button class="button btn-input" type="button" onclick="atualizaProduto()">Atualizar produto</button>
       </div>`;
 
       mostraProduto.innerHTML = '';

@@ -5,7 +5,8 @@ $senha = "";
 $banco = "glowtfdb";
 
 $conn = new mysqli($host, $usuario, $senha, $banco);
-// $hat_id = $_POST['hat_id'];
+$hat_id = $_GET['hat_id'];
+
 
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
@@ -37,7 +38,7 @@ if ($conn->connect_error) {
                 paint ON hat.paint_id = paint.paint_id
             JOIN hat_has_class ON  hat.id = hat_has_class.hat_id
             WHERE
-                hat.id = 2
+                hat.id = '$hat_id'
             LIMIT 1";
 
     $result = $conn->query($sql);
