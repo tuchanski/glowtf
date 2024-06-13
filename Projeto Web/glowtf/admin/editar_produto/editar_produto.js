@@ -27,8 +27,6 @@ function cadastraProduto() {
     .then(response => response.text())
     .then(data => {
       console.log(data);
-      // alert('Produto adicionado com sucesso!');
-      // MoverPagina('../lista_de_produtos.html');
     })
     .catch(error => {
       console.error('Erro:', error);
@@ -152,7 +150,7 @@ function carregaProduto() {
         <button class="button btn-input" type="button" onclick="cadastraProduto()">Cadastrar produto</button>
       </div>`;
 
-      mostraProduto.innerHTML = '';  // Limpa o conteúdo antes de inserir o novo HTML
+      mostraProduto.innerHTML = '';
       mostraProduto.insertAdjacentHTML("beforeend", produtoHtml);
 
       const selectTinta = document.getElementById('tinta');
@@ -160,7 +158,6 @@ function carregaProduto() {
       const inputUploadImagem = document.getElementById('upload-imagem');
       const imgProduto = document.querySelector('.imagem-produto');
 
-      // Atualiza a imagem do produto ao selecionar uma nova imagem
       inputUploadImagem.addEventListener('change', function () {
         const file = inputUploadImagem.files[0];
         if (file) {
@@ -172,7 +169,6 @@ function carregaProduto() {
         }
       });
 
-      // Atualiza a imagem splash ao mudar o select da tinta
       selectTinta.addEventListener('change', function () {
         const tintaSelecionada = selectTinta.value;
         if (tintaSelecionada !== "Nenhuma" && tintaSelecionada !== "") {
