@@ -25,6 +25,18 @@
         else if (status === 'senha_diferente'){
           exibirAlerta('Erro: Senhas não correspondentes.');
         }
+        else if (status === 'cpf_invalido'){
+          exibirAlerta('Erro: Formato do CPF inválido.');
+        }
+        else if (status === 'email_invalido'){
+          exibirAlerta('Erro: Formato do e-mail inválido.');
+        }
+        else if (status === 'steam_invalido'){
+          exibirAlerta('Erro: Formato do Código de Troca Steam inválido.');
+        }
+        else if (status === 'nome_curto'){
+          exibirAlerta('Erro: Nome muito curto.');
+        }
     }
     window.onload = function() {
         verificarMensagemDeCadastro();
