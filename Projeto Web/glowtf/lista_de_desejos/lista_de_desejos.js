@@ -37,7 +37,7 @@ function carregaProdutos() {
               </div>
             </td>
             <td class="preco">
-                R$ ${data.hat_price}
+                R$ ${(data.hat_price / 100).toFixed(2).replace('.', ',')}
             </td>
             <td class="botoes">
               <button class="carrinho-btn" type="button" onclick="MoverPagina('../carrinho/carrinho.html', 'id_hat', ${data.hat_id})">
