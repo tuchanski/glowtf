@@ -1,6 +1,6 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
 
-function toggleWishlist(element, current, hat){
+function toggleWishlist(element, current, hat) {
   if (urlParams.has("user")) {
     if (current) { //True - In Wishlist
       element.style.color = '#282828';
@@ -18,7 +18,7 @@ function toggleWishlist(element, current, hat){
       })
     })
 
-    element.onclick = function() {
+    element.onclick = function () {
       toggleWishlist(element, !current);
     };
   }
@@ -34,9 +34,17 @@ function carregarProdutos(query) {
 
   let wishlistList = [];
 
-    if(urlParams.has("user")){
-      wishlistList = getWishlist(urlParams.get("user"));
-    }
+  if (urlParams.has("user")) {
+    getWishlist(urlParams.get("user"))
+      .then(hatIds => {
+        wishlistList = hatIds; // Assign hatIds to wishlistList when promise resolves
+        console.log('Wishlist:', wishlistList); // Verify wishlistList here
+      })
+      .catch(error => {
+        console.error('Failed to fetch wishlist:', error);
+      });
+  }
+
 
   fetch("home.php")
     .then((response) => {
@@ -133,7 +141,7 @@ function adicionaProduto(hatId, userId) {
 
 //Gera a lista de wishlist do Usuário
 function getWishlist(userId) {
-  fetch('get_wishlist.php', {
+  return fetch('get_wishlist.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -142,11 +150,16 @@ function getWishlist(userId) {
       user_id: userId
     })
   })
-  .then(response => response.json())
-  .then(hatIds => {
-    return hatIds;
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+    .then(response => {
+      console.log(response);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .catch(error => {
+      console.error('Error fetching wishlist:', error);
+      throw error; // Re-throw the error to propagate it further if needed
+    });
 }
+
