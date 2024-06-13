@@ -1,26 +1,26 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // const inputUploadImagem = document.getElementById('upload-imagem');
-  // const divImagens = document.querySelector('.imagens');
-  // const imgProduto = document.querySelector('.imagem-produto');
-  const selectTinta = document.getElementById('tinta');
-  const imgSplash = document.querySelector('.splash');
+// document.addEventListener('DOMContentLoaded', function () {
+//   // const inputUploadImagem = document.getElementById('upload-imagem');
+//   // const divImagens = document.querySelector('.imagens');
+//   // // const imgProduto = document.querySelector('.imagem-produto');
+//   // const selectTinta = document.getElementById('tinta');
+//   // const imgSplash = document.querySelector('.splash');
 
-  // Esconde ou mostra o splash da tinta conforme o valor do input
-  selectTinta.addEventListener('change', function () {
-    const tintaSelecionada = selectTinta.value;
-    if (tintaSelecionada !== "Nenhuma" && tintaSelecionada !== "") {
-      imgSplash.src = `../../dados/imagens/tintas/${tintaSelecionada.replace(/ /g, '_')}.png`;
-      imgSplash.style.display = 'block';
-      console.log(imgSplash.src);
-    } else {
-      imgSplash.style.display = 'none';
-    }
-  });
+//   // // Esconde ou mostra o splash da tinta conforme o valor do input
+//   // selectTinta.addEventListener('change', function () {
+//   //   const tintaSelecionada = selectTinta.value;
+//   //   if (tintaSelecionada !== "Nenhuma" && tintaSelecionada !== "") {
+//   //     imgSplash.src = `../../dados/imagens/tintas/${tintaSelecionada.replace(/ /g, '_')}.png`;
+//   //     imgSplash.style.display = 'block';
+//   //     console.log(imgSplash.src);
+//   //   } else {
+//   //     imgSplash.style.display = 'none';
+//   //   }
+//   // });
 
-  document.getElementById('estoque').addEventListener('keydown', validarTecla);
-  carregaTintas();
-  carregaClasses()
-});
+//   // document.getElementById('estoque').addEventListener('keydown', validarTecla);
+//   carregaTintas();
+//   carregaClasses()
+// });
 
 function validarTecla(event) {
   const tecla = event.key;
