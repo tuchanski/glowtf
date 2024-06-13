@@ -1,51 +1,22 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
 
-function toggleWishlist(element, current, hat) {
+
+function corEstrela(element) {
   if (urlParams.has("user")) {
-    if (current) { //True - In Wishlist
+    if (element.style.color === 'white') {
       element.style.color = '#282828';
     } else {
       element.style.color = 'white';
     }
-    fetch('wishlist.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: new URLSearchParams({
-        'user_id': urlParams.get("user"),
-        'user_id': hat,
-      })
-    })
-
-    element.onclick = function () {
-      toggleWishlist(element, !current);
-    };
   }
-  else {
+  else{
     window.location.href = '../login/login.html';
     alert("Você precisa estar logado para ter uma lista de desejos.");
   }
-
 }
 
 function carregarProdutos(query) {
   let urlParams = new URLSearchParams(window.location.search);
-
-  let wishlistList = [];
-
-  if (urlParams.has("user")) {
-    getWishlist(urlParams.get("user"))
-      .then(hatIds => {
-        wishlistList = hatIds; // Assign hatIds to wishlistList when promise resolves
-        console.log('Wishlist:', wishlistList); // Verify wishlistList here
-      })
-      .catch(error => {
-        console.error('Failed to fetch wishlist:', error);
-      });
-  }
-
-
   fetch("home.php")
     .then((response) => {
       if (!response.ok) {
@@ -57,38 +28,39 @@ function carregarProdutos(query) {
       console.log(data);
       var count = 0;
       data.forEach((data) => {
+        let card = `<h1>ERRO FATAL</h1>`;
+
         let colorHex = "";
-        let colorSplash = "";
-        let inWishlist = data.hatId in wishlistList;
-        if (data.hex_color != undefined) {
-          colorHex = `
-            <div class="cor-da-tinta" style="background-color: ${data.hex_color};"></div>
-            <div class="card-nome-tinta">${data.paint_name}</div>
-          `;
-          colorSplash = `<img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image}" />`;
-        }
+let colorSplash = "";
 
-        let card = `
-          <div class="card">
-            <span class="material-symbols-outlined estrela" onclick="toggleWishlist(this, ${inWishlist}, ${data.hatId})">star</span>
-            <div class="card-titulo">${data.hat_name}</div>
-            <div class="card-tinta">
-              ${colorHex}
-            </div>
-            <a onclick='MoverPagina("../produto/produto.html", "hat_id", "${data.hat_id}")' class="imagens">
-              <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
-              ${colorSplash}
-            </a>
-            <div class="preco-botao">
-              <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
-              <button class="carrinho-btn" type="button" onclick="adicionaProduto(${data.hat_id}, '${urlParams.get("user")}')">
-                <span class="material-symbols-outlined">add_shopping_cart</span>
-                <div>Adicionar ao carrinho</div>
-              </button>
-            </div>
-          </div>
-        `;
+if (data.hex_color != undefined) {
+  colorHex = `
+    <div class="cor-da-tinta" style="background-color:${data.hex_color}"></div>
+    <div class="card-nome-tinta">${data.paint_name}</div>
+  `;
+  colorSplash = `<img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image}" />`;
+}
 
+card = `
+<div class="card">
+  <span class="material-symbols-outlined estrela" onclick="corEstrela(this)">star</span>
+  <div class="card-titulo">${data.hat_name}</div>
+  <div class="card-tinta">
+    ${colorHex}
+    <a onclick='MoverPagina("../produto/produto.html", "hat_id", "${data.hat_id}")' class="imagens">
+      <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}" />
+      ${colorSplash}
+    </a>
+  </div>
+  <div class="preco-botao">
+    <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
+    <button class="carrinho-btn" type="button" onclick="adicionaProduto(${data.hat_id}, '${urlParams.get("user")}')">
+      <span class="material-symbols-outlined">add_shopping_cart</span>
+      <div>Adicionar ao carrinho</div>
+    </button>
+  </div>
+</div>
+`;
 
         listaProdutos.insertAdjacentHTML("beforeend", card);
         count += 1;
@@ -126,7 +98,7 @@ function adicionaProduto(hatId, userId) {
         return response.text();
       })
       .then(data => {
-        console.log(data);
+        console.log(data); 
         alert('Produto adicionado ao carrinho com sucesso.');
         MoverPagina('../carrinho/carrinho.html');
       })
@@ -136,30 +108,3 @@ function adicionaProduto(hatId, userId) {
       });
   }
 }
-
-
-
-//Gera a lista de wishlist do Usuário
-function getWishlist(userId) {
-  return fetch('get_wishlist.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      user_id: userId
-    })
-  })
-    .then(response => {
-      console.log(response);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .catch(error => {
-      console.error('Error fetching wishlist:', error);
-      throw error; // Re-throw the error to propagate it further if needed
-    });
-}
-
