@@ -8,14 +8,6 @@ function pegarQueryParam(param) {
 let hatId = pegarQueryParam('cart_has_hat_id');
 console.log(hatId);
 
-function favorita(element) {
-  if (element.style.color === 'white') {
-    element.style.color = '#282828';
-  } else {
-    element.style.color = 'white';
-  }
-}
-
 function produto() {
   fetch(`pagamento.php?cart_has_hat_id=${hatId}`)
     .then((response) => {
@@ -44,71 +36,54 @@ function produto() {
             </div>
           </div>
           <div class="preco">
-            R$ ${data[0].hat_price}
+            R$ ${(data[0].hat_price / 100).toFixed(2).replace('.', ',')}
           </div>
         </div>
         <div class="linha-horizontal"></div>
         <div class="parte-pagamento">
           <div></div>
           <div class="pagamento">
-            <div class="botao-input">
-              <div class="titulo-pagamento">
-                <label for="meio-pagamento">Meio de pagamento:</label>
-                <div class="input-usuario">
-                  <select id="meio-pagamento">
-                    <option value="" disabled selected>Escolha um meio de pagamento</option>
-                    <option value="Pix">Pix</option>
-                    <option value="Boleto">Boleto</option>
-                    <option value="Credito">Cartão de Crédito</option>
-                    <option value="Debito">Cartão de Débito</option>
-                  </select>
+            <form id="form-pagamento" action="pagar.php" method="POST">
+              <div class="botao-input">
+                <div class="titulo-pagamento">
+                  <label for="meio-pagamento">Meio de pagamento:</label>
+                  <div class="input-usuario">
+                    <select id="meio-pagamento" name="meio_pagamento" required>
+                      <option value="" disabled selected>Escolha um meio de pagamento</option>
+                      <option value="Pix">Pix</option>
+                      <option value="Boleto">Boleto</option>
+                      <option value="Credito">Cartão de Crédito</option>
+                      <option value="Debito">Cartão de Débito</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-            <button class="pagar-btn" type="button">
-              <div>Pagar</div>
-            </button>
+              <input type="hidden" name="hat_name" value="${data[0].hat_name}">
+              <input type="hidden" name="hat_price" value="${(data[0].hat_price / 100).toFixed(2)}">
+              <input type="hidden" name="user_id" value="${userId}">
+              <button id="pagar-btn" class="pagar-btn" type="submit" name="submit">
+                <div>Pagar</div>
+              </button>
+            </form>
           </div>
         </div>
-      </div>`;
+      </div>
+      `;
       mostraProduto.insertAdjacentHTML("beforeend", produto);
+
+      // Adiciona listener ao formulário para capturar o evento de submit
+      const formPagamento = document.getElementById('form-pagamento');
+      formPagamento.addEventListener('submit', (event) => {
+        const meioPagamento = document.getElementById('meio-pagamento').value;
+        if (!meioPagamento) {
+          event.preventDefault();
+          alert('Por favor, selecione um meio de pagamento.');
+        } else {
+          console.log('Método de pagamento:', meioPagamento);
+        }
+      });
     })
     .catch((error) => console.error("Erro:", error));
 }
 
 document.addEventListener("DOMContentLoaded", produto);
-
-function adicionaProduto(hatId, userId) {
-  if (!userId) {
-    alert("Você precisa estar logado para realizar compras.");
-    window.location.href = '../login/login.html';
-  } else {
-    let url = '../carrinho/adiciona_item_carrinho.php';
-    let params = 'hat_id=' + encodeURIComponent(hatId) + '&id=' + encodeURIComponent(userId);
-
-    let options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: params
-    };
-
-    fetch(url, options)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Erro ao adicionar produto');
-        }
-        return response.text();
-      })
-      .then(data => {
-        console.log(data); 
-        alert('Produto adicionado ao carrinho com sucesso.');
-        MoverPagina('../carrinho/carrinho.html');
-      })
-      .catch(error => {
-        console.error('Erro:', error);
-        alert('Erro ao adicionar produto.');
-      });
-  }
-}
