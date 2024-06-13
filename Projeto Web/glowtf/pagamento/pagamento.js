@@ -43,7 +43,7 @@ function produto() {
         <div class="parte-pagamento">
           <div></div>
           <div class="pagamento">
-            <form id="form-pagamento" action="pagar.php" method="POST">
+            <form class="pagamento" id="form-pagamento" action="pagar.php" method="POST">
               <div class="botao-input">
                 <div class="titulo-pagamento">
                   <label for="meio-pagamento">Meio de pagamento:</label>
