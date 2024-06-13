@@ -27,10 +27,7 @@ function produto() {
     .then((data) => {
       console.log(data[0]);
       const userId = pegarQueryParam('user'); // Captura o userId da URL
-      const produto = `
-       <div class="wrapper">
-    <h1 class="title">Efetue o pagamento do seu pedido</h1>
-    <div class="corpo">
+      const produto = `    
       <div class="fundo">
         <div class="produto">
           <div class="imagem-nome-produto">
@@ -73,10 +70,7 @@ function produto() {
             </button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-      `;
+      </div>`;
       mostraProduto.insertAdjacentHTML("beforeend", produto);
     })
     .catch((error) => console.error("Erro:", error));
