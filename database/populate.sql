@@ -56,7 +56,7 @@ INSERT INTO coupons (expiration_date, discount, uses, start_date, code_name) VAL
 INSERT INTO class (class_name) VALUES 
 ('Scout'),
 ('Soldier'),
-('Pyro'),
+('Pyro'),  
 ('Demoman'),
 ('Heavy'),
 ('Engineer'),
