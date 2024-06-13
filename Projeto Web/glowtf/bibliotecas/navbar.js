@@ -137,5 +137,5 @@ function isAdminPage(){
 
 //Retorna o diretorio correto para arquivos que executem este script em Root ou uma Subpasta
 function fixPastaAdmin(root, subpasta){
-  return isAdminPage? root : subpasta
+  return isAdminPage()? root : subpasta
 }
