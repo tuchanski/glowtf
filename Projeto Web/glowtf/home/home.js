@@ -1,12 +1,23 @@
 const listaProdutos = document.getElementsByClassName('corpo')[0];
 
-function toggleWishlist(element, current){
+function toggleWishlist(element, current, hat){
   if (urlParams.has("user")) {
     if (current) { //True - In Wishlist
       element.style.color = '#282828';
     } else {
       element.style.color = 'white';
     }
+    fetch('wishlist.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        'user_id': urlParams.get("user"),
+        'user_id': hat,
+      })
+    })
+
     element.onclick = function() {
       toggleWishlist(element, !current);
     };
@@ -20,6 +31,13 @@ function toggleWishlist(element, current){
 
 function carregarProdutos(query) {
   let urlParams = new URLSearchParams(window.location.search);
+
+  let wishlistList = [];
+
+    if(urlParams.has("user")){
+      wishlistList = getWishlist(urlParams.get("user"));
+    }
+
   fetch("home.php")
     .then((response) => {
       if (!response.ok) {
@@ -33,6 +51,7 @@ function carregarProdutos(query) {
       data.forEach((data) => {
         let colorHex = "";
         let colorSplash = "";
+        let inWishlist = data.hatId in wishlistList;
         if (data.hex_color != undefined) {
           colorHex = `
             <div class="cor-da-tinta" style="background-color: ${data.hex_color};"></div>
@@ -43,7 +62,7 @@ function carregarProdutos(query) {
 
         let card = `
           <div class="card">
-            <span class="material-symbols-outlined estrela" onclick="toggleWishlist(this)">star</span>
+            <span class="material-symbols-outlined estrela" onclick="toggleWishlist(this, ${inWishlist}, ${data.hatId})">star</span>
             <div class="card-titulo">${data.hat_name}</div>
             <div class="card-tinta">
               ${colorHex}
@@ -108,4 +127,26 @@ function adicionaProduto(hatId, userId) {
         alert('Erro ao adicionar produto.');
       });
   }
+}
+
+
+
+//Gera a lista de wishlist do Usuário
+function getWishlist(userId) {
+  fetch('get_wishlist.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      user_id: userId
+    })
+  })
+  .then(response => response.json())
+  .then(hatIds => {
+    return hatIds;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
 }
