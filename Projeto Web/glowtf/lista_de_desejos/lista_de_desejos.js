@@ -22,8 +22,10 @@ function carregaProdutos() {
           const item = `
           <tr>
             <td class="imagens">
-                <img class="imagem" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
-                <img class="splash" src="../dados/imagens/tintas/${data.paint_promo_image}">
+                <a href="../produto/produto.html?hat_id=${data.hat_id}" class="img">
+                  <img class="imagem" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
+                  <img class="splash" src="../dados/imagens/tintas/${data.paint_promo_image}">
+                </a>
             </td>
             <td>
               <div class="dados-produto">
