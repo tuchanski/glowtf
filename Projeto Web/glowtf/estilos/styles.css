@@ -70,6 +70,10 @@ nav {
   display: flex;
   justify-content: space-evenly; 
   align-items: center;
+  /* Deixa barra fixa no topo da tela */
+  position: fixed;
+  top: 0;
+  z-index: 9999;
 }
 
 /* Todo o projeto */
