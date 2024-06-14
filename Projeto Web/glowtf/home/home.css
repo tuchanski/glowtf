@@ -141,13 +141,13 @@
   background-color: #0287cf;
 }
 
-.remover-carrinho-btn {
+.ver-carrinho-btn {
   width: 100%;
   height: 45px;
   padding: 5px;
   border: none;
   border-radius: 3px;
-  background-color: #F14668;
+  background-color:#FF9458;
   color: white;
   cursor: pointer;
   font-size: 14px;
@@ -157,6 +157,6 @@
   align-items: center;
 }
 
-.remover-carrinho-btn:hover {
-  background-color: #cc2e4d;
+.ver-carrinho-btn:hover {
+  background-color: #ff7728;;
 }
