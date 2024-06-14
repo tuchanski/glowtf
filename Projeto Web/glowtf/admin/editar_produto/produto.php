@@ -31,15 +31,19 @@ if ($conn->connect_error) {
                 paint.name AS paint_name,
                 paint.promo_image AS paint_promo_image,
                 paint.hex_color,
-                hat_has_class.class_id
+                hat_has_class.class_id,
+                class.class_name
             FROM
                 hat
             LEFT JOIN
                 paint ON hat.paint_id = paint.paint_id
-            JOIN hat_has_class ON  hat.id = hat_has_class.hat_id
+            LEFT JOIN
+                hat_has_class ON hat.id = hat_has_class.hat_id
+            LEFT JOIN
+                class ON hat_has_class.class_id = class.class_id
             WHERE
                 hat.id = '$hat_id'
-            LIMIT 1";
+            LIMIT 1;";
 
     $result = $conn->query($sql);
 
