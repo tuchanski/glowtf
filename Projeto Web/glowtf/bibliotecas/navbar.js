@@ -68,10 +68,16 @@ function criarLogin() {
               <a class="usuario big">
                 <span class="material-symbols-outlined">person</span>${data[0].name}
               </a>
+              <ul class="dropdown big dropdown-big">
+                <li><a class="drop-desejos" onclick="MoverPagina('../lista_de_desejos/lista_de_desejos.html')">Lista de Desejos</a></li>
+                <li><a class="drop-carrinho" onclick="MoverPagina('../carrinho/carrinho.html')">Carrinho</a></li>
+                <li><a onclick="MoverPagina('../perfil_usuario/perfil_usuario.html')">Perfil</a></li>
+                <li><a onclick="deslogar()">Sair</a></li>
+              </ul>
               <a class="usuario small">
                 <span class="material-symbols-outlined">menu</span>
               </a>
-              <ul class="dropdown">
+              <ul class="dropdown small">
                 <li><a class="drop-desejos" onclick="MoverPagina('../lista_de_desejos/lista_de_desejos.html')">Lista de Desejos</a></li>
                 <li><a class="drop-carrinho" onclick="MoverPagina('../carrinho/carrinho.html')">Carrinho</a></li>
                 <li><a onclick="MoverPagina('../perfil_usuario/perfil_usuario.html')">Perfil</a></li>

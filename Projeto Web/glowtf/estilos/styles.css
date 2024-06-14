@@ -50,13 +50,18 @@ ul li ul.dropdown {
   padding: 25px; /* Added padding for better spacing */
 }
 
-ul li a.usuario:hover + ul.dropdown,
-ul li ul.dropdown:hover {
-  display: flex;
-  flex-direction: column;
+ul li ul.dropdown-big {
+  width: 100%;
+  display: none;
+  background-color: #000000;
+  position: absolute;
+  text-align: center;
+  top: 100%; /* Adjust as needed */
+  left: 0; /* Adjust this property */
+  padding: 10px; /* Added padding for better spacing */
 }
 
-ul li a.big:hover + ul.dropdown,
+ul li a.usuario:hover + ul.dropdown,
 ul li ul.dropdown:hover {
   display: flex;
   flex-direction: column;
@@ -313,25 +318,26 @@ select:hover {
 
 /* Media query for hiding usuario links on small screens */
 @media (max-width: 800px) {
-  .login a.big{
-    display: none;
+  .login a.big {
+    display: none; /* Hide big links on small screens */
   }
   .login a.lista-desejos {
-    display: none;
+    display: none; /* Hide lista-desejos link on small screens */
   }
   .login a.lista-carrinho {
-    display: none;
+    display: none; /* Hide lista-carrinho link on small screens */
   }
 }
 
+/* Media query for hiding usuario links on larger screens */
 @media (min-width: 800px) {
-  .login a.small{
-    display: none;
+  .login a.small {
+    display: none; /* Hide small links on larger screens */
   }
-  .login a.drop-desejos {
-    display: none;
+  .login .dropdown .drop-desejos {
+    display: none; /* Hide dropdown desejo link on larger screens */
   }
-  .login a.drop-carrinho {
-    display: none;
+  .login .dropdown .drop-carrinho {
+    display: none; /* Hide dropdown carrinho link on larger screens */
   }
 }
