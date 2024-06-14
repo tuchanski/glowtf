@@ -44,9 +44,10 @@ ul li ul.dropdown {
   display: none;
   background-color: #000000;
   position: absolute;
+  text-align: center;
   top: 100%; /* Adjust as needed */
-  left: 0;
-  padding: 10px; /* Added padding for better spacing */
+  left: 0; /* Adjust this property */
+  padding: 25px; /* Added padding for better spacing */
 }
 
 ul li a.usuario:hover + ul.dropdown,
@@ -64,7 +65,6 @@ ul li ul.dropdown:hover {
 }
 
 /* Todo o projeto */
-
 /* Navbar usuário não cadastrado */
 nav {
   width: 100%;
@@ -73,7 +73,7 @@ nav {
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
   /* Deixa barra fixa no topo da tela */
   position: fixed;
@@ -88,7 +88,7 @@ nav {
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
 }
 
@@ -97,7 +97,7 @@ nav {
 .conjunto-nav {
   width: 81%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center align items */
   align-items: center;
 }
 
@@ -114,7 +114,7 @@ nav {
   font-size: 17px;
   font-weight: bold;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
 }
 
@@ -145,7 +145,7 @@ nav {
   font-size: 14px;
   font-weight: 700;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
 }
 
@@ -156,7 +156,7 @@ nav {
 /* Navbar usuário não cadastrado */
 .login {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
   gap: 20px;
 }
@@ -170,7 +170,7 @@ nav {
 /* Navbar usuário não cadastrado */
 .icones {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
   gap: 30px;
 }
@@ -178,7 +178,7 @@ nav {
 /* Navbar usuário autenticado */
 .usuario-autenticado {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
   gap: 30px;
 }
@@ -186,7 +186,7 @@ nav {
 /* Navbar usuário autenticado */
 .usuario {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
   gap: 10px;
 }
@@ -199,7 +199,7 @@ nav {
 
 .logo {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* Center align items */
   align-items: center;
   gap: 10px;
 }
@@ -304,3 +304,29 @@ select:hover {
 ::placeholder {
   color: #767676;
 }
+
+/* Media query for hiding usuario links on small screens */
+@media (max-width: 800px) {
+  .login a.big {
+    display: none;
+  }
+  .login a.lista-desejos {
+    display: none;
+  }
+  .login a.lista-carrinho {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .login a.small {
+    display: none;
+  }
+  .login a.small-desejos {
+    display: none;
+  }
+  .login a.small-carrinho {
+    display: none;
+  }
+
+  /* Adjust dropdown position for larger screens */
