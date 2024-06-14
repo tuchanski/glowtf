@@ -4,7 +4,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-variation-settings:"slnt" 0;
+  font-variation-settings: "slnt" 0;
   background: #282828;
   padding: 0;
   margin: 0;
@@ -16,7 +16,7 @@ a {
 }
 
 a:hover {
-  color:  #33E333;
+  color: #33E333;
 }
 
 ul {
@@ -26,7 +26,7 @@ ul {
 }
 
 li:hover {
-  color:  #33E333;
+  color: #33E333;
   cursor: pointer;
   text-shadow: #33E333 1px 0 10px;
 }
@@ -38,13 +38,15 @@ ul li {
 
 ul li ul.dropdown {
   width: 100%;
-  display:none;
+  display: none;
   background-color: #000000;
   position: absolute;
+  top: 30px; /* Adjusted margin */
+  left: 0;
 }
 
 ul li:hover ul.dropdown {
-  display:flex;
+  display: flex;
   flex-direction: column;
   padding: 20px;
   align-items: baseline;
@@ -53,10 +55,10 @@ ul li:hover ul.dropdown {
 /* ícones do google */
 .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
 }
 
 /* Todo o projeto */
@@ -69,7 +71,7 @@ nav {
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
   display: flex;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
   align-items: center;
   /* Deixa barra fixa no topo da tela */
   position: fixed;
@@ -119,7 +121,7 @@ nav {
   background-color: #10bf10;
 }
 
-/* Navbar*/
+/* Navbar */
 .searchbar {
   width: 50%;
   display: flex;
@@ -128,7 +130,7 @@ nav {
   justify-content: center;
 }
 
-/* Navbar*/
+/* Navbar */
 .search-btn {
   width: 55px;
   height: 45px;
@@ -146,7 +148,7 @@ nav {
 }
 
 .search-btn:hover {
-  background-color:#6e6e6e;
+  background-color: #6e6e6e;
 }
 
 /* Navbar usuário não cadastrado */
@@ -158,7 +160,7 @@ nav {
 }
 
 .login:hover {
-  color:  #33E333;
+  color: #33E333;
   cursor: pointer;
   text-shadow: #33E333 1px 0 10px;
 }
@@ -168,7 +170,7 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 30px
+  gap: 30px;
 }
 
 /* Navbar usuário autenticado */
@@ -176,7 +178,7 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 30px
+  gap: 30px;
 }
 
 /* Navbar usuário autenticado */
@@ -184,11 +186,12 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 10px
+  gap: 10px;
+  padding: 10px; /* Add padding to make the hover area larger */
 }
 
 .usuario:hover {
-  color:  #33E333;
+  color: #33E333;
   cursor: pointer;
   text-shadow: #33E333 1px 0 10px;
 }
@@ -197,12 +200,12 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 /* Todo o projeto */
 .wrapper {
-margin-top: 10%;
+  margin-top: 10%;
 }
 
 /* Todo o projeto */
@@ -240,7 +243,7 @@ input {
 }
 
 input:hover {
-  box-shadow: #000000 1px 1px 3px;;
+  box-shadow: #000000 1px 1px 3px;
 }
 
 /* Tela entrar e cadastrar */
