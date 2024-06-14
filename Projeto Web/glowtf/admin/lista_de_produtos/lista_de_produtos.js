@@ -10,10 +10,10 @@ function criarProdutos() {
                     <div class="cor-da-tinta" style="background-color: #${data.hex_color};"></div>
                     <div class="card-nome-tinta">${data.paint_name}</div>
                 </div>
-                <div class="imagens">
+                <a onclick="MoverPagina("../../produto/produto.html", "hat_id", "${data.hat_id}")" class="imagens">
                     <img class="card-imagem-produto" src="../../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
                     <img class="card-splash" src="../../dados/imagens/tintas/${data.paint_promo_image}">
-                </div>
+                </a>
                 <div class="preco-botao">
                     <div class="card-preco">R$${(data.price / 100).toFixed(2).replace('.', ',')}</div>
                     <div class="botoes">
