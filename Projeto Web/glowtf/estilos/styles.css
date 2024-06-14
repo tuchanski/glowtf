@@ -1,4 +1,4 @@
-/* Todo o projeto */
+/* Global styles */
 body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -17,7 +17,7 @@ a {
 }
 
 a:hover {
-  color: #33E333;
+  color: #33e333;
 }
 
 ul {
@@ -29,9 +29,9 @@ ul {
 }
 
 li:hover {
-  color: #33E333;
+  color: #33e333;
   cursor: pointer;
-  text-shadow: #33E333 1px 0 10px;
+  text-shadow: #33e333 1px 0 10px;
 }
 
 ul li {
@@ -63,9 +63,7 @@ ul li ul.dropdown:hover {
     'opsz' 24;
 }
 
-/* Todo o projeto */
-
-/* Navbar usuário não cadastrado */
+/* Navbar styles */
 nav {
   width: 100%;
   height: 60px;
@@ -75,25 +73,11 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* Deixa barra fixa no topo da tela */
   position: fixed;
-  top: 0; /* Adjusted to 0 to remove margin */
+  top: 0;
   z-index: 9999;
 }
 
-.nav-usuario-autenticado {
-  width: 100%;
-  height: 60px;
-  background-color: #000000;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-/* Todo o projeto */
-/* Navbar usuário não cadastrado */
 .conjunto-nav {
   width: 81%;
   display: flex;
@@ -101,38 +85,13 @@ nav {
   align-items: center;
 }
 
-/* Navbar usuário não cadastrado */
-.login_steam {
-  width: 110px;
-  height: 45px;
-  padding: 3px;
-  border: none;
-  border-radius: 3px;
-  background-color: #33E333;
-  color: white;
-  cursor: pointer;
-  font-size: 17px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-/* Navbar usuário não cadastrado */
-.login_steam:hover {
-  background-color: #10bf10;
-}
-
-/* Navbar */
 .searchbar {
   width: 50%;
   display: flex;
   align-items: center;
   gap: 10px;
-  justify-content: center;
 }
 
-/* Navbar */
 .search-btn {
   width: 55px;
   height: 45px;
@@ -153,7 +112,26 @@ nav {
   background-color: #6e6e6e;
 }
 
-/* Navbar usuário não cadastrado */
+.login_steam {
+  width: 110px;
+  height: 45px;
+  padding: 3px;
+  border: none;
+  border-radius: 3px;
+  background-color: #33e333;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login_steam:hover {
+  background-color: #10bf10;
+}
+
 .login {
   display: flex;
   justify-content: space-evenly;
@@ -162,20 +140,11 @@ nav {
 }
 
 .login:hover {
-  color: #33E333;
+  color: #33e333;
   cursor: pointer;
-  text-shadow: #33E333 1px 0 10px;
+  text-shadow: #33e333 1px 0 10px;
 }
 
-/* Navbar usuário não cadastrado */
-.icones {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 30px;
-}
-
-/* Navbar usuário autenticado */
 .usuario-autenticado {
   display: flex;
   justify-content: space-evenly;
@@ -183,7 +152,6 @@ nav {
   gap: 30px;
 }
 
-/* Navbar usuário autenticado */
 .usuario {
   display: flex;
   justify-content: space-evenly;
@@ -192,9 +160,9 @@ nav {
 }
 
 .usuario:hover {
-  color: #33E333;
+  color: #33e333;
   cursor: pointer;
-  text-shadow: #33E333 1px 0 10px;
+  text-shadow: #33e333 1px 0 10px;
 }
 
 .logo {
@@ -204,12 +172,11 @@ nav {
   gap: 10px;
 }
 
-/* Todo o projeto */
+/* Project-wide styles */
 .wrapper {
   margin-top: 10%;
 }
 
-/* Todo o projeto */
 .title {
   margin-top: 0%;
   margin-bottom: 2%;
@@ -218,21 +185,19 @@ nav {
   text-align: center;
 }
 
-/* Tela entrar e cadastrar */
 .container {
   width: 15%;
   height: 50%;
   margin: auto;
   padding: 120px;
   border-radius: 3px;
-  background: radial-gradient(circle at 0%, #4C4B58, #323030);
+  background: radial-gradient(circle at 0%, #4c4b58, #323030);
   font-size: 13px;
   color: #ffffff;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-/* Tela entrar e cadastrar */
-input {
+.input {
   width: 100%;
   height: 45px;
   padding: 12px;
@@ -243,43 +208,38 @@ input {
   color: #000000;
 }
 
-input:hover {
+.input:hover {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Tela entrar e cadastrar */
-button {
+.button {
   width: 100%;
   max-width: 300px;
   height: 45px;
   padding: 12px;
   border: none;
   border-radius: 4px;
-  background-color: #6495ED;
+  background-color: #6495ed;
   color: white;
   cursor: pointer;
   font-size: 17px;
   font-weight: bold;
 }
 
-/* Tela entrar e cadastrar */
-button:hover {
+.button:hover {
   background-color: #0287cf;
 }
 
-/* Tela entrar e cadastrar */
 .login-layout {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Tela entrar e cadastrar */
 .login-layout button {
   margin-top: 40px;
 }
 
-/* Todo o projeto */
 select {
   width: 100%;
   padding: 12px;
@@ -290,17 +250,37 @@ select {
   font-size: 15px;
 }
 
-/* Todo o projeto */
 select option {
   font-size: 15px;
 }
 
-/* Todo o projeto */
 select:hover {
   border-color: #999;
 }
 
-/* Todo o projeto */
 ::placeholder {
   color: #767676;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  ul li ul.dropdown {
+    width: 100%;
+  }
+
+  ul li ul.dropdown li.additional-link {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  ul li ul.dropdown {
+    flex-direction: column;
+  }
+
+  ul li ul.dropdown li.additional-link {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+  }
 }
