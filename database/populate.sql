@@ -43,7 +43,7 @@ INSERT INTO hat (inventory, price, promo_image, name, paint_id, description, wik
 (60, 1700, 'heavy_stocking_cap_large.png', 'Chapéu de Palha', 6, 'Um chapéu de palha perfeito para o verão.', 'https://wiki.teamfortress.com/wiki/Straw_Hat'),
 (45, 2100, 'mannanas_cap_large.png', 'Elmet Costureiro', 7, 'Um capacete usado por costureiros de elite.', 'https://wiki.teamfortress.com/wiki/Costume_helmet'),
 (35, 1130, 'medic_german_gonzila_large.png', 'Capacete Medieval', 8, 'Um capacete usado por cavaleiros medievais.', 'https://wiki.teamfortress.com/wiki/Medieval_Helmet'),
-(12, 2100, 'blighted_beak_large.png', 'Afro Australiano', 2, 'Um afro estiloso com tema australiano.', 'https://wiki.teamfortress.com/wiki/Aussie_Fro'),
+(12, 2100, 'chief_rocketeer_large.png', 'Afro Australiano', 2, 'Um afro estiloso com tema australiano.', 'https://wiki.teamfortress.com/wiki/Aussie_Fro'),
 (9, 2200, 'fez_large.png', 'Beep Boy', 4, 'Um chapéu eletrônico com tema futurista.', 'https://wiki.teamfortress.com/wiki/Beep_Boy'),
 (15, 2250, 'all_scrib_m_demo_large.png', 'Cabeça de Besouro', 5, 'Um chapéu peculiar em forma de cabeça de besouro.', 'https://wiki.teamfortress.com/wiki/Beetle_Head'),
 (7, 2300, 'awes_hat_large.png', 'Grande País', 6, 'Um chapéu de cowboy estilo clássico.', 'https://wiki.teamfortress.com/wiki/Big_Country'),
@@ -62,6 +62,7 @@ INSERT INTO hat (inventory, price, promo_image, name, paint_id, description, wik
 (21, 2950, 'pyro_brainsucker_large.png', 'Ol Deezer', 19, 'Um chapéu vintage usado por idosos.', 'https://wiki.teamfortress.com/wiki/Ol_Deezer'),
 (24, 3000, 'pet_balloonicorn_large.png', 'Bandana de Pirata', 20, 'Uma bandana estilosa usada por piratas.', 'https://wiki.teamfortress.com/wiki/Pirates_Bandana'),
 (28, 3050, 'oh_xmas_tree_large.png', 'Pyro Claus', 21, 'Um chapéu temático de Natal para o Pyro.', 'https://wiki.teamfortress.com/wiki/Pyro_Claus'),
+(30, 3100, 'blighted_beak_large.png', 'Bico Infectado', null, 'É uma máscara semelhante à cara de um pássaro baseada diretamente nas históricas máscaras usadas por médicos da peste.', 'https://wiki.teamfortress.com/wiki/Blighted_Beak'),
 (30, 3100, 'paper_hat_large.png', 'Robe Rasgado', 22, 'Um robe rasgado usado por mendigos.', 'https://wiki.teamfortress.com/wiki/Ragged_Robe');
 
 
