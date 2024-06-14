@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: application/json');
 
-// Database connection
 $host = "localhost";
 $port = "3307";
 $usuario = "root";
@@ -14,7 +13,6 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-// Assuming $_POST['user_id'] is set and valid
 $user_id = $conn->real_escape_string($_POST['user_id']);
 
 $sql = "SELECT id_hat FROM cart_has_hat WHERE id_cart = '$user_id'";

@@ -42,7 +42,6 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
         $result_hat = mysqli_query($conn, $query_hat);
 
         if ($result_hat) {
-            // Deleta o id_hat da tabela wishlist_has_hat
             $query_delete = "DELETE FROM wishlist_has_hat WHERE id_wishlist = '$usuario' AND id_hat = '$id_chapeu'";
             $result_delete = mysqli_query($conn, $query_delete);
 

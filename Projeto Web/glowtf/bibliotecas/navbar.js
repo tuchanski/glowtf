@@ -1,6 +1,5 @@
 const urlParams = new URLSearchParams(window.location.search);
 
-// Function to create the unified navbar HTML
 function createNavbar(target_id) {
   const html = `<nav>
     <ul class="conjunto-nav">
@@ -30,7 +29,6 @@ function createNavbar(target_id) {
   criarLogin();
 }
 
-// Function to create login-related buttons and dropdown for authenticated users
 function criarLogin() {
   const classeLogin = document.querySelector('.login');
   let isLogged = urlParams.has('user');
@@ -117,7 +115,7 @@ function criarLogin() {
         `;
       }
 
-      classeLogin.innerHTML = result; // Insert the generated HTML
+      classeLogin.innerHTML = result; 
     })
     .catch(error => {
       console.error(error);
@@ -132,29 +130,24 @@ function criarLogin() {
       </button>
     `;
     
-    classeLogin.innerHTML = result; // Insert the generated HTML
+    classeLogin.innerHTML = result; 
   }
 }
 
-// Event listener to create navbar after DOM is loaded
 document.addEventListener("DOMContentLoaded", () => createNavbar("create-navbar"));
 
-// Function to logout from the website
 function deslogar() {
   window.location.replace(fixPastaAdmin("../bibliotecas/deslogar.html", "../../bibliotecas/deslogar.html"));
 }
 
-// Function to check if the current page is within the admin folder
 function isAdminPage() {
   return window.location.pathname.split('/').length < 7;
 }
 
-// Function to fix admin folder path for script execution in root or subfolder
 function fixPastaAdmin(root, subpasta) {
   return isAdminPage() ? root : subpasta;
 }
 
-// Function to perform search in navbar
 function buscaNavBar() {
   let search = document.getElementById('searchbar').value;
   MoverPagina(fixPastaAdmin("../busca/busca.html", "../../busca/busca.html"), 'search', search);
