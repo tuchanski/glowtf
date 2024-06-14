@@ -42,11 +42,17 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
         $result_hat = mysqli_query($conn, $query_hat);
 
         if ($result_hat) {
-            
             if ($meio_pagamento_full === 'Pix') {
                 header("Location: pix.html?user=$usuario");
+                exit();
             } else {
-                header("Location: ../home/home.html?user=$usuario");
+                $mensagem = "Compra efetuada com sucesso!";
+                echo "<script type='text/javascript'>
+                        alert('$mensagem');
+                        setTimeout(function() {
+                            window.location.href = '../home/home.html?user=$usuario';
+                        }, 100); 
+                      </script>";
             }
         } else {
             echo "Erro ao inserir dados na tabela sale_has_hat: " . mysqli_error($conn);
