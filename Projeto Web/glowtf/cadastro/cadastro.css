@@ -22,6 +22,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
 }
 
 .input-usuario {
@@ -48,4 +49,8 @@ form {
 
 .inputSubmit:hover {
   background-color: #0287cf;
+}
+
+.cadastro-btn {
+  margin-top: 30px;
 }
