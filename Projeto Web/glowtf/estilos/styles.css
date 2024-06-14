@@ -40,6 +40,7 @@ ul li {
 
 ul li ul.dropdown {
   width: 100%;
+  min-width: 60px;
   display: none;
   background-color: #000000;
   position: absolute;
@@ -51,6 +52,7 @@ ul li ul.dropdown {
 
 ul li ul.dropdown-big {
   width: 100%;
+  min-width: 60px;
   display: none;
   background-color: #000000;
   position: absolute;
@@ -72,6 +74,11 @@ ul li ul.dropdown li,
 ul li ul.dropdown-big li {
   margin-bottom: 10px;
   text-align: left;
+}
+
+ul li ul.dropdown li:last-child,
+ul li ul.dropdown-big li:last-child {
+  margin-bottom: 5px;
 }
 
 .material-symbols-outlined {
