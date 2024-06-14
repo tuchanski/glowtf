@@ -93,10 +93,18 @@ function criarLogin() {
         result = `
           <div class="usuario-autenticado">
             <li>
-              <a class="usuario">
+              <a class="usuario big">
                 <span class="material-symbols-outlined">person</span>${data[0].name} | Admin
               </a>
-              <ul class="dropdown">
+              <ul class="dropdown big dropdown-big">
+                <li><a onclick="MoverPagina('${pathLista}')">Lista de produtos</a></li>
+                <li><a onclick="MoverPagina('${pathAdicionar}')">Adicionar produto</a></li>
+                <li><a onclick="deslogar()">Sair</a></li>
+              </ul>
+              <a class="usuario small">
+                <span class="material-symbols-outlined">menu</span>
+              </a>
+              <ul class="dropdown small">
                 <li><a onclick="MoverPagina('${pathLista}')">Lista de produtos</a></li>
                 <li><a onclick="MoverPagina('${pathAdicionar}')">Adicionar produto</a></li>
                 <li><a onclick="deslogar()">Sair</a></li>
