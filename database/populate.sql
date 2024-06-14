@@ -62,7 +62,7 @@ INSERT INTO hat (inventory, price, promo_image, name, paint_id, description, wik
 (21, 2950, 'pyro_brainsucker_large.png', 'Ol Deezer', 19, 'Um chapéu vintage usado por idosos.', 'https://wiki.teamfortress.com/wiki/Main_Page'),
 (24, 3000, 'pet_balloonicorn_large.png', 'Bandana de Pirata', 20, 'Uma bandana estilosa usada por piratas.', 'https://wiki.teamfortress.com/wiki/Main_Page'),
 (28, 3050, 'oh_xmas_tree_large.png', 'Pyro Claus', 21, 'Um chapéu temático de Natal para o Pyro.', 'https://wiki.teamfortress.com/wiki/Main_Page'),
-(30, 3100, 'blighted_beak_large.png', 'Bico Infectado', null, 'É uma máscara semelhante à cara de um pássaro baseada diretamente nas históricas máscaras usadas por médicos da peste.', 'https://wiki.teamfortress.com/wiki/Blighted_Beak');
+(30, 3100, 'blighted_beak_large.png', 'Bico Infectado', 20, 'É uma máscara semelhante à cara de um pássaro baseada diretamente nas históricas máscaras usadas por médicos da peste.', 'https://wiki.teamfortress.com/wiki/Blighted_Beak');
 
 
 INSERT INTO coupons (expiration_date, discount, uses, start_date, code_name) VALUES
