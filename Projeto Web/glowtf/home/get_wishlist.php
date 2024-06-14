@@ -1,4 +1,3 @@
-<!-- Retorna uma lista com todos os chapéus que um usuário tem na wishlist -->
 <?php
 header('Content-Type: application/json'); // Set the correct Content-Type header
 
@@ -32,5 +31,3 @@ echo json_encode($hat_ids); // Return the result as JSON
 
 $conn->close();
 ?>
-
-
