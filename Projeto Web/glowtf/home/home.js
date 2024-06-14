@@ -7,11 +7,9 @@ function toggleWishlist(element, current, hat) {
   if (urlParams.has("user")) {
     let userId = urlParams.get("user");
 
-    // Update the star color based on the new status
     let starColor = !current ? 'white' : '#282828';
     element.style.color = starColor;
 
-    // Update the wishlist status on the server
     fetch('wishlist.php', {
       method: 'POST',
       headers: {
@@ -20,19 +18,17 @@ function toggleWishlist(element, current, hat) {
       body: new URLSearchParams({
         'user_id': userId,
         'hat_id': hat,
-        'action': !current ? 'a' : 'r' // Include an action parameter to indicate add/remove
+        'action': !current ? 'a' : 'r' 
       })
     })
       .then(response => response.text())
       .then(data => {
-        console.log(data); // Log response from wishlist.php if needed
+        console.log(data);
       })
       .catch(error => {
         console.error('Error toggling wishlist status:', error);
-        // Handle error as needed
       });
 
-    // Update the onclick function to toggle back to the opposite of newStatus
     element.onclick = function () {
       toggleWishlist(element, !current, hat);
     };
@@ -49,7 +45,6 @@ function carregarProdutos(query) {
   let cartItems = [];
 
   if (urlParams.has("user")) {
-    // Fetch wishlist and cart items
     Promise.all([
       getWishlist(urlParams.get("user")),
       getCart(urlParams.get("user"))
@@ -70,15 +65,11 @@ function carregarProdutos(query) {
               let inWishlist = wishlistItems.includes(String(item.hat_id));
               let inCart = cartItems.includes(String(item.hat_id));
 
-              // Adjust star and cart icon colors based on status
               let starColor = inWishlist ? 'white' : '#282828';
               let botaoHTML = inCart ?
                 `
-                <button class="remover-carrinho-btn" type="button" onclick="MoverPagina('../carrinho/carrinho.html')">
-        <span class="material-symbols-outlined">
-            delete
-        </span>
-        <div>Ver no Carrinho</div>
+                <button class="ver-carrinho-btn" type="button" onclick="MoverPagina('../carrinho/carrinho.html')">
+        <div>Ver no carrinho</div>
     </button>
 `
                 :
