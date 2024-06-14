@@ -43,77 +43,84 @@ function toggleWishlist(element, current, hat) {
 }
 
 function carregarProdutos(query) {
-    let urlParams = new URLSearchParams(window.location.search);
+  let urlParams = new URLSearchParams(window.location.search);
 
-    let wishlistList = [];
+  let wishlistItems = [];
+  let cartItems = [];
 
-    if (urlParams.has("user")) {
-        getWishlist(urlParams.get("user"))
-            .then(hatIds => {
-                wishlistList = hatIds; // Assign hatIds to wishlistList when promise resolves
-                console.log('Wishlist:', wishlistList); // Verify wishlistList here
+  if (urlParams.has("user")) {
+      // Fetch wishlist and cart items
+      Promise.all([
+          getWishlist(urlParams.get("user")),
+          getCart(urlParams.get("user"))
+      ])
+      .then(([wishlistIds, cartIds]) => {
+          wishlistItems = wishlistIds;
+          cartItems = cartIds;
 
-                // After fetching wishlist, load products
-                fetch("home.php")
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Erro na conexão");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        console.log(data);
-                        var count = 0;
-                        data.forEach((data) => {
-                            let colorHex = "";
-                            let colorSplash = "";
-                            let inWishlist = wishlistList.includes(String(data.hat_id));
-                            let starColor = inWishlist ? 'white' : '#282828';
-                            console.log(inWishlist);
+          fetch("home.php")
+              .then((response) => {
+                  if (!response.ok) {
+                      throw new Error("Erro na conexão");
+                  }
+                  return response.json();
+              })
+              .then((data) => {
+                  data.forEach((item) => {
+                      let inWishlist = wishlistItems.includes(String(item.hat_id));
+                      let inCart = cartItems.includes(String(item.hat_id));
 
-                            if (data.hex_color != undefined) {
-                                colorHex = `
-                                    <div class="cor-da-tinta" style="background-color: ${data.hex_color};"></div>
-                                    <div class="card-nome-tinta">${data.paint_name}</div>
-                                `;
-                                colorSplash = `<img class="card-splash" src="../dados/imagens/tintas/${data.paint_promo_image}" />`;
-                            }
+                      // Adjust star and cart icon colors based on status
+                      let starColor = inWishlist ? 'white' : '#282828';
+                      let cartIconColor = inCart ? '#ff6347' : '#282828';
 
-                            let card = `
-                                <div class="card">
-                                    <span class="material-symbols-outlined estrela" style="color: ${starColor}" onclick="toggleWishlist(this, ${inWishlist}, ${data.hat_id})">star</span>
-                                    <div class="card-titulo">${data.hat_name}</div>
-                                    <div class="card-tinta">
-                                        ${colorHex}
-                                    </div>
-                                    <a onclick='MoverPagina("../produto/produto.html", "hat_id", "${data.hat_id}")' class="imagens">
-                                        <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${data.hat_promo_image}">
-                                        ${colorSplash}
-                                    </a>
-                                    <div class="preco-botao">
-                                        <div class="card-preco">R$ ${(data.price / 100).toFixed(2).replace('.', ',')}</div>
-                                        <button class="carrinho-btn" type="button" onclick="adicionaProduto(${data.hat_id}, '${urlParams.get("user")}')">
-                                            <span class="material-symbols-outlined">add_shopping_cart</span>
-                                            <div>Adicionar ao carrinho</div>
-                                        </button>
-                                    </div>
-                                </div>
-                            `;
+                      let colorHex = "";
+                      let colorSplash = "";
 
-                            listaProdutos.insertAdjacentHTML("beforeend", card);
-                            count += 1;
-                        });
-                    })
-                    .catch((error) => console.error("Error:", error));
-            })
-            .catch(error => {
-                console.error('Failed to fetch wishlist:', error);
-            });
-    } else {
-        window.location.href = '../login/login.html';
-        alert("Você precisa estar logado para ter uma lista de desejos.");
-    }
+                      if (item.hex_color != undefined) {
+                          colorHex = `
+                              <div class="cor-da-tinta" style="background-color: ${item.hex_color};"></div>
+                              <div class="card-nome-tinta">${item.paint_name}</div>
+                          `;
+                          colorSplash = `<img class="card-splash" src="../dados/imagens/tintas/${item.paint_promo_image}" />`;
+                      }
+
+                      let card = `
+                          <div class="card">
+                              <span class="material-symbols-outlined estrela" style="color: ${starColor}" onclick="toggleWishlist(this, ${inWishlist}, ${item.hat_id})">star</span>
+                              <span class="material-symbols-outlined carrinho" style="color: ${cartIconColor}" onclick="toggleCart(this, ${inCart}, ${item.hat_id})">shopping_cart</span>
+                              <div class="card-titulo">${item.hat_name}</div>
+                              <div class="card-tinta">
+                                  ${colorHex}
+                              </div>
+                              <a onclick='MoverPagina("../produto/produto.html", "hat_id", "${item.hat_id}")' class="imagens">
+                                  <img class="card-imagem-produto" src="../dados/imagens/itens_do_jogo/${item.hat_promo_image}">
+                                  ${colorSplash}
+                              </a>
+                              <div class="preco-botao">
+                                  <div class="card-preco">R$ ${(item.price / 100).toFixed(2).replace('.', ',')}</div>
+                                  <button class="carrinho-btn" type="button" onclick="adicionaProduto(${item.hat_id}, '${urlParams.get("user")}')">
+                                      <span class="material-symbols-outlined">add_shopping_cart</span>
+                                      <div>Adicionar ao carrinho</div>
+                                  </button>
+                              </div>
+                          </div>
+                      `;
+
+                      listaProdutos.insertAdjacentHTML("beforeend", card);
+                  });
+              })
+              .catch((error) => console.error("Error:", error));
+      })
+      .catch(error => {
+          console.error('Failed to fetch wishlist or cart:', error);
+      });
+  } else {
+      window.location.href = '../login/login.html';
+      alert("Você precisa estar logado para acessar esta página.");
+  }
 }
+
 
 document.addEventListener("DOMContentLoaded", () => carregarProdutos(""));
 
@@ -173,4 +180,27 @@ function getWishlist(userId) {
         console.error('Error fetching wishlist:', error);
         throw error; // Re-throw the error to propagate it further if needed
     });
+}
+
+
+function getCart(userId) {
+  return fetch('get_cart.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+          user_id: userId
+      })
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse response as JSON
+  })
+  .catch(error => {
+      console.error('Error fetching cart:', error);
+      throw error; // Re-throw the error to propagate it further if needed
+  });
 }
