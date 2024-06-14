@@ -38,7 +38,7 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
     $discount = 0;
 
     if (!empty($cupom)) {
-        $query_cupom = "SELECT * FROM coupons WHERE code_name = '$cupom' AND start_date <= '$dataAtual' AND expiration_date >= '$dataAtual' AND uses > 0";
+        $query_cupom = "SELECT * FROM coupons WHERE code_name = '$cupom' AND start_date <= '$dataAtual' AND expiration_date >= '$dataAtual' AND uses >= 0";
         $result_cupom = mysqli_query($conn, $query_cupom);
 
         if (mysqli_num_rows($result_cupom) > 0) {
