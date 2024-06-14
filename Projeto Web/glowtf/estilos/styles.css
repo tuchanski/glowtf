@@ -44,8 +44,20 @@ ul li ul.dropdown {
   display: none;
   background-color: #000000;
   position: absolute;
+  text-align: center;
   top: 100%; /* Adjust as needed */
-  left: 0;
+  left: -100%; /* Adjust this property */
+  padding: 25px; /* Added padding for better spacing */
+}
+
+ul li ul.dropdown-big {
+  width: 100%;
+  display: none;
+  background-color: #000000;
+  position: absolute;
+  text-align: center;
+  top: 100%; /* Adjust as needed */
+  left: 0; /* Adjust this property */
   padding: 10px; /* Added padding for better spacing */
 }
 
@@ -64,7 +76,6 @@ ul li ul.dropdown:hover {
 }
 
 /* Todo o projeto */
-
 /* Navbar usuário não cadastrado */
 nav {
   width: 100%;
@@ -303,4 +314,30 @@ select:hover {
 /* Todo o projeto */
 ::placeholder {
   color: #767676;
+}
+
+/* Media query for hiding usuario links on small screens */
+@media (max-width: 800px) {
+  .login a.big {
+    display: none; /* Hide big links on small screens */
+  }
+  .login a.lista-desejos {
+    display: none; /* Hide lista-desejos link on small screens */
+  }
+  .login a.lista-carrinho {
+    display: none; /* Hide lista-carrinho link on small screens */
+  }
+}
+
+/* Media query for hiding usuario links on larger screens */
+@media (min-width: 800px) {
+  .login a.small {
+    display: none; /* Hide small links on larger screens */
+  }
+  .login .dropdown .drop-desejos {
+    display: none; /* Hide dropdown desejo link on larger screens */
+  }
+  .login .dropdown .drop-carrinho {
+    display: none; /* Hide dropdown carrinho link on larger screens */
+  }
 }
