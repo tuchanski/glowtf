@@ -73,8 +73,7 @@ function carregaProduto() {
 
   Promise.all([produtoPromise, tintasPromise, classesPromise])
     .then(([produto, tintas, classes]) => {
-      let tintasOptions = "<option value=\"\">Nenhuma</option>\n";
-      tintasOptions += tintas.map((tinta) => {
+      let tintasOptions = tintas.map((tinta) => {
         return `<option value='${tinta.paint_id}' ${tinta.paint_id == produto.paint_id ? 'selected' : ''}>${tinta.name}</option>`;
       }).join("\n");
 
@@ -146,7 +145,7 @@ function carregaProduto() {
               <label for="classe">Selecione a classe do chapéu (Ctrl + click para selecionar múltiplas): </label><br>
             </div>
             <div>
-              <select class="classe" name="classe" multiple id="classe">
+              <select class="classe" name="classe" id="classe">
               ${classesOptions}
               </select>
             </div>
