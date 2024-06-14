@@ -70,7 +70,7 @@ function identificaUsuario() {
             'id': urlParams2.get('user')
         })
     })
-    .then(response => response.json()) // Converter a resposta para JSON
+    .then(response => response.json())
     .then(data => {
       console.log(data)
         document.getElementsByClassName("title")[0].innerText = "Suas compras passadas, " + data[0].name;

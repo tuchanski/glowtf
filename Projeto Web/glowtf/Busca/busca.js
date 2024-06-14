@@ -38,7 +38,6 @@ function busca() {
   })
   .then(response => response.json())
   .then(data => {
-    // Limpar o conteúdo da div .corpo e do h1 .title
     listaProdutos.innerHTML = '';
     titulo.textContent = '';
 

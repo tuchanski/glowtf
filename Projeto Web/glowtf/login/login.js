@@ -27,7 +27,7 @@ function loginUsuario() {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data); // Process your data here
+      console.log(data);
       if(data.length == 0){
         alert("Login Inexistente, Por favor confira se o seu Login/Senha estão corretos.")
       }
