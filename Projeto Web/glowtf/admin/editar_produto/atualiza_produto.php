@@ -6,9 +6,23 @@ $banco = "glowtfdb";
 
 $conn = new mysqli($host, $usuario, $senha, $banco);
 
+$hat_id = $_POST['hat_id'];
+echo $hat_id;
+
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
+
+function convertAndMultiply($productPrice) {
+    $floatPrice = floatval($productPrice);
+    
+    $multipliedPrice = $floatPrice * 100;
+    
+    $intPrice = (int)$multipliedPrice;
+    
+    return $intPrice;
+}
+
 function isInteger($input) {
     return ctype_digit(strval($input));
 }
@@ -23,6 +37,8 @@ $paint = isset($_POST['tinta']) ? $_POST['tinta'] : '';
 $productImage = isset($_FILES['upload-imagem']) ? $_FILES['upload-imagem'] : null;
 $imageName = $productImage['name'];
 $wikiRegex = "/^https:\/\/wiki\.teamfortress\.com\/.*$/";
+
+$productPrice = convertAndMultiply($productPrice);
 
 if (empty($productName) || 
     empty($productPrice) || 
@@ -44,8 +60,18 @@ if (empty($productName) ||
     $pastaUpload = '../../dados/imagens/itens_do_jogo/';
     $uploadArquivo = $pastaUpload . basename($productImage['name']);
 
+    $imageName = $productImage['name'];
+
     if (move_uploaded_file($productImage['tmp_name'], $uploadArquivo)) {
-        $sql = "INSERT INTO hat (inventory, price, promo_image, name, paint_id, description, wiki) VALUES ('$inventory', '$productPrice', '$imageName', '$productName', '$paint', '$description', '$productWiki')";
+        $sql = "UPDATE hat
+                SET inventory = '$inventory',
+                    price = '$productPrice',
+                    promo_image = '$imageName',
+                    name = '$productName',
+                    paint_id = '$paint',
+                    description = '$productWiki',
+                    wiki = '$productWiki'
+                WHERE id = '$hat_id'";
 
         if ($conn->query($sql) === TRUE) {
             echo "Produto inserido com sucesso!\n";

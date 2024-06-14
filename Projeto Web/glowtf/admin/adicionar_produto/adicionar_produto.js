@@ -88,7 +88,6 @@ function carregaTintas() {
     })
     .then((data) => {
       console.log(data);
-      listaTintas.insertAdjacentHTML("beforeend", "<option value=\"\">Nenhuma</option>");
       data.forEach((data) => {
         const paintHtml = `<option value='${data.paint_id}'>${data.name}</option>`
         listaTintas.insertAdjacentHTML("beforeend", paintHtml);

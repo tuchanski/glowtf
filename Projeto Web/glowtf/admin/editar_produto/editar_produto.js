@@ -29,7 +29,7 @@ function atualizaProduto() {
   const formulario = document.getElementById('formProduto');
   const formData = new FormData(formulario);
 
-  fetch('../adicionar_produto/adicionar_produto.php', {
+  fetch('atualiza_produto.php', {
     method: 'POST',
     body: formData
   })
@@ -37,7 +37,6 @@ function atualizaProduto() {
     .then(data => {
       console.log(data);
       alert('Produto atualizado com sucesso!');
-      window.location = 'http://localhost/glowtf/Projeto%20Web/glowtf/admin/lista_de_produtos/lista_de_produtos.html?user=1'
     })
     .catch(error => {
       console.error('Erro:', error);
@@ -74,8 +73,7 @@ function carregaProduto() {
 
   Promise.all([produtoPromise, tintasPromise, classesPromise])
     .then(([produto, tintas, classes]) => {
-      let tintasOptions = "<option value=\"\">Nenhuma</option>\n";
-      tintasOptions += tintas.map((tinta) => {
+      let tintasOptions = tintas.map((tinta) => {
         return `<option value='${tinta.paint_id}' ${tinta.paint_id == produto.paint_id ? 'selected' : ''}>${tinta.name}</option>`;
       }).join("\n");
 
@@ -87,6 +85,7 @@ function carregaProduto() {
       const produtoHtml = `
       <div class="dados-produto">
         <form id="formProduto" class="login-layout">
+        <input name="hat_id" type="hidden" value="${produto.hat_id}"></input>
           <div class="input-produto">
             <div>
               <label for="nome-produto">Nome:</label>
@@ -146,7 +145,7 @@ function carregaProduto() {
               <label for="classe">Selecione a classe do chapéu (Ctrl + click para selecionar múltiplas): </label><br>
             </div>
             <div>
-              <select class="classe" name="classe" multiple id="classe">
+              <select class="classe" name="classe" id="classe">
               ${classesOptions}
               </select>
             </div>
