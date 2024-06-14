@@ -1,4 +1,3 @@
-/* Todo o projeto */
 body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
@@ -8,7 +7,7 @@ body {
   background: #282828;
   padding: 0;
   margin: 0;
-  color: #ffffff; /* Default text color */
+  color: #ffffff;
 }
 
 a {
@@ -44,10 +43,10 @@ ul li ul.dropdown {
   display: none;
   background-color: #000000;
   position: absolute;
-  text-align: center;
-  top: 100%; /* Adjust as needed */
-  left: -100%; /* Adjust this property */
-  padding: 25px; /* Added padding for better spacing */
+  top: 100%;
+  left: -100%;
+  padding: 25px;
+  text-align: left;
 }
 
 ul li ul.dropdown-big {
@@ -55,16 +54,24 @@ ul li ul.dropdown-big {
   display: none;
   background-color: #000000;
   position: absolute;
-  text-align: center;
-  top: 100%; /* Adjust as needed */
-  left: 0; /* Adjust this property */
-  padding: 10px; /* Added padding for better spacing */
+  text-align: left;
+  top: 100%;
+  left: 0;
+  padding: 10px;
 }
 
 ul li a.usuario:hover + ul.dropdown,
 ul li ul.dropdown:hover {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+ul li ul.dropdown li,
+ul li ul.dropdown-big li {
+  margin-bottom: 10px;
+  text-align: left;
 }
 
 .material-symbols-outlined {
@@ -75,8 +82,6 @@ ul li ul.dropdown:hover {
     'opsz' 24;
 }
 
-/* Todo o projeto */
-/* Navbar usuário não cadastrado */
 nav {
   user-select: none;
   width: 100%;
@@ -87,9 +92,8 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* Deixa barra fixa no topo da tela */
   position: fixed;
-  top: 0; /* Adjusted to 0 to remove margin */
+  top: 0;
   z-index: 9999;
 }
 
@@ -104,8 +108,6 @@ nav {
   align-items: center;
 }
 
-/* Todo o projeto */
-/* Navbar usuário não cadastrado */
 .conjunto-nav {
   width: 81%;
   display: flex;
@@ -113,7 +115,6 @@ nav {
   align-items: center;
 }
 
-/* Navbar usuário não cadastrado */
 .login_steam {
   width: 110px;
   height: 45px;
@@ -130,12 +131,10 @@ nav {
   align-items: center;
 }
 
-/* Navbar usuário não cadastrado */
 .login_steam:hover {
   background-color: #10bf10;
 }
 
-/* Navbar */
 .searchbar {
   width: 50%;
   display: flex;
@@ -144,7 +143,6 @@ nav {
   justify-content: center;
 }
 
-/* Navbar */
 .search-btn {
   width: 55px;
   height: 45px;
@@ -165,7 +163,6 @@ nav {
   background-color: #6e6e6e;
 }
 
-/* Navbar usuário não cadastrado */
 .login {
   display: flex;
   justify-content: space-evenly;
@@ -179,7 +176,6 @@ nav {
   text-shadow: #33E333 1px 0 10px;
 }
 
-/* Navbar usuário não cadastrado */
 .icones {
   display: flex;
   justify-content: space-evenly;
@@ -187,7 +183,6 @@ nav {
   gap: 30px;
 }
 
-/* Navbar usuário autenticado */
 .usuario-autenticado {
   display: flex;
   justify-content: space-evenly;
@@ -195,7 +190,6 @@ nav {
   gap: 30px;
 }
 
-/* Navbar usuário autenticado */
 .usuario {
   display: flex;
   justify-content: space-evenly;
@@ -216,12 +210,10 @@ nav {
   gap: 10px;
 }
 
-/* Todo o projeto */
 .wrapper {
   margin-top: 10%;
 }
 
-/* Todo o projeto */
 .title {
   margin-top: 0%;
   margin-bottom: 2%;
@@ -230,7 +222,6 @@ nav {
   text-align: center;
 }
 
-/* Tela entrar e cadastrar */
 .container {
   width: 15%;
   height: 50%;
@@ -243,7 +234,6 @@ nav {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
-/* Tela entrar e cadastrar */
 input {
   width: 100%;
   height: 45px;
@@ -259,7 +249,6 @@ input:hover {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Tela entrar e cadastrar */
 button {
   width: 100%;
   max-width: 300px;
@@ -274,24 +263,20 @@ button {
   font-weight: bold;
 }
 
-/* Tela entrar e cadastrar */
 button:hover {
   background-color: #0287cf;
 }
 
-/* Tela entrar e cadastrar */
 .login-layout {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Tela entrar e cadastrar */
 .login-layout button {
   margin-top: 40px;
 }
 
-/* Todo o projeto */
 select {
   width: 100%;
   padding: 12px;
@@ -302,43 +287,38 @@ select {
   font-size: 15px;
 }
 
-/* Todo o projeto */
 select option {
   font-size: 15px;
 }
 
-/* Todo o projeto */
 select:hover {
   border-color: #999;
 }
 
-/* Todo o projeto */
 ::placeholder {
   color: #767676;
 }
 
-/* Media query for hiding usuario links on small screens */
 @media (max-width: 800px) {
   .login a.big {
-    display: none; /* Hide big links on small screens */
+    display: none;
   }
   .login a.lista-desejos {
-    display: none; /* Hide lista-desejos link on small screens */
+    display: none;
   }
   .login a.lista-carrinho {
-    display: none; /* Hide lista-carrinho link on small screens */
+    display: none;
   }
 }
 
-/* Media query for hiding usuario links on larger screens */
 @media (min-width: 800px) {
   .login a.small {
-    display: none; /* Hide small links on larger screens */
+    display: none; 
   }
   .login .dropdown .drop-desejos {
-    display: none; /* Hide dropdown desejo link on larger screens */
+    display: none;
   }
   .login .dropdown .drop-carrinho {
-    display: none; /* Hide dropdown carrinho link on larger screens */
+    display: none;
   }
 }
