@@ -86,7 +86,7 @@ function carregarProdutos(query) {
 
               if (item.hex_color != undefined) {
                 colorHex = `
-                              <div class="cor-da-tinta" style="background-color: ${item.hex_color};"></div>
+                              <div class="cor-da-tinta" style="background-color: #${item.hex_color};"></div>
                               <div class="card-nome-tinta">${item.paint_name}</div>
                           `;
                 colorSplash = `<img class="card-splash" src="../dados/imagens/tintas/${item.paint_promo_image}" />`;
@@ -179,11 +179,11 @@ function getWishlist(userId) {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      return response.json(); // Parse response as JSON
+      return response.json();
     })
     .catch(error => {
       console.error('Error fetching wishlist:', error);
-      throw error; // Re-throw the error to propagate it further if needed
+      throw error;
     });
 }
 
@@ -202,10 +202,10 @@ function getCart(userId) {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      return response.json(); // Parse response as JSON
+      return response.json();
     })
     .catch(error => {
       console.error('Error fetching cart:', error);
-      throw error; // Re-throw the error to propagate it further if needed
+      throw error;
     });
 }
