@@ -85,8 +85,8 @@ input[type="file"] {
 
 .splash {
   position: absolute;
-  right: 40px;
-  bottom: 10px;
+  top: 0;
+  right: 0;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
 }
 
