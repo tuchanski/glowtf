@@ -63,7 +63,7 @@ function produto() {
 document.addEventListener("DOMContentLoaded", produto);
 
 function adicionaProduto(hatId, userId) {
-  if (!userId) {
+  if (userId === 'null') {
     alert("Você precisa estar logado para realizar compras.");
     window.location.href = '../login/login.html';
   } else {
