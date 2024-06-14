@@ -7,10 +7,12 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
     include_once('config.php');
 
     $meio_pagamento_full = $_POST['meio_pagamento'];
+    $cart_has_hat_id = $_POST['cart_has_hat_id'];
     $preco_chapeu = $_POST['hat_price'];
     $usuario = $_POST['user_id'];
     $id_chapeu = $_POST['hat_id'];
     $dataAtual = date('Y-m-d');
+    $cupom = isset($_POST['cupom']) ? $_POST['cupom'] : '';
 
     $meio_pagamento_map = [
         'Pix' => 'p',
@@ -30,6 +32,37 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
     $preco_chapeu = mysqli_real_escape_string($conn, $preco_chapeu);
     $usuario = mysqli_real_escape_string($conn, $usuario);
     $id_chapeu = mysqli_real_escape_string($conn, $id_chapeu);
+    $cupom = mysqli_real_escape_string($conn, $cupom);
+
+
+    // Verifica se o cupom existe, está dentro do período de validade e ainda pode ser usado
+    if (!empty($cupom)) {
+        $query_cupom = "SELECT * FROM coupons WHERE code_name = '$cupom' AND start_date <= '$dataAtual' AND expiration_date >= '$dataAtual' AND uses > 0";
+        $result_cupom = mysqli_query($conn, $query_cupom);
+
+        if (mysqli_num_rows($result_cupom) > 0) {
+            $cupom_data = mysqli_fetch_assoc($result_cupom);
+            $discount = $cupom_data['discount'];
+            $uses = $cupom_data['uses'];
+
+            // Aplica o desconto no preço do chapéu
+            $preco_chapeu = $preco_chapeu - ($preco_chapeu * ($discount / 100));
+
+            // Atualiza o uso do cupom
+            $new_uses = $uses - 1;
+            $query_update_cupom = "UPDATE coupons SET uses = '$new_uses' WHERE code_name = '$cupom'";
+            mysqli_query($conn, $query_update_cupom);
+        } else {
+            echo $mensagem = "Cupom inválido.";
+            echo "<script type='text/javascript'>
+                    alert('$mensagem');
+                    setTimeout(function() {
+                        window.location.href = '../pagamento/pagamento.html?user=$usuario&cart_has_hat_id=$cart_has_hat_id';
+                    }, 100); 
+                  </script>";
+            exit;
+        }
+    }
 
     $query = "INSERT INTO sale (date, id_user, price, payment_method) VALUES ('$dataAtual', '$usuario', '$preco_chapeu', '$meio_pagamento')";
 
