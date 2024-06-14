@@ -104,7 +104,6 @@ INSERT INTO hat_has_class (hat_id, class_id) VALUES
 (8, 2);
 
 INSERT INTO cart (id_user, date) VALUES
-(1, '2024-05-01 10:00:00'),
 (2, '2024-05-02 11:00:00'),
 (3, '2024-05-03 12:00:00'),
 (4, '2024-05-04 13:00:00'),
@@ -112,7 +111,6 @@ INSERT INTO cart (id_user, date) VALUES
 (6, '2024-05-06 15:00:00');
 
 INSERT INTO wishlist (id_user) VALUES
-(1),
 (2),
 (3),
 (4),
