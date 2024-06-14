@@ -36,6 +36,8 @@ function atualizaProduto() {
     .then(response => response.text())
     .then(data => {
       console.log(data);
+      alert('Produto atualizado com sucesso!');
+      window.location = 'http://localhost/glowtf/Projeto%20Web/glowtf/admin/lista_de_produtos/lista_de_produtos.html?user=1'
     })
     .catch(error => {
       console.error('Erro:', error);
