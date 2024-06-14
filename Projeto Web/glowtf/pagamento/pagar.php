@@ -34,8 +34,9 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
     $id_chapeu = mysqli_real_escape_string($conn, $id_chapeu);
     $cupom = mysqli_real_escape_string($conn, $cupom);
 
+    $cupom_id = "NULL"; 
+    $discount = 0;
 
-    // Verifica se o cupom existe, está dentro do período de validade e ainda pode ser usado
     if (!empty($cupom)) {
         $query_cupom = "SELECT * FROM coupons WHERE code_name = '$cupom' AND start_date <= '$dataAtual' AND expiration_date >= '$dataAtual' AND uses > 0";
         $result_cupom = mysqli_query($conn, $query_cupom);
@@ -44,16 +45,15 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
             $cupom_data = mysqli_fetch_assoc($result_cupom);
             $discount = $cupom_data['discount'];
             $uses = $cupom_data['uses'];
+            $cupom_id = $cupom_data['id'];
 
-            // Aplica o desconto no preço do chapéu
             $preco_chapeu = $preco_chapeu - ($preco_chapeu * ($discount / 100));
 
-            // Atualiza o uso do cupom
             $new_uses = $uses - 1;
             $query_update_cupom = "UPDATE coupons SET uses = '$new_uses' WHERE code_name = '$cupom'";
             mysqli_query($conn, $query_update_cupom);
         } else {
-            echo $mensagem = "Cupom inválido.";
+            $mensagem = "Cupom inválido.";
             echo "<script type='text/javascript'>
                     alert('$mensagem');
                     setTimeout(function() {
@@ -64,7 +64,7 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
         }
     }
 
-    $query = "INSERT INTO sale (date, id_user, price, payment_method) VALUES ('$dataAtual', '$usuario', '$preco_chapeu', '$meio_pagamento')";
+    $query = "INSERT INTO sale (date, id_user, id_coupon, price, payment_method) VALUES ('$dataAtual', '$usuario', $cupom_id, '$preco_chapeu', '$meio_pagamento')";
 
     $result = mysqli_query($conn, $query);
 
