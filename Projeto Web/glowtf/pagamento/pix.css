@@ -13,6 +13,34 @@
     align-items: center;
 }
 
-.pagar-btn {
-    margin-top: 10px; 
-}
+.card {
+    position: relative;
+    width: 400px;
+    height: auto;
+    padding: 10%;
+    border-radius: 3px;
+    background: radial-gradient(circle at 0%, #4C4B58, #323030);
+    color: #ffffff;
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-btn {
+    width: 150px;
+    max-width: 300px;
+    height: 45px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6495ED;
+    color: white;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top:20px;
+  }
+  
+  .home-btn:hover {
+    background-color: #0287cf;
+  }
