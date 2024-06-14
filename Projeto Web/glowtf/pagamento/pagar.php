@@ -42,17 +42,25 @@ if (!empty($_POST['meio_pagamento']) && !empty($_POST['hat_price']) && !empty($_
         $result_hat = mysqli_query($conn, $query_hat);
 
         if ($result_hat) {
-            if ($meio_pagamento_full === 'Pix') {
-                header("Location: pix.html?user=$usuario");
-                exit();
+            // Deleta o id_hat da tabela wishlist_has_hat
+            $query_delete = "DELETE FROM wishlist_has_hat WHERE id_wishlist = '$usuario' AND id_hat = '$id_chapeu'";
+            $result_delete = mysqli_query($conn, $query_delete);
+
+            if ($result_delete) {
+                if ($meio_pagamento_full === 'Pix') {
+                    header("Location: pix.html?user=$usuario");
+                    exit();
+                } else {
+                    $mensagem = "Compra efetuada com sucesso!";
+                    echo "<script type='text/javascript'>
+                            alert('$mensagem');
+                            setTimeout(function() {
+                                window.location.href = '../home/home.html?user=$usuario';
+                            }, 100); 
+                          </script>";
+                }
             } else {
-                $mensagem = "Compra efetuada com sucesso!";
-                echo "<script type='text/javascript'>
-                        alert('$mensagem');
-                        setTimeout(function() {
-                            window.location.href = '../home/home.html?user=$usuario';
-                        }, 100); 
-                      </script>";
+                echo "Erro ao deletar dados da tabela wishlist_has_hat: " . mysqli_error($conn);
             }
         } else {
             echo "Erro ao inserir dados na tabela sale_has_hat: " . mysqli_error($conn);
