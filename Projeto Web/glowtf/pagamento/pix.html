@@ -23,12 +23,19 @@
             <div class="pagamento">
                 <img src="../dados/imagens/imagens/pix.png" alt="" width="250" height="250"><br>
             </div>
-            <button id="pagar-btn" class="pagar-btn" type="submit" name="submit" onclick="MoverPagina('../home/home.html')">
-                <div>Home</div>
+            <button id="pagar-btn" class="pagar-btn" type="submit" name="submit" onclick="confirmarCompra()">
+                <div>Confirmar</div>
               </button>
         </div>
     </div>
   </div>
-</body>
 
+  <script>
+    function confirmarCompra() {
+      alert("Compra efetuada com sucesso!");
+      MoverPagina('../home/home.html')
+    }
+  </script>
+  
+</body>
 </html>
