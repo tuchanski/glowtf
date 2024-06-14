@@ -44,7 +44,7 @@ function carregarProdutos(query) {
   let wishlistItems = [];
   let cartItems = [];
 
-  if (urlParams.has("user")) {
+  
     Promise.all([
       getWishlist(urlParams.get("user")),
       getCart(urlParams.get("user"))
@@ -118,10 +118,6 @@ function carregarProdutos(query) {
       .catch(error => {
         console.error('Failed to fetch wishlist or cart:', error);
       });
-  } else {
-    window.location.href = '../login/login.html';
-    alert("Você precisa estar logado para acessar esta página.");
-  }
 }
 
 
