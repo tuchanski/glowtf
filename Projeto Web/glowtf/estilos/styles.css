@@ -44,12 +44,19 @@ ul li ul.dropdown {
   display: none;
   background-color: #000000;
   position: absolute;
+  text-align: center;
   top: 100%; /* Adjust as needed */
-  left: 0;
-  padding: 10px; /* Added padding for better spacing */
+  left: -100%; /* Adjust this property */
+  padding: 25px; /* Added padding for better spacing */
 }
 
 ul li a.usuario:hover + ul.dropdown,
+ul li ul.dropdown:hover {
+  display: flex;
+  flex-direction: column;
+}
+
+ul li a.big:hover + ul.dropdown,
 ul li ul.dropdown:hover {
   display: flex;
   flex-direction: column;
@@ -64,7 +71,6 @@ ul li ul.dropdown:hover {
 }
 
 /* Todo o projeto */
-
 /* Navbar usuário não cadastrado */
 nav {
   width: 100%;
@@ -303,4 +309,29 @@ select:hover {
 /* Todo o projeto */
 ::placeholder {
   color: #767676;
+}
+
+/* Media query for hiding usuario links on small screens */
+@media (max-width: 800px) {
+  .login a.big{
+    display: none;
+  }
+  .login a.lista-desejos {
+    display: none;
+  }
+  .login a.lista-carrinho {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .login a.small{
+    display: none;
+  }
+  .login a.drop-desejos {
+    display: none;
+  }
+  .login a.drop-carrinho {
+    display: none;
+  }
 }

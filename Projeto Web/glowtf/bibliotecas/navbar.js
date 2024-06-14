@@ -1,8 +1,8 @@
 const urlParams = new URLSearchParams(window.location.search);
 
-//Cria o HTML para a navbar unificada.
-function createNavbar(target_id){
-    const html = `<nav>
+// Function to create the unified navbar HTML
+function createNavbar(target_id) {
+  const html = `<nav>
     <ul class="conjunto-nav">
       <li class="logo">
         <a onclick="MoverPagina('../home/home.html')">
@@ -21,122 +21,127 @@ function createNavbar(target_id){
         </button>
       </li>
       <li class="login">
-        <!-- <a class="usuario" href="javascript:void(0)" onclick="MoverPagina('../login/login.html')"><span class="material-symbols-outlined">person</span>Entrar</a>
-        <button type="button" class="login_steam">
-          <img src="../dados/imagens/ícones/Steam.png">
-          Entrar
-        </button> -->
+        <!-- Login items will be dynamically added by criarLogin function -->
       </li>
     </ul>
-  </nav>`
+  </nav>`;
+  
   document.getElementById(target_id).insertAdjacentHTML("beforeend", html);
   criarLogin();
 }
 
-//Cria botões de navegação na direita.
+// Function to create login-related buttons and dropdown for authenticated users
 function criarLogin() {
-  const classeLogin = document.getElementsByClassName('login')[0];
+  const classeLogin = document.querySelector('.login');
   let isLogged = urlParams.has('user');
-  let result = `ERROR`;
+  let result = '';
+
   if (isLogged) {
-      fetch(fixPastaAdmin('../bibliotecas/get_user_data.php', '../../bibliotecas/get_user_data.php'), {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({
-              'id': urlParams.get('user')
-          })
+    fetch(fixPastaAdmin('../bibliotecas/get_user_data.php', '../../bibliotecas/get_user_data.php'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        'id': urlParams.get('user')
       })
-      .then(response => response.json())
-      .then(data => {
-          let pathLista = !isAdminPage() ? '../lista_de_produtos/lista_de_produtos.html' : '../admin/lista_de_produtos/lista_de_produtos.html';
-          let pathAdicionar = !isAdminPage() ? '../adicionar_produto/adicionar_produto.html' : '../admin/adicionar_produto/adicionar_produto.html';
-          if (data[0].admin == 0) {
-              result = `
-                  <div class="usuario-autenticado">
-                      <li>
-                          <a onclick="MoverPagina('../lista_de_desejos/lista_de_desejos.html')">
-                              <span class="material-symbols-outlined" id="span-nav">bookmark</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a onclick="MoverPagina('../carrinho/carrinho.html')">
-                              <span class="material-symbols-outlined" id="span-nav">shopping_cart</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a class="usuario"><span class="material-symbols-outlined">person</span>${data[0].name}</a>
-                          <ul class="dropdown">
-                              <li class="dropdown"><a onclick="MoverPagina('../perfil_usuario/perfil_usuario.html')">Perfil</a></li>
-                              <li class="dropdown"><a onclick="deslogar()">Sair</a></li>
-                          </ul>
-                      </li>
-                      <li>
-                          <img src="../dados/imagens/ícones/steam_verde.png">
-                      </li>
-                  </div>
-              `;
-          } else {
-              result = `
-                  <div class="usuario-autenticado">
-                      <li>
-                          <a class="usuario"><span class="material-symbols-outlined">person</span>${data[0].name} | Admin</a>
-                          <ul class="dropdown">
-                              <li class="dropdown"><a onclick="MoverPagina('${pathLista}')">Lista de produtos</a></li>
-                              <li class="dropdown"><a onclick="MoverPagina('${pathAdicionar}')">Adicionar produto</a></li>
-                              <li class="dropdown"><a onclick="deslogar()">Sair</a></li>
-                          </ul>
-                      </li>
-                      <li>
-                          <img src="../dados/imagens/ícones/steam_verde.png">
-                      </li>
-                  </div>
-              `;
-          }
-          classeLogin.insertAdjacentHTML("beforeend", result);
-      })
-      .catch(error => {
-          console.error(error);
-      });
+    })
+    .then(response => response.json())
+    .then(data => {
+      let pathLista = !isAdminPage() ? '../lista_de_produtos/lista_de_produtos.html' : '../admin/lista_de_produtos/lista_de_produtos.html';
+      let pathAdicionar = !isAdminPage() ? '../adicionar_produto/adicionar_produto.html' : '../admin/adicionar_produto/adicionar_produto.html';
+
+      if (data[0].admin == 0) {
+        result = `
+          <div class="usuario-autenticado">
+            <li>
+              <a class="lista-desejos" onclick="MoverPagina('../lista_de_desejos/lista_de_desejos.html')">
+                <span class="material-symbols-outlined" id="span-nav">bookmark</span>
+              </a>
+            </li>
+            <li>
+              <a class="lista-carrinho" onclick="MoverPagina('../carrinho/carrinho.html')">
+                <span class="material-symbols-outlined" id="span-nav">shopping_cart</span>
+              </a>
+            </li>
+            <li>
+              <a class="usuario big">
+                <span class="material-symbols-outlined">person</span>${data[0].name}
+              </a>
+              <a class="usuario small">
+                <span class="material-symbols-outlined">menu</span>
+              </a>
+              <ul class="dropdown">
+                <li><a class="drop-desejos" onclick="MoverPagina('../lista_de_desejos/lista_de_desejos.html')">Lista de Desejos</a></li>
+                <li><a class="drop-carrinho" onclick="MoverPagina('../carrinho/carrinho.html')">Carrinho</a></li>
+                <li><a onclick="MoverPagina('../perfil_usuario/perfil_usuario.html')">Perfil</a></li>
+                <li><a onclick="deslogar()">Sair</a></li>
+              </ul>
+            </li>
+            <li>
+              <img src="../dados/imagens/ícones/steam_verde.png">
+            </li>
+          </div>
+        `;
+      } else {
+        result = `
+          <div class="usuario-autenticado">
+            <li>
+              <a class="usuario">
+                <span class="material-symbols-outlined">person</span>${data[0].name} | Admin
+              </a>
+              <ul class="dropdown">
+                <li><a onclick="MoverPagina('${pathLista}')">Lista de produtos</a></li>
+                <li><a onclick="MoverPagina('${pathAdicionar}')">Adicionar produto</a></li>
+                <li><a onclick="deslogar()">Sair</a></li>
+              </ul>
+            </li>
+            <li>
+              <img src="../dados/imagens/ícones/steam_verde.png">
+            </li>
+          </div>
+        `;
+      }
+
+      classeLogin.innerHTML = result; // Insert the generated HTML
+    })
+    .catch(error => {
+      console.error(error);
+    });
   } else {
-      result = `
-          <a class="usuario" href="javascript:void(0)" onclick="MoverPagina('../login/login.html')">
-              <span class="material-symbols-outlined">person</span>Entrar
-          </a>
-          <button type="button" class="login_steam">
-              <img src="../dados/imagens/ícones/Steam.png">Entrar
-          </button>
-      `;
-      classeLogin.insertAdjacentHTML("beforeend", result);
+    result = `
+      <a class="usuario" href="javascript:void(0)" onclick="MoverPagina('../login/login.html')">
+        <span class="material-symbols-outlined">person</span>Entrar
+      </a>
+      <button type="button" class="login_steam">
+        <img src="../dados/imagens/ícones/Steam.png">Entrar
+      </button>
+    `;
+    
+    classeLogin.innerHTML = result; // Insert the generated HTML
   }
 }
 
-
-
+// Event listener to create navbar after DOM is loaded
 document.addEventListener("DOMContentLoaded", () => createNavbar("create-navbar"));
 
-//Desloga do Website
-function deslogar(){
-  window.location.replace(fixPastaAdmin("../bibliotecas/deslogar.html",  "../../bibliotecas/deslogar.html"))
+// Function to logout from the website
+function deslogar() {
+  window.location.replace(fixPastaAdmin("../bibliotecas/deslogar.html", "../../bibliotecas/deslogar.html"));
 }
 
-
-//Utilidades Navbar
-
-
-//Retorna true se a página atual está dentro da pasta admin
-function isAdminPage(){
+// Function to check if the current page is within the admin folder
+function isAdminPage() {
   return window.location.pathname.split('/').length < 7;
 }
 
-//Retorna o diretorio correto para arquivos que executem este script em Root ou uma Subpasta
-function fixPastaAdmin(root, subpasta){
-  return isAdminPage()? root : subpasta
+// Function to fix admin folder path for script execution in root or subfolder
+function fixPastaAdmin(root, subpasta) {
+  return isAdminPage() ? root : subpasta;
 }
 
-
-function buscaNavBar(){
+// Function to perform search in navbar
+function buscaNavBar() {
   let search = document.getElementById('searchbar').value;
-  MoverPagina(fixPastaAdmin("../busca/busca.html",  "../../busca/busca.html"), 'search', search);
+  MoverPagina(fixPastaAdmin("../busca/busca.html", "../../busca/busca.html"), 'search', search);
 }
