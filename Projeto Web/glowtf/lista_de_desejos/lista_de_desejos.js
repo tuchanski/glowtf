@@ -40,7 +40,7 @@ function carregaProdutos() {
                 R$ ${(data.hat_price / 100).toFixed(2).replace('.', ',')}
             </td>
             <td class="botoes">
-              <button class="carrinho-btn" type="button" onclick="MoverPagina('../carrinho/carrinho.html', 'id_hat', ${data.hat_id})">
+              <button class="carrinho-btn" type="button" onclick="insereProduto(${data.hat_id}, ${data.id_user})">
                 <span class="material-symbols-outlined">
                   shopping_cart
                 </span>
@@ -115,4 +115,34 @@ function carregaProdutos() {
         alert('Erro ao deletar produto.');
     });
   }
+
+  function insereProduto(hat_id, id_user) {
+    let url = 'adiciona_item_carrinho_wl.php';
+    
+    let options = {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded' 
+        },
+        body: 'hat_id=' + encodeURIComponent(hat_id) + '&id_user=' + encodeURIComponent(id_user)
+    };
+  
+    fetch(url, options)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao inserir produto');
+        }
+        return response.text();
+    })
+    .then(data => {
+        console.log(data); 
+        alert('Produto inserido com sucesso.');
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao inserir produto.');
+    });
+}
+
   
