@@ -67,7 +67,7 @@ function carregarProdutos(query) {
                         data.forEach((data) => {
                             let colorHex = "";
                             let colorSplash = "";
-                            let inWishlist = wishlistList.includes(data.hatId); // Check if hatId is in wishlistList
+                            let inWishlist = wishlistList.includes(String(data.hat_id));
                             let starColor = inWishlist ? 'white' : '#282828';
                             console.log(inWishlist);
 
