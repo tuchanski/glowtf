@@ -82,9 +82,6 @@ function criarLogin() {
                 <li><a onclick="deslogar()">Sair</a></li>
               </ul>
             </li>
-            <li>
-              <img src="../dados/imagens/ícones/steam_verde.png">
-            </li>
           </div>
         `;
       } else {
@@ -108,9 +105,6 @@ function criarLogin() {
                 <li><a onclick="deslogar()">Sair</a></li>
               </ul>
             </li>
-            <li>
-              <img src="../dados/imagens/ícones/steam_verde.png">
-            </li>
           </div>
         `;
       }
@@ -125,9 +119,6 @@ function criarLogin() {
       <a class="usuario" href="javascript:void(0)" onclick="MoverPagina('../login/login.html')">
         <span class="material-symbols-outlined">person</span>Entrar
       </a>
-      <button type="button" class="login_steam">
-        <img src="../dados/imagens/ícones/Steam.png">Entrar
-      </button>
     `;
     
     classeLogin.innerHTML = result; 
